@@ -24,6 +24,8 @@ public class FrontalPanel extends JPanel implements KeyListener{
 	private Color c;
 	private Arrow a;
 	private Rectangle screen;
+	private int xV, yV;
+	private char keyArrow;
 	
 	public FrontalPanel() {
 		super();
@@ -33,37 +35,56 @@ public class FrontalPanel extends JPanel implements KeyListener{
 		c = new Color(255,0,0);
 		screen = new Rectangle(DRAWING_WIDTH, DRAWING_HEIGHT);
 		initializeArrows();
+		xV = 1;
+		yV = 1;
 	}
 	
 	private void initializeArrows() {
+		int randomC = (int) (Math.random()*3); //0, 1, or 2
 		
-		Color red = Color.RED;
-		Color blue = Color.BLUE;
-		Color green = Color.GREEN;
-		
-		int randomC = (int) (Math.random()*3);
 		if(randomC == 0) {
-			c = red;
+			c = Color.RED;
 		}
 		else if(randomC == 1) {
-			c = blue;
+			c = Color.BLUE;
 		}
 		else {
-			c = green;
+			c =  Color.GREEN;
 		}
 	
-		for(int i =0; i<100; i++) {
+		for(int i =0; i<100; i++) {	//can change total number depending on size of screen
 			int randomX = (int) (Math.random()*800);
 			int randomY = (int) (Math.random()*600);
 			
 			a = new Arrow(randomX, randomY, c);
 			arrows.add(a);
+			
+			if(!isArrowInsideScreen(a)) {
+				int d = a.getDirection();
+				if(d==0) {
+					a.setY(DRAWING_HEIGHT);
+				}
+				else if(d==1) {
+					a.setX(0);
+				}
+				else if(d==2) {
+					a.setY(0);
+				}
+				else {
+					a.setX(DRAWING_WIDTH);
+				}
+			}
+			a.moveAcrossScreen();
 		}
 		
 	}
 	
-	public void moveAcrossScreen() {
-		
+	
+	private boolean isArrowInsideScreen(Arrow arr) {
+		if(arr.getX()<DRAWING_WIDTH && arr.getY()<DRAWING_HEIGHT) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void paintComponent(Graphics g, ImageObserver io) {
@@ -82,6 +103,10 @@ public class FrontalPanel extends JPanel implements KeyListener{
 		g2.scale(ratioX, ratioY);
 
 		for (Arrow a : arrows) {
+			if(!(a.getX()<ratioX && a.getY()<ratioY)) {
+				a.setX(0);
+				a.setY(0);
+			}
 			a.draw(g2, io);
 		}
 		
@@ -95,6 +120,7 @@ public class FrontalPanel extends JPanel implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		keyArrow = e.getKeyChar();
 		
 	}
 
@@ -107,6 +133,7 @@ public class FrontalPanel extends JPanel implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 

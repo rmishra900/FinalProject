@@ -10,11 +10,12 @@ import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 
 public class Arrow {
-	private int x;
-	private int y;
+	private int x, y;
 	private Color c;
 	private int dir; //0 = up, 1 = right, 2 = down, 3 = left
 	private Image i;
+	private int xV, yV;
+	private int pointingTo; //0 = up, 1 = right, 2 = down, 3 = left
 	
 	public Arrow(int xcoord, int ycoord, Color c) {
 		x = xcoord;
@@ -22,6 +23,16 @@ public class Arrow {
 		this.c = c;
 		dir = 0;
 		i = new ImageIcon("Arrow.gif").getImage();
+		xV=1;
+		yV=1;
+	}
+	
+	public int getPointingTo() {
+		return pointingTo;
+	}
+	
+	public void setPointingTo(int p) {
+		pointingTo = p;
 	}
 	
 	public int getDirection() {
@@ -57,6 +68,26 @@ public class Arrow {
 	}
 	
 	public void draw(Graphics g, ImageObserver io) {
+		moveAcrossScreen();
 		g.drawImage(i, x, y, io);
+	}
+	
+	public void moveAcrossScreen() {
+		
+		if(dir == 0) {
+			yV--;
+		}
+		else if(dir == 1) {
+			xV++;
+		}
+		else if(dir == 2) {
+			yV++;
+		}
+		else {
+			xV--;
+		}
+	
+		setX(x+xV);
+		setY(y+yV);
 	}
 }
