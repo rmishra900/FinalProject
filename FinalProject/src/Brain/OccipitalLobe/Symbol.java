@@ -1,5 +1,6 @@
 package Brain.OccipitalLobe;
 
+<<<<<<< HEAD
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
@@ -22,4 +23,8 @@ public class Symbol extends Rectangle2D.Double {
 	public void draw(Graphics g, ImageObserver io) {
 		g.drawImage(image, (int) x, (int) y, (int) width, (int) height, io);
 	}
+=======
+public class Symbol {
+
+>>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 }

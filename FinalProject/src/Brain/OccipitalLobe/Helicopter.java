@@ -8,5 +8,4 @@ public class Helicopter extends FlyingObject {
 	public Helicopter(int x, int y) {
 		super("helicopter.png", x, y, COPTER_WIDTH, COPTER_HEIGHT);
 	}
-	
 }
