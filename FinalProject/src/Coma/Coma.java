@@ -1,6 +1,5 @@
 package Coma;
 
-<<<<<<< HEAD
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
@@ -27,13 +26,6 @@ public class Coma extends JFrame {
 	
 	public static void main(String[] args) {
 		Coma c = new Coma("COMA");
-=======
-public class Coma {
-
-	public static void main(String[] args) {
-		
-
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 	}
 
 }

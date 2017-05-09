@@ -1,6 +1,5 @@
 package Brain.OccipitalLobe;
 
-<<<<<<< HEAD
 public class Airplane extends FlyingObject {
 	
 	public static final int PLANE_WIDTH = 40;
@@ -10,9 +9,4 @@ public class Airplane extends FlyingObject {
 		super("airplane.png", x, y, PLANE_WIDTH, PLANE_HEIGHT);
 	}
 	
-	
-=======
-public class Airplane {
-
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 }
