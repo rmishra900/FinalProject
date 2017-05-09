@@ -1,6 +1,6 @@
 package Coma;
 
-public class Main {
+public class Coma {
 
 	public static void main(String[] args) {
 		
