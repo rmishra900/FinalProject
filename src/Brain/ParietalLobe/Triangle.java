@@ -26,12 +26,6 @@ public class Triangle extends Shape {
 	}
 
 	@Override
-	public void act() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void paintComponent(Graphics g) {
 		g.drawPolygon(xCoords, yCoords, 3);
 		g.fillPolygon(xCoords, yCoords, 3);

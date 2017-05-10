@@ -1,0 +1,11 @@
+package Brain.ParietalLobe;
+
+
+public class Circle extends Shape{
+	private double radius;
+	
+	public Circle(double xCoord, double yCoord, double radius) {
+		super(xCoord, yCoord);
+		this.radius = radius;
+	}
+}

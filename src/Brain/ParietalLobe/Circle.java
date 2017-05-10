@@ -14,12 +14,6 @@ public class Circle extends Shape{
 	}
 
 	@Override
-	public void act() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void paintComponent(Graphics g) {
 		g.drawOval((int)x, (int)y, (int)(radius * 2), (int)(radius * 2));
 	}

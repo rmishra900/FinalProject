@@ -1,0 +1,9 @@
+package Brain.ParietalLobe;
+
+public abstract class Shape {
+	private double x,y;
+	
+	public Shape(double xCoord, double yCoord) {
+		
+	}
+}

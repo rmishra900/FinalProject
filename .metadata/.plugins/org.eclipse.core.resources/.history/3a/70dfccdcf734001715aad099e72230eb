@@ -1,0 +1,24 @@
+package Brain.ParietalLobe;
+
+import java.awt.Graphics;
+
+public class Circle extends Shape{
+	private double radius;
+	
+	public Circle(double xCoord, double yCoord, double radius) {
+		super(xCoord, yCoord);
+		this.radius = radius;
+	}
+
+	@Override
+	public void act() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+}

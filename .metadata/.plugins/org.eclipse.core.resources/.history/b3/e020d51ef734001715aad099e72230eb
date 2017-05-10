@@ -1,0 +1,16 @@
+package Brain.ParietalLobe;
+import java.awt.Color;
+
+public abstract class Shape {
+	protected double x,y;
+	private double width, height;
+	private Color shapeColor;
+	
+	public Shape(double xCoord, double yCoord) {
+		x = xCoord;
+		y = yCoord;
+	}
+	
+	public abstract void act();
+	
+}

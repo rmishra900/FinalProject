@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Coma.Main&apos; to &apos;Coma&apos;&#x0D;&#x0A;- Original project: &apos;FinalProject&apos;&#x0D;&#x0A;- Original element: &apos;Coma.Main&apos;&#x0D;&#x0A;- Renamed element: &apos;Coma.Coma&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Main&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Coma{Main.java[Main" matchStrategy="1" name="Coma" qualified="false" references="true" similarDeclarations="false" stamp="1494293954504" textual="false" version="1.0"/>
+</session>

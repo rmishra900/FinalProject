@@ -17,7 +17,9 @@ public abstract class Shape {
 		
 	}
 	
-	public abstract void act();
+	public void act() {
+		
+	}
 	
 	public abstract void paintComponent(Graphics g);
 	

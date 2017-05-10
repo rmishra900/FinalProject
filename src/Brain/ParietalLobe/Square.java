@@ -13,13 +13,7 @@ public class Square extends Shape{
 			this.length = length;
 			c = super.getColor();
 		}
-	
-		@Override
-		public void act() {
-			// TODO Auto-generated method stub
-			
-		}
-	
+
 		@Override
 		public void paintComponent(Graphics g) {
 			g.drawRect((int)x, (int)y, (int)width, (int)length);
