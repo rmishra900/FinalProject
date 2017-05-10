@@ -10,6 +10,7 @@ import java.awt.Shape;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
@@ -27,20 +28,23 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	
 	private Airplane plane;
 	private ArrayList<Helicopter> obstacles;
+
 	private Symbol sym;
-	private Image background;
-	  
+	private BufferedImage background;
+	private int numCorrect;
 	private MouseListener mouseControl;
+
 	  
 	public OccipitalPanel() {
-		setBackground(Color.RED);
 		try {
-			background = ImageIO.read(new File("test.jpg"));
+			background = ImageIO.read(new File("Background.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		plane = new Airplane((int) Math.random()*DRAWING_WIDTH, (int) Math.random()*DRAWING_HEIGHT);
+		numCorrect = 0;
+		
 		initializeObstacles();
 		initializeSymbol();
 	}
@@ -72,55 +76,51 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 
 		Graphics2D g2 = (Graphics2D) g;
 		
-		if (background != null) {
-            g.drawImage(background, 0, 0, null);
-        }
 
 		int width = getWidth();
 		int height = getHeight();
 
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
+		
+		g.drawImage(background, 0, 0, (int)(800*ratioX), (int)(600*ratioY), this);
 
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
 		for (FlyingObject f : obstacles) {
-			f.draw(g2, this);;
+			f.draw(g2, this);
 		}
 		
 		plane.draw(g2, this);
-		for (Helicopter h : obstacles) {
-			h.draw(g, this);
+		for (Helicopter heli : obstacles) {
+			heli.draw(g, this);
 		}
 		
 		g2.setTransform(at);
 	}
 
-	public Dimension getPreferredSize() {
-        return background == null ? super.getPreferredSize() : new Dimension(background.getWidth(this), background.getHeight(this));
-    }
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		if (plane.intersects(e.getX(), e.getY(), plane.width, plane.height)) {
+			numCorrect++;
+		} else {
+			numCorrect = 0;
+		}
 	}
 
-	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
