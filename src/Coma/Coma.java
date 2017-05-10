@@ -5,21 +5,23 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Brain.FrontalLobe.FrontalPanel;
 import Brain.OccipitalLobe.OccipitalPanel;
 
 public class Coma extends JFrame {
 
-	JPanel cardPanel;
+	JPanel gamePanel;
 	
 	public Coma(String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
-	    cardPanel = new JPanel();
+	    //gamePanel = new JPanel();
 	    OccipitalPanel panel = new OccipitalPanel();
+	    //gamePanel.add(panel);
 	    panel.setVisible(true);
-	    cardPanel.add(panel);
+	    add(panel);
 	    
 	    setVisible(true);
 	}
