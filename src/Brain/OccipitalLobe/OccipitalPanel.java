@@ -37,7 +37,7 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	  
 	public OccipitalPanel() {
 		try {
-			background = ImageIO.read(new File("Background.jpg"));
+			background = ImageIO.read(new File("OccipitalBackground.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -87,14 +87,10 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-
-		for (FlyingObject f : obstacles) {
-			f.draw(g2, this);
-		}
 		
 		plane.draw(g2, this);
 		for (Helicopter heli : obstacles) {
-			heli.draw(g, this);
+			heli.draw(g2, this);
 		}
 		
 		g2.setTransform(at);
