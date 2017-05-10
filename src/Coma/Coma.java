@@ -18,11 +18,11 @@ public class Coma extends JFrame {
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	 
-	    /*OccipitalPanel panel = new OccipitalPanel();
+	    OccipitalPanel panel = new OccipitalPanel();
 	    panel.setVisible(true);
-	    add(panel);*/
+	    add(panel);
 	    
-	    gamePanel = new JPanel();
+	    /*gamePanel = new JPanel();
 	    CardLayout c = new CardLayout();
 	    gamePanel.setLayout(c);
 	    
@@ -43,7 +43,7 @@ public class Coma extends JFrame {
 	    addMouseListener(panel2);
 	    addMouseListener(panel3);
 	    addMouseListener(panel4);
-//	    addKeyListener(panel4);
+//	    addKeyListener(panel4);*/
 	    
 	    
 	    setVisible(true);
