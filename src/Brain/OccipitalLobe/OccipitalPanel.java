@@ -42,10 +42,17 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		plane = new Airplane((int) Math.random()*DRAWING_WIDTH, (int) Math.random()*DRAWING_HEIGHT);
 		initializeObstacles();
+		initializeSymbol();
 	}
 	
 	private void initializeSymbol() {
-		
+		int randNum = (int)(Math.random()*5) + 1;
+		int x = (int) Math.random()*DRAWING_WIDTH;
+		int y = (int) Math.random()*DRAWING_HEIGHT;
+		if (!(x == plane.getX() && y == plane.getY()))
+			sym = new Symbol("Symbol" + randNum + ".gif", x, y, 30, 30);
+		else 
+			sym = new Symbol("Symbol" + randNum + ".gif", x+50, y, 30, 30);
 	}
 	
 	private void initializeObstacles() {
@@ -59,15 +66,15 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		}
 	}
 	
-	public void paintComponent(Graphics g, ImageObserver io) {
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // Call JPanel's paintComponent method to paint
 									// the background
 
 		Graphics2D g2 = (Graphics2D) g;
 		
-		 if (background != null) {
-             g.drawImage(background, 0, 0, null);
-         }
+		if (background != null) {
+            g.drawImage(background, 0, 0, null);
+        }
 
 		int width = getWidth();
 		int height = getHeight();
@@ -79,16 +86,15 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		g2.scale(ratioX, ratioY);
 
 		for (FlyingObject f : obstacles) {
-			f.draw(g2, io);;
+			f.draw(g2, this);;
 		}
 		
 		plane.draw(g2, this);
-
-		g2.setTransform(at);
 		for (Helicopter h : obstacles) {
-			h.draw(g, io);
+			h.draw(g, this);
 		}
-		// TODO Add any custom drawings here
+		
+		g2.setTransform(at);
 	}
 
 	public Dimension getPreferredSize() {

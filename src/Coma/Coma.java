@@ -16,10 +16,8 @@ public class Coma extends JFrame {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    
-	    //gamePanel = new JPanel();
+	 
 	    OccipitalPanel panel = new OccipitalPanel();
-	    //gamePanel.add(panel);
 	    panel.setVisible(true);
 	    add(panel);
 	    
