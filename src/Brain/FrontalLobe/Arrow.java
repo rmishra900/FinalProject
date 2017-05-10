@@ -12,19 +12,20 @@ import javax.swing.ImageIcon;
 public class Arrow {
 	private int x, y;
 	private Color c;
-	private int dir; //0 = up, 1 = right, 2 = down, 3 = left
+	private int dir; //left = 37, up = 38, right = 39, down = 40
 	private Image i;
 	private int xV, yV;
-	private int pointingTo; //0 = up, 1 = right, 2 = down, 3 = left
+	private int pointingTo; //left = 37, up = 38, right = 39, down = 40
 	
 	public Arrow(int xcoord, int ycoord, Color c) {
 		x = xcoord;
 		y = ycoord;
 		this.c = c;
-		dir = 0;
-		i = new ImageIcon("Arrow.gif").getImage();
+		dir = 37;
+		i = new ImageIcon("Arrow.png").getImage();
 		xV=1;
 		yV=1;
+		pointingTo = 37;
 	}
 	
 	public int getPointingTo() {
@@ -32,14 +33,32 @@ public class Arrow {
 	}
 	
 	public void setPointingTo(int p) {
+		if(p>40 || p<37) {
+			System.out.println("value has to be either 37, 38, 39, or 40");
+			return;
+		}
 		pointingTo = p;
 	}
+	
+	public void rotate() {
+		if(pointingTo==40){
+			pointingTo=37;
+		}
+		else {
+			pointingTo++;
+		}
+	}
+	
 	
 	public int getDirection() {
 		return dir;
 	}
 	
 	public void setDirection(int d) {
+		if(d>40 || d<37) {
+			System.out.println("value has to be either 37, 38, 39, or 40");
+			return;
+		}
 		dir = d;
 	}
 	
@@ -69,7 +88,19 @@ public class Arrow {
 	
 	public void draw(Graphics g, ImageObserver io) {
 		moveAcrossScreen();
-		g.drawImage(i, x, y, io);
+		g.drawImage(i, x, y,i.getWidth(io), i.getHeight(io), io);
+	}
+	
+	public Image getImage() {
+		return i;
+	}
+	
+	public int getWidth(ImageObserver io) {
+		return i.getWidth(io);
+	}
+	
+	public int getHeight(ImageObserver io) {
+		return i.getHeight(io);
 	}
 	
 	public void moveAcrossScreen() {
