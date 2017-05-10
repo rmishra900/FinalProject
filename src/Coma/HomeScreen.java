@@ -18,7 +18,6 @@ public class HomeScreen extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.drawString("HOME", 20, 100);
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -41,7 +40,7 @@ public class HomeScreen extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		if (e.getButton() == 1)
 		{
-			c.changePanel("2");
+			c.changePanel("0");
 		}
 		
 		repaint();

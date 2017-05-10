@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import Brain.FrontalLobe.FrontalPanel;
 import Brain.OccipitalLobe.OccipitalPanel;
+import Brain.ParietalLobe.ParietalPanel;
 
 public class Coma extends JFrame {
 
@@ -25,11 +26,13 @@ public class Coma extends JFrame {
 	    CardLayout c = new CardLayout();
 	    gamePanel.setLayout(c);
 	    
+	    ParietalPanel panel0 = new ParietalPanel();
 	    HomeScreen panel1 = new HomeScreen(this);
 	    Menu panel2 = new Menu(this);
 	    Rules panel3 = new Rules(this);
 	    StoryScreen panel4 = new StoryScreen(this);
 	    
+	    gamePanel.add(panel0, "0");
 	    gamePanel.add(panel1, "1");
 	    gamePanel.add(panel2,"2");
 	    gamePanel.add(panel3,"3");
