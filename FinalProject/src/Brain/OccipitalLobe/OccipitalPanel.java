@@ -3,14 +3,18 @@ package Brain.OccipitalLobe;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class OccipitalPanel extends JPanel implements MouseListener {
@@ -30,7 +34,6 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		super();
 		setBackground(Color.CYAN);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		setBackground();
 		plane = new Airplane((int) Math.random()*DRAWING_WIDTH, (int) Math.random()*DRAWING_HEIGHT);
 		initializeObstacles();
 	
@@ -51,15 +54,17 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		}
 	}
 	
-	public void setBackground() {
-		
-	}
-	
 	public void paintComponent(Graphics g, ImageObserver io) {
 		super.paintComponent(g); // Call JPanel's paintComponent method to paint
 									// the background
-
+		
 		Graphics2D g2 = (Graphics2D) g;
+		try {
+			g2.drawImage(ImageIO.read(new File("airplane.png")), 0, 0, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} // to set the background
+		
 
 		int width = getWidth();
 		int height = getHeight();
@@ -77,7 +82,7 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		plane.draw(g2, this);
 
 		g2.setTransform(at);
-
+		repaint();
 		// TODO Add any custom drawings here
 	}
 	

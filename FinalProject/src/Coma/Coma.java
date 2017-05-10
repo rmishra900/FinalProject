@@ -1,6 +1,7 @@
 package Coma;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,9 +18,11 @@ public class Coma extends JFrame {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    cardPanel = new JPanel();
+	    
 	    OccipitalPanel panel = new OccipitalPanel();
 	    panel.setVisible(true);
 	    cardPanel.add(panel);
+	    add(cardPanel);
 	    
 	    setVisible(true);
 	}
