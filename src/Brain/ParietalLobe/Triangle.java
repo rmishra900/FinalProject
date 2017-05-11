@@ -9,9 +9,8 @@ public class Triangle extends Shape {
 	private int[] xCoords, yCoords;
 	
 	public Triangle(double xCoord, double yCoord, double length, Color c) {
-		super(xCoord, yCoord);
+		super(xCoord, yCoord, c);
 		this.length = length;
-		c = super.getColor();
 		
 		xCoords = new int[3];
 		xCoords[0] = (int)x;
@@ -26,9 +25,9 @@ public class Triangle extends Shape {
 	}
 
 	@Override
-	public void paintComponent(Graphics g) {
+	public void draw(Graphics g) {
+		g.setColor(shapeColor);
 		g.drawPolygon(xCoords, yCoords, 3);
 		g.fillPolygon(xCoords, yCoords, 3);
-		g.setColor(super.getColor());
 	}
 }
