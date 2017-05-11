@@ -72,6 +72,7 @@ public class Coma extends JFrame {
 	    addMouseListener(panel4);
 //	    addKeyListener(panel4);*/
 	    
+<<<<<<< HEAD
 
 //	    cardPanel.add(panel);
 //	    add(cardPanel);
@@ -79,6 +80,8 @@ public class Coma extends JFrame {
 //	    setVisible(true);
 //	    
 	    
+=======
+>>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 //	    cardPanel = new JPanel();
 //	   // CardLayout cl = new CardLayout();
 //	   // cardPanel.setLayout(cl);
@@ -109,8 +112,13 @@ public class Coma extends JFrame {
 	    //cardPanel.add(panel2,"2");
 	    
 	    add(cardPanel);
+<<<<<<< HEAD
 	*/
 	    setVisible(true);
+=======
+	
+	    setVisible(true);*/
+>>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 	    
 	}
 	
