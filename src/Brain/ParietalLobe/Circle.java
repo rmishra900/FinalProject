@@ -24,4 +24,19 @@ public class Circle extends Shape {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public void act() {
+		vX += 0.01;
+		x -= vX;
+	}
+
+	public void moveWithWall(int a) {
+		vY += 0.85;
+		if (a > 0) {
+			y -= vY;
+		}
+		else {
+			y += vY;
+		}
+	}
 }

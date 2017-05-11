@@ -21,18 +21,21 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 	private Image background;
 	private Wall w;
 	private ArrayList<Shape> s;
+	private int random;
 	
 	public ParietalPanel() {
 		super();
 		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		background = (new ImageIcon("ParietalBackground.gif")).getImage();
-		w = new Wall(40, 200, 0, 50, 200); // Wall(x, y, vY, width, height)
+		w = new Wall(40, 200, 0, 75, 250); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
 		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.MAGENTA));
 		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.BLACK));
 		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW));
 		setBackground(Color.WHITE);
+		
+		random = (int)(Math.random() * 3);
 		
 		Timer clock = new Timer(7, this);
 		clock.start();
@@ -55,14 +58,13 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 		w.draw(g);
 		
-		for (Shape shape: s) {
-			shape.draw(g2);
-		}
+		s.get(random).draw(g2);
 		
 		if (!screenRect.intersects(w))
 	  		redrawWall();
 		
 		g2.setTransform(at);
+		repaint();
 	  	
 	}
 	
@@ -74,12 +76,12 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
-		int shape = (int)(Math.random() * 2 + 1);
-		Shape cur = s.get(shape);
+		Shape cur = s.get(random);
 		cur.act();
 		if (cur.getX() < 0)
 			cur = null;
 
+		repaint();
 	}
 	
 	public void keyPressed(KeyEvent e) {

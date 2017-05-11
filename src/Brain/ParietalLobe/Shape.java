@@ -6,28 +6,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public abstract class Shape {
-	protected double x, y, vX;
-	private double width, height;
+	protected double x, y, vX, vY;
 	protected Color shapeColor;
 	
 	public Shape(double xCoord, double yCoord, Color c) {
 		x = xCoord;
 		y = yCoord;
 		vX = 0;
+		vY = 0;
 		shapeColor = c;
-		width = 0;
-		height = 0;
-		
 		
 	}
 	
 	public abstract void draw(Graphics g);
 	public abstract boolean collides(Wall w);
-	
-	public void act() {
-		vX += 0.01;
-		x -= vX;
-	}
+	public abstract void act();
+	public abstract void moveWithWall(int x);
 	
 	public double getX() {
 		return x;
