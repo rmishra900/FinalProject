@@ -2,11 +2,18 @@ package Brain.FrontalLobe;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class Arrow {
@@ -14,18 +21,35 @@ public class Arrow {
 	private Color c;
 	private int dir; //left = 37, up = 38, right = 39, down = 40
 	private Image i;
+	private Image iR,iG,iB;
+	//private BufferedImage bi;
 	private int xV, yV;
 	private int pointingTo; //left = 37, up = 38, right = 39, down = 40
+	private boolean hasRotated;
 	
 	public Arrow(int xcoord, int ycoord, Color c) {
 		x = xcoord;
 		y = ycoord;
 		this.c = c;
-		dir = 37;
+		dir = 39;
 		i = new ImageIcon("Arrow.png").getImage();
+		iB = new ImageIcon("Arrow.png").getImage();
+		iG = new ImageIcon("ArrowGreen.png").getImage();
+		iR = new ImageIcon("ArrowRed.png").getImage();
+	//	i = new BufferedImage(50,50,BufferedImage.TYPE_INT_ARGB);
 		xV=1;
 		yV=1;
-		pointingTo = 37;
+		pointingTo = 39;
+		hasRotated = false;
+		/*
+		try {
+			bi = ImageIO.read(new File("Arrow.gif"));
+			
+		} catch (IOException e) {
+			System.out.println("Exception caught with bufferedImage");
+			e.printStackTrace();
+		}
+		*/
 	}
 	
 	public int getPointingTo() {
@@ -40,13 +64,16 @@ public class Arrow {
 		pointingTo = p;
 	}
 	
-	public void rotate() {
+	public void rotate(Graphics g) {
+	
+		
 		if(pointingTo==40){
 			pointingTo=37;
 		}
 		else {
 			pointingTo++;
 		}
+		hasRotated = true;
 	}
 	
 	
@@ -84,15 +111,78 @@ public class Arrow {
 	
 	public void setcolor(Color color) {
 		c = color;
+		
 	}
 	
-	public void draw(Graphics g, ImageObserver io) {
-		moveAcrossScreen();
-		g.drawImage(i, x, y,i.getWidth(io), i.getHeight(io), io);
+	public void draw(Graphics g, Image img, int x, int y, int width, int height, ImageObserver io) {
+	
+		g.drawImage(img, x, y,width, height, io);
+		//System.out.println("here");
+	
+		/*
+		if(hasRotated==true) {
+		//	System.out.println("hasrotated==true");
+			double rotationRequired = Math.toRadians(90);
+			double locationX = i.getWidth(io)/2;
+			double locationY = i.getHeight(io)/2;
+			AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+			//g.drawImage(op.filter((BufferedImage) i, null), x, y, null);
+		}
+		*/
 	}
+/*	
+	public BufferedImage getBufferedImage() {
+		return bi;
+	}
+	
+	public void setBufferedImage(BufferedImage bimg) {
+		bi = bimg;
+	}
+*/	
+	public Image getBlackImage() {
+		return iB;
+	}
+	
+	public int getBlackWidth(ImageObserver io) {
+		return iB.getWidth(io);
+	}
+	
+	public int getBlackHeight(ImageObserver io) {
+		return iB.getHeight(io);
+	}
+	
+	public Image getRedImage() {
+		return iR;
+	}
+	
+	public int getRedWidth(ImageObserver io) {
+		return iR.getWidth(io);
+	}
+	
+	public int getRedHeight(ImageObserver io) {
+		return iR.getHeight(io);
+	}
+	
+	public Image getGreenImage() {
+		return iG;
+	}
+	
+	public int getGreenWidth(ImageObserver io) {
+		return iG.getWidth(io);
+	}
+	
+	public int getGreenHeight(ImageObserver io) {
+		return iG.getHeight(io);
+	}
+	
 	
 	public Image getImage() {
 		return i;
+	}
+	
+	public void setImage(Image img) {
+		i = img;
 	}
 	
 	public int getWidth(ImageObserver io) {
@@ -104,14 +194,16 @@ public class Arrow {
 	}
 	
 	public void moveAcrossScreen() {
+	//	xV++;
+	//	setX((x+xV));
 		
-		if(dir == 0) {
+		if(dir == 38) {
 			yV--;
 		}
-		else if(dir == 1) {
+		else if(dir == 39) {
 			xV++;
 		}
-		else if(dir == 2) {
+		else if(dir == 40) {
 			yV++;
 		}
 		else {
@@ -120,5 +212,6 @@ public class Arrow {
 	
 		setX(x+xV);
 		setY(y+yV);
+	
 	}
 }
