@@ -18,4 +18,10 @@ public class Square extends Shape{
 			g.drawRect((int)x, (int)y, (int)length, (int)length);
 			g.fillRect((int)x, (int)y, (int)length, (int)length);
 		}
+
+		@Override
+		public boolean collides(Wall w) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 }	

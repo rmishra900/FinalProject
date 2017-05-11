@@ -30,4 +30,10 @@ public class Triangle extends Shape {
 		g.drawPolygon(xCoords, yCoords, 3);
 		g.fillPolygon(xCoords, yCoords, 3);
 	}
+
+	@Override
+	public boolean collides(Wall w) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -18,4 +18,10 @@ public class Circle extends Shape {
 		g.drawOval((int)x, (int)y, (int)(radius * 2), (int)(radius * 2));
 		g.fillOval((int)x, (int)y, (int)(radius * 2), (int)(radius * 2));
 	}
+
+	@Override
+	public boolean collides(Wall w) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
