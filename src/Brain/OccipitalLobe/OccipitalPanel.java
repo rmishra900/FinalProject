@@ -3,6 +3,7 @@ package Brain.OccipitalLobe;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.MouseEvent;
@@ -28,33 +29,33 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	private ArrayList<Helicopter> obstacles;
 
 	private Symbol sym;
-	private BufferedImage background;
+	private Image background;
+	private JLabel score;
 	private int numCorrect;
-	private MouseListener mouseControl;
 
 	  
 	public OccipitalPanel() {
-		try {
-			background = ImageIO.read(new File("OccipitalBackground.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		background = new ImageIcon("OccipitalBackground.jpg").getImage();
+		super.addMouseListener(this);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
 		numCorrect = 0;
-		
+		score = new JLabel("Score: ");
+		score.setText("Score: " + numCorrect);
+		add(score);
 		initializeObstacles();
 		initializeSymbol();
+		
 	}
 	
 	private void initializeSymbol() {
 		int randNum = (int)(Math.random()*5) + 1;
-		int x = (int) Math.random()*DRAWING_WIDTH;
-		int y = (int) Math.random()*DRAWING_HEIGHT;
+		int x = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
+		int y = 100 + (int) (Math.random()*(DRAWING_HEIGHT-150));
 		if (!(x == plane.getX() && y == plane.getY()))
-			sym = new Symbol("Symbol" + randNum + ".gif", x, y, 30, 30);
+			sym = new Symbol("Symbol" + randNum + ".png", x, y, 40, 40);
 		else 
-			sym = new Symbol("Symbol" + randNum + ".gif", x+50, y, 30, 30);
+			sym = new Symbol("Symbol" + randNum + ".png", x+25, y, 40, 40);
 	}
 	
 	private void initializeObstacles() {
@@ -86,36 +87,31 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
+		sym.draw(g2, this);
 		plane.draw(g2, this);
 		for (Helicopter heli : obstacles) {
 			heli.draw(g2, this);
 		}
-		
 		g2.setTransform(at);
 	}
 
-	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (plane.intersects(e.getX(), e.getY(), plane.width, plane.height)) {
+		if (plane.intersects(e.getX(), e.getY(), plane.PLANE_WIDTH/1.5, plane.PLANE_HEIGHT/1.5)) {
 			numCorrect++;
+			score.setText("Score: " + numCorrect);
+			System.out.println("True");
 		} else {
 			numCorrect = 0;
-		}
+			score.setText("Score: " + numCorrect);
+			System.out.println("False");
+		}	
 	}
 
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mousePressed(MouseEvent e) { }
 
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseReleased(MouseEvent e) { }
 
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseEntered(MouseEvent e) { }
 
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseExited(MouseEvent e) { }
 }

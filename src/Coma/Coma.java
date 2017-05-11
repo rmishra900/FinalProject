@@ -40,7 +40,6 @@ public class Coma extends JFrame {
 	    add(cardPanel);
 	    setVisible(true);
 	    
-	    
 //	    cardPanel = new JPanel();
 //	   // CardLayout cl = new CardLayout();
 //	   // cardPanel.setLayout(cl);
@@ -72,8 +71,8 @@ public class Coma extends JFrame {
 	    
 	    add(cardPanel);
 	
-	    setVisible(true);
-	    */
+	    setVisible(true);*/
+	    
 	}
 	
 	public static void main(String[] args) {

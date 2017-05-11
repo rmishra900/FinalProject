@@ -116,7 +116,7 @@ public class FrontalPanel extends JPanel implements Runnable, KeyListener{
 				a.setX(0);
 				a.setY(0);
 			}
-			a.draw(g2, io);
+			a.draw(g2, this);
 			a.moveAcrossScreen();
 		}
 		
