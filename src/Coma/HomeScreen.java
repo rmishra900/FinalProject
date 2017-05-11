@@ -41,7 +41,7 @@ public class HomeScreen extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		if (e.getButton() == 1)
 		{
-			c.changePanel("2");
+			//c.changePanel("2");
 		}
 		
 		repaint();
