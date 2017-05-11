@@ -29,20 +29,19 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	private ArrayList<Helicopter> obstacles;
 
 	private Symbol sym;
+	private boolean showObjects;
 	private Image background;
-	private JLabel score;
-	private int numCorrect;
+	private boolean correct;
 
 	  
 	public OccipitalPanel() {
+		setBackground(Color.WHITE);
 		background = new ImageIcon("OccipitalBackground.jpg").getImage();
 		super.addMouseListener(this);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
-		numCorrect = 0;
-		score = new JLabel("Score: ");
-		score.setText("Score: " + numCorrect);
-		add(score);
+		correct = false;
+		showObjects = true;
 		initializeObstacles();
 		initializeSymbol();
 		
@@ -82,28 +81,33 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
 		
-		g.drawImage(background, 0, 0, (int)(800*ratioX), (int)(600*ratioY), this);
 
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		
-		sym.draw(g2, this);
-		plane.draw(g2, this);
-		for (Helicopter heli : obstacles) {
-			heli.draw(g2, this);
-		}
 		g2.setTransform(at);
+		
+		if (showObjects) {
+			g.drawImage(background, 0, 0, (int)(800*ratioX), (int)(600*ratioY), this);
+			
+			sym.draw(g2, this);
+			plane.draw(g2, this);
+			for (Helicopter heli : obstacles) {
+				heli.draw(g2, this);
+			}	
+		}
 	}
-
+	
+	public void setShowObjects(boolean bool) {
+		showObjects = bool;
+	}
+	
+	public boolean getCorrect() { return correct; }
+	
 	public void mouseClicked(MouseEvent e) {
 		if (plane.intersects(e.getX(), e.getY(), plane.PLANE_WIDTH/1.5, plane.PLANE_HEIGHT/1.5)) {
-			numCorrect++;
-			score.setText("Score: " + numCorrect);
-			System.out.println("True");
+			correct = true;
 		} else {
-			numCorrect = 0;
-			score.setText("Score: " + numCorrect);
-			System.out.println("False");
+			correct = false;
 		}	
 	}
 
