@@ -1,19 +1,17 @@
 package Coma;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 
-public class HomeScreen extends JPanel implements MouseListener {
+public class HomeScreen extends JPanel implements MouseListener{
 	private Coma c;
 		
 	public HomeScreen(Coma c) {
 		super();
-		
 		this.c = c;
 		setBackground(Color.WHITE);
 	}
@@ -43,14 +41,15 @@ public class HomeScreen extends JPanel implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		if (e.getButton() == 1)
 		{
-			c.changePanel("0");
+			//c.changePanel("2");
 		}
 		
 		repaint();
+
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

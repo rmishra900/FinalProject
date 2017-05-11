@@ -28,9 +28,10 @@ public class Wall extends Rectangle2D.Double {
 	}
 	
 	 public void draw(Graphics g) {
-		 g.setColor(new Color(219,108,121));
+//		 g.setColor(new Color(219,108,121));
+		 g.setColor(Color.BLUE);
 		 g.drawRoundRect((int)x, (int)y, (int)width, (int)height, 10, 10);
-		 g.setColor(new Color(241,125,149));
+//		 g.setColor(new Color(241,125,149));
 		 g.fillRoundRect((int)x+1, (int)y+1, (int)width-1, (int)height-1, 10, 10);
 //		 g.fillRect((int)x, (int)y, (int)width, (int)height);
 

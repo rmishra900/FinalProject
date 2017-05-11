@@ -6,13 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public abstract class Shape {
-	protected double x,y;
+	protected double x, y, vX;
 	private double width, height;
 	protected Color shapeColor;
 	
 	public Shape(double xCoord, double yCoord, Color c) {
 		x = xCoord;
 		y = yCoord;
+		vX = 0;
 		shapeColor = c;
 		width = 0;
 		height = 0;
@@ -21,9 +22,27 @@ public abstract class Shape {
 	}
 	
 	public abstract void draw(Graphics g);
+	public abstract boolean collides(Wall w);
 	
 	public void act() {
-		
+		vX += 0.01;
+		x -= vX;
+	}
+	
+	public double getX() {
+		return x;
+	}
+	
+	public void setX(double xC) {
+		x = xC;
+	}
+	
+	public double getY() {
+		return y;
+	}
+	
+	public void setY(double yC) {
+		y = yC;
 	}
 	
 	public void changeColor() {
