@@ -42,7 +42,7 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 			e.printStackTrace();
 		}
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		plane = new Airplane((int) Math.random()*DRAWING_WIDTH, (int) Math.random()*DRAWING_HEIGHT);
+		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
 		numCorrect = 0;
 		
 		initializeObstacles();
@@ -61,10 +61,10 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	
 	private void initializeObstacles() {
 		obstacles = new ArrayList<Helicopter>();
-		int randNum = (int) (Math.random() * 10); // number of helicopters - maximum is 9 
+		int randNum = (int) (Math.random() * 9); // number of helicopters - maximum is 9 
 		for (int i = 0; i < randNum; i++) {
-			int x = (int) Math.random()*DRAWING_WIDTH;
-			int y = (int) Math.random()*DRAWING_HEIGHT;
+			int x = (int) (Math.random()*DRAWING_WIDTH);
+			int y = (int) (Math.random()*DRAWING_HEIGHT);
 			if (!(x == plane.getX() && y == plane.getY()))
 				obstacles.add(new Helicopter(x, y));
 		}
