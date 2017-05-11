@@ -18,7 +18,7 @@ public class Menu extends JPanel implements MouseListener{
 
 	public void paintComponent(Graphics g)
 	{
-		
+		super.paintComponent(g);
 	}
 	
 	@Override

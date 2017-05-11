@@ -11,6 +11,7 @@ public class HomeScreen extends JPanel implements MouseListener{
 	private Coma c;
 		
 	public HomeScreen(Coma c) {
+		super();
 		this.c = c;
 		setBackground(Color.WHITE);
 	}
@@ -18,7 +19,6 @@ public class HomeScreen extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.drawString("HOME", 20, 100);
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -45,10 +45,11 @@ public class HomeScreen extends JPanel implements MouseListener{
 		}
 		
 		repaint();
+
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
