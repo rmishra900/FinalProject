@@ -28,7 +28,7 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		background = (new ImageIcon("ParietalBackground.gif")).getImage();
-		w = new Wall(40, 200, 0, 75, 250); // Wall(x, y, vY, width, height)
+		w = new Wall(40, 200, 0, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
 		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.MAGENTA));
 		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.BLACK));

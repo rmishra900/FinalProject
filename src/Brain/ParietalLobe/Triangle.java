@@ -6,29 +6,37 @@ import java.awt.Graphics;
 
 public class Triangle extends Shape {
 	private double length;
-	private int[] xCoords, yCoords;
+	private double[] xCoords, yCoords;
 	
 	public Triangle(double xCoord, double yCoord, double length, Color c) {
 		super(xCoord, yCoord, c);
 		this.length = length;
 		
-		xCoords = new int[3];
-		xCoords[0] = (int)x;
-		xCoords[1] = (int)(x - length / 2);
-		xCoords[2] = (int)(x + length / 2);
+		xCoords = new double[3];
+		xCoords[0] = x;
+		xCoords[1] = x - length / 2;
+		xCoords[2] = x + length / 2;
 					
-		yCoords = new int[3];
-		yCoords[0] = (int)(y - length * Math.sin(Math.PI / 3) / 2);
-		yCoords[1] = (int)(y + length * Math.sin(Math.PI / 3) / 2);
-		yCoords[2] = (int)(y + length * Math.sin(Math.PI / 3) / 2);
+		yCoords = new double[3];
+		yCoords[0] = y - length * Math.sin(Math.PI / 3) / 2;
+		yCoords[1] = y + length * Math.sin(Math.PI / 3) / 2;
+		yCoords[2] = y + length * Math.sin(Math.PI / 3) / 2;
 		
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		g.setColor(shapeColor);
-		g.drawPolygon(xCoords, yCoords, 3);
-		g.fillPolygon(xCoords, yCoords, 3);
+		int[] xC = new int[3];
+		int[] yC = new int[3];
+		
+		for(int i = 0; i < xCoords.length; i++) {
+			xC[i] = (int)xCoords[i];
+			yC[i] = (int)yCoords[i];
+		}
+		
+		g.drawPolygon(xC, yC, 3);
+		g.fillPolygon(xC, yC, 3);
 	}
 
 	@Override
@@ -39,20 +47,24 @@ public class Triangle extends Shape {
 	
 	public void act() {
 		vX += 0.01;
-		x -= vX;
+		for (int i = 0; i < xCoords.length; i ++) {
+			xCoords[i] -= vX;
+		}
 	}
 
 	@Override
 	public void moveWithWall(int a) {
-		vY += 0.85;
+//		vY += 0.85;
 		if (a > 0) {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] -= vY;
+//				yCoords[i] -= vY;
+				yCoords[i] -= 3;
 			}
 		}
 		else {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] += vY;
+//				yCoords[i] += vY;	
+				yCoords[i] += 3;
 			}
 		}
 		

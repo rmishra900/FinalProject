@@ -14,18 +14,20 @@ public class Wall extends Rectangle2D.Double {
 		super(x, y, width, height);
 		this.vY = vY;
 		s = new ArrayList<Shape>();
-		s.add(new Circle(super.x + 13, super.y + 20, 25, Color.WHITE));
-		s.add(new Triangle((super.x * 2 + width) / 2, super.y + 120, 50, Color.WHITE));
-		s.add(new Square(super.x + 13, super.y + height - 70, 50, Color.WHITE));
+		s.add(new Circle(super.x + 13, super.y + 20, 30, Color.WHITE));
+		s.add(new Triangle((super.x * 2 + width) / 2, super.y + 120, 70, Color.WHITE));
+		s.add(new Square(super.x + 13, super.y + height - 90, 70, Color.WHITE));
 	}
 	
 	public void act(int x) {
-		vY += 0.85;
+//		vY += 0.85;
 		if (x > 0) {
-			y -= vY;
+//			y -= vY;
+			y -= 3;
 		}
 		else {
-			y += vY;
+//			y += vY;
+			y += 3;
 		}
 		
 		for (Shape sh: s) {

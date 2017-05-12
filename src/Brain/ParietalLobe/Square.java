@@ -32,12 +32,14 @@ public class Square extends Shape{
 
 		@Override
 		public void moveWithWall(int a) {
-			vY += 0.85;
+//			vY += 0.85;
 			if (a > 0) {
-				y -= vY;
+//				y -= vY;
+				y -= 3;
 			}
 			else {
-				y += vY;
+//				y += vY;
+				y += 3;
 			}
 			
 		}
