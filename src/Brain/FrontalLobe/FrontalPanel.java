@@ -94,7 +94,7 @@ public class FrontalPanel extends JPanel implements Runnable, KeyListener{
 		return false;
 	}
 	
-	public void paintComponent(Graphics g, ImageObserver io) {
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // Call JPanel's paintComponent method to paint
 									// the background
 
@@ -116,7 +116,7 @@ public class FrontalPanel extends JPanel implements Runnable, KeyListener{
 				a.setX(0);
 				a.setY(0);
 			}
-			a.draw(g2, io);
+			a.draw(g2, null);
 			a.moveAcrossScreen();
 		}
 		

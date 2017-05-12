@@ -23,9 +23,11 @@ public class Main extends JFrame {
 	    score = new JLabel("Score: ");
 		score.setText("Score: " + numCorrect);
 		add(score);
+		setVisible(true);
 	    
 	    do {
 	    	OccipitalPanel panel = new OccipitalPanel();
+	    	
 	 	    panel.setOpaque(false);
 	 	    
 	 	    glass.setOpaque(false);
@@ -38,10 +40,10 @@ public class Main extends JFrame {
 	 	    setGlassPane(glass);
 	 	    glass.setVisible(true);
 	 	    add(panel);
-	 	    setVisible(true);
+	 	    
 	 	    panel.setOpaque(true);
 	 	    try {
-	 			Thread.sleep(3000);
+	 			Thread.sleep(2000);
 	 		} catch (InterruptedException e) {
 	 			e.printStackTrace();
 	 		}
@@ -50,15 +52,31 @@ public class Main extends JFrame {
 	 	    glass.setVisible(false);	
 	 	    panel.add(new JLabel("Where was the airplane?"));
 	 	    // figure out how to execute the following code only when the mouse is clicked 
-	 	    
-	 	    if (panel.getCorrect()) {
-	 	    	numCorrect++;	
-	 	    	score.setText("Score: " + numCorrect);
+	 	    while (panel.getCorrect() == -1) {
+	 	    	 try {
+	 	 			Thread.sleep(200);
+	 	 		} catch (InterruptedException e) {
+	 	 			e.printStackTrace();
+	 	 		}
 	 	    }
-	 	    else {
+	 	    
+	 	    if (panel.getCorrect() == 1) {
+	 	    	numCorrect++;	
+	 	    	score.setText("Score: " + numCorrect );
+	 	    }
+	 	    else if (panel.getCorrect() == 0){
 	 	    	numCorrect = 0;
 	 	    	score.setText("Score: " + numCorrect);
 	 	    }
+	 	    /*panel.setOpaque(false);
+	 	    SymbolPanel p = new SymbolPanel();
+	 	    p.setTarget(panel.getSymNum());
+	    	add(p);
+	    	try {
+ 	 			Thread.sleep(20000);
+ 	 		} catch (InterruptedException e) {
+ 	 			e.printStackTrace();
+ 	 		}*/
 	    }
 	    while (numCorrect > 0); 
 	}

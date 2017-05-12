@@ -29,9 +29,10 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	private ArrayList<Helicopter> obstacles;
 
 	private Symbol sym;
+	private int symNum;
 	private boolean showObjects;
 	private Image background;
-	private boolean correct;
+	private int correct;
 
 	  
 	public OccipitalPanel() {
@@ -40,7 +41,7 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		super.addMouseListener(this);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
-		correct = false;
+		correct = -1;
 		showObjects = true;
 		initializeObstacles();
 		initializeSymbol();
@@ -48,13 +49,13 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	}
 	
 	private void initializeSymbol() {
-		int randNum = (int)(Math.random()*5) + 1;
+		symNum = (int)(Math.random()*5) + 1;
 		int x = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
 		int y = 100 + (int) (Math.random()*(DRAWING_HEIGHT-150));
 		if (!(x == plane.getX() && y == plane.getY()))
-			sym = new Symbol("Symbol" + randNum + ".png", x, y, 40, 40);
+			sym = new Symbol("Symbol" + symNum + ".png", x, y);
 		else 
-			sym = new Symbol("Symbol" + randNum + ".png", x+25, y, 40, 40);
+			sym = new Symbol("Symbol" + symNum + ".png", x+25, y);
 	}
 	
 	private void initializeObstacles() {
@@ -66,6 +67,10 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 			if (!(x == plane.getX() && y == plane.getY()))
 				obstacles.add(new Helicopter(x, y));
 		}
+	}
+	
+	public int getSymNum() {
+		return symNum;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -101,13 +106,13 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		showObjects = bool;
 	}
 	
-	public boolean getCorrect() { return correct; }
+	public int getCorrect() { return correct; }
 	
 	public void mouseClicked(MouseEvent e) {
 		if (plane.intersects(e.getX(), e.getY(), plane.PLANE_WIDTH/1.5, plane.PLANE_HEIGHT/1.5)) {
-			correct = true;
+			correct = 1;
 		} else {
-			correct = false;
+			correct = 0;
 		}	
 	}
 
