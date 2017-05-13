@@ -8,19 +8,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Main extends JFrame {
+public class OccipitalMain extends JFrame {
 	
 	JPanel glass = new JPanel();
+	JPanel symbolGlass = new JPanel();
 	private JLabel score;
 	private int numCorrect;
 	
-	public Main (String title) {
+	public OccipitalMain (String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    numCorrect = 0;
-	    score = new JLabel("Score: ");
+	    score = new JLabel();
 		score.setText("Score: " + numCorrect);
 		add(score);
 		setVisible(true);
@@ -48,10 +49,8 @@ public class Main extends JFrame {
 	 			e.printStackTrace();
 	 		}
 	 	    panel.setShowObjects(false);
-	 	    panel.add(score);
 	 	    glass.setVisible(false);	
-	 	    panel.add(new JLabel("Where was the airplane?"));
-	 	    // figure out how to execute the following code only when the mouse is clicked 
+	 	    
 	 	    while (panel.getCorrect() == -1) {
 	 	    	 try {
 	 	 			Thread.sleep(200);
@@ -60,29 +59,61 @@ public class Main extends JFrame {
 	 	 		}
 	 	    }
 	 	    
-	 	    if (panel.getCorrect() == 1) {
+	 	    if (panel.getCorrect() == 0){
+	 	    	numCorrect = 0;
+	 	    	score.setText("Score: " + numCorrect);
+	 	    	break;
+	 	    }
+	 	    panel.setCorrect();
+	 	    panel.setVisible(false);
+	 	    
+	 	    SymbolPanel sp = new SymbolPanel();
+	 	    sp.setTarget(panel.getSymNum());
+	    	
+	    	sp.setOpaque(false);
+	 	    
+	    	symbolGlass.setOpaque(false);
+	    	symbolGlass.add(sp);
+
+	    	symbolGlass.setFocusCycleRoot(true);
+	    	setGlassPane(symbolGlass);
+	    	symbolGlass.setVisible(true);
+	    	add(sp);
+
+	    	sp.setOpaque(true);
+	 	    try {
+	 			Thread.sleep(2000);
+	 		} catch (InterruptedException e) {
+	 			e.printStackTrace();
+	 		}
+	 	    symbolGlass.setVisible(false);	
+	    	
+	    	while (sp.getCorrect() == -1) {
+	    		try {
+	 	 			Thread.sleep(2000);
+	 	 		} catch (InterruptedException e) {
+	 	 			e.printStackTrace();
+	 	 		}
+	    	}
+	    	if (sp.getCorrect() == 1) {
 	 	    	numCorrect++;	
 	 	    	score.setText("Score: " + numCorrect );
 	 	    }
-	 	    else if (panel.getCorrect() == 0){
+	 	    else if (sp.getCorrect() == 0){
 	 	    	numCorrect = 0;
 	 	    	score.setText("Score: " + numCorrect);
+	 	    	sp.setVisible(false);
+	 	    	break;
 	 	    }
-	 	    /*panel.setOpaque(false);
-	 	    SymbolPanel p = new SymbolPanel();
-	 	    p.setTarget(panel.getSymNum());
-	    	add(p);
-	    	try {
- 	 			Thread.sleep(20000);
- 	 		} catch (InterruptedException e) {
- 	 			e.printStackTrace();
- 	 		}*/
+	    	sp.setCorrect();
+	    	sp.setVisible(false);
+	  
 	    }
 	    while (numCorrect > 0); 
 	}
 
 	public static void main(String[] args) {
-		Main m = new Main("COMA");
+		OccipitalMain m = new OccipitalMain("COMA");
 	}
 
 }

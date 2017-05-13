@@ -106,6 +106,7 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		showObjects = bool;
 	}
 	
+	public void setCorrect() { correct = -1; }
 	public int getCorrect() { return correct; }
 	
 	public void mouseClicked(MouseEvent e) {
