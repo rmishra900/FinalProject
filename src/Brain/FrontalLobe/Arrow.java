@@ -2,18 +2,9 @@ package Brain.FrontalLobe;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Arrow {
@@ -26,30 +17,72 @@ public class Arrow {
 	private int xV, yV;
 	private int pointingTo; //left = 37, up = 38, right = 39, down = 40
 	private boolean hasRotated;
+	private ImageIcon rl,ru,rr,rd,gl,gu,gr,gd,bl,bu,br,bd;
+	private ArrayList<ImageIcon> imgI;
 	
 	public Arrow(int xcoord, int ycoord, Color c) {
 		x = xcoord;
 		y = ycoord;
 		this.c = c;
-		dir = 39;
-		i = new ImageIcon("Arrow.png").getImage();
-		iB = new ImageIcon("Arrow.png").getImage();
-		iG = new ImageIcon("ArrowGreen.png").getImage();
-		iR = new ImageIcon("ArrowRed.png").getImage();
-	//	i = new BufferedImage(50,50,BufferedImage.TYPE_INT_ARGB);
-		xV=1;
-		yV=1;
-		pointingTo = 39;
+		dir = 37;
 		hasRotated = false;
-		/*
-		try {
-			bi = ImageIO.read(new File("Arrow.gif"));
-			
-		} catch (IOException e) {
-			System.out.println("Exception caught with bufferedImage");
-			e.printStackTrace();
-		}
-		*/
+		xV = 1;
+		yV = 1;
+		
+		i = getRandomImage();
+		
+		iB = new ImageIcon("BlueLeftArrow.png").getImage();
+		iG = new ImageIcon("GreenLeftArrow.png").getImage();
+		iR = new ImageIcon("RedLeftArrow.png").getImage();
+		
+		imgI = new ArrayList<ImageIcon>(12);
+		
+		
+		
+		rl = new ImageIcon("RedLeftArrow.png");
+		rl.setDescription("37");
+		ru = new ImageIcon("RedUpArrow.png");
+		ru.setDescription("38");
+		rr = new ImageIcon("RedRightArrow.png");
+		rr.setDescription("39");
+		rd = new ImageIcon("RedDownArrow.png");
+		rd.setDescription("40");
+		
+		gl = new ImageIcon("GreenLeftArrow.png");
+		gl.setDescription("37");
+		gu = new ImageIcon("GreenUpArrow.png");
+		gu.setDescription("38");
+		gr = new ImageIcon("GreenRightArrow.png");
+		gr.setDescription("39");
+		gd = new ImageIcon("GreenDownArrow.png");
+		gd.setDescription("40");
+				
+		 
+		bl = new ImageIcon("BlueLeftArrow.png");
+		bl.setDescription("37");
+		bu = new ImageIcon("BlueUpArrow.png");
+		bu.setDescription("38");
+		br = new ImageIcon("BlueRightArrow.png");
+		br.setDescription("39");
+		bd = new ImageIcon("BlueDownArrow.png");
+		bd.setDescription("40");
+		
+		imgI.add(rl);
+		imgI.add(ru);
+		imgI.add(rr);
+		imgI.add(rd);
+		imgI.add(gl);
+		imgI.add(gu);
+		imgI.add(gr);
+		imgI.add(gd);
+		imgI.add(bl);
+		imgI.add(bu);
+		imgI.add(br);
+		imgI.add(bd);
+		
+		pointingTo = getOrientation();
+		
+		
 	}
 	
 	public int getPointingTo() {
@@ -117,38 +150,18 @@ public class Arrow {
 	public void draw(Graphics g, Image img, int x, int y, int width, int height, ImageObserver io) {
 	
 		g.drawImage(img, x, y,width, height, io);
-		//System.out.println("here");
-	
-		/*
-		if(hasRotated==true) {
-		//	System.out.println("hasrotated==true");
-			double rotationRequired = Math.toRadians(90);
-			double locationX = i.getWidth(io)/2;
-			double locationY = i.getHeight(io)/2;
-			AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-			//g.drawImage(op.filter((BufferedImage) i, null), x, y, null);
-		}
-		*/
+		
 	}
-/*	
-	public BufferedImage getBufferedImage() {
-		return bi;
-	}
-	
-	public void setBufferedImage(BufferedImage bimg) {
-		bi = bimg;
-	}
-*/	
-	public Image getBlackImage() {
+
+	public Image getBlueImage() {
 		return iB;
 	}
 	
-	public int getBlackWidth(ImageObserver io) {
+	public int getBlueWidth(ImageObserver io) {
 		return iB.getWidth(io);
 	}
 	
-	public int getBlackHeight(ImageObserver io) {
+	public int getBlueHeight(ImageObserver io) {
 		return iB.getHeight(io);
 	}
 	
@@ -176,6 +189,9 @@ public class Arrow {
 		return iG.getHeight(io);
 	}
 	
+//	public String getImageFilename() {
+//		return i.
+//	}
 	
 	public Image getImage() {
 		return i;
@@ -193,9 +209,31 @@ public class Arrow {
 		return i.getHeight(io);
 	}
 	
+	public int getOrientation() {
+		//left = 37, up = 38, right = 39, down = 40
+		int o = 0;
+		
+		for(ImageIcon icon : imgI) {
+			if(icon.getImage().equals(i)) {
+				o = Integer.parseInt(icon.getDescription());
+			}
+		}
+		
+		
+		
+		return o;
+	}
+	
+	
+	public void move(int xDir, int yDir) {
+		
+		setX(getX()+xDir);
+		setY(getY()+yDir);
+	
+}
+	
 	public void moveAcrossScreen() {
-	//	xV++;
-	//	setX((x+xV));
+
 		
 		if(dir == 38) {
 			yV--;
@@ -213,5 +251,124 @@ public class Arrow {
 		setX(x+xV);
 		setY(y+yV);
 	
+	}
+	
+	public Image getRandomOrientation(Color c) {
+	
+		int r = (int) (Math.random()*4);
+		
+		//0=left, 1=up, 2=right, 3=down
+		
+		String filename = "";
+		if(c == Color.RED) {
+			if(r == 0) {
+				filename = "RedLeftArrow.png";
+				setPointingTo(37);
+			}
+			else if(r==1) {
+				filename = "RedUpArrow.png";
+				setPointingTo(38);
+			}
+			else if(r==2) {
+				filename = "RedRightArrow.png";
+				setPointingTo(39);
+			}
+			else {
+				filename = "RedDownArrow.png";
+				setPointingTo(40);
+			}
+		}
+		else if(c == Color.GREEN) {
+			if(r == 0) {
+				filename = "GreenLeftArrow.png";
+				setPointingTo(37);
+			}
+			else if(r==1) {
+				filename = "GreenUpArrow.png";
+				setPointingTo(38);
+			}
+			else if(r==2) {
+				filename = "GreenRightArrow.png";
+				setPointingTo(39);
+			}
+			else {
+				filename = "GreenDownArrow.png";
+				setPointingTo(40);
+			}
+		}
+		else {
+			if(r == 0) {
+				filename = "BlueLeftArrow.png";
+				setPointingTo(37);
+			}
+			else if(r==1) {
+				filename = "BlueUpArrow.png";
+				setPointingTo(38);
+			}
+			else if(r==2) {
+				filename = "BlueRightArrow.png";
+				setPointingTo(39);
+			}
+			else {
+				filename = "BlueDownArrow.png";
+				setPointingTo(40);
+			}
+		}
+		
+		return  new ImageIcon(filename).getImage();
+	}
+	
+	public Image getRandomImage() {
+		Color c;
+		
+		int randCol = (int) (Math.random()*3);
+		
+		if(randCol == 0) {
+			c = new Color(255,0,0); //red
+		}
+		else if(randCol==1) {
+			c = new Color(0,255,0); //green
+		}
+		else {
+			c = new Color(0,0,255); //blue
+		}
+		
+		
+		Image randomImage = getRandomOrientation(c);
+		
+		
+		return randomImage;
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		//Image green = getGreenImage();   
+		//Image red = getRedImage();
+		//Image blue = getBlueImage();
+		  
+		int x = (int)(Math.random()*4);
+	
+		if(x == 0) {
+			  setImage(iG);
+			  setcolor(Color.GREEN);
+			  return iG;
+		  }
+		  else if(x==1) {
+			  setImage(iR);
+			  setcolor(Color.RED);
+			  return iR;
+		  }
+		  else {
+			  setImage(iB);
+			  setcolor(Color.BLUE);
+			  return iB;
+		  }
+		  */
+		   
 	}
 }

@@ -1,40 +1,32 @@
 package Brain.FrontalLobe;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.io.File;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import sun.awt.image.OffScreenImage;
-import sun.java2d.opengl.OGLDrawImage;
-import Brain.Lobe;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 
 
-
-public class Frontal extends JPanel implements Runnable{
+public class Frontal extends JPanel {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-	//Timer t;
-	
-	private Rectangle screenRect;
+	Timer t;
 	
 	private Arrow arrow;
 	private ArrayList<Arrow> arrows;
@@ -43,36 +35,122 @@ public class Frontal extends JPanel implements Runnable{
 	private KeyHandler keyControl;
 	
 	private Image img;
+	private JLabel timer;
+	JLabel win;
+	JLabel lose;
 	
 	private int prevX = -1;
+	int direction = 37;
+	int pointingTo = 37;
+	
+	int correct = 0;
+	Color c = null;
+	JLabel score;
+	int threshold = 30;
+	
+	int seconds = 30;
 	
 	public Frontal() {
 		super();
+		win = new JLabel();
+		win.setLocation(300, 45);
+		win.setForeground(Color.WHITE);
+		win.setSize(300, 100);
+		add(win);
+		setLayout(null);
+		
+		lose = new JLabel();
+		win.setLocation(270, 45);
+		win.setForeground(Color.WHITE);
+		win.setSize(300, 100);
+		add(lose);
+		
 		keyControl = new KeyHandler();
-		//Timer t = new Timer(5,(ActionListener) this);
-		arrow = new Arrow(0,0,Color.BLUE);
-		
-		setBackground(Color.BLUE);
 	
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		
+		arrow = new Arrow(0,0,Color.BLUE);
+
 		img = new ImageIcon("FrontalBackground.jpg").getImage();
-		
+		score = new JLabel("SCORE: "+correct);
+		score.setForeground(Color.WHITE);
+		score.setLocation(10, 20);
+		score.setSize(150,30);
+		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		add(score);
 		initializeArrows();
+		timer = new JLabel("0:"+seconds);
+		timer.setLocation(600,25);
+		timer.setSize(150, 30);
+		timer.setForeground(Color.WHITE);
+		timer.setFont(new Font("Roman Baseline", Font.BOLD, 30));
+		t = new Timer(1000, new ActionListener() {
+			int time = seconds;
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				time--;
+				seconds = time;
+				timer.setText(format(time/60)+":"+format(time%60));
+				if(time == 0 || winGame()==true) {
+					Timer x = (Timer) e.getSource();
+					x.stop();
+				}
+			}
+			
+		});
+		
+		add(timer);
+		t.start();
+		
 	}
+	
+	private String format(int i) {
+		String result = String.valueOf(i);
+		if(result.length()==1) {
+			result = "0"+result;
+		}
+		return result;
+	}
+	
+
 
 	private void initializeArrows() {
 		arrows = new ArrayList<Arrow>();
 		
 		Color c = getRandomColor();
 
+		Image random = arrow.getRandomImage();
+		
 		for(int i = 0; i < 100; i++) {
 			int xcoord = getRandomX();
 			int ycoord = getRandomY();
 			arrows.add(new Arrow(xcoord, ycoord, c));
+			arrows.get(i).setImage(random);
 			
 		}
 		
+	}
+	
+	public int getCorrect() {
+		return correct;
+}
+	public void setCorrect(int c) {
+		correct = c;
+	}
+	public void setScore(JLabel s) {
+		score = s;
+	}
+	public JLabel getScore() {
+		return score;
+	}
+	
+	public void someoneScored()
+	{
+	  correct++;
+	
+	  if(correct<=threshold)
+		  score.setText("SCORE: " + correct);
+	
 	}
 	
 	public void putArrowInRandomLocations() {
@@ -82,7 +160,6 @@ public class Frontal extends JPanel implements Runnable{
 			int ycoord = getRandomY();
 			a.setX(xcoord);
 			a.setY(ycoord);
-			
 		}
 	}
 	
@@ -96,15 +173,15 @@ public class Frontal extends JPanel implements Runnable{
 		int randCol = (int) (Math.random()*3);
 		
 		if(randCol == 0) {
-			System.out.println("red");
+			
 			c = new Color(255,0,0); //red
 		}
 		else if(randCol==1) {
-			System.out.println("green");
+			
 			c = new Color(0,255,0); //green
 		}
 		else {
-			System.out.println("black");
+			
 			c = new Color(0,0,255); //blue
 		}
 		
@@ -119,143 +196,207 @@ public class Frontal extends JPanel implements Runnable{
 	
 	public int getRandomY() {
 		int yCoord = (int) (Math.random()*(DRAWING_HEIGHT-250))+150;
-		
+	
 		return yCoord;
 	}
+	
+	public int getRandomDirection(int x) {
+		int dir = (int) (Math.random()*4);
+		
+		while(x==dir+37) {
+			dir = (int) (Math.random()*4);
+		}
+		
+		return dir+37;
+	}
+	
+	public void moveAcrossScreen(int direction, Arrow a) {
+		 
+		   if(direction == 37) {
+			   a.move(-5,0);
+			   if(a.getX()<1) {
+				   a.setX(DRAWING_WIDTH-5);
+				   a.move(-5,0);
+			   }
+		   }
+		   else if(direction == 38) {
+			   a.move(0,-5);
+			   if(a.getY()<150) {
+				   a.setY(DRAWING_HEIGHT-100+4);
+				   a.move(0, -5);
+			   }
+		   }
+		   else if(direction == 39) {
+			   a.move(5,0);
+			   if(a.getX()>getWidth()-25) {
+				   a.setX(-4);
+				   a.move(5,0);
+			   }
+		   }
+		   else {
+			   a.move(0, 5);
+			   if(a.getY()>DRAWING_HEIGHT-100+4) {
+				   a.setY(150);
+				   a.move(0, 5);
+			   }
+		   }
+	}
+	
+	
+	public boolean winGame() {
+		if(correct >= threshold && seconds>0) 
+			return true;
+		else if(seconds==0 && correct<threshold)
+			return false;
+		else
+			return false;
+	}
+		
 	
 	public void paintComponent(Graphics g) {
 	
 		super.paintComponent(g);  // Call JPanel's paintComponent method to paint the background
 		
+		
 		g.drawImage(img, 0, 0, getWidth(), getHeight() , this);
 		
 		Graphics2D g2 = (Graphics2D)g;
 
+		
+		
 	    int width = getWidth();
 	    int height = getHeight();
 	    
 	    double ratioX = (double)width/DRAWING_WIDTH;
-	    double ratioY = (double)height/DRAWING_HEIGHT;
-	    
-	   
-	    
-	    AffineTransform at = g2.getTransform();
-	    g2.scale(ratioX, ratioY);
-	    
-	    
-
+		double ratioY = (double)height/DRAWING_HEIGHT;
+		        
+		AffineTransform at = g2.getTransform();
+		g2.scale(ratioX, ratioY);
+		 
 	   for(Arrow a: arrows) {
+		   a.setPointingTo(pointingTo);
+		  a.setDirection(direction);
+		  
+		  
 		   int w = a.getWidth(this)/8;
 		   int h = a.getHeight(this)/8;
 		  
 		   a.draw(g, a.getImage(), a.getX(), a.getY(), w, h, this);
 		  
-		  // a.moveAcrossScreen();
-		  
-		
-			  // initializeArrows();
-			   putArrowInRandomLocations();
-		
-		/*
-		 *  if(keyControl.isPressed(KeyEvent.VK_LEFT)) {
-		   
-			  
-		   
-		   
-		   System.out.println("left");
-		   
-		   Color col = getRandomColor();
-		   System.out.println(col);
-		   if(col == Color.GREEN) {
-			   a.setImage(a.getGreenImage());
-			   System.out.println("g: "+a.getImage());
-		   }
-		   else if(col == Color.RED) {
-			   a.setImage(a.getRedImage());
-			   System.out.println("r: "+a.getImage());
-		   }
-//		   else {
-//			   a.setImage(a.getImage());
-//			   System.out.println("b: "+a.getImage());
-//		   }
-//	return;
-		//   g2.drawImage(a.getImage(), a.getX(), a.getY()+h, w, -h,this); 
-		  
-		 //a.getImage().getSource();
-		/*   
-		   g2.rotate(Math.toRadians(90));
-		   g2.drawImage(a.getImage(), a.getX(), a.getY(), w, h,this); 
-		   
-		  // a.draw(g2, a.getImage(), a.getX(), a.getY()+h, w, -h, this);
-		  
-		// a.setDirection(37);
-		
-		 //a.draw(g, a.getX(), a.getY(), w, h, this);
-	   }
-		*/ 
+		   moveAcrossScreen(direction,  a);
+
+
+			direction = a.getDirection();
+			c = a.getColor();
+			pointingTo = a.getOrientation();
 	}
-		   
-	  //int prevX = -1;
+	
+	   if(isCorrect(c,direction,pointingTo) == true) {
+		   someoneScored();
+		   changeImage();
+		   int orientation = changeOrientation();
+		   pointingTo = orientation;
+		   direction = getRandomDirection(direction);
+	   }
 	   
 	  
-	   if(keyControl.isPressed(KeyEvent.VK_LEFT)) {
-		  changeColor();
-		    
-		 
-//		   else {
-//			   a.setImage(a.getImage());
-//			   System.out.println("b: "+a.getImage());
-//		   }
-//	return;
-		//   g2.drawImage(a.getImage(), a.getX(), a.getY()+h, w, -h,this); 
+	   if(winGame()==true) {
+		   win.setText("YOU WIN");
+		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 		  
-		 //a.getImage().getSource();
-		/*   
-		   g2.rotate(Math.toRadians(90));
-		   g2.drawImage(a.getImage(), a.getX(), a.getY(), w, h,this); 
-		   */
-		  // a.draw(g2, a.getImage(), a.getX(), a.getY()+h, w, -h, this);
-		  
-		// a.setDirection(37);
-		
-		 //a.draw(g, a.getX(), a.getY(), w, h, this);
+		   return;
 	   }
-
+	   else if(seconds == 0 && correct<threshold) {
+		   win.setText("YOU LOSE");
+		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		   return;
+	   }
+	  
 	   repaint();
 	   
 	   try {
-		Thread.sleep(150);
+		Thread.sleep(10);
 	} catch (InterruptedException e) {
 		e.printStackTrace();
 	}
-
-	    g2.setTransform(at);
-	  
+	    g2.setTransform(at); 
 	}
 	
-	public void changeColor() {
+	public int changeOrientation()  {
+		
+		Arrow arr = arrows.get(0);
+		Image img = arr.getRandomOrientation(arr.getColor());
+		for(Arrow a: arrows) {
+			a.setImage(img);
+			pointingTo = a.getOrientation();
+		}
+		return pointingTo;
+		
+	}
+	
+	public boolean isCorrect(Color c, int direction, int pointingTo) {
+		if(c == Color.GREEN) {
+			if((keyControl.isPressed(KeyEvent.VK_LEFT) && direction == 37) ||
+					   (keyControl.isPressed(KeyEvent.VK_UP) && direction == 38) ||
+					   (keyControl.isPressed(KeyEvent.VK_RIGHT)&& direction == 39) ||
+					   (keyControl.isPressed(KeyEvent.VK_DOWN) && direction == 40)) 
+				   {
+						return true;
+				   }
+			else {
+				return false;
+			}
+		}
+		else if(c == Color.RED) {
+			if((keyControl.isPressed(KeyEvent.VK_LEFT) && pointingTo == 37) ||
+			   (keyControl.isPressed(KeyEvent.VK_UP) && pointingTo == 38) ||
+			   (keyControl.isPressed(KeyEvent.VK_RIGHT)&& pointingTo == 39) ||
+			   (keyControl.isPressed(KeyEvent.VK_DOWN) && pointingTo == 40)) 
+			{
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			if((keyControl.isPressed(KeyEvent.VK_LEFT) && direction == 39) ||
+					   (keyControl.isPressed(KeyEvent.VK_UP) && direction == 40) ||
+					   (keyControl.isPressed(KeyEvent.VK_RIGHT)&& direction == 37) ||
+					   (keyControl.isPressed(KeyEvent.VK_DOWN) && direction == 38)) 
+				   {
+						return true;
+				   }
+			else {
+				return false;
+			}
+		}
+	
+	}
+	
+	public void changeImage() {
 		 int x = (int) (Math.random()*3);
 		  
 		   while(prevX == x) {
 			   x = (int) (Math.random()*3);
-		   }
-		   
-			  
+		   }	  
 		   for(Arrow a: arrows) {
 			   
 			  Image green = a.getGreenImage();   
 			  Image red = a.getRedImage();
-			  Image black = a.getBlackImage();
-			  
-			System.out.println(x);
+			  Image blue = a.getBlueImage();
+			
 			  if(x == 0) {
 				  a.setImage(green);
+				  a.setcolor(Color.GREEN);
 			  }
 			  else if(x==1) {
 				  a.setImage(red);
+				  a.setcolor(Color.RED);
 			  }
 			  else {
-				  a.setImage(black);
+				  a.setImage(blue);
+				  a.setcolor(Color.BLUE);
 			  }
 			   
 			 
@@ -263,39 +404,39 @@ public class Frontal extends JPanel implements Runnable{
 		   prevX = x;  
 	}
 	
-	@Override
-	public void run() {
-		System.out.println("while");
-		while (true) { // Modify this to allow quitting
-			long startTime = System.currentTimeMillis();
-			
-				
-				if (keyControl.isPressed(KeyEvent.VK_SPACE)) {
-					System.out.println("keyPressssed");
-					arrow.setX(100);
-					arrow.setY(200);
-					
-				}
-					
-				  	repaint();
-			
-			
-		  	
-		  	long waitTime = 17 - (System.currentTimeMillis()-startTime);
-		  	try {
-		  		if (waitTime > 0)
-		  			Thread.sleep(waitTime);
-		  		else
-		  			Thread.yield();
-		  	} catch (InterruptedException e) {}
-		}
-		
-	}
-	
 	public KeyHandler getKeyHandler() {
 		  return keyControl;
 	  }
+	
+	public void rotate(Graphics g, ArrayList<Arrow> arrows, int currentPT, int newPT) {
+		//38 = 0/360, 39 = 90, 40 = 180, 37 = 270
+		if(keyControl.isPressed(KeyEvent.VK_SPACE)) {
+			g.drawImage(img, 0, 0, getWidth() + (800-getWidth()), getHeight() + (600-getHeight()) , this);
+			
+			for(Arrow a: arrows) {
+				int degrees = 90 * Math.abs((newPT - currentPT));
+				
+				Graphics2D g2 = (Graphics2D) g;
+				AffineTransform at = g2.getTransform();
+				//for(Arrow a: arrows) {	
+					int w = a.getWidth(this)/8;
+					int h = a.getHeight(this)/8;
 
+					g2.translate(a.getX()+w/2, a.getY()+h/2);
+					
+					a.setX(a.getX()+w/2);
+					a.setY(a.getY()+h/2);
+					g2.rotate(Math.toRadians(degrees));
+					
+					g.drawImage(a.getImage(),-w/2,-h/2,w,h,this);
+				//	a.setX(a.getX()-w/2);
+				//	a.setY(a.getY()-h/2);
+					g2.setTransform(at);			
+					a.setPointingTo(newPT);
+			}		
+		}
+	}
+	
 	
 	public class KeyHandler implements KeyListener {
 		private ArrayList<Integer> keys;
@@ -327,7 +468,5 @@ public class Frontal extends JPanel implements Runnable{
 		
 		}
 		
-	}
-	
-	
+	}	
 }
