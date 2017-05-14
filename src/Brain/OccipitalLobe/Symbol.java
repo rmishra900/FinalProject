@@ -7,19 +7,11 @@ import java.awt.image.ImageObserver;
 
 import javax.swing.ImageIcon;
 
-public class Symbol extends Rectangle2D.Double {
+public class Symbol extends FlyingObject {
 	private Image image;
+	public static final int SYMBOL_WIDTH = 40;
 
-	public Symbol(String filename, int x, int y, int w, int h) {
-		this((new ImageIcon(filename)).getImage(),x,y,w,h);
-	}
-
-	public Symbol(Image img, int x, int y, int w, int h) {
-		super(x,y,w,h);
-		image = img;
-	}
-
-	public void draw(Graphics g, ImageObserver io) {
-		g.drawImage(image, (int) x, (int) y, (int) width, (int) height, io);
+	public Symbol(String filename, int x, int y) {
+		super(filename, x, y, SYMBOL_WIDTH, SYMBOL_WIDTH);
 	}
 }

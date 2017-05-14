@@ -3,6 +3,7 @@ package Brain.OccipitalLobe;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.MouseEvent;
@@ -28,44 +29,48 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 	private ArrayList<Helicopter> obstacles;
 
 	private Symbol sym;
-	private BufferedImage background;
-	private int numCorrect;
-	private MouseListener mouseControl;
+	private int symNum;
+	private boolean showObjects;
+	private Image background;
+	private int correct;
 
 	  
 	public OccipitalPanel() {
-		try {
-			background = ImageIO.read(new File("OccipitalBackground.jpg"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		setBackground(Color.WHITE);
+		background = new ImageIcon("OccipitalBackground.jpg").getImage();
+		super.addMouseListener(this);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		plane = new Airplane((int) Math.random()*DRAWING_WIDTH, (int) Math.random()*DRAWING_HEIGHT);
-		numCorrect = 0;
-		
+		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
+		correct = -1;
+		showObjects = true;
 		initializeObstacles();
 		initializeSymbol();
+		
 	}
 	
 	private void initializeSymbol() {
-		int randNum = (int)(Math.random()*5) + 1;
-		int x = (int) Math.random()*DRAWING_WIDTH;
-		int y = (int) Math.random()*DRAWING_HEIGHT;
+		symNum = (int)(Math.random()*5) + 1;
+		int x = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
+		int y = 100 + (int) (Math.random()*(DRAWING_HEIGHT-150));
 		if (!(x == plane.getX() && y == plane.getY()))
-			sym = new Symbol("Symbol" + randNum + ".gif", x, y, 30, 30);
+			sym = new Symbol("Symbol" + symNum + ".png", x, y);
 		else 
-			sym = new Symbol("Symbol" + randNum + ".gif", x+50, y, 30, 30);
+			sym = new Symbol("Symbol" + symNum + ".png", x+25, y);
 	}
 	
 	private void initializeObstacles() {
 		obstacles = new ArrayList<Helicopter>();
-		int randNum = (int) (Math.random() * 10); // number of helicopters - maximum is 9 
+		int randNum = (int) (Math.random() * 9); // number of helicopters - maximum is 9 
 		for (int i = 0; i < randNum; i++) {
-			int x = (int) Math.random()*DRAWING_WIDTH;
-			int y = (int) Math.random()*DRAWING_HEIGHT;
+			int x = (int) (Math.random()*DRAWING_WIDTH);
+			int y = (int) (Math.random()*DRAWING_HEIGHT);
 			if (!(x == plane.getX() && y == plane.getY()))
 				obstacles.add(new Helicopter(x, y));
 		}
+	}
+	
+	public int getSymNum() {
+		return symNum;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -81,41 +86,42 @@ public class OccipitalPanel extends JPanel implements MouseListener {
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
 		
-		g.drawImage(background, 0, 0, (int)(800*ratioX), (int)(600*ratioY), this);
 
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		
-		plane.draw(g2, this);
-		for (Helicopter heli : obstacles) {
-			heli.draw(g2, this);
-		}
-		
 		g2.setTransform(at);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		if (plane.intersects(e.getX(), e.getY(), plane.width, plane.height)) {
-			numCorrect++;
-		} else {
-			numCorrect = 0;
+		
+		if (showObjects) {
+			g.drawImage(background, 0, 0, (int)(800*ratioX), (int)(600*ratioY), this);
+			
+			sym.draw(g2, this);
+			plane.draw(g2, this);
+			for (Helicopter heli : obstacles) {
+				heli.draw(g2, this);
+			}	
 		}
 	}
-
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+	
+	public void setShowObjects(boolean bool) {
+		showObjects = bool;
+	}
+	
+	public void setCorrect() { correct = -1; }
+	public int getCorrect() { return correct; }
+	
+	public void mouseClicked(MouseEvent e) {
+		if (plane.intersects(e.getX(), e.getY(), plane.PLANE_WIDTH/1.5, plane.PLANE_HEIGHT/1.5)) {
+			correct = 1;
+		} else {
+			correct = 0;
+		}	
 	}
 
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mousePressed(MouseEvent e) { }
 
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseReleased(MouseEvent e) { }
 
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseEntered(MouseEvent e) { }
+
+	public void mouseExited(MouseEvent e) { }
 }

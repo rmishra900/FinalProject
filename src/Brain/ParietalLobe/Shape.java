@@ -1,30 +1,36 @@
-
 package Brain.ParietalLobe;
+
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public abstract class Shape {
-	protected double x,y;
-	private double width, height;
-	private Color shapeColor;
+	protected double x, y, vX, vY;
+	protected Color shapeColor;
 	
-	public Shape(double xCoord, double yCoord) {
+	public Shape(double xCoord, double yCoord, Color c) {
 		x = xCoord;
 		y = yCoord;
-		width = 0;
-		height = 0;
-		shapeColor = Color.WHITE;
+		vX = 0;
+		vY = 0;
+		shapeColor = c;
 		
 	}
 	
-	public void act() {
-		
+	public abstract void draw(Graphics g);
+	public abstract boolean collides(Wall w);
+	public abstract void act();
+	public abstract void moveWithWall(int x);
+	public abstract double getHeight();
+	public abstract int whichShape();
+	
+	public void setX(double xC) {
+		x = xC;
 	}
 	
-	public abstract void paintComponent(Graphics g);
-	
-	public Color getColor() {
-		return shapeColor;
+	public void setY(double yC) {
+		y = yC;
 	}
 	
 	public void changeColor() {
