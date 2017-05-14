@@ -47,7 +47,7 @@ public class HomeScreen extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
-			OccipitalMain m = new OccipitalMain("Show Me the Light");
+			OccipitalMain o = new OccipitalMain("Show Me the Light");
 		} else if (src == frontal) {
 			FrontalMain f = new FrontalMain("Flying Arrows");
 		} else if (src == parietal) {
