@@ -21,7 +21,6 @@ public class Triangle extends Shape {
 		yCoords[0] = y - length * Math.sin(Math.PI / 3) / 2;
 		yCoords[1] = y + length * Math.sin(Math.PI / 3) / 2;
 		yCoords[2] = y + length * Math.sin(Math.PI / 3) / 2;
-		
 	}
 
 	@Override
@@ -57,16 +56,32 @@ public class Triangle extends Shape {
 //		vY += 0.85;
 		if (a > 0) {
 			for (int i = 0; i < yCoords.length; i ++) {
-//				yCoords[i] -= vY;
-				yCoords[i] -= 3;
+				yCoords[i] -= 5;
 			}
 		}
 		else {
 			for (int i = 0; i < yCoords.length; i ++) {
-//				yCoords[i] += vY;	
-				yCoords[i] += 3;
+				yCoords[i] += 5;	
 			}
 		}
 		
+	}
+
+	@Override
+	public double getHeight() {
+		return length * Math.sin(Math.PI / 3);
+	}
+	
+	public double[] getXCoords() {
+		return xCoords;
+	}
+	
+	public double[] getYCoords() {
+		return yCoords;
+	}
+
+	@Override
+	public int whichShape() {
+		return 1;
 	}
 }

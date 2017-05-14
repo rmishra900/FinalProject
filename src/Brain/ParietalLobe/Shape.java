@@ -22,17 +22,11 @@ public abstract class Shape {
 	public abstract boolean collides(Wall w);
 	public abstract void act();
 	public abstract void moveWithWall(int x);
-	
-	public double getX() {
-		return x;
-	}
+	public abstract double getHeight();
+	public abstract int whichShape();
 	
 	public void setX(double xC) {
 		x = xC;
-	}
-	
-	public double getY() {
-		return y;
 	}
 	
 	public void setY(double yC) {

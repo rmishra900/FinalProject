@@ -14,20 +14,18 @@ public class Wall extends Rectangle2D.Double {
 		super(x, y, width, height);
 		this.vY = vY;
 		s = new ArrayList<Shape>();
-		s.add(new Circle(super.x + 13, super.y + 20, 30, Color.WHITE));
-		s.add(new Triangle((super.x * 2 + width) / 2, super.y + 120, 70, Color.WHITE));
-		s.add(new Square(super.x + 13, super.y + height - 90, 70, Color.WHITE));
+		s.add(new Circle(x + 15, y + 20, 30, Color.WHITE));
+		s.add(new Triangle((x * 2 + width) / 2, y + 120, 70, Color.WHITE));
+		s.add(new Square(x + 15, y + height - 90, 60, Color.WHITE));
 	}
 	
 	public void act(int x) {
 //		vY += 0.85;
 		if (x > 0) {
-//			y -= vY;
-			y -= 3;
+			y -= 5;
 		}
 		else {
-//			y += vY;
-			y += 3;
+			y += 5;
 		}
 		
 		for (Shape sh: s) {
@@ -54,7 +52,25 @@ public class Wall extends Rectangle2D.Double {
 
 	 }
 	    
-	 public boolean passes() {
+	 public boolean passes(Shape shape) {
+		 if (shape.whichShape() == 0 || shape.whichShape() == 2) {
+			 Shape s1 = s.get(shape.whichShape());
+			 if (shape.y >= s1.y && shape.y + shape.getHeight() <= s1.y + s1.getHeight()) {
+				 if(shape.x < x + width) {
+					 s1.changeColor();
+					 return true;
+				 }
+			 }
+		 }
+		 else {
+			 Triangle t1 = (Triangle)s.get(1);
+			 Triangle tri = new Triangle(shape.x, shape.y, 60, Color.BLACK);
+			 if (tri.getYCoords()[0] >= t1.getYCoords()[0] - 5 && tri.getYCoords()[0] + tri.getHeight() <= t1.getYCoords()[0] + t1.getHeight() + 5) {
+				 //BUG
+				 t1.changeColor(); 
+				 return true;
+			 }
+		 }
 		 return false;
 	 }
 

@@ -1,6 +1,7 @@
 
 package Brain.ParietalLobe;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -21,7 +22,8 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 	private Image background;
 	private Wall w;
 	private ArrayList<Shape> s;
-	private int random;
+	private Shape drawS1;
+	private int random, numCorrect;
 	
 	public ParietalPanel() {
 		super();
@@ -30,12 +32,14 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		background = (new ImageIcon("ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 0, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.MAGENTA));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.BLACK));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW));
 		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW));
 		setBackground(Color.WHITE);
 		
+		numCorrect = 0;
 		random = (int)(Math.random() * 3);
+		drawS1 = s.get(random);
 		
 		Timer clock = new Timer(7, this);
 		clock.start();
@@ -56,9 +60,34 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		g2.scale(ratioX, ratioY);
 
 		g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-		w.draw(g);
+		g.setColor(Color.WHITE);
+		g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+		g.setColor(Color.BLACK);
+		g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 		
-		s.get(random).draw(g2);
+		g.setFont(new Font("SansSerif", 3, 24));
+		g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+		
+		w.draw(g2);
+
+		drawS1.draw(g2);
+		
+		if (w.passes(drawS1)) {
+			numCorrect++;
+//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
+		}
+			
+		if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
+			if (drawS1.x <= w.x) {
+				shootShape();
+			}
+		}
+		else {
+			Triangle t = (Triangle)drawS1;
+			if (t.getXCoords()[1] <= w.x) {
+				shootShape();
+			}
+		}
 		
 		if (!screenRect.intersects(w))
 	  		redrawWall();
@@ -75,13 +104,22 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 			w = new Wall((int)w.getX(), DRAWING_HEIGHT, 0, (int)w.getWidth(), (int)w.getHeight());
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
-		Shape cur = s.get(random);
-		cur.act();
-		if (cur.getX() < 0)
-			cur = null;
+	public void shootShape() {
+		int shape = (int)(Math.random() * 3);
+		
+		if (shape == 0)
+			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.YELLOW);
+		else if (shape == 1)
+			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW);
+		else 
+			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW);
 
-		repaint();
+		
+	}
+	
+	public void actionPerformed(ActionEvent arg0) {
+		drawS1.act();
+		w.passes(drawS1);
 	}
 	
 	public void keyPressed(KeyEvent e) {

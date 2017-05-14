@@ -33,12 +33,19 @@ public class Circle extends Shape {
 	public void moveWithWall(int a) {
 //		vY += 0.85;
 		if (a > 0) {
-//			y -= vY;
-			y -= 3;
+			y -= 5;
 		}
 		else {
-//			y += vY;
-			y += 3;
+			y += 5;
 		}
+	}
+
+	public double getHeight() {
+		return radius * 2;
+	}
+
+	@Override
+	public int whichShape() {
+		return 0;
 	}
 }

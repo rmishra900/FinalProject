@@ -34,13 +34,20 @@ public class Square extends Shape{
 		public void moveWithWall(int a) {
 //			vY += 0.85;
 			if (a > 0) {
-//				y -= vY;
-				y -= 3;
+				y -= 5;
 			}
 			else {
-//				y += vY;
-				y += 3;
-			}
-			
+				y += 5;
+			}	
+		}
+
+		@Override
+		public double getHeight() {
+			return length;
+		}
+
+		@Override
+		public int whichShape() {
+			return 2;
 		}
 }	
