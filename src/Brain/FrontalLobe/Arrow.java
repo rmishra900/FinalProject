@@ -10,13 +10,9 @@ import javax.swing.ImageIcon;
 public class Arrow {
 	private int x, y;
 	private Color c;
-	private int dir; //left = 37, up = 38, right = 39, down = 40
-	private Image i;
-	private Image iR,iG,iB;
-	//private BufferedImage bi;
+	private int dir, pointingTo; //left = 37, up = 38, right = 39, down = 40
+	private Image i,iR,iG,iB;
 	private int xV, yV;
-	private int pointingTo; //left = 37, up = 38, right = 39, down = 40
-	private boolean hasRotated;
 	private ImageIcon rl,ru,rr,rd,gl,gu,gr,gd,bl,bu,br,bd;
 	private ArrayList<ImageIcon> imgI;
 	
@@ -25,7 +21,6 @@ public class Arrow {
 		y = ycoord;
 		this.c = c;
 		dir = 37;
-		hasRotated = false;
 		xV = 1;
 		yV = 1;
 		
@@ -36,7 +31,6 @@ public class Arrow {
 		iR = new ImageIcon("RedLeftArrow.png").getImage();
 		
 		imgI = new ArrayList<ImageIcon>(12);
-		
 		
 		
 		rl = new ImageIcon("RedLeftArrow.png");
@@ -81,13 +75,9 @@ public class Arrow {
 		imgI.add(bd);
 		
 		pointingTo = getOrientation();
-		
-		
 	}
 	
-	public int getPointingTo() {
-		return pointingTo;
-	}
+	public int getPointingTo() { return pointingTo; }
 	
 	public void setPointingTo(int p) {
 		if(p>40 || p<37) {
@@ -98,21 +88,16 @@ public class Arrow {
 	}
 	
 	public void rotate(Graphics g) {
-	
-		
 		if(pointingTo==40){
 			pointingTo=37;
 		}
 		else {
 			pointingTo++;
 		}
-		hasRotated = true;
 	}
 	
 	
-	public int getDirection() {
-		return dir;
-	}
+	public int getDirection() { return dir; }
 	
 	public void setDirection(int d) {
 		if(d>40 || d<37) {
@@ -122,92 +107,47 @@ public class Arrow {
 		dir = d;
 	}
 	
-	public int getX() {
-		return x;
-	}
+	public int getX() { return x; }
 	
-	public void setX(int xC) {
-		x = xC;
-	}
+	public void setX(int xC) { x = xC; }
 	
-	public int getY() {
-		return y;
-	}
+	public int getY() { return y; }
 	
-	public void setY(int yC) {
-		y = yC;
-	}
+	public void setY(int yC) { y = yC; }
 	
-	public Color getColor() {
-		return c;
-	}
+	public Color getColor() { return c; }
 	
-	public void setcolor(Color color) {
-		c = color;
-		
-	}
+	public void setcolor(Color color) { c = color; }
 	
 	public void draw(Graphics g, Image img, int x, int y, int width, int height, ImageObserver io) {
-	
 		g.drawImage(img, x, y,width, height, io);
-		
 	}
 
-	public Image getBlueImage() {
-		return iB;
-	}
+	public Image getBlueImage() { return iB; }
 	
-	public int getBlueWidth(ImageObserver io) {
-		return iB.getWidth(io);
-	}
+	public int getBlueWidth(ImageObserver io) { return iB.getWidth(io); }
 	
-	public int getBlueHeight(ImageObserver io) {
-		return iB.getHeight(io);
-	}
+	public int getBlueHeight(ImageObserver io) { return iB.getHeight(io); }
 	
-	public Image getRedImage() {
-		return iR;
-	}
+	public Image getRedImage() { return iR; }
 	
-	public int getRedWidth(ImageObserver io) {
-		return iR.getWidth(io);
-	}
+	public int getRedWidth(ImageObserver io) { return iR.getWidth(io); }
 	
-	public int getRedHeight(ImageObserver io) {
-		return iR.getHeight(io);
-	}
+	public int getRedHeight(ImageObserver io) { return iR.getHeight(io); }
 	
-	public Image getGreenImage() {
-		return iG;
-	}
+	public Image getGreenImage() { return iG; }
 	
-	public int getGreenWidth(ImageObserver io) {
-		return iG.getWidth(io);
-	}
+	public int getGreenWidth(ImageObserver io) { return iG.getWidth(io); }
 	
-	public int getGreenHeight(ImageObserver io) {
-		return iG.getHeight(io);
-	}
+	public int getGreenHeight(ImageObserver io) { return iG.getHeight(io); }
+
+	public Image getImage() {return i; }
 	
-//	public String getImageFilename() {
-//		return i.
-//	}
+	public void setImage(Image img) { i = img; }
 	
-	public Image getImage() {
-		return i;
-	}
+	public int getWidth(ImageObserver io) {	return i.getWidth(io); }
 	
-	public void setImage(Image img) {
-		i = img;
-	}
-	
-	public int getWidth(ImageObserver io) {
-		return i.getWidth(io);
-	}
-	
-	public int getHeight(ImageObserver io) {
-		return i.getHeight(io);
-	}
+	public int getHeight(ImageObserver io) { return i.getHeight(io); }
 	
 	public int getOrientation() {
 		//left = 37, up = 38, right = 39, down = 40
@@ -218,23 +158,16 @@ public class Arrow {
 				o = Integer.parseInt(icon.getDescription());
 			}
 		}
-		
-		
-		
 		return o;
 	}
-	
 	
 	public void move(int xDir, int yDir) {
 		
 		setX(getX()+xDir);
 		setY(getY()+yDir);
-	
-}
+	}
 	
 	public void moveAcrossScreen() {
-
-		
 		if(dir == 38) {
 			yV--;
 		}
@@ -250,7 +183,6 @@ public class Arrow {
 	
 		setX(x+xV);
 		setY(y+yV);
-	
 	}
 	
 	public Image getRandomOrientation(Color c) {
@@ -320,55 +252,19 @@ public class Arrow {
 	
 	public Image getRandomImage() {
 		Color c;
-		
 		int randCol = (int) (Math.random()*3);
 		
-		if(randCol == 0) {
+		if(randCol == 0) 
 			c = new Color(255,0,0); //red
-		}
-		else if(randCol==1) {
+		else if(randCol==1) 
 			c = new Color(0,255,0); //green
-		}
-		else {
+		else 
 			c = new Color(0,0,255); //blue
-		}
 		
 		
 		Image randomImage = getRandomOrientation(c);
 		
 		
 		return randomImage;
-		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		//Image green = getGreenImage();   
-		//Image red = getRedImage();
-		//Image blue = getBlueImage();
-		  
-		int x = (int)(Math.random()*4);
-	
-		if(x == 0) {
-			  setImage(iG);
-			  setcolor(Color.GREEN);
-			  return iG;
-		  }
-		  else if(x==1) {
-			  setImage(iR);
-			  setcolor(Color.RED);
-			  return iR;
-		  }
-		  else {
-			  setImage(iB);
-			  setcolor(Color.BLUE);
-			  return iB;
-		  }
-		  */
-		   
 	}
 }

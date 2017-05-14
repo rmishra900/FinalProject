@@ -1,11 +1,12 @@
 package Brain.FrontalLobe;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,14 +20,11 @@ import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-
-
 
 public class Frontal extends JPanel {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-	Timer t;
+	private Timer t;
 	
 	private Arrow arrow;
 	private ArrayList<Arrow> arrows;
@@ -35,48 +33,51 @@ public class Frontal extends JPanel {
 	private KeyHandler keyControl;
 	
 	private Image img;
-	private JLabel timer;
-	JLabel win;
-	JLabel lose;
+	private JLabel timer, win, score;
 	
-	private int prevX = -1;
-	int direction = 37;
-	int pointingTo = 37;
+	private int prevX, direction, pointingTo, 
+	correct, threshold, seconds;
 	
-	int correct = 0;
-	Color c = null;
-	JLabel score;
-	int threshold = 30;
+	private Color c;
 	
-	int seconds = 30;
 	
 	public Frontal() {
 		super();
+		
+		prevX = -1;
+		direction = 37;
+		pointingTo = 37;
+		
+		correct = 0;
+		c = null;
+		threshold = 30;
+		
+		seconds = 30;
+		
+		
 		win = new JLabel();
-		win.setLocation(300, 45);
+		win.setLocation(270, 45);
 		win.setForeground(Color.WHITE);
 		win.setSize(300, 100);
 		add(win);
 		setLayout(null);
-		
-		lose = new JLabel();
-		win.setLocation(270, 45);
-		win.setForeground(Color.WHITE);
-		win.setSize(300, 100);
-		add(lose);
 		
 		keyControl = new KeyHandler();
 	
 		arrow = new Arrow(0,0,Color.BLUE);
 
 		img = new ImageIcon("FrontalBackground.jpg").getImage();
+		
+		initializeArrows();
+		
+		
 		score = new JLabel("SCORE: "+correct);
 		score.setForeground(Color.WHITE);
 		score.setLocation(10, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
-		initializeArrows();
+	
 		timer = new JLabel("0:"+seconds);
 		timer.setLocation(600,25);
 		timer.setSize(150, 30);
@@ -131,30 +132,19 @@ public class Frontal extends JPanel {
 		
 	}
 	
-	public int getCorrect() {
-		return correct;
-}
-	public void setCorrect(int c) {
-		correct = c;
-	}
-	public void setScore(JLabel s) {
-		score = s;
-	}
-	public JLabel getScore() {
-		return score;
-	}
+	public int getCorrect() { return correct; }
+	public void setCorrect(int c) { correct = c; }
+	public void setScore(JLabel s) { score = s; }
+	public JLabel getScore() { return score; }
 	
 	public void someoneScored()
 	{
 	  correct++;
-	
 	  if(correct<=threshold)
 		  score.setText("SCORE: " + correct);
-	
 	}
 	
 	public void putArrowInRandomLocations() {
-		
 		for(Arrow a: arrows) {
 			int xcoord = getRandomX();
 			int ycoord = getRandomY();
@@ -163,40 +153,30 @@ public class Frontal extends JPanel {
 		}
 	}
 	
-	public Image getBackgroundImage() {
-		return img;
-	}
+	public Image getBackgroundImage() { return img; }
 	
 	public Color getRandomColor() {
 		Color c;
-		
 		int randCol = (int) (Math.random()*3);
-		
 		if(randCol == 0) {
-			
 			c = new Color(255,0,0); //red
 		}
 		else if(randCol==1) {
-			
 			c = new Color(0,255,0); //green
 		}
 		else {
-			
 			c = new Color(0,0,255); //blue
 		}
-		
 		return c;
 	}
 	
 	public int getRandomX() {
 		int xCoord = (int) (Math.random()*DRAWING_WIDTH);
-		
 		return xCoord;
 	}
 	
 	public int getRandomY() {
 		int yCoord = (int) (Math.random()*(DRAWING_HEIGHT-250))+150;
-	
 		return yCoord;
 	}
 	
@@ -210,8 +190,7 @@ public class Frontal extends JPanel {
 		return dir+37;
 	}
 	
-	public void moveAcrossScreen(int direction, Arrow a) {
-		 
+	public void moveAcrossScreen(int direction, Arrow a) { 
 		   if(direction == 37) {
 			   a.move(-5,0);
 			   if(a.getX()<1) {
@@ -254,16 +233,11 @@ public class Frontal extends JPanel {
 		
 	
 	public void paintComponent(Graphics g) {
-	
-		super.paintComponent(g);  // Call JPanel's paintComponent method to paint the background
-		
+		super.paintComponent(g); 
 		
 		g.drawImage(img, 0, 0, getWidth(), getHeight() , this);
-		
 		Graphics2D g2 = (Graphics2D)g;
 
-		
-		
 	    int width = getWidth();
 	    int height = getHeight();
 	    
@@ -275,21 +249,18 @@ public class Frontal extends JPanel {
 		 
 	   for(Arrow a: arrows) {
 		   a.setPointingTo(pointingTo);
-		  a.setDirection(direction);
-		  
-		  
+		   a.setDirection(direction);
+		 		  
 		   int w = a.getWidth(this)/8;
 		   int h = a.getHeight(this)/8;
 		  
 		   a.draw(g, a.getImage(), a.getX(), a.getY(), w, h, this);
-		  
-		   moveAcrossScreen(direction,  a);
-
-
+	
+		   	moveAcrossScreen(direction,  a);
 			direction = a.getDirection();
 			c = a.getColor();
 			pointingTo = a.getOrientation();
-	}
+	   }
 	
 	   if(isCorrect(c,direction,pointingTo) == true) {
 		   someoneScored();
@@ -299,11 +270,9 @@ public class Frontal extends JPanel {
 		   direction = getRandomDirection(direction);
 	   }
 	   
-	  
 	   if(winGame()==true) {
 		   win.setText("YOU WIN");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
-		  
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
@@ -316,14 +285,13 @@ public class Frontal extends JPanel {
 	   
 	   try {
 		Thread.sleep(10);
-	} catch (InterruptedException e) {
+	   } catch (InterruptedException e) {
 		e.printStackTrace();
-	}
+	   }
 	    g2.setTransform(at); 
-	}
+		}
 	
 	public int changeOrientation()  {
-		
 		Arrow arr = arrows.get(0);
 		Image img = arr.getRandomOrientation(arr.getColor());
 		for(Arrow a: arrows) {
@@ -331,7 +299,6 @@ public class Frontal extends JPanel {
 			pointingTo = a.getOrientation();
 		}
 		return pointingTo;
-		
 	}
 	
 	public boolean isCorrect(Color c, int direction, int pointingTo) {
@@ -371,7 +338,6 @@ public class Frontal extends JPanel {
 				return false;
 			}
 		}
-	
 	}
 	
 	public void changeImage() {
@@ -380,6 +346,7 @@ public class Frontal extends JPanel {
 		   while(prevX == x) {
 			   x = (int) (Math.random()*3);
 		   }	  
+		 
 		   for(Arrow a: arrows) {
 			   
 			  Image green = a.getGreenImage();   
