@@ -98,7 +98,7 @@ public class StoryScreen extends JPanel implements MouseListener {
 		 
 		if (e.getButton() == 1)
 		{
-			System.out.println(x + " " + y );
+//			System.out.println(x + " " + y );
 			if(x >= 170 && x <= 570 && y >= 330 && y <= 380) {
 				c.changePanel("3");
 			}
