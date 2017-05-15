@@ -13,7 +13,7 @@ import javax.swing.*;
 
 import Brain.Lobe;
 
-public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
+public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
@@ -22,7 +22,9 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 	private Wall w;
 	private ArrayList<Shape> s;
 	private Shape drawS1;
-	private int random, numCorrect;
+//	private JLabel timer;
+	private int random, numCorrect, seconds, threshold;
+	private boolean continueGame;
 	
 	public ParietalPanel() {
 		super();
@@ -37,11 +39,47 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		setBackground(Color.WHITE);
 		
 		numCorrect = 0;
+		seconds = 30;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
+		continueGame = true;
+		threshold = 1000;
 		
-		Timer clock = new Timer(7, this);
-		clock.start();
+		//LOCATION OF LABEL
+//		timer = new JLabel("00:" + seconds);
+//		timer.setLocation(0, 0);
+//		timer.setForeground(Color.RED);
+//		timer.setFont(new Font("SansSerif", 1, 30));
+		Timer clock1 = new Timer(7, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (continueGame) {
+					drawS1.act();
+					w.passes(drawS1);
+				}
+			}
+		});
+		Timer clock2 = new Timer(1000, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				seconds--;
+//				timer.setText(format(seconds/60)+":"+format(seconds%60));
+				if(seconds == 0 || numCorrect >= threshold && seconds > 0) {
+					Timer x = (Timer) e.getSource();
+					x.stop();
+				}
+			}
+		});
+		
+//		add(timer);
+		clock1.start();
+		clock2.start();
+	}
+	
+	private String format(int i) {
+		String result = String.valueOf(i);
+		if(result.length()==1) {
+			result = "0"+result;
+		}
+		return result;
 	}
 	
 	public void paintComponent(Graphics g)
@@ -67,8 +105,11 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		g.setFont(new Font("SansSerif", 3, 24));
 		g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
 		
+		g.setColor(Color.YELLOW);
+		g.setFont(new Font("SansSerif", 3, 50));
+		g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
+		
 		w.draw(g2);
-
 		drawS1.draw(g2);
 		
 		if (w.passes(drawS1)) {
@@ -92,6 +133,40 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 	  		redrawWall();
 		
 		g2.setTransform(at);
+		
+		if(numCorrect >= threshold && seconds > 0) {
+			continueGame = false;
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+			g.setColor(Color.YELLOW);
+			g.setFont(new Font("SansSerif", 3, 100));
+			g.drawString("YOU WIN", 200, 300);
+			g.setColor(Color.WHITE);
+			g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+			g.setColor(Color.BLACK);
+			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
+			
+			g.setFont(new Font("SansSerif", 3, 24));
+			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+			return;
+		}
+		else if(seconds == 0 && numCorrect < threshold) {
+			continueGame = false;
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+			g.setColor(Color.YELLOW);
+			g.setFont(new Font("SansSerif", 3, 100));
+			g.drawString("YOU LOSE", 150, 300);
+			g.setColor(Color.WHITE);
+			g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+			g.setColor(Color.BLACK);
+			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
+			
+			g.setFont(new Font("SansSerif", 3, 24));
+			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+			return;
+		}
+		 
 		repaint();
 	  	
 	}
@@ -116,10 +191,10 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		
 	}
 	
-	public void actionPerformed(ActionEvent arg0) {
-		drawS1.act();
-		w.passes(drawS1);
-	}
+//	public void actionPerformed(ActionEvent e) {
+//		drawS1.act();
+//		w.passes(drawS1);
+//	}
 	
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
@@ -142,6 +217,5 @@ public class ParietalPanel extends Lobe implements KeyListener, ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }

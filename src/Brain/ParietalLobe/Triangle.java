@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Triangle extends Shape {
-	private double length;
+	private double length, leftP;
 	private double[] xCoords, yCoords;
 	
 	public Triangle(double xCoord, double yCoord, double length, Color c) {
@@ -20,6 +20,8 @@ public class Triangle extends Shape {
 		yCoords[0] = y - length * Math.sin(Math.PI / 3) / 2;
 		yCoords[1] = y + length * Math.sin(Math.PI / 3) / 2;
 		yCoords[2] = y + length * Math.sin(Math.PI / 3) / 2;
+		
+		leftP = xCoords[2];
 	}
 
 	@Override
@@ -44,7 +46,8 @@ public class Triangle extends Shape {
 	}
 	
 	public void act() {
-		vX += 0.01;
+		vX += 0.05;
+		leftP -= vX;
 		for (int i = 0; i < xCoords.length; i ++) {
 			xCoords[i] -= vX;
 		}
@@ -82,5 +85,9 @@ public class Triangle extends Shape {
 	@Override
 	public int whichShape() {
 		return 1;
+	}
+	
+	public double getLeftP() {
+		return leftP;
 	}
 }

@@ -25,7 +25,7 @@ public class Square extends Shape{
 		}
 		
 		public void act() {
-			vX += 0.01;
+			vX += 0.05;
 			x -= vX;
 		}
 
