@@ -27,7 +27,7 @@ public class OccipitalMain extends JFrame {
 		setVisible(true);
 	    
 	    do {
-	    	OccipitalPanel panel = new OccipitalPanel();
+	    	Occipital panel = new Occipital();
 	    	
 	 	    panel.setOpaque(false);
 	 	    
