@@ -109,7 +109,7 @@ public class Arrow {
 	
 	/**
 	 * Returns the direction of this arrow
-	 * @return an integeer that represents the direction this arrow faces
+	 * @return an integer that represents the direction this arrow faces
 	 */
 	public int getDirection() { return dir; }
 	
@@ -121,48 +121,141 @@ public class Arrow {
 		dir = d;
 	}
 	
+	/**
+	 * Returns the x-coordinate of this arrow
+	 * @return an integer that represents the x-coordinate of arrow
+	 */
 	public int getX() { return x; }
 	
+	/**
+	 * Sets the x-coordinate of this arrow
+	 * @param integer to set x-coordinate to
+	 */
 	public void setX(int xC) { x = xC; }
 	
+	/**
+	 * Returns the y-coordinate of this arrow
+	 * @return an integer that represents the y-coordinate of arrow
+	 */
 	public int getY() { return y; }
 	
+	/**
+	 * Sets the y-coordinate of this arrow
+	 * @param integer to set y-coordinate to
+	 */
 	public void setY(int yC) { y = yC; }
 	
+	/**
+	 * Returns color of arrow
+	 * @return a color that represents the color of the arrow
+	 */
 	public Color getColor() { return c; }
 	
+	/**
+	 * Sets the color of the arrow
+	 * @param color to set arrow to
+	 */
 	public void setcolor(Color color) { c = color; }
 	
 	public void draw(Graphics g, Image img, int x, int y, int width, int height, ImageObserver io) {
 		g.drawImage(img, x, y,width, height, io);
 	}
 
+	/**
+	 * Returns image of blue arrow
+	 * @return the image of blue arrow initially pointing to left
+	 */
 	public Image getBlueImage() { return iB; }
 	
+	/**
+	 * Returns width of blue arrow
+	 * @param io ImageObserver used
+	 * @return integer representing width of blue arrow
+	 */
 	public int getBlueWidth(ImageObserver io) { return iB.getWidth(io); }
 	
+	/**
+	 * Returns height of blue arrow
+	 * @param io ImageObserver used
+	 * @return integer representing height of blue arrow
+	 */
 	public int getBlueHeight(ImageObserver io) { return iB.getHeight(io); }
 	
+	/**
+	 * Returns image of red arrow
+	 * @return the image of red arrow initially pointing to left
+	 */
 	public Image getRedImage() { return iR; }
 	
+	/**
+	 * Returns width of red arrow
+	 * @param io ImageObserver used
+	 * @return integer representing width of red arrow
+	 */
 	public int getRedWidth(ImageObserver io) { return iR.getWidth(io); }
-	
+
+	/**
+	 * Returns height of red arrow
+	 * @param io ImageObserver used
+	 * @return integer representing height of red arrow
+	 */
 	public int getRedHeight(ImageObserver io) { return iR.getHeight(io); }
 	
+	/**
+	 * Returns image of green arrow
+	 * @return the image of green arrow initially pointing to left
+	 */
 	public Image getGreenImage() { return iG; }
 	
+	/**
+	 * Returns width of green arrow
+	 * @param io ImageObserver used
+	 * @return integer representing width of green arrow
+	 */
 	public int getGreenWidth(ImageObserver io) { return iG.getWidth(io); }
 	
+	/**
+	 * Returns height of green arrow
+	 * @param io ImageObserver used
+	 * @return integer representing height of green arrow
+	 */
 	public int getGreenHeight(ImageObserver io) { return iG.getHeight(io); }
 
+	/**
+	 * Returns current image of arrow (blue, red or green)
+	 * @return the image of the arrow currently
+	 */
 	public Image getImage() {return i; }
 	
+	/**
+	 * Sets current image of arrow (blue, red or green)
+	 * @param the image of the arrow to set
+	 */
 	public void setImage(Image img) { i = img; }
 	
+	/**
+	 * Returns width of current image
+	 * @param io ImageObserver used
+	 * @return integer representing width of current image
+	 */
 	public int getWidth(ImageObserver io) {	return i.getWidth(io); }
 	
+
+	/**
+	 * Returns height of current image
+	 * @param io ImageObserver used
+	 * @return integer representing height of current image
+	 */
 	public int getHeight(ImageObserver io) { return i.getHeight(io); }
 	
+	/**
+	 * Returns an integer representing the orientation of the arrow.
+	 * If it returns 37, then the orientation is left.
+	 * If it returns 38, then the orientation is up. 
+	 * If it returns 39, then the orientation is down.
+	 * If it returns 40, then the orientation is down.
+	 * @return integer representing orientation of arrow
+	 */
 	public int getOrientation() {
 		//left = 37, up = 38, right = 39, down = 40
 		int o = 0;
@@ -175,12 +268,21 @@ public class Arrow {
 		return o;
 	}
 	
+	
+	/**
+	 * Moves arrow to specified location
+	 * @param xDir amount want to move in x-axis
+	 * @param yDir amount want to move in y-axis
+	 */
 	public void move(int xDir, int yDir) {
 		
 		setX(getX()+xDir);
 		setY(getY()+yDir);
 	}
 	
+	/**
+	 * Moves arrow across the screen depending on the direction of the arrow.
+	 */
 	public void moveAcrossScreen() {
 		if(dir == 38) {
 			yV--;
@@ -199,6 +301,11 @@ public class Arrow {
 		setY(y+yV);
 	}
 	
+	/**
+	 * Returns an image with a random orientation (left, right, up or down) of any colored arrow
+	 * @param c the color of the arrow
+	 * @return image with random orientation of the colored arrow
+	 */
 	public Image getRandomOrientation(Color c) {
 	
 		int r = (int) (Math.random()*4);
@@ -264,6 +371,10 @@ public class Arrow {
 		return  new ImageIcon(filename).getImage();
 	}
 	
+	/**
+	 * Returns a random image of a colored arrow (red, green, or blue) with a random orientation.
+	 * @return colored image of arrow
+	 */
 	public Image getRandomImage() {
 		Color c;
 		int randCol = (int) (Math.random()*3);
