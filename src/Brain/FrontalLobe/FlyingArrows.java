@@ -22,17 +22,7 @@ public class FlyingArrows extends JFrame {
 	    Rules r = new Rules();
 	    r.setVisible(true);
 	    add(r);
-	    
-	  
-	    
-	   // Frontal fp = new Frontal();
-	   // fp.setVisible(true);
-	   // add(fp);
-	   // addKeyListener(fp.getKeyHandler());
-	    
-	   // cardPanel.add(r,"1");
-	   // cardPanel.add(fp,"2");
-	    
+	
 	    cardPanel.add(r);
 	   
 	    
@@ -45,10 +35,6 @@ public class FlyingArrows extends JFrame {
 	public static void main(String[] args) {
 		FlyingArrows fa = new FlyingArrows("FlyingArrows");
 	}
-	
-//	public void changePanel(String name) {
-//		((CardLayout)cardPanel.getLayout()).show(cardPanel,name);
-//		requestFocus();
-//	}
+
 
 }

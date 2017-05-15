@@ -21,7 +21,11 @@ import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
 
-
+/**
+ * The class that represents all the Arrow objects into the screen for the game
+ * @author reetmishra
+ *
+ */
 public class Frontal extends JPanel {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -41,7 +45,9 @@ public class Frontal extends JPanel {
 	
 	private Color c;
 	
-	
+	/**
+	 * Contructs a timer, Jlabels for winning and losing, keyHandler, and initializes the arrows onto the screen
+	 */
 	public Frontal() {
 		super();
 		
@@ -54,8 +60,7 @@ public class Frontal extends JPanel {
 		threshold = 300;
 		
 		seconds = 30;
-		
-		
+	
 		win = new JLabel();
 		win.setLocation(270, 45);
 		win.setForeground(Color.WHITE);
@@ -108,6 +113,11 @@ public class Frontal extends JPanel {
 		
 	}
 	
+	/**
+	 * Returns a formatted String that represents time
+	 * @param i integer needed to format
+	 * @return formatted String
+	 */
 	private String format(int i) {
 		String result = String.valueOf(i);
 		if(result.length()==1) {
@@ -117,7 +127,9 @@ public class Frontal extends JPanel {
 	}
 	
 
-
+	/**
+	 * Initializes all arrows (with a random color and image) onto the screen in random locations
+	 */
 	private void initializeArrows() {
 		arrows = new ArrayList<Arrow>();
 		
@@ -135,11 +147,33 @@ public class Frontal extends JPanel {
 		
 	}
 	
+	/**
+	 * Returns integer that represents score of user
+	 * @return integer that corresponds to the number of correct presses that user has
+	 */
 	public int getCorrect() { return correct; }
+	
+	/**
+	 * Sets the score of the user
+	 * @param c integer representing score
+	 */
 	public void setCorrect(int c) { correct = c; }
+	
+	/**
+	 * Sets the JLabel representing the score of the user
+	 * @param s the JLabel to display the user's score
+	 */
 	public void setScore(JLabel s) { score = s; }
+	
+	/**
+	 * Returns JLabel representing score of user
+	 * @return JLabel for user's score
+	 */
 	public JLabel getScore() { return score; }
 	
+	/**
+	 * Increments scoreCount of user and sets JLabel representing score
+	 */
 	public void someoneScored()
 	{
 	  correct+=10;
@@ -147,6 +181,9 @@ public class Frontal extends JPanel {
 		  score.setText("SCORE: " + correct);
 	}
 	
+	/**
+	 * Assigns each arrow in frontal random locations
+	 */
 	public void putArrowInRandomLocations() {
 		for(Arrow a: arrows) {
 			int xcoord = getRandomX();
@@ -156,8 +193,16 @@ public class Frontal extends JPanel {
 		}
 	}
 	
+	/**
+	 * Returns background image of the flying arrows screen
+	 * @return background image of game
+	 */
 	public Image getBackgroundImage() { return img; }
 	
+	/**
+	 * Returns a random color that is either red, green, or blue
+	 * @return random color
+	 */
 	public Color getRandomColor() {
 		Color c;
 		int randCol = (int) (Math.random()*3);
@@ -173,16 +218,33 @@ public class Frontal extends JPanel {
 		return c;
 	}
 	
+	/**
+	 * Returns random x-coordinate 
+	 * @return integer representing an x-coordinate
+	 */
 	public int getRandomX() {
 		int xCoord = (int) (Math.random()*DRAWING_WIDTH);
 		return xCoord;
 	}
 	
+	/**
+	 * Returns random y-coordinate
+	 * @return integer representing an y-coordinate
+	 */
 	public int getRandomY() {
 		int yCoord = (int) (Math.random()*(DRAWING_HEIGHT-250))+150;
 		return yCoord;
 	}
 	
+	/**
+	 * Returns random direction not including the current direction.
+	 * If it returns 37, then the direction is left.
+	 * If it returns 38, then the direction is up. 
+	 * If it returns 39, then the direction is down.
+	 * If it returns 40, then the direction is down.
+	 * @param x current direction of arrows
+	 * @return random direction other than current direction
+	 */
 	public int getRandomDirection(int x) {
 		int dir = (int) (Math.random()*4);
 		
@@ -193,6 +255,15 @@ public class Frontal extends JPanel {
 		return dir+37;
 	}
 	
+	/**
+	 * Moves all arrows across the screen in a certain direction
+	 * @param direction direction to move arrows 
+	 * 			If it returns 37, then the direction is left.
+	 * 			If it returns 38, then the direction is up. 
+	 * 			If it returns 39, then the direction is down.
+	 * 			If it returns 40, then the direction is down.
+	 * @param a the arrow that needs to be moved
+	 */
 	public void moveAcrossScreen(int direction, Arrow a) { 
 		   if(direction == 37) {
 			   a.move(-5,0);
@@ -225,6 +296,11 @@ public class Frontal extends JPanel {
 	}
 	
 	
+	/**
+	 * Returns whether user won the game or not. To win, the number correct needs to be greater than the
+	 * threshold in the time limit
+	 * @return true if wins, and false if loses
+	 */
 	public boolean winGame() {
 		if(correct >= threshold && seconds>0) 
 			return true;
@@ -299,6 +375,14 @@ public class Frontal extends JPanel {
 	    g2.setTransform(at); 
 		}
 	
+	/**
+	 * Changes orientation of arrows to a random orientation.
+	 * @return integer representing new orientation of arrows
+	 * If it returns 37, then the orientation is left.
+	 * If it returns 38, then the orientation is up. 
+	 * If it returns 39, then the orientation is down.
+	 * If it returns 40, then the orientation is down.
+	 */
 	public int changeOrientation()  {
 		Arrow arr = arrows.get(0);
 		Image img = arr.getRandomOrientation(arr.getColor());
@@ -309,6 +393,13 @@ public class Frontal extends JPanel {
 		return pointingTo;
 	}
 	
+	/**
+	 * Determines if the user pressed the correct key that corresponds to arrows based on the rules
+	 * @param c the Color of the arrows
+	 * @param direction integer representing the direction of the arrows
+	 * @param pointingTo integer representing the orientation of the arrows
+	 * @return true if user pressed correct key depending on arrows, false otherwise
+	 */
 	public boolean isCorrect(Color c, int direction, int pointingTo) {
 		if(c == Color.GREEN) {
 			if((keyControl.isPressed(KeyEvent.VK_LEFT) && direction == 37) ||
@@ -348,6 +439,9 @@ public class Frontal extends JPanel {
 		}
 	}
 	
+	/**
+	 * Randomly changes image of arrows (red, green, or blue)
+	 */
 	public void changeImage() {
 		 int x = (int) (Math.random()*3);
 		  
@@ -379,10 +473,25 @@ public class Frontal extends JPanel {
 		   prevX = x;  
 	}
 	
+	/**
+	 * Returns keyHandler used
+	 * @return KeyHandler used to check if the correct key is pressed
+	 */
 	public KeyHandler getKeyHandler() {
 		  return keyControl;
 	  }
 	
+	/**
+	 * Rotates the arrows to a new orientation
+	 * @param g Graphics used
+	 * @param arrows ArrayList of Arrow objects that need to be rotated
+	 * @param currentPT   integer representing current orientation of arrows
+	 * @param newPT integer representing new orientation of arrows
+	 * If it returns 37, then the orientation is left.
+	 * If it returns 38, then the orientation is up. 
+	 * If it returns 39, then the orientation is down.
+	 * If it returns 40, then the orientation is down.
+	 */
 	public void rotate(Graphics g, ArrayList<Arrow> arrows, int currentPT, int newPT) {
 		//38 = 0/360, 39 = 90, 40 = 180, 37 = 270
 		if(keyControl.isPressed(KeyEvent.VK_SPACE)) {
