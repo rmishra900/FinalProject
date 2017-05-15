@@ -14,7 +14,7 @@ public class Coma2 extends JFrame {
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
-		home = new HomeScreen();
+//		home = new Menu();
 		add(home);
 		setVisible(true);
 	}

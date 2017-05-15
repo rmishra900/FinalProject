@@ -1,20 +1,27 @@
+
 package Coma;
 import java.awt.Color;
+
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingWorker;
 
+import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalMain;
-import Brain.FrontalLobe.FrontalMain;
+import Brain.OccipitalLobe.SymbolPanel;
+import Brain.FrontalLobe.FlyingArrows;
 
 
-public class Menu extends JPanel implements ActionListener, MouseListener {
+public class Menu extends JPanel implements ActionListener {
 	private Coma c;
 	JButton occipital;
 	JButton frontal;
@@ -47,43 +54,19 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
-			OccipitalMain o = new OccipitalMain("Show Me the Light");
+			Thread t = new Thread("my non EDT thread") {
+	            public void run() {
+	                //my work
+	                new OccipitalMain("Show Me the Light");
+	            }
+	        };
+	        t.start();
 		} else if (src == frontal) {
-			FrontalMain f = new FrontalMain("Flying Arrows");
+			FlyingArrows f = new FlyingArrows("Flying Arrows");
 		} else if (src == parietal) {
-			Coma1 p = new Coma1("Hole in the Wall");
+			
 		} else if (src == temporal) {
 			
 		}
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

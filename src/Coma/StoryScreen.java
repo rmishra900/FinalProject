@@ -2,15 +2,20 @@ package Coma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
 public class StoryScreen extends JPanel implements MouseListener {
+	public static final int DRAWING_WIDTH = 800;
+	public static final int DRAWING_HEIGHT = 600;
+	
 	private Coma c;
 	private Image i1, i2, i3;
 	
@@ -26,6 +31,16 @@ public class StoryScreen extends JPanel implements MouseListener {
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		
+		int width = getWidth();
+		int height = getHeight();
+
+		double ratioX = (double) width / DRAWING_WIDTH;
+		double ratioY = (double) height / DRAWING_HEIGHT;
+
+		AffineTransform at = g2.getTransform();
+		g2.scale(ratioX, ratioY);
 		g.setFont(new Font("Serif", 0, 25));
 		g.drawString("Imagine getting in a car accident or slipping on the bathroom floor. The", 30, 50);
 		g.drawString("next thing you know (but you actually do not) is that you have fallen into", 30, 75);
@@ -83,7 +98,8 @@ public class StoryScreen extends JPanel implements MouseListener {
 		 
 		if (e.getButton() == 1)
 		{
-			if(x >= 180 && x <= 580 && y >= 370 && y <= 420) {
+			System.out.println(x + " " + y );
+			if(x >= 170 && x <= 570 && y >= 330 && y <= 380) {
 				c.changePanel("3");
 			}
 			
