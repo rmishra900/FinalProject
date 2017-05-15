@@ -101,12 +101,16 @@ public class OccipitalMain extends JFrame {
 	 	    }
 	 	    else if (sp.getCorrect() == 0){
 	 	    	numCorrect = 0;
-	 	    	score.setText("Score: " + numCorrect);
+	 	    	score.setText("YOU LOSE");
 	 	    	sp.setVisible(false);
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
 	    	sp.setVisible(false);
+	    	if (numCorrect == 10) {
+	    		JLabel winning = new JLabel("YOU WIN!", JLabel.BOTTOM);
+	    		add(winning);
+	    	}
 	  
 	    }
 	    while (numCorrect > 0); 
