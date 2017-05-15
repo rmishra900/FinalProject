@@ -18,8 +18,10 @@ public class Coma2 extends JFrame {
 		setVisible(true);
 	}
 	
-	public static void main(String[] args) {
+	
+	public static void main(String[]args) {
 		Coma2 coma = new Coma2("COMA");
 	}
+	
 
 }

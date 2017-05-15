@@ -2,6 +2,7 @@ package Brain.FrontalLobe;
 
 import java.awt.Color;
 
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -278,6 +279,10 @@ public class Frontal extends JPanel {
 	   else if(seconds == 0 && correct<threshold) {
 		   win.setText("YOU LOSE");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		   return;
+	   }
+	   
+	   if(correct>threshold) {
 		   return;
 	   }
 	  
