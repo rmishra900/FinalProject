@@ -12,7 +12,12 @@ import java.awt.geom.AffineTransform;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-
+/**
+ * Represents the screen that the user sees when they start playing the game. 
+ * @author 
+ * @version 5/15/2017
+ *
+ */
 public class Home extends JPanel implements MouseListener{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -21,6 +26,10 @@ public class Home extends JPanel implements MouseListener{
 	private Coma c;
 	private Image background;
 	
+	/**
+	 * Constructs a new instance of this home screen. 
+	 * @param c the game that this home screen is for 
+	 */
 	public Home(Coma c) {
 		super();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);

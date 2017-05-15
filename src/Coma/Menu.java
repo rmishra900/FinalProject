@@ -19,7 +19,11 @@ import Brain.OccipitalLobe.OccipitalMain;
 import Brain.OccipitalLobe.SymbolPanel;
 import Brain.FrontalLobe.FlyingArrows;
 
-
+/**
+ * Represents the screen displayed for the user to select a game to play. 
+ * @author 
+ * @version 5/15/2017
+ */
 public class Menu extends JPanel implements ActionListener {
 	private Coma c;
 	JButton occipital;
@@ -27,6 +31,10 @@ public class Menu extends JPanel implements ActionListener {
 	JButton parietal;
 	JButton temporal;
 		
+	/**
+	 * Constructs a new instance of this menu screen. 
+	 * @param c the game that this menu is for
+	 */
 	public Menu(Coma c) {
 		super();
 		this.c = c;

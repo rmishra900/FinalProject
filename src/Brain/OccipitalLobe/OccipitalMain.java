@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Represents the JFrame that pops up when the user wishes to play this game. 
+ * @author Anisha
+ * @version 5/15/2017
+ */
 public class OccipitalMain extends JFrame {
 	
 	JPanel glass = new JPanel();
@@ -15,6 +20,10 @@ public class OccipitalMain extends JFrame {
 	private JLabel score;
 	private int numCorrect;
 	
+	/**
+	 * Constructs a new instance of each round, sets the JFrame elements, and continues or terminates the game as needed.
+	 * @param title
+	 */
 	public OccipitalMain (String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
@@ -25,8 +34,11 @@ public class OccipitalMain extends JFrame {
 		score.setText("Score: " + numCorrect);
 		add(score);
 		setVisible(true);
-	    
-	    do {
+	    act();
+	}
+	
+	private void act() {
+		do {
 	    	Occipital panel = new Occipital();
 	    	
 	 	    panel.setOpaque(false);
@@ -115,6 +127,7 @@ public class OccipitalMain extends JFrame {
 	  
 	    }
 	    while (numCorrect > 0); 
+
 	}
 
 	public static void main(String[] args) {

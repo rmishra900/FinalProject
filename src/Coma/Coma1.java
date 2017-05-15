@@ -9,32 +9,31 @@ import Brain.OccipitalLobe.Occipital;
 import Brain.ParietalLobe.ParietalPanel;
 import Brain.FrontalLobe.Frontal;
 
-
+/**
+ * Represents the window that pops up when the user wishes to play "Hole in the Wall"
+ * @author Thanh
+ * @version 5/15/2017
+ */
 public class Coma1 extends JFrame {
 
 	JPanel cardPanel;
 	
+	/**
+	 * Constructs a new instance of this game's window. 
+	 * @param title the title to be displayed at the top of the game's window. 
+	 */
 	public Coma1(String title) {
 		
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-/*
-	    OccipitalPanel op = new OccipitalPanel();
-	    op.setVisible(true);
-	    add(op);
-*/
+
 	    ParietalPanel pp = new ParietalPanel();
 	    pp.setVisible(true);
 	    add(pp); 
 	    addKeyListener(pp);
 	    
-	    
-//	    Frontal fp = new Frontal();
-//	    fp.setVisible(true);
-//	    add(fp);
-//	    addKeyListener(fp.getKeyHandler());
-//	    
+
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);

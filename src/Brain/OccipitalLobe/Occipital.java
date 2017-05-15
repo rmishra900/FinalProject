@@ -18,13 +18,17 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/**
+ * The class that represents the drawn background with all its FlyingObjects. 
+ * @author Anisha
+ * @version 5/15/2017
+ *
+ */
 public class Occipital extends JPanel implements MouseListener {
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	  
-	private Rectangle screenRect;
-	
 	private Airplane plane;
 	private ArrayList<Helicopter> obstacles;
 
@@ -34,12 +38,13 @@ public class Occipital extends JPanel implements MouseListener {
 	private Image background;
 	private int correct;
 
-	  
+	/**
+	 * Constructs a new instance of the background with all the FlyingObjects on it. 
+	 */
 	public Occipital() {
 		setBackground(Color.WHITE);
 		background = new ImageIcon("OccipitalBackground.jpg").getImage();
 		super.addMouseListener(this);
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
 		correct = -1;
 		showObjects = true;
@@ -69,6 +74,10 @@ public class Occipital extends JPanel implements MouseListener {
 		}
 	}
 	
+	/**
+	 * Returns the number used to identify the symbol on this JPanel. 
+	 * @return the number used to identify the symbol on this JPanel. 
+	 */
 	public int getSymNum() {
 		return symNum;
 	}
@@ -102,11 +111,23 @@ public class Occipital extends JPanel implements MouseListener {
 		}
 	}
 	
+	/**
+	 * Decides whether or not the JPanel should display anything at all. 
+	 * @param bool If true, then show FlyingObjects. If false, do not show anything. 
+	 */
 	public void setShowObjects(boolean bool) {
 		showObjects = bool;
 	}
 	
+	/**
+	 * Resets the JPanel's history of correctness. 
+	 */
 	public void setCorrect() { correct = -1; }
+	
+	/**
+	 * Returns the value that determines if the user answered correctly or not. 
+	 * @return the value that determines if the user answered correctly or not. 
+	 */
 	public int getCorrect() { return correct; }
 	
 	public void mouseClicked(MouseEvent e) {

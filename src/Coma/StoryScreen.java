@@ -11,7 +11,11 @@ import java.awt.geom.AffineTransform;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-
+/**
+ * Represents the screen before the user plays the game to introduce the user to the objectives of the game. 
+ * @author Reet
+ * @version 5/15/2017
+ */
 public class StoryScreen extends JPanel implements MouseListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -19,6 +23,10 @@ public class StoryScreen extends JPanel implements MouseListener {
 	private Coma c;
 	private Image i1, i2, i3;
 	
+	/**
+	 * Constructs a new instance of a story screen.
+	 * @param c the game that this story screen is for
+	 */
 	public StoryScreen(Coma c) {
 		super();
 		this.c = c;

@@ -7,6 +7,11 @@ import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
+/**
+ * Represents an arrow displayed on the screen while playing "Flying Arrows"
+ * @author Reet
+ * @version 5/15/2017
+ */
 public class Arrow {
 	private int x, y;
 	private Color c;
@@ -16,6 +21,12 @@ public class Arrow {
 	private ImageIcon rl,ru,rr,rd,gl,gu,gr,gd,bl,bu,br,bd;
 	private ArrayList<ImageIcon> imgI;
 	
+	/**
+	 * Constructs a new instance of an arrow at location (x, y)
+	 * @param xcoord the x-coordinate of the location of the arrow
+	 * @param ycoord the y-coordinate of the location of the arrow
+	 * @param c the color of this arrow
+	 */
 	public Arrow(int xcoord, int ycoord, Color c) {
 		x = xcoord;
 		y = ycoord;
@@ -96,7 +107,10 @@ public class Arrow {
 		}
 	}
 	
-	
+	/**
+	 * Returns the direction of this arrow
+	 * @return an integeer that represents the direction this arrow faces
+	 */
 	public int getDirection() { return dir; }
 	
 	public void setDirection(int d) {

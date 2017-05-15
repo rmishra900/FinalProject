@@ -9,6 +9,11 @@ import javax.swing.*;
 
 import com.sun.prism.paint.Color;
 
+/**
+ * Represents the screen displayed for the user to select a symbol.
+ * @author Anisha
+ * @version 5/15/2017
+ */
 public class SymbolPanel extends JPanel implements ActionListener {
 	
 	private JButton[] symbols;
@@ -17,6 +22,9 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	ActionListener listener;
 	private int correct;
 	
+	/**
+	 * Constructs a new instance of SymbolPanel by intializing all buttons. 
+	 */
 	public SymbolPanel() {
 		symbols = new JButton[5];
 		correct = -1;
@@ -35,11 +43,23 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Sets the target symbol that the user needs to click on this SymbolPanel. 
+	 * @param tar the number that represents the symbol the user must click
+	 */
 	public void setTarget(int tar) {
 		targetSymbol = symbols[tar-1];
 	}
 	
+	/**
+	 * Resets the symbolPanel for the next time the user sees it. 
+	 */
 	public void setCorrect() { correct = -1; }
+	
+	/**
+	 * Returns the value that determines if the user got the answer correct. 
+	 * @return the value that determines if the user got the answer correct. 
+	 */
 	public int getCorrect() { return correct; }
 
 	@Override

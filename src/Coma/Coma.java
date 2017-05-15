@@ -6,11 +6,19 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Brain.OccipitalLobe.OccipitalMain;
-
+/**
+ * Represents the window that the game begins on. 
+ * @author Thanh
+ * @version 5/15/2017
+ */
 public class Coma extends JFrame {
 
 	private JPanel gamePanel;
 	
+	/**
+	 * Constructs a new instance of the game window.
+	 * @param title the title displayed at the top of this window
+	 */
 	public Coma(String title) {
 	    super(title);
 		setBounds(100, 100, 800, 600);
@@ -39,6 +47,10 @@ public class Coma extends JFrame {
 		Coma coma = new Coma("COMA");
 	}
 	
+	/**
+	 * Allows to change what is displayed on the screen. 
+	 * @param name the name of the panel to be displayed
+	 */
 	public void changePanel(String name) {
 		
 		((CardLayout)gamePanel.getLayout()).show(gamePanel, name);
