@@ -22,10 +22,10 @@ public class Wall extends Rectangle2D.Double {
 	public void act(int x) {
 //		vY += 0.85;
 		if (x > 0) {
-			y -= 9;
+			y -= 15;
 		}
 		else {
-			y += 9;
+			y += 15;
 		}
 		
 		for (Shape sh: s) {

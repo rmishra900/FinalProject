@@ -58,12 +58,12 @@ public class Triangle extends Shape {
 //		vY += 0.85;
 		if (a > 0) {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] -= 9;
+				yCoords[i] -= 15;
 			}
 		}
 		else {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] += 9;	
+				yCoords[i] += 15;	
 			}
 		}
 		
