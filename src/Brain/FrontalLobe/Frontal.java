@@ -51,7 +51,7 @@ public class Frontal extends JPanel {
 		
 		correct = 0;
 		c = null;
-		threshold = 30;
+		threshold = 300;
 		
 		seconds = 30;
 		
@@ -142,7 +142,7 @@ public class Frontal extends JPanel {
 	
 	public void someoneScored()
 	{
-	  correct++;
+	  correct+=10;
 	  if(correct<=threshold)
 		  score.setText("SCORE: " + correct);
 	}
@@ -272,6 +272,7 @@ public class Frontal extends JPanel {
 		   pointingTo = orientation;
 		   direction = getRandomDirection(direction);
 	   }
+	   
 	   
 	   if(winGame()==true) {
 		   win.setText("YOU WIN");

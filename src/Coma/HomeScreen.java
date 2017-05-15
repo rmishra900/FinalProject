@@ -1,6 +1,7 @@
 package Coma;
 import java.awt.Color;
 
+
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +17,7 @@ import javax.swing.SwingWorker;
 import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalMain;
 import Brain.OccipitalLobe.SymbolPanel;
-import Brain.FrontalLobe.FrontalMain;
+import Brain.FrontalLobe.FlyingArrows;
 
 
 public class HomeScreen extends JPanel implements ActionListener {
@@ -60,7 +61,7 @@ public class HomeScreen extends JPanel implements ActionListener {
 	        };
 	        t.start();
 		} else if (src == frontal) {
-			FrontalMain f = new FrontalMain("Flying Arrows");
+			FlyingArrows f = new FlyingArrows("Flying Arrows");
 		} else if (src == parietal) {
 			
 		} else if (src == temporal) {
