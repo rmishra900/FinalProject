@@ -31,7 +31,6 @@ public class Coma extends JFrame {
 	    add(gamePanel);
 	    addMouseListener(panel1);
 	    addMouseListener(panel2);
-//	    addActionListener(panel3);
 	    
 	    setVisible(true);
 	}
