@@ -23,23 +23,24 @@ public class Coma extends JFrame {
 	    OccipitalPanel op = new OccipitalPanel();
 	    op.setVisible(true);
 	    add(op);
-
+*/
 	    ParietalPanel pp = new ParietalPanel();
 	    pp.setVisible(true);
 	    add(pp); 
 	    addKeyListener(pp);
 	    
-*/	    
-	    Frontal fp = new Frontal();
+    
+/*	    Frontal fp = new Frontal();
 	    fp.setVisible(true);
 	    add(fp);
 	    addKeyListener(fp.getKeyHandler());
-	    
+*/	    
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
 
-	    cardPanel.add(fp);
+//	    cardPanel.add(fp);
+	    cardPanel.add(pp);
 	    add(cardPanel);
 	    setVisible(true);
 	    
