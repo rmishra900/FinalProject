@@ -33,10 +33,10 @@ public class Circle extends Shape {
 	public void moveWithWall(int a) {
 //		vY += 0.85;
 		if (a > 0) {
-			y -= 9;
+			y -= 15;
 		}
 		else {
-			y += 9;
+			y += 15;
 		}
 	}
 
