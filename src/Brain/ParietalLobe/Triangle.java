@@ -21,7 +21,7 @@ public class Triangle extends Shape {
 		yCoords[1] = y + length * Math.sin(Math.PI / 3) / 2;
 		yCoords[2] = y + length * Math.sin(Math.PI / 3) / 2;
 		
-		leftP = xCoords[2];
+		leftP = xCoords[1];
 	}
 
 	@Override
