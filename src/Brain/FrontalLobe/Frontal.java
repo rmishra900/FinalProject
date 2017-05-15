@@ -2,6 +2,7 @@ package Brain.FrontalLobe;
 
 import java.awt.Color;
 
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -50,7 +51,7 @@ public class Frontal extends JPanel {
 		
 		correct = 0;
 		c = null;
-		threshold = 30;
+		threshold = 300;
 		
 		seconds = 30;
 		
@@ -66,8 +67,10 @@ public class Frontal extends JPanel {
 	
 		arrow = new Arrow(0,0,Color.BLUE);
 
-		img = new ImageIcon("FrontalBackground.jpg").getImage();
-		
+		//img = new ImageIcon("FrontalBackground.jpg").getImage();
+		//img = new ImageIcon("BlueSky.png").getImage();
+		//img = new ImageIcon("clouds.jpg").getImage();
+		img = new ImageIcon("sky.png").getImage();
 		initializeArrows();
 		
 		
@@ -139,7 +142,7 @@ public class Frontal extends JPanel {
 	
 	public void someoneScored()
 	{
-	  correct++;
+	  correct+=10;
 	  if(correct<=threshold)
 		  score.setText("SCORE: " + correct);
 	}
@@ -270,6 +273,7 @@ public class Frontal extends JPanel {
 		   direction = getRandomDirection(direction);
 	   }
 	   
+	   
 	   if(winGame()==true) {
 		   win.setText("YOU WIN");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
@@ -278,6 +282,10 @@ public class Frontal extends JPanel {
 	   else if(seconds == 0 && correct<threshold) {
 		   win.setText("YOU LOSE");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		   return;
+	   }
+	   
+	   if(correct>threshold) {
 		   return;
 	   }
 	  

@@ -43,7 +43,7 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 700;
+		threshold = 1000;
 		
 		//LOCATION OF LABEL
 //		timer = new JLabel("00:" + seconds);

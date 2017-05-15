@@ -18,7 +18,7 @@ public class OccipitalMain extends JFrame {
 	public OccipitalMain (String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    numCorrect = 0;
 	    score = new JLabel();
