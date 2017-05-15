@@ -1,4 +1,3 @@
-
 package Coma;
 import java.awt.Color;
 
