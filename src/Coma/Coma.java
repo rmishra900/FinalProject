@@ -4,7 +4,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Brain.OccipitalLobe.OccipitalPanel;
+import Brain.OccipitalLobe.Occipital;
 
 import Brain.ParietalLobe.ParietalPanel;
 import Brain.FrontalLobe.Frontal;

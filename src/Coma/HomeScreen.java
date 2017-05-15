@@ -1,18 +1,22 @@
 package Coma;
 import java.awt.Color;
 
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingWorker;
 
+import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalMain;
-import Brain.FrontalLobe.FlyingArrows;
+import Brain.OccipitalLobe.SymbolPanel;
+import Brain.FrontalLobe.FrontalMain;
 
 
 public class HomeScreen extends JPanel implements ActionListener {
@@ -48,9 +52,15 @@ public class HomeScreen extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
-			OccipitalMain m = new OccipitalMain("Show Me the Light");
+			Thread t = new Thread("my non EDT thread") {
+	            public void run() {
+	                //my work
+	                new OccipitalMain("Show Me the Light");
+	            }
+	        };
+	        t.start();
 		} else if (src == frontal) {
-			FlyingArrows f = new FlyingArrows("Flying Arrows");
+			FrontalMain f = new FrontalMain("Flying Arrows");
 		} else if (src == parietal) {
 			
 		} else if (src == temporal) {
