@@ -51,7 +51,7 @@ public class Menu extends JPanel implements ActionListener, MouseListener {
 		} else if (src == frontal) {
 			FrontalMain f = new FrontalMain("Flying Arrows");
 		} else if (src == parietal) {
-			
+			Coma1 p = new Coma1("Hole in the Wall");
 		} else if (src == temporal) {
 			
 		}

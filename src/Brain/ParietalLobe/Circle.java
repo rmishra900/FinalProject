@@ -26,17 +26,17 @@ public class Circle extends Shape {
 	}
 	
 	public void act() {
-		vX += 0.05;
+		vX += 0.02;
 		x -= vX;
 	}
 
 	public void moveWithWall(int a) {
 //		vY += 0.85;
 		if (a > 0) {
-			y -= 5;
+			y -= 9;
 		}
 		else {
-			y += 5;
+			y += 9;
 		}
 	}
 

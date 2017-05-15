@@ -22,10 +22,10 @@ public class Wall extends Rectangle2D.Double {
 	public void act(int x) {
 //		vY += 0.85;
 		if (x > 0) {
-			y -= 5;
+			y -= 9;
 		}
 		else {
-			y += 5;
+			y += 9;
 		}
 		
 		for (Shape sh: s) {
@@ -66,7 +66,7 @@ public class Wall extends Rectangle2D.Double {
 			 Triangle t1 = (Triangle)s.get(1);
 			 Triangle tri = new Triangle(shape.x, shape.y, 60, Color.BLACK);
 			 if (tri.getYCoords()[0] >= t1.getYCoords()[0] - 5 && tri.getYCoords()[0] + tri.getHeight() <= t1.getYCoords()[0] + t1.getHeight() + 5) {
-				 System.out.println(tri.getLeftP() + " < " + (t1.getXCoords()[1] + t1.getHeight()));
+//				 System.out.println(tri.getLeftP() + " < " + (t1.getXCoords()[1] + t1.getHeight()));
 //				 if(tri.getLeftP() < t1.getXCoords()[1] + t1.getHeight()) {
 					 //BUG 
 					 t1.changeColor(); 

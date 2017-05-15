@@ -46,7 +46,7 @@ public class Triangle extends Shape {
 	}
 	
 	public void act() {
-		vX += 0.05;
+		vX += 0.02;
 		leftP -= vX;
 		for (int i = 0; i < xCoords.length; i ++) {
 			xCoords[i] -= vX;
@@ -58,12 +58,12 @@ public class Triangle extends Shape {
 //		vY += 0.85;
 		if (a > 0) {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] -= 5;
+				yCoords[i] -= 9;
 			}
 		}
 		else {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] += 5;	
+				yCoords[i] += 9;	
 			}
 		}
 		
