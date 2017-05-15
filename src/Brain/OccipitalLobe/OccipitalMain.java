@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class OccipitalMain extends JFrame {
+public class OccipitalMain extends JFrame implements Runnable {
 	
 	JPanel glass = new JPanel();
 	JPanel symbolGlass = new JPanel();
@@ -25,8 +25,27 @@ public class OccipitalMain extends JFrame {
 		score.setText("Score: " + numCorrect);
 		add(score);
 		setVisible(true);
-	    
-	    do {
+		run();
+	}
+	
+	public int getNumCorrect() {
+		return numCorrect;
+	}
+	
+	public void setNumCorrect(int x) {
+		numCorrect = x;
+	}
+	public void setText(String str) {
+		score.setText(str);
+	}
+	
+	public static void main(String[] args) {
+		OccipitalMain m = new OccipitalMain("COMA");
+	}
+
+	@Override
+	public void run() {
+		do {
 	    	Occipital panel = new Occipital();
 	    	
 	 	    panel.setOpaque(false);
@@ -48,6 +67,7 @@ public class OccipitalMain extends JFrame {
 	 		} catch (InterruptedException e) {
 	 			e.printStackTrace();
 	 		}
+	 	    
 	 	    panel.setShowObjects(false);
 	 	    glass.setVisible(false);	
 	 	    
@@ -57,7 +77,7 @@ public class OccipitalMain extends JFrame {
 	 	 		} catch (InterruptedException e) {
 	 	 			e.printStackTrace();
 	 	 		}
-	 	    }
+	 	   }
 	 	    
 	 	    if (panel.getCorrect() == 0){
 	 	    	numCorrect = 0;
@@ -94,7 +114,7 @@ public class OccipitalMain extends JFrame {
 	 	 		} catch (InterruptedException e) {
 	 	 			e.printStackTrace();
 	 	 		}
-	    	}
+	    }
 	    	if (sp.getCorrect() == 1) {
 	 	    	numCorrect++;	
 	 	    	score.setText("Score: " + numCorrect );
@@ -107,13 +127,8 @@ public class OccipitalMain extends JFrame {
 	 	    }
 	    	sp.setCorrect();
 	    	sp.setVisible(false);
-	  
 	    }
-	    while (numCorrect > 0); 
-	}
-
-	public static void main(String[] args) {
-		OccipitalMain m = new OccipitalMain("COMA");
+	    while (numCorrect > 0);
 	}
 
 }

@@ -1,8 +1,12 @@
 package Brain.FrontalLobe;
 import java.awt.CardLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Brain.OccipitalLobe.Occipital;
 
 public class FrontalMain extends JFrame{
 	
