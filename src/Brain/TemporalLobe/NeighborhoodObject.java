@@ -1,21 +1,25 @@
 package Brain.TemporalLobe;
 
+import java.awt.Graphics;
 import java.awt.Image;
-
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 import sun.applet.Main;
+
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
+
 
 //import javax.media.j3d.Sound;
 import javax.swing.ImageIcon;
 
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
+
+import java.awt.image.ImageObserver;
 
 //import javax.media.j3d.Sound;
 import javax.swing.ImageIcon;
@@ -34,6 +38,21 @@ public class NeighborhoodObject extends Rectangle2D.Double {
 		image = img;
 		sound = new NeighborhoodSound(soundFilename);
 	}
+	
+	public Image getImage() {
+		return image;
+	}
+	
+	public void draw(Graphics g, Image img, double x, double y, double width, double height, ImageObserver io) {
+		g.drawImage(img, (int)x, (int)y,(int)width, (int)height, io);
+	}
+	
+	public NeighborhoodSound getSound() {
+		return sound;
+	}
+	
+	
+	
 	
 	/*
 	public static synchronized void playSound(final String url) {
