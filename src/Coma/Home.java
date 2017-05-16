@@ -34,7 +34,7 @@ public class Home extends JPanel implements MouseListener{
 		super();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		this.c = c;
-		background = new ImageIcon("COMA background.jpg").getImage();
+		background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMA background.jpg").getImage();
 	}
 
 	public void paintComponent(Graphics g)

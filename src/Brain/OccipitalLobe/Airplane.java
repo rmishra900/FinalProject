@@ -16,7 +16,7 @@ public class Airplane extends FlyingObject {
 	 * @param y the y-coordinate of the location of the Airplane
 	 */
 	public Airplane(int x, int y) {
-		super("Airplane.jpg", x, y, PLANE_WIDTH, PLANE_HEIGHT);
+		super("occipital" + System.getProperty("file.separator") + "Airplane.jpg", x, y, PLANE_WIDTH, PLANE_HEIGHT);
 	}
 	
 }

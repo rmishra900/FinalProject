@@ -31,7 +31,7 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		double angleDiff = symbols.length/Math.toRadians(360);
 		for (int i = 0; i < symbols.length; i++) {
 			symbols[i] = new JButton();
-			symbols[i].setIcon(new ImageIcon("Symbol" + (i+1) + ".png"));
+			symbols[i].setIcon(new ImageIcon("occipital" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
 			double phi = i*angleDiff; 
 			double x = (RADIUS * Math.cos(phi));
 	        double y = (RADIUS * Math.sin(phi));

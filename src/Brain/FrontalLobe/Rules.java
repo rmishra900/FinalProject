@@ -40,7 +40,7 @@ public class Rules extends JPanel implements ActionListener{
 	
 		begin.setSize(100, 50);
 		begin.setLocation(325, 500);
-		background = new ImageIcon("RulesBackground.jpg").getImage();
+		background = new ImageIcon("frontal" + System.getProperty("file.separator") + "RulesBackground.jpg").getImage();
 		
 		rulesBackground = new JLabel();
 		

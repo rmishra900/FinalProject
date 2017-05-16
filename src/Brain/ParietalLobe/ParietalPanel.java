@@ -39,7 +39,7 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		super();
 		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		background = (new ImageIcon("ParietalBackground.gif")).getImage();
+		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 0, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
 		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.YELLOW));

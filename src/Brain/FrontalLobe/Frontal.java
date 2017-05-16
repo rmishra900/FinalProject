@@ -75,7 +75,7 @@ public class Frontal extends JPanel {
 		//img = new ImageIcon("FrontalBackground.jpg").getImage();
 		//img = new ImageIcon("BlueSky.png").getImage();
 		//img = new ImageIcon("clouds.jpg").getImage();
-		img = new ImageIcon("sky.png").getImage();
+		img = new ImageIcon("frontal" + System.getProperty("file.separator") + "sky.png").getImage();
 		initializeArrows();
 		
 		

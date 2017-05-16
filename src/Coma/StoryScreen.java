@@ -32,9 +32,9 @@ public class StoryScreen extends JPanel implements MouseListener {
 		this.c = c;
 		setBackground(Color.WHITE);
 		
-		i1 = new ImageIcon("Rules1.jpg").getImage();
-		i2 = new ImageIcon("Rules2.jpg").getImage();
-		i3 = new ImageIcon("Rules3.jpg").getImage();
+		i1 = new ImageIcon("coma" + System.getProperty("file.separator") + "Rules1.jpg").getImage();
+		i2 = new ImageIcon("coma" + System.getProperty("file.separator") + "Rules2.jpg").getImage();
+		i3 = new ImageIcon("coma" + System.getProperty("file.separator") + "Rules3.jpg").getImage();
 	}
 
 	public void paintComponent(Graphics g){

@@ -37,39 +37,39 @@ public class Arrow {
 		
 		i = getRandomImage();
 		
-		iB = new ImageIcon("BlueLeftArrow.png").getImage();
-		iG = new ImageIcon("GreenLeftArrow.png").getImage();
-		iR = new ImageIcon("RedLeftArrow.png").getImage();
+		iB = new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueLeftArrow.png").getImage();
+		iG = new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenLeftArrow.png").getImage();
+		iR = new ImageIcon("frontal" + System.getProperty("file.separator") + "RedLeftArrow.png").getImage();
 		
 		imgI = new ArrayList<ImageIcon>(12);
 		
 		
-		rl = new ImageIcon("RedLeftArrow.png");
+		rl = new ImageIcon("frontal" + System.getProperty("file.separator") + "RedLeftArrow.png");
 		rl.setDescription("37");
-		ru = new ImageIcon("RedUpArrow.png");
+		ru = new ImageIcon("frontal" + System.getProperty("file.separator") + "RedUpArrow.png");
 		ru.setDescription("38");
-		rr = new ImageIcon("RedRightArrow.png");
+		rr = new ImageIcon("frontal" + System.getProperty("file.separator") + "RedRightArrow.png");
 		rr.setDescription("39");
-		rd = new ImageIcon("RedDownArrow.png");
+		rd = new ImageIcon("frontal" + System.getProperty("file.separator") + "RedDownArrow.png");
 		rd.setDescription("40");
 		
-		gl = new ImageIcon("GreenLeftArrow.png");
+		gl = new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenLeftArrow.png");
 		gl.setDescription("37");
-		gu = new ImageIcon("GreenUpArrow.png");
+		gu = new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenUpArrow.png");
 		gu.setDescription("38");
-		gr = new ImageIcon("GreenRightArrow.png");
+		gr = new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenRightArrow.png");
 		gr.setDescription("39");
-		gd = new ImageIcon("GreenDownArrow.png");
+		gd = new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenDownArrow.png");
 		gd.setDescription("40");
 				
 		 
-		bl = new ImageIcon("BlueLeftArrow.png");
+		bl = new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueLeftArrow.png");
 		bl.setDescription("37");
-		bu = new ImageIcon("BlueUpArrow.png");
+		bu = new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueUpArrow.png");
 		bu.setDescription("38");
-		br = new ImageIcon("BlueRightArrow.png");
+		br = new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueRightArrow.png");
 		br.setDescription("39");
-		bd = new ImageIcon("BlueDownArrow.png");
+		bd = new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueDownArrow.png");
 		bd.setDescription("40");
 		
 		imgI.add(rl);
@@ -315,55 +315,55 @@ public class Arrow {
 		String filename = "";
 		if(c == Color.RED) {
 			if(r == 0) {
-				filename = "RedLeftArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "RedLeftArrow.png";
 				setPointingTo(37);
 			}
 			else if(r==1) {
-				filename = "RedUpArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "RedUpArrow.png";
 				setPointingTo(38);
 			}
 			else if(r==2) {
-				filename = "RedRightArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "RedRightArrow.png";
 				setPointingTo(39);
 			}
 			else {
-				filename = "RedDownArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "RedDownArrow.png";
 				setPointingTo(40);
 			}
 		}
 		else if(c == Color.GREEN) {
 			if(r == 0) {
-				filename = "GreenLeftArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "GreenLeftArrow.png";
 				setPointingTo(37);
 			}
 			else if(r==1) {
-				filename = "GreenUpArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "GreenUpArrow.png";
 				setPointingTo(38);
 			}
 			else if(r==2) {
-				filename = "GreenRightArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "GreenRightArrow.png";
 				setPointingTo(39);
 			}
 			else {
-				filename = "GreenDownArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "GreenDownArrow.png";
 				setPointingTo(40);
 			}
 		}
 		else {
 			if(r == 0) {
-				filename = "BlueLeftArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "BlueLeftArrow.png";
 				setPointingTo(37);
 			}
 			else if(r==1) {
-				filename = "BlueUpArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "BlueUpArrow.png";
 				setPointingTo(38);
 			}
 			else if(r==2) {
-				filename = "BlueRightArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "BlueRightArrow.png";
 				setPointingTo(39);
 			}
 			else {
-				filename = "BlueDownArrow.png";
+				filename = "frontal" + System.getProperty("file.separator") + "BlueDownArrow.png";
 				setPointingTo(40);
 			}
 		}

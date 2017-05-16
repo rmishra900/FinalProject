@@ -23,6 +23,6 @@ public class Symbol extends FlyingObject {
 	 * @param y the y-coordinate of the symbol's location
 	 */
 	public Symbol(String filename, int x, int y) {
-		super(filename, x, y, SYMBOL_WIDTH, SYMBOL_WIDTH);
+		super("occipital" + System.getProperty("file.separator") + filename, x, y, SYMBOL_WIDTH, SYMBOL_WIDTH);
 	}
 }

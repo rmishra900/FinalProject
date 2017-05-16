@@ -16,6 +16,6 @@ public class Helicopter extends FlyingObject {
 	 * @param y the y-coordinate of the location of the Helicopter
 	 */
 	public Helicopter(int x, int y) {
-		super("Helicopter.jpg", x, y, COPTER_WIDTH, COPTER_HEIGHT);
+		super("occipital" + System.getProperty("file.separator") + "Helicopter.jpg", x, y, COPTER_WIDTH, COPTER_HEIGHT);
 	}
 }
