@@ -54,8 +54,14 @@ public class NeighborhoodObject extends Rectangle2D.Double {
 	}
 	
 	
-	public NeighborhoodObject(String imgFilename, String string2, int i, int j, int k, int l) {
-		// TODO Auto-generated constructor stub
+	public NeighborhoodObject(String imgFilename, String soundFilename, int x, int y, int w, int h) {
+		image = new ImageIcon(imgFilename).getImage();
+		sound = new NeighborhoodSound(soundFilename);
+		
+		this.x = x;
+		this.y = y;
+		this.width = w;
+		this.height = h;
 	}
 
 
