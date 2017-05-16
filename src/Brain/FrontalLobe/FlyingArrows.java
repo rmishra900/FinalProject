@@ -19,7 +19,7 @@ public class FlyingArrows extends JFrame {
 	    cardPanel.setLayout(cl);
 	    
 	    
-	    Rules r = new Rules();
+	    FrontalRules r = new FrontalRules();
 	    r.setVisible(true);
 	    add(r);
 	

@@ -1,6 +1,9 @@
 package Brain.ParietalLobe;
 
 import java.awt.Color;
+
+import Brain.Rules;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -13,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Brain.FrontalLobe.FrontalMain;
+import Coma.Coma1;
 
 /**
  * This class represents the rules of the FlyingArrows game
@@ -20,58 +24,15 @@ import Brain.FrontalLobe.FrontalMain;
  * @version 5/15/17
  *
  */
-public class Rules extends JPanel implements ActionListener{
-
-	private String text;
-	private Image background;
-	private JButton begin;
-	private JLabel rulesBackground, rules;
-
-	
+public class ParietalRules extends Rules{
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
-	public Rules() {
-		setLayout(null);
-
-		begin = new JButton("BEGIN");
-		begin.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-	
-		begin.setSize(100, 50);
-		begin.setLocation(325, 500);
-		background = new ImageIcon("RulesBackground.jpg").getImage();
-		
-		rulesBackground = new JLabel();
-		
-		
-		rules = new JLabel(getText());
-		rules.setLocation(105, 55);
-		rules.setSize(600,400);
-		rules.setForeground(Color.WHITE);
-		rules.setFont(new Font("Roman Baseline", 0, 20));
-		add(rules);
-		
-		int alpha = 50;
-		Color c = new Color(0,0,0, alpha);
-	
-		rulesBackground.setBackground(c);
-		rulesBackground.setLocation(100, 50);
-		rulesBackground.setSize(600,450);
-		
-		rulesBackground.setOpaque(true);
-		add(rulesBackground);
-		
-		add(begin);
-		begin.addActionListener(this);
+	public ParietalRules() {
+		super();
 		
 	}
 	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-	
-	}
 	
 	/**
 	 * Returns the text representing rules for the game
@@ -93,7 +54,10 @@ public class Rules extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FrontalMain fm = new FrontalMain("FlyingArrows");
+		ParietalPanel p = new ParietalPanel();
+		p.setVisible(true);
+	    add(p); 
+		addKeyListener(p);
 	}
 	
 }
