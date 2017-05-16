@@ -3,10 +3,23 @@ package Brain.ParietalLobe;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Represents a 2D three-pointed equal-sided polygon, or equilateral triangle. 
+ * @author Thanh Luong
+ * @version 5/15/2017
+ *
+ */
 public class Triangle extends Shape {
 	private double length, leftP;
 	private double[] xCoords, yCoords;
 	
+	/**
+	 * Constructs a new instance of this triangle. 
+	 * @param xCoord the x-coordinate of the center of the triangle
+	 * @param yCoord the y-coordinate of the center of the triangle
+	 * @param length the side length of the triangle
+	 * @param c the color of this circle
+	 */
 	public Triangle(double xCoord, double yCoord, double length, Color c) {
 		super(xCoord, yCoord, c);
 		this.length = length;
@@ -24,7 +37,10 @@ public class Triangle extends Shape {
 		leftP = xCoords[1];
 	}
 
-	@Override
+	/**
+	 * Draws an instance of this triangle.
+	 * @param g the Graphics object that draws this triangle
+	 */
 	public void draw(Graphics g) {
 		g.setColor(shapeColor);
 		int[] xC = new int[3];
@@ -38,13 +54,10 @@ public class Triangle extends Shape {
 		g.drawPolygon(xC, yC, 3);
 		g.fillPolygon(xC, yC, 3);
 	}
-
-	@Override
-	public boolean collides(Wall w) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
+	/**
+	 * Moves this triangle to the left by decreasing its x-coordinate by a certain velocity.
+	 */
 	public void act() {
 		vX += 0.02;
 		leftP -= vX;
@@ -53,7 +66,11 @@ public class Triangle extends Shape {
 		}
 	}
 
-	@Override
+	/**
+	 * Moves this triangle with the wall by increasing or decreasing its y-coordinate, depending on the arrow key pressed.
+	 * @param a the integer that determines which arrow key is being pressed, a > 0 if the up arrow key is pressed and a < 0
+	 * 			if the down arrow key is pressed
+	 */
 	public void moveWithWall(int a) {
 //		vY += 0.85;
 		if (a > 0) {
@@ -69,7 +86,10 @@ public class Triangle extends Shape {
 		
 	}
 
-	@Override
+	/**
+	 * Returns the distance of the perpendicular line from the vertex of the triangle to the opposite side
+	 * @return double of the height of the triangle
+	 */
 	public double getHeight() {
 		return length * Math.sin(Math.PI / 3);
 	}
@@ -82,12 +102,12 @@ public class Triangle extends Shape {
 		return yCoords;
 	}
 
-	@Override
+	/**
+	 * Returns an integer determining the shape this is, out of a circle, square, or triangle
+	 * depending on its order in the main array (constructed in the ParietalPanel class)
+	 * @return the integer 1 since this is a triangle and is the first index in the main array
+	 */
 	public int whichShape() {
 		return 1;
-	}
-	
-	public double getLeftP() {
-		return leftP;
 	}
 }

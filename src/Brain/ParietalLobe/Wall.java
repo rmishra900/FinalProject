@@ -5,11 +5,25 @@ import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
+/**
+ * Represents a 2D rectangle to act as a wall containing three holes of the three shapes (circle, triangle, square). 
+ * @author Thanh Luong
+ * @version 5/15/2017
+ *
+ */
 public class Wall extends Rectangle2D.Double {
 
 	private double vY;
 	private ArrayList<Shape> s;
 	
+	/**
+	 * Constructs an instance of this wall containing the holes of the three shapes.
+	 * @param x the x-coordinate of the top left corner of the wall
+	 * @param y the y-coordinate of the top left corner of the wall
+	 * @param vY the velocity of the wall object in the y-direction
+	 * @param width the width of the wall
+	 * @param height the height of the wall
+	 */
 	public Wall(int x, int y, double vY, int width, int height) {
 		super(x, y, width, height);
 		this.vY = vY;
@@ -19,6 +33,9 @@ public class Wall extends Rectangle2D.Double {
 		s.add(new Square(x + 15, y + height - 90, 60, Color.WHITE));
 	}
 	
+	/**
+	 * Moves this wall up or down by decreasing its x-coordinate by a certain velocity.
+	 */
 	public void act(int x) {
 //		vY += 0.85;
 		if (x > 0) {
@@ -37,7 +54,11 @@ public class Wall extends Rectangle2D.Double {
 		return vY;
 	}
 	
-	 public void draw(Graphics g) {
+	/**
+	 * Draws an instance of this wall.
+	 * @param g the Graphics object that draws this wall
+	 */
+	public void draw(Graphics g) {
 //		 g.setColor(new Color(219,108,121));
 //		 g.setColor(new Color(241,125,149));
 		 
@@ -51,31 +72,30 @@ public class Wall extends Rectangle2D.Double {
 
 
 	 }
-	    
-	 public boolean passes(Shape shape) {
-		 if (shape.whichShape() == 0 || shape.whichShape() == 2) {
-			 Shape s1 = s.get(shape.whichShape());
-			 if (shape.y >= s1.y && shape.y + shape.getHeight() <= s1.y + s1.getHeight()) {
-				 if(shape.x < x + width) {
-					 s1.changeColor();
-					 return true;
-				 }
-			 }
-		 }
-		 else {
-			 Triangle t1 = (Triangle)s.get(1);
-			 Triangle tri = new Triangle(shape.x, shape.y, 60, Color.BLACK);
-			 if (tri.getYCoords()[0] >= t1.getYCoords()[0] - 5 && tri.getYCoords()[0] + tri.getHeight() <= t1.getYCoords()[0] + t1.getHeight() + 5) {
-//				 System.out.println(tri.getLeftP() + " < " + (t1.getXCoords()[1] + t1.getHeight()));
-//				 if(tri.getLeftP() < t1.getXCoords()[1] + t1.getHeight()) {
-					 //BUG 
-					 t1.changeColor(); 
-					 return true;
-//				 }
-				
-			 }
-		 }
-		 return false;
+	  
+	/**
+	 * Tests if the shape object successfully passes through the holes of the wall.
+	 * @param shape the shape to be tested against the wall
+	 * @return true if the shape passes through the wall with no collision, false otherwise
+	 */
+	public boolean passes(Shape shape) {
+		if (shape.whichShape() == 0 || shape.whichShape() == 2) {
+			Shape s1 = s.get(shape.whichShape());
+			if (shape.y >= s1.y && shape.y + shape.getHeight() <= s1.y + s1.getHeight()) {
+				if(shape.x < x + width) {
+					s1.changeColor();
+					return true;
+				}
+			}
+		}
+		else {
+			Triangle t1 = (Triangle)s.get(1);
+			Triangle tri = new Triangle(shape.x, shape.y, 60, Color.BLACK);
+			if (tri.getYCoords()[0] >= t1.getYCoords()[0] - 5 && tri.getYCoords()[0] + tri.getHeight() <= t1.getYCoords()[0] + t1.getHeight() + 5) {
+				t1.changeColor(); 
+				return true;
+			}
+		}
+		return false;
 	 }
-
 }

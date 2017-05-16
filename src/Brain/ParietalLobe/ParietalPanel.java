@@ -13,6 +13,12 @@ import javax.swing.*;
 
 import Brain.Lobe;
 
+/**
+ * Represents the panel of the parietal lobe game with the drawn background and objects needed. 
+ * @author Thanh Luong
+ * @version 5/15/2017
+ *
+ */
 public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -26,6 +32,9 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 	private int random, numCorrect, seconds, threshold;
 	private boolean continueGame;
 	
+	/**
+	 * Constucts a new instance of this panel.
+	 */
 	public ParietalPanel() {
 		super();
 		
@@ -43,13 +52,8 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 500;
+		threshold = 700;
 		
-		//LOCATION OF LABEL
-//		timer = new JLabel("00:" + seconds);
-//		timer.setLocation(0, 0);
-//		timer.setForeground(Color.RED);
-//		timer.setFont(new Font("SansSerif", 1, 30));
 		Timer clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (continueGame) {
@@ -74,6 +78,11 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		clock2.start();
 	}
 	
+	/**
+	 * Returns a formatted String that represents the time in seconds
+	 * @param i integer needed to be formatted
+	 * @return formatted string
+	 */
 	private String format(int i) {
 		String result = String.valueOf(i);
 		if(result.length()==1) {
@@ -107,12 +116,12 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		
 		g.setColor(Color.YELLOW);
 		g.setFont(new Font("SansSerif", 3, 50));
-		g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
+		g.drawString("00:" + format(seconds % 60), 600, 50);
 		
 		w.draw(g2);
 		drawS1.draw(g2);
 		
-		if (w.passes(drawS1)) {
+		if (w.passes(drawS1) && continueGame) {
 			numCorrect++;
 //			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
 		}
@@ -148,6 +157,10 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 			
 			g.setFont(new Font("SansSerif", 3, 24));
 			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+		
+			g.setColor(Color.YELLOW);
+			g.setFont(new Font("SansSerif", 3, 50));
+			g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
 			return;
 		}
 		else if(seconds == 0 && numCorrect < threshold) {
@@ -164,13 +177,19 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 			
 			g.setFont(new Font("SansSerif", 3, 24));
 			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+			
+			g.setColor(Color.YELLOW);
+			g.setFont(new Font("SansSerif", 3, 50));
+			g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
 			return;
 		}
 		 
-		repaint();
-	  	
+		repaint(); 	
 	}
 	
+	/**
+	 * Redraws an instance of a wall to wrap around the screen once it disappeared out of view.
+	 */
 	public void redrawWall() {
 		if (w.getY() + w.getWidth() >= DRAWING_HEIGHT)
 			w = new Wall((int)w.getX(), (int)-w.getHeight(), 0, (int)w.getWidth(), (int)w.getHeight());
@@ -178,6 +197,10 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 			w = new Wall((int)w.getX(), DRAWING_HEIGHT, 0, (int)w.getWidth(), (int)w.getHeight());
 	}
 	
+	/**
+	 * Creates a new instance of a shape at the far right side of the screen once the current shape has passed
+	 * or collided into the wall.
+	 */
 	public void shootShape() {
 		int shape = (int)(Math.random() * 3);
 		
@@ -187,15 +210,8 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW);
 		else 
 			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW);
-
-		
 	}
-	
-//	public void actionPerformed(ActionEvent e) {
-//		drawS1.act();
-//		w.passes(drawS1);
-//	}
-	
+
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 		if (code == KeyEvent.VK_UP) {

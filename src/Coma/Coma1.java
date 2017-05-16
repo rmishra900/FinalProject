@@ -11,7 +11,7 @@ import Brain.FrontalLobe.Frontal;
 
 /**
  * Represents the window that pops up when the user wishes to play "Hole in the Wall"
- * @author Thanh
+ * @author Thanh Luong
  * @version 5/15/2017
  */
 public class Coma1 extends JFrame {

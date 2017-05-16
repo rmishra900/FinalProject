@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  * Represents the screen before the user plays the game to introduce the user to the objectives of the game. 
- * @author Reet
+ * @author
  * @version 5/15/2017
  */
 public class StoryScreen extends JPanel implements MouseListener {

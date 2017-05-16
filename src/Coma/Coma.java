@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import Brain.OccipitalLobe.OccipitalMain;
 /**
  * Represents the window that the game begins on. 
- * @author Thanh
+ * @author Thanh Luong
  * @version 5/15/2017
  */
 public class Coma extends JFrame {
