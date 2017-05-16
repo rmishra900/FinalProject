@@ -80,7 +80,7 @@ public class Rules extends JPanel implements ActionListener{
 	public String getText() {
 		String rules = "";
 		
-		rules = "<html>This game tests the Frontal Lobe of the brain which is <br>responsible for cognitive thinking "
+		rules = "<html>This game tests the Parietal Lobe of the brain which is <br>responsible for cognitive thinking "
 				+ "including task switching,<br> memory and impulse control.<br><br>To play:<br>If arrows are green - "
 				+ "press arrow key that corresponds to the direction the arrows are moving in."
 				+ "<br><br>If arrows are red - press the arrow key that corresponds to the direction the arrows "
