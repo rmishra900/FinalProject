@@ -52,16 +52,17 @@ public class Temporal extends JPanel implements MouseListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-/*
+
 		JPanel back = new JPanel();
 		back.setLayout(null);
 		back.setBackground(new Color(255,255,255, 127));
 		back.setOpaque(true);
 		back.setBounds(30, 100, 400, 400);
 		add(back);
-*/		
+	
 			
 		n.draw(g, n.getImage(), n.getX(), n.getY(), n.getWidth(), n.getHeight(), this);
+		
 		
 	}
 	
