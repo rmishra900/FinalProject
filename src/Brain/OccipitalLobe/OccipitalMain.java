@@ -1,6 +1,7 @@
 package Brain.OccipitalLobe;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
 
@@ -18,6 +19,7 @@ public class OccipitalMain extends JFrame {
 	JPanel glass = new JPanel();
 	JPanel symbolGlass = new JPanel();
 	private JLabel score;
+	private JLabel win;
 	private int numCorrect;
 	
 	/**
@@ -34,11 +36,21 @@ public class OccipitalMain extends JFrame {
 		score.setText("Score: " + numCorrect);
 		add(score);
 		setVisible(true);
+		
+		win = new JLabel();
+		win.setLocation(270, 45);
+		win.setForeground(Color.WHITE);
+		win.setSize(300, 100);
+		add(win);
+		
 	    act();
 	}
 	
 	private void act() {
 		do {
+			if (numCorrect == 11) 
+				remove(win);
+			
 	    	Occipital panel = new Occipital();
 	    	
 	 	    panel.setOpaque(false);
@@ -72,8 +84,10 @@ public class OccipitalMain extends JFrame {
 	 	    }
 	 	    
 	 	    if (panel.getCorrect() == 0){
-	 	    	numCorrect = 0;
-	 	    	score.setText("Score: " + numCorrect);
+	 	    	if (numCorrect < 10)
+	 	    		score.setText("YOU LOSE");
+	 	    	else
+	 	    		score.setText("YOU WIN");
 	 	    	break;
 	 	    }
 	 	    panel.setCorrect();
@@ -114,16 +128,13 @@ public class OccipitalMain extends JFrame {
 	 	    else if (sp.getCorrect() == 0){
 	 	    	if (numCorrect < 10)
 	 	    		score.setText("YOU LOSE");
-	 	    	numCorrect = 0;
+	 	    	else
+	 	    		score.setText("YOU WIN");
 	 	    	sp.setVisible(false);
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
 	    	sp.setVisible(false);
-	    	if (numCorrect == 10) {
-	    		JLabel winning = new JLabel("YOU WIN!");
-	    		add(winning);
-	    	}
 	  
 	    }
 	    while (numCorrect > 0); 
