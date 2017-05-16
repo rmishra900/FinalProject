@@ -54,6 +54,11 @@ public class NeighborhoodObject extends Rectangle2D.Double {
 	}
 	
 	
+	public NeighborhoodObject(String imgFilename, String string2, int i, int j, int k, int l) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void draw(Graphics g, Image img, double x, double y, double width, double height, ImageObserver io) {
 		g.drawImage(img, (int)x, (int)y,(int)width, (int)height, io);
 	}

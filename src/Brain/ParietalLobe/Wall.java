@@ -39,10 +39,10 @@ public class Wall extends Rectangle2D.Double {
 	public void act(int x) {
 //		vY += 0.85;
 		if (x > 0) {
-			y -= 15;
+			y -= 20;
 		}
 		else {
-			y += 15;
+			y += 20;
 		}
 		
 		for (Shape sh: s) {
