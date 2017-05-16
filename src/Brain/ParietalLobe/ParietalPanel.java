@@ -112,7 +112,7 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 		
 		g.setFont(new Font("SansSerif", 3, 24));
-		g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+		g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 		
 		g.setColor(Color.YELLOW);
 		g.setFont(new Font("SansSerif", 3, 50));
@@ -146,17 +146,17 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		if(numCorrect >= threshold && seconds > 0) {
 			continueGame = false;
 			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 100));
 			g.drawString("YOU WIN", 200, 300);
 			g.setColor(Color.WHITE);
-			g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+			g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
 			g.setColor(Color.BLACK);
-			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
+			g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
 			
 			g.setFont(new Font("SansSerif", 3, 24));
-			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 		
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 50));
@@ -166,17 +166,17 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		else if(seconds == 0 && numCorrect < threshold) {
 			continueGame = false;
 			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 100));
 			g.drawString("YOU LOSE", 150, 300);
 			g.setColor(Color.WHITE);
-			g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+			g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
 			g.setColor(Color.BLACK);
-			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
+			g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
 			
 			g.setFont(new Font("SansSerif", 3, 24));
-			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 			
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 50));
