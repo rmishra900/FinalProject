@@ -12,7 +12,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class OccipitalRules extends JPanel implements ActionListener{
+import Brain.Rules;
+
+public class OccipitalRules extends Rules{
 
 	private String text;
 	private Image background;
@@ -24,37 +26,7 @@ public class OccipitalRules extends JPanel implements ActionListener{
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
 	public OccipitalRules() {
-		setLayout(null);
-
-		begin = new JButton("BEGIN");
-		begin.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-	
-		begin.setSize(100, 50);
-		begin.setLocation(325, 500);
-		background = new ImageIcon("frontal" + System.getProperty("file.separator") + "RulesBackground.jpg").getImage();
-		
-		rulesBackground = new JLabel();
-		
-		
-		rules = new JLabel(getText());
-		rules.setLocation(105, 55);
-		rules.setSize(600,400);
-		rules.setForeground(Color.WHITE);
-		rules.setFont(new Font("Roman Baseline", 0, 20));
-		add(rules);
-		
-		int alpha = 50;
-		Color c = new Color(0,0,0, alpha);
-	
-		rulesBackground.setBackground(c);
-		rulesBackground.setLocation(100, 50);
-		rulesBackground.setSize(600,450);
-		
-		rulesBackground.setOpaque(true);
-		add(rulesBackground);
-		
-		add(begin);
-		begin.addActionListener(this);
+		super();
 		
 	}
 	

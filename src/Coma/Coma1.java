@@ -1,12 +1,13 @@
 package Coma;
 
 import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Brain.OccipitalLobe.Occipital;
-
 import Brain.ParietalLobe.ParietalPanel;
+import Brain.ParietalLobe.ParietalRules;
 import Brain.FrontalLobe.Frontal;
 
 /**
@@ -28,10 +29,11 @@ public class Coma1 extends JFrame {
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	    ParietalPanel pp = new ParietalPanel();
+	   // ParietalPanel pp = new ParietalPanel();
+	    ParietalRules pp = new ParietalRules();
 	    pp.setVisible(true);
 	    add(pp); 
-	    addKeyListener(pp);
+	    //addKeyListener(pp);
 	    
 
 	    cardPanel = new JPanel();

@@ -1,15 +1,18 @@
-package Brain.FrontalLobe;
+package Brain.TemporalLobe;
 
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class FlyingArrows extends JFrame {
+import Brain.FrontalLobe.FlyingArrows;
+import Brain.FrontalLobe.FrontalRules;
+
+public class InTheNeighborhood extends JFrame{
 
 	JPanel cardPanel;
 	
-	public FlyingArrows(String title) {
+	public InTheNeighborhood(String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,7 +22,7 @@ public class FlyingArrows extends JFrame {
 	    cardPanel.setLayout(cl);
 	    
 	    
-	    FrontalRules r = new FrontalRules();
+	    TemporalRules r = new TemporalRules();
 	    r.setVisible(true);
 	    add(r);
 	
@@ -33,8 +36,7 @@ public class FlyingArrows extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		FlyingArrows fa = new FlyingArrows("FlyingArrows");
+		InTheNeighborhood n = new InTheNeighborhood("In the Neighborhood");
 	}
-
 
 }
