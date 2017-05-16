@@ -1,7 +1,5 @@
 package Coma;
 import java.awt.Color;
-
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +15,7 @@ import javax.swing.SwingWorker;
 import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalMain;
 import Brain.OccipitalLobe.SymbolPanel;
+import Brain.TemporalLobe.InTheNeighborhood;
 import Brain.FrontalLobe.FlyingArrows;
 
 /**
@@ -73,7 +72,7 @@ public class Menu extends JPanel implements ActionListener {
 		} else if (src == parietal) {
 			Coma1 p = new Coma1("Hole in the Wall");
 		} else if (src == temporal) {
-			
+			InTheNeighborhood n = new InTheNeighborhood("InTheNeighborHood");
 		}
 	}
 }
