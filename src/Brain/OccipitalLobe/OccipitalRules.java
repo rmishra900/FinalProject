@@ -89,7 +89,7 @@ public class OccipitalRules extends JPanel implements ActionListener{
 		Thread t = new Thread("my non EDT thread") {
 	            public void run() {
 	                //my work
-	                new OccipitalMain("Show Me the Light");
+	                new ShowMeTheLight("Show Me the Light");
 	            }
 	        };
 	        t.start();

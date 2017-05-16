@@ -37,6 +37,8 @@ public class Occipital extends JPanel implements MouseListener {
 	private boolean showObjects;
 	private Image background;
 	private int correct;
+	private int numCorrect;
+	
 
 	/**
 	 * Constructs a new instance of the background with all the FlyingObjects on it. 
@@ -45,7 +47,7 @@ public class Occipital extends JPanel implements MouseListener {
 		setBackground(Color.WHITE);
 		background = new ImageIcon("occipital" + System.getProperty("file.separator") + "OccipitalBackground.jpg").getImage();
 		super.addMouseListener(this);
-		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
+		//plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
 		correct = -1;
 		showObjects = true;
 		initializeObstacles();
@@ -64,14 +66,21 @@ public class Occipital extends JPanel implements MouseListener {
 	}
 	
 	private void initializeObstacles() {
+		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
 		obstacles = new ArrayList<Helicopter>();
-		int randNum = (int) (Math.random() * 9); // number of helicopters - maximum is 9 
+		int randNum = (int) (Math.random() * 8) + 3; // number of helicopters - minimum is 3, maximum is 10 
 		for (int i = 0; i < randNum; i++) {
 			int x = (int) (Math.random()*DRAWING_WIDTH);
 			int y = (int) (Math.random()*DRAWING_HEIGHT);
 			if (!(x == plane.getX() && y == plane.getY()))
 				obstacles.add(new Helicopter(x, y));
 		}
+	}
+	
+	private void reset() {
+		showObjects = true;
+		initializeObstacles();
+		initializeSymbol();
 	}
 	
 	/**

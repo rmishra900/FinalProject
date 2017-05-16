@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import java.awt.Graphics;
 import com.sun.prism.paint.Color;
 
 /**
@@ -39,8 +40,12 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	        add(symbols[i]);
 	        //symbols[i].setLocation((int)x, (int)y);
 	        symbols[i].addActionListener(this);
-	        symbols[i].setOpaque(true);
+	        //symbols[i].setOpaque(true);
 		}
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 	}
 	
 	/**
