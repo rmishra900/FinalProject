@@ -43,44 +43,45 @@ import java.awt.image.ImageObserver;
 //import javax.media.j3d.Sound;
 import javax.swing.ImageIcon;
 
-public class Dog extends Rectangle2D.Double {
+public class Room extends Rectangle2D.Double {
 	
-	private Image image; 
+	private Image background; 
 	private Sound sound;
+	private int passcode;
 	
-	public Dog(Image img, String soundFilename) {
-		image = img;
+	public Room(Image img, String soundFilename) {
+		background = img;
 		sound = new Sound(soundFilename);
 	}
 	
 	
-	public Dog(String imgFilename, String soundFilename, int x, int y, int w, int h) {
-<<<<<<< HEAD
-		image = new ImageIcon(imgFilename).getImage();
-		sound = new Sound(soundFilename);
-=======
-		image = new ImageIcon("temporal" + System.getProperty("file.separator") + imgFilename).getImage();
-		sound = new DogSound("temporal" + System.getProperty("file.separator") + soundFilename);
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
-		
-		this.x = x;
-		this.y = y;
+	public Room(String imgFilename, String soundFilename, int w, int h) {
+		/*background = new ImageIcon(imgFilename).getImage();
+		sound = new Sound(soundFilename);*/
+		background = new ImageIcon("temporal" + System.getProperty("file.separator") + imgFilename).getImage();
+		sound = new Sound("temporal" + System.getProperty("file.separator") + soundFilename);
+
 		this.width = w;
 		this.height = h;
 	}
 
+	public void setPasscode(int x) {
+		passcode = x;
+	}
 
-	public void draw(Graphics g, Image img, double x, double y, double width, double height, ImageObserver io) {
-		g.drawImage(img, (int)x, (int)y,(int)width, (int)height, io);
+	public void draw(Graphics g, Image img, double width, double height, ImageObserver io) {
+		g.drawImage(background, 0, 0, (int)width, (int)height, io);
 	}
 	
-	public Image getImage() {
-		return image;
+	public Image getBackground() {
+		return background;
 	}
 
 	public Sound getSound() {
 		return sound;
 	}
+	
+	
 
 
 	/*

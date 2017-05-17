@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 
 import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.FrontalRules;
+import Coma.Coma;
 
 public class Locked extends JFrame{
 
 	JPanel cardPanel;
+	private Coma c;
 	
-	public Locked(String title) {
+	public Locked(String title, Coma c) {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,7 +24,7 @@ public class Locked extends JFrame{
 	    cardPanel.setLayout(cl);
 	    
 	    
-	    TemporalRules r = new TemporalRules();
+	    TemporalRules r = new TemporalRules(this, c);
 	    r.setVisible(true);
 	    add(r);
 	
@@ -36,7 +38,7 @@ public class Locked extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		Locked n = new Locked("In the Dog Park");
+		Coma c = new Coma("COMA");
 	}
 
 }

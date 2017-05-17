@@ -7,12 +7,12 @@ import Coma.Coma;
 
 public class TemporalRules extends Rules{
 	
-	private InTheDogPark i;
+	private Locked l;
 	private Coma c;
 	
-	public TemporalRules(InTheDogPark i, Coma c) {
+	public TemporalRules(Locked l, Coma c) {
 		super();
-		this.i = i;
+		this.l = l;
 		this.c = c;
 	}
 
@@ -33,15 +33,11 @@ public class TemporalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-		Locked l = new Locked("Locked");
-=======
 		Object src = e.getSource();
 		if (src == begin)
-			i.changePanel("2");
+			c.changePanel("2");
 		else if (src == back)
 			c.changePanel("3");
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 	}
 
 }
