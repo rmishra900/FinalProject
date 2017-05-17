@@ -4,8 +4,6 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import Brain.OccipitalLobe.OccipitalMain;
 /**
  * Represents the window that the game begins on. 
  * @author Thanh Luong

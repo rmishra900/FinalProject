@@ -76,12 +76,7 @@ public class NeighborhoodObject extends Rectangle2D.Double {
 	public NeighborhoodSound getSound() {
 		return sound;
 	}
-	
-	
-	
-	
-	
-	
+
 
 	/*
 	public static synchronized void playSound(final String url) {
