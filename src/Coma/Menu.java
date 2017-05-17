@@ -15,6 +15,7 @@ import javax.swing.SwingWorker;
 import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalMain;
 import Brain.OccipitalLobe.SymbolPanel;
+import Brain.ParietalLobe.HoleInTheWall;
 import Brain.TemporalLobe.InTheNeighborhood;
 import Brain.FrontalLobe.FlyingArrows;
 
@@ -70,7 +71,7 @@ public class Menu extends JPanel implements ActionListener {
 		} else if (src == frontal) {
 			FlyingArrows f = new FlyingArrows("Flying Arrows");
 		} else if (src == parietal) {
-			Coma1 p = new Coma1("Hole in the Wall");
+			HoleInTheWall p = new HoleInTheWall("Hole in the Wall");
 		} else if (src == temporal) {
 			InTheNeighborhood n = new InTheNeighborhood("InTheNeighborHood");
 		}

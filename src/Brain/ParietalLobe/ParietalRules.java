@@ -1,22 +1,9 @@
 package Brain.ParietalLobe;
 
-import java.awt.Color;
+
+import java.awt.event.ActionEvent;
 
 import Brain.Rules;
-
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import Brain.FrontalLobe.FrontalMain;
-import Coma.Coma1;
 
 /**
  * This class represents the rules of the FlyingArrows game
@@ -25,12 +12,14 @@ import Coma.Coma1;
  *
  */
 public class ParietalRules extends Rules{
+	
+	private HoleInTheWall h;
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
-	public ParietalRules() {
+	public ParietalRules(HoleInTheWall h) {
 		super();
-		
+		this.h = h;
 	}
 	
 	
@@ -54,7 +43,7 @@ public class ParietalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ParietalPanel p = new ParietalPanel();
+		Parietal p = new Parietal(h);
 		p.setVisible(true);
 	    add(p); 
 		addKeyListener(p);
