@@ -19,12 +19,13 @@ import Brain.Lobe;
  * @version 5/15/2017
  *
  */
-public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
+public class Parietal extends Lobe implements KeyListener, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
 	private HoleInTheWall h;
 	
+	private JButton back;
 	private Image background;
 	private Wall w;
 	private ArrayList<Shape> s;
@@ -37,7 +38,7 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 	 */
 	public Parietal(HoleInTheWall h) {
 		super();
-		
+		setLayout(null);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
@@ -47,6 +48,15 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.h = h;
+		
+		back = new JButton("BACK");
+		back.setBackground(Color.YELLOW);
+		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		back.setSize(100, 50);
+		back.setLocation(0, 0);
+		
+		add(back);
+		back.addActionListener(this);
 		
 		numCorrect = 0;
 		seconds = 45;
@@ -224,6 +234,12 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 	}
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		h.changePanel("1");
 		
 	}
 
