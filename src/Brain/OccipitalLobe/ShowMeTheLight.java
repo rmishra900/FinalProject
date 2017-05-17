@@ -114,8 +114,8 @@ public class ShowMeTheLight extends JFrame {
 	 	 		}
 	    	}
 	    	if (sp.getCorrect() == 1) {	
+	    		numCorrect++;
 	 	    	score.setText("Score: " + numCorrect );
-	 	    	numCorrect++;
 	 	    }
 	 	    else if (sp.getCorrect() == 0){
 	 	    	if (numCorrect < 10)

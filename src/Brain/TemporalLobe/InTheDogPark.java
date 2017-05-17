@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.FrontalRules;
 
-public class InTheNeighborhood extends JFrame{
+public class InTheDogPark extends JFrame{
 
 	JPanel cardPanel;
 	
-	public InTheNeighborhood(String title) {
+	public InTheDogPark(String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +36,7 @@ public class InTheNeighborhood extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		InTheNeighborhood n = new InTheNeighborhood("In the Neighborhood");
+		InTheDogPark n = new InTheDogPark("In the Dog Park");
 	}
 
 }

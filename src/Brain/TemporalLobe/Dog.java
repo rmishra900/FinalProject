@@ -43,20 +43,20 @@ import java.awt.image.ImageObserver;
 //import javax.media.j3d.Sound;
 import javax.swing.ImageIcon;
 
-public class NeighborhoodObject extends Rectangle2D.Double {
+public class Dog extends Rectangle2D.Double {
 	
 	private Image image; 
-	private NeighborhoodSound sound;
+	private DogSound sound;
 	
-	public NeighborhoodObject(Image img, String soundFilename) {
+	public Dog(Image img, String soundFilename) {
 		image = img;
-		sound = new NeighborhoodSound(soundFilename);
+		sound = new DogSound(soundFilename);
 	}
 	
 	
-	public NeighborhoodObject(String imgFilename, String soundFilename, int x, int y, int w, int h) {
+	public Dog(String imgFilename, String soundFilename, int x, int y, int w, int h) {
 		image = new ImageIcon(imgFilename).getImage();
-		sound = new NeighborhoodSound(soundFilename);
+		sound = new DogSound(soundFilename);
 		
 		this.x = x;
 		this.y = y;
@@ -73,7 +73,7 @@ public class NeighborhoodObject extends Rectangle2D.Double {
 		return image;
 	}
 
-	public NeighborhoodSound getSound() {
+	public DogSound getSound() {
 		return sound;
 	}
 

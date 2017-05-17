@@ -8,13 +8,13 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
-public class NeighborhoodSound
+public class DogSound
 {
   private SourceDataLine line = null;
   private byte[] audioBytes;
   private int numBytes;
 
-  public NeighborhoodSound(String fileName)
+  public DogSound(String fileName)
   {
     File  soundFile = new File(fileName);
     AudioInputStream audioInputStream = null;
