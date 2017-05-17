@@ -27,7 +27,7 @@ public class TemporalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		TemporalMain t = new TemporalMain("In The Neighborhood");
+		Locked l = new Locked("Locked");
 	}
 
 }

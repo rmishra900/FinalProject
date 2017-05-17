@@ -1,40 +1,42 @@
 package Brain.TemporalLobe;
 
 import java.awt.CardLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class TemporalMain extends JFrame {
+import Brain.FrontalLobe.FlyingArrows;
+import Brain.FrontalLobe.FrontalRules;
+
+public class Locked extends JFrame{
+
 	JPanel cardPanel;
 	
-	
-	public TemporalMain(String title) {
+	public Locked(String title) {
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
-	    
-	    Temporal t = new Temporal();
-	    t.setVisible(true);
-	    add(t);
-	    addMouseListener(new MouseAdapter() {});
- 	    addMouseMotionListener(new MouseMotionAdapter() {});
-
-
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
+	    
+	    
+	    TemporalRules r = new TemporalRules();
+	    r.setVisible(true);
+	    add(r);
+	
+	    cardPanel.add(r);
+	   
+	    
 
-	    cardPanel.add(t);
 	    add(cardPanel);
 	    setVisible(true);
 	}
 	
+	
 	public static void main(String[] args) {
-		TemporalMain f = new TemporalMain("In The Neighborhood");
-
+		Locked n = new Locked("In the Dog Park");
 	}
+
 }

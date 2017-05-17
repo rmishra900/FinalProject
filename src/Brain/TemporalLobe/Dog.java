@@ -46,17 +46,17 @@ import javax.swing.ImageIcon;
 public class Dog extends Rectangle2D.Double {
 	
 	private Image image; 
-	private DogSound sound;
+	private Sound sound;
 	
 	public Dog(Image img, String soundFilename) {
 		image = img;
-		sound = new DogSound(soundFilename);
+		sound = new Sound(soundFilename);
 	}
 	
 	
 	public Dog(String imgFilename, String soundFilename, int x, int y, int w, int h) {
 		image = new ImageIcon(imgFilename).getImage();
-		sound = new DogSound(soundFilename);
+		sound = new Sound(soundFilename);
 		
 		this.x = x;
 		this.y = y;
@@ -73,7 +73,7 @@ public class Dog extends Rectangle2D.Double {
 		return image;
 	}
 
-	public DogSound getSound() {
+	public Sound getSound() {
 		return sound;
 	}
 

@@ -16,7 +16,7 @@ import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.OccipitalLobe.SymbolPanel;
 import Brain.ParietalLobe.HoleInTheWall;
-import Brain.TemporalLobe.InTheDogPark;
+import Brain.TemporalLobe.Locked;
 import Brain.FrontalLobe.FlyingArrows;
 
 /**
@@ -74,7 +74,7 @@ public class Menu extends JPanel implements ActionListener {
 		} else if (src == parietal) {
 			HoleInTheWall p = new HoleInTheWall("Hole in the Wall", c);
 		} else if (src == temporal) {
-			InTheDogPark n = new InTheDogPark("InTheNeighborHood");
+			Locked n = new Locked("InTheNeighborHood");
 		}
 	}
 }
