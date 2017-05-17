@@ -19,10 +19,11 @@ import Brain.Lobe;
  * @version 5/15/2017
  *
  */
-public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListener {
+public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
+	private HoleInTheWall h;
 	
 	private Image background;
 	private Wall w;
@@ -35,7 +36,7 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 	/**
 	 * Constucts a new instance of this panel.
 	 */
-	public ParietalPanel() {
+	public Parietal(HoleInTheWall h) {
 		super();
 		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -46,6 +47,7 @@ public class ParietalPanel extends Lobe implements KeyListener{ //, ActionListen
 		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW));
 		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW));
 		setBackground(Color.WHITE);
+		this.h = h;
 		
 		numCorrect = 0;
 		seconds = 30;
