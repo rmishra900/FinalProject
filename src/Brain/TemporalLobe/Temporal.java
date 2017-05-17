@@ -26,6 +26,8 @@ public class Temporal extends JPanel implements MouseListener {
 	private Image background;
 	private Dog selectedDog;
 	
+	int numCorrect;
+	
 	public Temporal() {
 		super();
 		dogs = new Dog[8];
@@ -60,11 +62,9 @@ public class Temporal extends JPanel implements MouseListener {
 			
 		selectedDog.draw(g, selectedDog.getImage(), selectedDog.getX(), selectedDog.getY(), selectedDog.getWidth(), 
 				selectedDog.getHeight(), this);
-		
-		
 	}
 	
-	private void initializeDogs() {
+	private void initializeDogs() { // do we want random locations or the same location every time? 
 		dogs[0] = new Dog("Dog0.png", "Dog0.wav", 50, 50, 150, 150);
 		dogs[1] = new Dog("Dog1.png", "Dog1.wav", 200, 50, 150, 150);
 		dogs[2] = new Dog("Dog2.png", "Dog2.wav", 350, 50, 150, 150);
@@ -78,7 +78,8 @@ public class Temporal extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		if(selectedDog.intersects(e.getX(), e.getY(), selectedDog.getWidth(), selectedDog.getHeight())) {
 			selectedDog.getSound().play();
-		}
+			numCorrect++;
+		} 
 	}
 
 	public void mousePressed(MouseEvent e) {
