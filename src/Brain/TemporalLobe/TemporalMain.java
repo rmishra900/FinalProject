@@ -17,18 +17,18 @@ public class TemporalMain extends JFrame {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    
-	    Temporal t = new Temporal();
-	    t.setVisible(true);
-	    add(t);
-	    addMouseListener(new MouseAdapter() {});
- 	    addMouseMotionListener(new MouseMotionAdapter() {});
+//	    Temporal t = new Temporal();
+//	    t.setVisible(true);
+//	    add(t);
+//	    addMouseListener(new MouseAdapter() {});
+// 	    addMouseMotionListener(new MouseMotionAdapter() {});
 
 
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
 
-	    cardPanel.add(t);
+//	    cardPanel.add(t);
 	    add(cardPanel);
 	    setVisible(true);
 	}

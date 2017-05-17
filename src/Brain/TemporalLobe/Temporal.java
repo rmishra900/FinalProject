@@ -15,19 +15,24 @@ import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Coma.Coma;
+
 
 public class Temporal extends JPanel implements MouseListener {
 	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
+	private InTheDogPark i;
+	private Coma c;
 	private Dog[] dogs;
-
 	private Image background;
 	private Dog selectedDog;
 	
-	public Temporal() {
+	public Temporal(InTheDogPark i, Coma c) {
 		super();
+		this.i = i;
+		this.c = c;
 		dogs = new Dog[8];
 		super.addMouseListener(this);
 		background = new ImageIcon("TemporalBackground.png").getImage();

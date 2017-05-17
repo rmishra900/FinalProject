@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import Brain.Lobe;
+import Coma.Coma;
 
 /**
  * Represents the panel of the parietal lobe game with the drawn background and objects needed. 
@@ -24,8 +25,9 @@ public class Parietal extends Lobe implements KeyListener, ActionListener {
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
 	private HoleInTheWall h;
+	private Coma c;
 	
-	private JButton back;
+	private JButton back, menu;
 	private Image background;
 	private Wall w;
 	private ArrayList<Shape> s;
@@ -36,7 +38,7 @@ public class Parietal extends Lobe implements KeyListener, ActionListener {
 	/**
 	 * Constucts a new instance of this panel.
 	 */
-	public Parietal(HoleInTheWall h) {
+	public Parietal(HoleInTheWall h, Coma c) {
 		super();
 		setLayout(null);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -48,18 +50,27 @@ public class Parietal extends Lobe implements KeyListener, ActionListener {
 		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.h = h;
+		this.c = c;
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
-		back.setLocation(0, 0);
+		back.setLocation(25, 0);
+		
+		menu = new JButton("MENU");
+		menu.setBackground(Color.YELLOW);
+		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		menu.setSize(100, 50);
+		menu.setLocation(150, 0);
 		
 		add(back);
 		back.addActionListener(this);
+		add(menu);
+		menu.addActionListener(this);
 		
 		numCorrect = 0;
-		seconds = 45;
+		seconds = 2;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
@@ -238,9 +249,12 @@ public class Parietal extends Lobe implements KeyListener, ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		h.changePanel("1");
-		
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		if (src == back)
+			h.changePanel("1");
+		else if (src == menu)
+			c.changePanel("3");
 	}
 
 }
