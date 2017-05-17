@@ -29,16 +29,18 @@ public class Locked extends JFrame{
 	    add(r);
 	
 	    cardPanel.add(r);
-	   
-	    
 
 	    add(cardPanel);
 	    setVisible(true);
 	}
 	
+	public void changePanel(String name) {
+		((CardLayout)cardPanel.getLayout()).show(cardPanel, name);
+		requestFocus();
+	}
 	
 	public static void main(String[] args) {
-		Coma c = new Coma("COMA");
+		Locked c = new Locked("Locked");
 	}
 
 }

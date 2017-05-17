@@ -61,6 +61,22 @@ public class Temporal extends JPanel {
 		add(back);
 	}
 	
+	public void setPanelNum(int x) {
+		panelNumber = x;
+	}
+	
+	public int getPanelNum() {
+		return panelNumber;
+	}
+	
+	public void switchRooms() {
+		panelNumber++;
+	}
+	
+	public Room[] getRooms() {
+		return rooms;
+	}
+	
 	private void initializeRooms() {
 		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
 		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
@@ -71,5 +87,7 @@ public class Temporal extends JPanel {
 		rooms[6] = new Room("Room6.png", "Room6.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
 		rooms[7] = new Room("Room7.png", "Room7.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
+	
+	
 
 }
