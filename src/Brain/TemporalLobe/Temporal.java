@@ -29,6 +29,8 @@ public class Temporal extends JPanel implements MouseListener {
 	private Image background;
 	private Dog selectedDog;
 	
+	int numCorrect;
+	
 	public Temporal(InTheDogPark i, Coma c) {
 		super();
 		this.i = i;
@@ -83,7 +85,8 @@ public class Temporal extends JPanel implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		if(selectedDog.intersects(e.getX(), e.getY(), selectedDog.getWidth(), selectedDog.getHeight())) {
 			selectedDog.getSound().play();
-		}
+			numCorrect++;
+		} 
 	}
 
 	public void mousePressed(MouseEvent e) {
