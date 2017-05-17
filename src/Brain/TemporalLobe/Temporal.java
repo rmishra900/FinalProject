@@ -21,21 +21,18 @@ public class Temporal extends JPanel implements MouseListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
-	private NeighborhoodObject[] nObjects;
+	private Dog[] dogs;
 
 	private Image background;
-	private NeighborhoodObject n;
-	
-
+	private Dog selectedDog;
 	
 	public Temporal() {
 		super();
-		nObjects = new NeighborhoodObject[20];
+		dogs = new Dog[8];
 		super.addMouseListener(this);
 		background = new ImageIcon("TemporalBackground.png").getImage();
-		//initializeNObjects();
-		nObjects[1]= new NeighborhoodObject("Dog1.png", "Dog1.wav", 50, 50, 200, 200);
-		n = nObjects[1];	
+		initializeDogs();
+		selectedDog = dogs[(int)(Math.random()*8)];
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -61,19 +58,26 @@ public class Temporal extends JPanel implements MouseListener {
 		add(back);
 	
 			
-		n.draw(g, n.getImage(), n.getX(), n.getY(), n.getWidth(), n.getHeight(), this);
+		selectedDog.draw(g, selectedDog.getImage(), selectedDog.getX(), selectedDog.getY(), selectedDog.getWidth(), 
+				selectedDog.getHeight(), this);
 		
 		
 	}
 	
-	private void initializeNObjects() {
-		nObjects[1]= new NeighborhoodObject("Dog1.png", "Dog1.wav", 50, 50, 200, 200);
-		//nObjects[2] = new NeighborhoodObject()
+	private void initializeDogs() {
+		dogs[0] = new Dog("Dog0.png", "Dog0.wav", 50, 50, 150, 150);
+		dogs[1] = new Dog("Dog1.png", "Dog1.wav", 200, 50, 150, 150);
+		dogs[2] = new Dog("Dog2.png", "Dog2.wav", 350, 50, 150, 150);
+		dogs[3] = new Dog("Dog3.png", "Dog3.wav", 500, 50, 150, 150);
+		dogs[4] = new Dog("Dog4.png", "Dog4.wav", 50, 200, 150, 150);
+		dogs[5] = new Dog("Dog5.png", "Dog5.wav", 200, 200, 150, 150);
+		dogs[6] = new Dog("Dog6.png", "Dog6.wav", 350, 200, 150, 150);
+		dogs[7] = new Dog("Dog7.png", "Dog7.wav", 500, 200, 150, 150);
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		if(n.intersects(e.getX(), e.getY(), n.getWidth(), n.getHeight())) {
-			n.getSound().play();
+		if(selectedDog.intersects(e.getX(), e.getY(), selectedDog.getWidth(), selectedDog.getHeight())) {
+			selectedDog.getSound().play();
 		}
 	}
 
