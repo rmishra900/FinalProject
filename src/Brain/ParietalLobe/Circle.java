@@ -39,8 +39,7 @@ public class Circle extends Shape {
 	 * Moves this circle to the left by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act() {
-		vX += 0.02;
-		x -= vX;
+		x -= 2;
 	}
 
 	/**

@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  *
  */
 public abstract class Shape {
-	protected double x, y, vX, vY;
+	protected double x, y;
 	protected Color shapeColor;
 	
 	/**
@@ -24,8 +24,6 @@ public abstract class Shape {
 	public Shape(double xCoord, double yCoord, Color c) {
 		x = xCoord;
 		y = yCoord;
-		vX = 0;
-		vY = 0;
 		shapeColor = c;
 	}
 	

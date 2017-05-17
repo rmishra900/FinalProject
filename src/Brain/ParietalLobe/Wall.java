@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class Wall extends Rectangle2D.Double {
 
-	private double vY;
 	private ArrayList<Shape> s;
 	
 	/**
@@ -24,9 +23,8 @@ public class Wall extends Rectangle2D.Double {
 	 * @param width the width of the wall
 	 * @param height the height of the wall
 	 */
-	public Wall(int x, int y, double vY, int width, int height) {
+	public Wall(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.vY = vY;
 		s = new ArrayList<Shape>();
 		s.add(new Circle(x + 15, y + 20, 30, Color.WHITE));
 		s.add(new Triangle((x * 2 + width) / 2, y + 120, 70, Color.WHITE));
@@ -37,7 +35,6 @@ public class Wall extends Rectangle2D.Double {
 	 * Moves this wall up or down by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act(int x) {
-//		vY += 0.85;
 		if (x > 0) {
 			y -= 20;
 		}
@@ -48,10 +45,6 @@ public class Wall extends Rectangle2D.Double {
 		for (Shape sh: s) {
 			sh.moveWithWall(x);
 		}
-	}
-	
-	public double getVelocity() {
-		return vY;
 	}
 	
 	/**
@@ -90,10 +83,12 @@ public class Wall extends Rectangle2D.Double {
 		}
 		else {
 			Triangle t1 = (Triangle)s.get(1);
-			Triangle tri = new Triangle(shape.x, shape.y, 60, Color.BLACK);
+			Triangle tri = (Triangle)shape;
 			if (tri.getYCoords()[0] >= t1.getYCoords()[0] - 5 && tri.getYCoords()[0] + tri.getHeight() <= t1.getYCoords()[0] + t1.getHeight() + 5) {
-				t1.changeColor(); 
+				if(tri.getXCoords()[1] >= x && tri.getXCoords()[2] <= x + width) {
+					t1.changeColor(); 
 				return true;
+				}
 			}
 		}
 		return false;

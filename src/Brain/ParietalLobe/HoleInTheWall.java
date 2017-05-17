@@ -1,7 +1,6 @@
 package Brain.ParietalLobe;
 
 import java.awt.CardLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -10,17 +9,19 @@ import Coma.Coma;
 public class HoleInTheWall extends JFrame {
 	
 	private JPanel gamePanel;
+	private Coma c;
 	
-	public HoleInTheWall(String title) {
+	public HoleInTheWall(String title, Coma c) {
 		super(title);
+		this.c = c;
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    
+		
 	    gamePanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    gamePanel.setLayout(cl);
 	    
-	    ParietalRules panel1 = new ParietalRules(this);
+	    ParietalRules panel1 = new ParietalRules(this, c);
 	    Parietal panel2 = new Parietal(this);
 
 	    gamePanel.add(panel1, "1");

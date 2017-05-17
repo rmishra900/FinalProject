@@ -38,8 +38,7 @@ public class Square extends Shape{
 	 * Moves this square to the left by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act() {
-		vX += 0.02;
-		x -= vX;
+		x -= 2;
 	}
 
 	/**
@@ -48,7 +47,6 @@ public class Square extends Shape{
 	 * 			if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
-//			vY += 0.85;
 		if (a > 0) {
 			y -= 20;
 		}

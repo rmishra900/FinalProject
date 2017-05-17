@@ -29,7 +29,6 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 	private Wall w;
 	private ArrayList<Shape> s;
 	private Shape drawS1;
-//	private JLabel timer;
 	private int random, numCorrect, seconds, threshold;
 	private boolean continueGame;
 	
@@ -41,20 +40,20 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 		
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
-		w = new Wall(40, 200, 0, 90, 270); // Wall(x, y, vY, width, height)
+		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 20, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.h = h;
 		
 		numCorrect = 0;
-		seconds = 30;
+		seconds = 45;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 700;
+		threshold = 1000;
 		
 		Timer clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,51 +106,63 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
-		g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-		g.setColor(Color.WHITE);
-		g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
-		g.setColor(Color.BLACK);
-		g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
-		
-		g.setFont(new Font("SansSerif", 3, 24));
-		g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
-		
-		g.setColor(Color.YELLOW);
-		g.setFont(new Font("SansSerif", 3, 50));
-		g.drawString("00:" + format(seconds % 60), 600, 50);
-		
-		w.draw(g2);
-		drawS1.draw(g2);
-		
-		if (w.passes(drawS1) && continueGame) {
-			numCorrect++;
-//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
-		}
+		if (continueGame) {
+			g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
+			g.setColor(Color.WHITE);
+			g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+			g.setColor(Color.BLACK);
+			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 			
-		if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
-			if (drawS1.x <= w.x) {
-				shootShape();
+			g.setFont(new Font("SansSerif", 3, 24));
+			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
+			
+			g.setColor(Color.YELLOW);
+			g.setFont(new Font("SansSerif", 3, 50));
+			g.drawString("00:" + format(seconds % 60), 600, 50);
+			
+			w.draw(g2);
+			drawS1.draw(g2);
+			
+			if (w.passes(drawS1)) {
+				numCorrect++;
+	//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
+			}
+				
+			if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
+				if (drawS1.x <= w.x) {
+					shootShape();
+				}
+			}
+			else {
+				Triangle t = (Triangle)drawS1;
+				if (t.getXCoords()[1] <= w.x) {
+					shootShape();
+				}
+			}
+			
+			if (!screenRect.intersects(w))
+		  		redrawWall();
+			
+			if(numCorrect >= threshold && seconds > 0 || seconds == 0 && numCorrect < threshold) {
+				continueGame = false;
 			}
 		}
-		else {
-			Triangle t = (Triangle)drawS1;
-			if (t.getXCoords()[1] <= w.x) {
-				shootShape();
-			}
-		}
-		
-		if (!screenRect.intersects(w))
-	  		redrawWall();
 		
 		g2.setTransform(at);
 		
-		if(numCorrect >= threshold && seconds > 0) {
-			continueGame = false;
+		if(!continueGame) {
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 100));
-			g.drawString("YOU WIN", 200, 300);
+			
+			if(numCorrect >= threshold && seconds > 0) {
+				g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+			}
+			else if (seconds == 0 && numCorrect < threshold) {
+				g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
+			}
+			
 			g.setColor(Color.WHITE);
 			g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
 			g.setColor(Color.BLACK);
@@ -160,26 +171,6 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 			g.setFont(new Font("SansSerif", 3, 24));
 			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 		
-			g.setColor(Color.YELLOW);
-			g.setFont(new Font("SansSerif", 3, 50));
-			g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
-			return;
-		}
-		else if(seconds == 0 && numCorrect < threshold) {
-			continueGame = false;
-			g.setColor(Color.WHITE);
-			g.fillRect(0, 0, getWidth(), getHeight());
-			g.setColor(Color.YELLOW);
-			g.setFont(new Font("SansSerif", 3, 100));
-			g.drawString("YOU LOSE", 150, 300);
-			g.setColor(Color.WHITE);
-			g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
-			g.setColor(Color.BLACK);
-			g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
-			
-			g.setFont(new Font("SansSerif", 3, 24));
-			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
-			
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 50));
 			g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
@@ -194,9 +185,9 @@ public class Parietal extends Lobe implements KeyListener{ //, ActionListener {
 	 */
 	public void redrawWall() {
 		if (w.getY() + w.getWidth() >= DRAWING_HEIGHT)
-			w = new Wall((int)w.getX(), (int)-w.getHeight(), 0, (int)w.getWidth(), (int)w.getHeight());
+			w = new Wall((int)w.getX(), (int)-w.getHeight(), (int)w.getWidth(), (int)w.getHeight());
 		else
-			w = new Wall((int)w.getX(), DRAWING_HEIGHT, 0, (int)w.getWidth(), (int)w.getHeight());
+			w = new Wall((int)w.getX(), DRAWING_HEIGHT, (int)w.getWidth(), (int)w.getHeight());
 	}
 	
 	/**

@@ -2,9 +2,11 @@ package Brain;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,11 +17,13 @@ import Brain.FrontalLobe.FrontalMain;
 
 
 public abstract class Rules extends JPanel implements ActionListener {
-
+	public static final int DRAWING_WIDTH = 800;
+	public static final int DRAWING_HEIGHT = 600;
+	
 	//private Image greenArrow, blueArrow, redArrow, background;
 	private Image background;
-	private JButton begin;
-	private JLabel rulesBackground, rules;
+	protected JButton begin, back;
+	protected JLabel rulesBackground, rules;
 
 	
 	/**
@@ -30,9 +34,13 @@ public abstract class Rules extends JPanel implements ActionListener {
 
 		begin = new JButton("BEGIN");
 		begin.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-	
 		begin.setSize(100, 50);
 		begin.setLocation(325, 500);
+		
+		back = new JButton("MENU");
+		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		back.setSize(100, 50);
+		
 		background = new ImageIcon("frontal" + System.getProperty("file.separator") + "RulesBackground.jpg").getImage();
 		
 		rulesBackground = new JLabel();
@@ -56,14 +64,16 @@ public abstract class Rules extends JPanel implements ActionListener {
 		add(rulesBackground);
 		
 		add(begin);
+		add(back);
 		begin.addActionListener(this);
+		back.addActionListener(this);
 		
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 	
 	}
 	
