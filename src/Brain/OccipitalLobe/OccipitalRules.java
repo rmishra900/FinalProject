@@ -58,10 +58,11 @@ public class OccipitalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		ShowMeTheLight game = new ShowMeTheLight("Show Me the Light");
 		Thread t = new Thread("my non EDT thread") {
 	            public void run() {
 	                //my work
-	                new ShowMeTheLight("Show Me the Light");
+	               game.act();
 	            }
 	        };
 	        t.start();

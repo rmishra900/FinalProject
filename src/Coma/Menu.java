@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 
 import Brain.OccipitalLobe.Occipital;
-import Brain.OccipitalLobe.OccipitalMain;
+import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.OccipitalLobe.SymbolPanel;
 import Brain.TemporalLobe.InTheNeighborhood;
 import Brain.FrontalLobe.FlyingArrows;
@@ -60,10 +60,11 @@ public class Menu extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
+			ShowMeTheLight s = new ShowMeTheLight("Show Me the Light");
 			Thread t = new Thread("my non EDT thread") {
 	            public void run() {
 	                //my work
-	                new OccipitalMain("Show Me the Light");
+	            	s.act();
 	            }
 	        };
 	        t.start();

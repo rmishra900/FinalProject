@@ -37,8 +37,6 @@ public class Occipital extends JPanel implements MouseListener {
 	private boolean showObjects;
 	private Image background;
 	private int correct;
-	private int numCorrect;
-	
 
 	/**
 	 * Constructs a new instance of the background with all the FlyingObjects on it. 
@@ -53,6 +51,7 @@ public class Occipital extends JPanel implements MouseListener {
 		initializeObstacles();
 		initializeSymbol();
 		
+		setVisible(true);
 	}
 	
 	private void initializeSymbol() {
@@ -77,10 +76,10 @@ public class Occipital extends JPanel implements MouseListener {
 		}
 	}
 	
-	private void reset() {
-		showObjects = true;
+	public void reset() {
 		initializeObstacles();
 		initializeSymbol();
+		showObjects = true;
 	}
 	
 	/**
