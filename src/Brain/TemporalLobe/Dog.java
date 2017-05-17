@@ -55,8 +55,13 @@ public class Dog extends Rectangle2D.Double {
 	
 	
 	public Dog(String imgFilename, String soundFilename, int x, int y, int w, int h) {
+<<<<<<< HEAD
 		image = new ImageIcon(imgFilename).getImage();
 		sound = new Sound(soundFilename);
+=======
+		image = new ImageIcon("temporal" + System.getProperty("file.separator") + imgFilename).getImage();
+		sound = new DogSound("temporal" + System.getProperty("file.separator") + soundFilename);
+>>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 		
 		this.x = x;
 		this.y = y;

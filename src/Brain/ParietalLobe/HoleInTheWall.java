@@ -22,7 +22,7 @@ public class HoleInTheWall extends JFrame {
 	    gamePanel.setLayout(cl);
 	    
 	    ParietalRules panel1 = new ParietalRules(this, c);
-	    Parietal panel2 = new Parietal(this);
+	    Parietal panel2 = new Parietal(this, c);
 
 	    gamePanel.add(panel1, "1");
 	    gamePanel.add(panel2, "2");

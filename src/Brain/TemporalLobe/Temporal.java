@@ -15,21 +15,26 @@ import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Coma.Coma;
+
 
 public class Temporal extends JPanel implements MouseListener {
 	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
+	private InTheDogPark i;
+	private Coma c;
 	private Dog[] dogs;
-
 	private Image background;
 	private Dog selectedDog;
 	
 	int numCorrect;
 	
-	public Temporal() {
+	public Temporal(InTheDogPark i, Coma c) {
 		super();
+		this.i = i;
+		this.c = c;
 		dogs = new Dog[8];
 		super.addMouseListener(this);
 		background = new ImageIcon("TemporalBackground.png").getImage();
@@ -62,9 +67,11 @@ public class Temporal extends JPanel implements MouseListener {
 			
 		selectedDog.draw(g, selectedDog.getImage(), selectedDog.getX(), selectedDog.getY(), selectedDog.getWidth(), 
 				selectedDog.getHeight(), this);
+		
+		
 	}
 	
-	private void initializeDogs() { // do we want random locations or the same location every time? 
+	private void initializeDogs() {
 		dogs[0] = new Dog("Dog0.png", "Dog0.wav", 50, 50, 150, 150);
 		dogs[1] = new Dog("Dog1.png", "Dog1.wav", 200, 50, 150, 150);
 		dogs[2] = new Dog("Dog2.png", "Dog2.wav", 350, 50, 150, 150);

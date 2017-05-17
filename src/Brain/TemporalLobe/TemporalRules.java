@@ -3,11 +3,17 @@ package Brain.TemporalLobe;
 import java.awt.event.ActionEvent;
 
 import Brain.Rules;
+import Coma.Coma;
 
 public class TemporalRules extends Rules{
 	
-	public TemporalRules() {
+	private InTheDogPark i;
+	private Coma c;
+	
+	public TemporalRules(InTheDogPark i, Coma c) {
 		super();
+		this.i = i;
+		this.c = c;
 	}
 
 	@Override
@@ -27,7 +33,15 @@ public class TemporalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 		Locked l = new Locked("Locked");
+=======
+		Object src = e.getSource();
+		if (src == begin)
+			i.changePanel("2");
+		else if (src == back)
+			c.changePanel("3");
+>>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 	}
 
 }
