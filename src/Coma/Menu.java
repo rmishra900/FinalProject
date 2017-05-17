@@ -62,13 +62,6 @@ public class Menu extends JPanel implements ActionListener {
 		Object src = e.getSource();
 		if (src == occipital) {
 			ShowMeTheLight s = new ShowMeTheLight("Show Me the Light");
-			Thread t = new Thread("my non EDT thread") {
-	            public void run() {
-	                //my work
-	            	s.act();
-	            }
-	        };
-	        t.start();
 		} else if (src == frontal) {
 			FlyingArrows f = new FlyingArrows("Flying Arrows");
 		} else if (src == parietal) {

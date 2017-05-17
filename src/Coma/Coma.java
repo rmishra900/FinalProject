@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 /**
  * Represents the window that the game begins on. 
  * @author Thanh Luong
