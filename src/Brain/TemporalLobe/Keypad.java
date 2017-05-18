@@ -124,7 +124,7 @@ public class Keypad extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			
+
 	}
    
 }
