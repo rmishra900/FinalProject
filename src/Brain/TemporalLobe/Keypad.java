@@ -169,6 +169,10 @@ public class Keypad extends JPanel implements ActionListener {
     public String getEntered() {
     	return passcodeEntered;
     }
+    
+    public void setEntered(String p) {
+    	passcodeEntered = p;
+    }
 
 	/*public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -223,6 +227,8 @@ public class Keypad extends JPanel implements ActionListener {
 		if (passcodeEntered.length() == 4)
 			resetEntered();
 		passcodeEntered += e.getActionCommand();
+		setEntered(passcodeEntered);
+		System.out.println(passcodeEntered);
 	}
 
   

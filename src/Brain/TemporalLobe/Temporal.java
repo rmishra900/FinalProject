@@ -42,7 +42,8 @@ public class Temporal extends JPanel implements ActionListener {
 	private int numCorrect;
 	private int panelNumber;
 	private int[][] previousCodes;
-	private JLabel buttonsPressed;
+	//private JLabel buttonsPressed;
+	private JTextField buttonsPressed;
 	private String buttonsPressedText;
 
 	/**
@@ -62,13 +63,21 @@ public class Temporal extends JPanel implements ActionListener {
 
 		panelNumber = 0;
 		initializeRooms();
-		buttonsPressed = new JLabel();
-		buttonsPressed.setLocation(600, 0);
-		//buttonsPressed.setForeground(Color.BLACK);
-		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
-		buttonsPressed.setSize(150,50);
-		buttonsPressed.setBackground(Color.WHITE);
-		add(buttonsPressed);
+		//buttonsPressed = new JLabel();
+//		buttonsPressed.setLocation(0, 500);
+//		//buttonsPressed.setForeground(Color.BLACK);
+//		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
+//		buttonsPressed.setSize(150,50);
+//		buttonsPressed.setForeground(Color.WHITE);
+		
+		buttonsPressed = new JTextField();
+ 		buttonsPressed.setLocation(325, 500);
+ 		buttonsPressed.setForeground(Color.BLACK);
+ 		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
+  		buttonsPressed.setSize(150,50);
+  		buttonsPressed.setBackground(Color.WHITE);
+  		buttonsPressed.setEditable(false);
+		
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -95,6 +104,7 @@ public class Temporal extends JPanel implements ActionListener {
 		menu.addActionListener(this);
 		add(play);
 		play.addActionListener(this);
+		
 		
 		add(buttonsPressed);
 		add(k);
@@ -130,11 +140,24 @@ public class Temporal extends JPanel implements ActionListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-	
+
 		if (k.getEntered() != null) {
 			buttonsPressed.setText(k.getEntered());
 			System.out.println(k.getEntered());	
 		}
+		
+		g2.setTransform(at);
+	}
+	
+	public void winGame() {
+		
+//		for(int i = 0; i<rooms[0].getPasscode().length; i++) {
+//			for(int j = 0; j<k.getEntered().length(); j++) {
+//				if(rooms[0].getPasscode)
+//			}
+//		}
+		
+	//	if(k.getEntered().equals(rooms[0].getPasscode()))
 	}
 
 	
