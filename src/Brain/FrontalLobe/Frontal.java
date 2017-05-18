@@ -118,7 +118,8 @@ public class Frontal extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				seconds--;
 				timer.setText(format(seconds/60)+":"+format(seconds%60));
-				if(seconds == 0 || winGame()==true) {
+				if(seconds
+						== 0 || winGame()==true) {
 					Timer x = (Timer) e.getSource();
 					x.stop();
 				}
