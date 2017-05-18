@@ -21,6 +21,7 @@ public class Button implements ActionListener{
 	private int x, y, w, h;
 	private Sound s;
 	private JButton b;
+	private boolean pressed;
 	
 	/**
 	 * Creates a new instance of a button on the keypad. 
@@ -42,7 +43,9 @@ public class Button implements ActionListener{
 		b.setForeground(Color.BLACK);
 		b.setFont(new Font("Roman Baseline", 0, 16));
 		b.setBounds(x, y, w, h);
-		addActionListener(this);
+
+		b.addActionListener(this);
+		pressed = false;
 	
 	}
 	
@@ -53,6 +56,11 @@ public class Button implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		s.play();
+		pressed = true;
+	}
+	
+	public boolean isPressed() {
+		return pressed;
 	}
 	
 	/**
@@ -184,5 +192,17 @@ public class Button implements ActionListener{
 		this.b = b;
 	}
 	
+//	 public boolean isPressed() {
+//	    	if(getJButton().getModel().isPressed()) {
+//	    		
+//	    		return true;
+//	    	}
+//	    	else {
+//	    		System.out.println("hello");
+//	    		return false;
+//	    	}
+//	    		
+//	    }
+//	
 
 }

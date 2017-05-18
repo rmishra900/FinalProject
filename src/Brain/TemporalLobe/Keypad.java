@@ -144,7 +144,7 @@ public class Keypad extends JPanel implements ActionListener {
     	else
     		return false;
     }
-    
+
     public Button[] getButtonsPressed(Button[] buttons) {
     	ArrayList<Button> pressed = new ArrayList<Button>();
     	for(Button b: buttons) {
