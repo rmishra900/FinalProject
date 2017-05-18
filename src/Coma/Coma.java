@@ -51,7 +51,6 @@ public class Coma extends JFrame {
 	 * @param name the name of the panel to be displayed
 	 */
 	public void changePanel(String name) {
-		
 		((CardLayout)gamePanel.getLayout()).show(gamePanel, name);
 		requestFocus();
 	}

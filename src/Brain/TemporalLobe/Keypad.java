@@ -37,7 +37,14 @@ public class Keypad extends JPanel {
     	setOpaque(true);
     	setBackground(Color.WHITE);
     	setBounds(200, 80, 400, 450);
-   	
+   		
+		/*JPanel back = new JPanel();
+		back.setLayout(null);
+		back.setBackground(new Color(255,255,255, 127));
+		back.setOpaque(true);
+		back.setBounds(30, 100, 400, 400);
+		add(back);*/
+ 
     
 
     	buttons = new Button[10];
@@ -116,6 +123,7 @@ public class Keypad extends JPanel {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+
     }
  
              
