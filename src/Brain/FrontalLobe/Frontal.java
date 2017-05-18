@@ -1,8 +1,7 @@
 package Brain.FrontalLobe;
 
 import java.awt.Color;
-
-
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,9 +14,12 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+
+import Coma.Coma;
 
 import java.awt.event.ActionListener;
 
@@ -26,15 +28,18 @@ import java.awt.event.ActionListener;
  * @author reetmishra
  *
  */
-public class Frontal extends JPanel {
+public class Frontal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-	private Timer t;
 	
+	private FlyingArrows f;
+	private Coma coma;
+	
+	private Timer t;
 	private Arrow arrow;
 	private ArrayList<Arrow> arrows;
 	
-	  
+	private JButton back, menu;
 	private KeyHandler keyControl;
 	
 	private Image img;
@@ -48,9 +53,11 @@ public class Frontal extends JPanel {
 	/**
 	 * Contructs a timer, Jlabels for winning and losing, keyHandler, and initializes the arrows onto the screen
 	 */
-	public Frontal() {
+	public Frontal(FlyingArrows f, Coma coma) {
 		super();
-		
+		setLayout(null);
+		this.f = f;
+		this.coma = coma;
 		prevX = -1;
 		direction = 37;
 		pointingTo = 37;
@@ -67,6 +74,23 @@ public class Frontal extends JPanel {
 		win.setSize(300, 100);
 		add(win);
 		setLayout(null);
+		
+		back = new JButton("BACK");
+		back.setBackground(Color.WHITE);
+		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		back.setSize(100, 50);
+		back.setLocation(25, DRAWING_HEIGHT - 105);
+		
+		menu = new JButton("MENU");
+		menu.setBackground(Color.WHITE);
+		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		menu.setSize(100, 50);
+		menu.setLocation(150, DRAWING_HEIGHT - 105);
+		
+		add(back);
+		back.addActionListener(this);
+		add(menu);
+		menu.addActionListener(this);
 		
 		keyControl = new KeyHandler();
 	
@@ -552,5 +576,14 @@ public class Frontal extends JPanel {
 		
 		}
 		
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		if (src == back)
+			f.changePanel("1");
+		else if (src == menu)
+			coma.changePanel("3");
+
 	}	
 }

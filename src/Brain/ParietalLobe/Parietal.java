@@ -8,10 +8,7 @@ import java.awt.Rectangle;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
-
 import javax.swing.*;
-
-import Brain.Lobe;
 import Coma.Coma;
 
 /**
@@ -20,7 +17,7 @@ import Coma.Coma;
  * @version 5/15/2017
  *
  */
-public class Parietal extends Lobe implements KeyListener, ActionListener {
+public class Parietal extends JPanel implements KeyListener, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
@@ -70,7 +67,7 @@ public class Parietal extends Lobe implements KeyListener, ActionListener {
 		menu.addActionListener(this);
 		
 		numCorrect = 0;
-		seconds = 2;
+		seconds = 45;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
@@ -135,7 +132,7 @@ public class Parietal extends Lobe implements KeyListener, ActionListener {
 			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 			
 			g.setFont(new Font("SansSerif", 3, 24));
-			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
+			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
 			
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 50));

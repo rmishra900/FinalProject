@@ -33,6 +33,7 @@ public class TemporalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		Object src = e.getSource();
 		if (src == begin)
 			 l = new Locked("LOCKED");

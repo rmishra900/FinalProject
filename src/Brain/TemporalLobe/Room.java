@@ -68,6 +68,8 @@ public class Room extends Rectangle2D.Double {
 	public void setPasscode(int x) {
 		passcode = x;
 	}
+	
+	
 
 	public void draw(Graphics g, Image img, double width, double height, ImageObserver io) {
 		g.drawImage(background, 0, 0, (int)width, (int)height, io);
