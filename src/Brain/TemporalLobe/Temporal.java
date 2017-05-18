@@ -51,9 +51,9 @@ public class Temporal extends JPanel implements ActionListener {
 		passcode = new int[4];
 		
 		rooms = new Room[8];
-		initializeRooms();
-		
 		previousCodes = new int[8][4];
+		
+		initializeRooms();
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
