@@ -17,12 +17,10 @@ public class Locked extends JFrame{
 	
 	public Locked(String title, Coma c) {
 		super(title);
-<<<<<<< HEAD
-=======
 		this.c = c;
 //		k = new Keypad();
 //		add(k);
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
+
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.c = c;
@@ -39,7 +37,7 @@ public class Locked extends JFrame{
 	    cardPanel.add(panel2, "2");
 	    cardPanel.add(panel3, "3");
 	    
-<<<<<<< HEAD
+
 	    TemporalRules r = new TemporalRules(this, c);
 	    r.setVisible(true);
 	    add(r);
@@ -50,7 +48,7 @@ public class Locked extends JFrame{
 
 	    cardPanel.add(r, "1");
 	    cardPanel.add(panel, "2");
-=======
+
 //	    TemporalRules r = new TemporalRules(this, c);
 //	    r.setVisible(true);
 //	    add(r);
@@ -67,7 +65,7 @@ public class Locked extends JFrame{
 //	    add(r);
 //	
 //	    cardPanel.add(r);
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
+
 
 	    add(cardPanel);
 	 
