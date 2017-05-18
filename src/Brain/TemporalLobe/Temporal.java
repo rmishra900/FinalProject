@@ -37,7 +37,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private JButton back, menu, play;
 	private int numCorrect;
 	private int panelNumber;
-	//private int[] passcode;
+	private int[] passcode;
 	private int[][] previousCodes;
 	
 
@@ -48,7 +48,7 @@ public class Temporal extends JPanel implements ActionListener {
 		k = new Keypad();
 		setLayout(null);
 		add(k);
-		//passcode = new int[4];
+		passcode = new int[4];
 		
 		rooms = new Room[8];
 		initializeRooms();
@@ -117,21 +117,21 @@ public class Temporal extends JPanel implements ActionListener {
 	}
 	
 	public int[] getRandPasscode() {
-		int[] p = rooms[getPanelNum()].getPasscode();
-		
 		for (int i = 0; i < 4; i++) {
-			p[i] = (int)(Math.random()*10);
+			passcode[i] = (int)(Math.random()*10);
 		}
-		for (int[] code : previousCodes) {
-			if (code.equals(p)) {
-				while (code[3] == p[3])
-					p[3] = (int)(Math.random()*10);
-			}
+		if (previousCodes != null) {
+			for (int[] code : previousCodes) {
+				if (code.equals(passcode)) {
+					while (code[3] == passcode[3])
+						passcode[3] = (int)(Math.random()*10);
+				}
+			}	
 		}
 		for (int c = 0; c < 4; c++) {
-			previousCodes[panelNumber][c] = p[c];
+			previousCodes[panelNumber][c] = passcode[c];
 		}
-		return p;
+		return passcode;
 	}
 	
 	private void initializeRooms() {
