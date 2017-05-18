@@ -52,19 +52,7 @@ public class Temporal extends JPanel implements ActionListener {
 		
 		rooms = new Room[8];
 		initializeRooms();
-	}
-	
-	public Temporal(Locked i, Coma c) {
-		super();
-		setLayout(null);
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		this.i = i;
-		this.c = c;
-		k = new Keypad();
-		setBackground(Color.WHITE);
-		rooms = new Room[8];
-		initializeRooms();
-
+		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
@@ -84,7 +72,6 @@ public class Temporal extends JPanel implements ActionListener {
 		
 		setVisible(true);
 	}
-
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
