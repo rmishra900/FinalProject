@@ -33,10 +33,13 @@ public class TemporalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 		Object src = e.getSource();
 		if (src == begin)
+<<<<<<< HEAD
 			 l.changePanel("2");
+=======
+			l.changePanel("2");
+>>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 		else if (src == back)
 			c.changePanel("3");
 	}
