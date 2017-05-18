@@ -5,8 +5,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+//import java.awt.event.MouseEvent;
+//import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
@@ -18,7 +20,7 @@ import javax.swing.JPanel;
  * @version 5/15/2017
  *
  */
-public class Home extends JPanel implements MouseListener{
+public class Home extends JPanel implements KeyListener{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
@@ -56,41 +58,26 @@ public class Home extends JPanel implements MouseListener{
 		g.setFont(new Font("SansSerif", 3, 100));
 		g.drawString("C.O.M.A", 200, 300);
 		g.setFont(new Font("SansSerif", 1, 20));
-		g.drawString("Click anywhere to begin", 280, 320);
+		g.drawString("Press the space button to begin", 250, 320);
 		
 		repaint();
 	}
-	
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void mousePressed(MouseEvent e) {
-		double x = e.getX();
-		double y = e.getY();
-		
-		if (e.getButton() == 1)
-		{
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			c.changePanel("2");
 		}
+		
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

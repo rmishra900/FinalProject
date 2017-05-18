@@ -30,13 +30,15 @@ public class Coma extends JFrame {
 	    Home panel1 = new Home(this); 
 	    StoryScreen panel2 = new StoryScreen(this);
 	    Menu panel3 = new Menu(this);
+	    GameOver panel4 = new GameOver(this);
 	    
 	    gamePanel.add(panel1, "1");
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
+	    gamePanel.add(panel4, "4");
 	    
 	    add(gamePanel);
-	    addMouseListener(panel1);
+	    addKeyListener(panel1);
 	    addMouseListener(panel2);
 	    
 	    setVisible(true);
