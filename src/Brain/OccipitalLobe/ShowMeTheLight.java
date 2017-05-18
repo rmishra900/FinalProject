@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Coma.Coma;
+
 public class ShowMeTheLight extends JFrame {
 
 	private JPanel cardPanel;
@@ -16,17 +18,19 @@ public class ShowMeTheLight extends JFrame {
 	private Occipital panel;
 	private SymbolPanel sp;
 	
+	private Coma c;
+	
 	private JLabel score;
 	private JLabel win;
 	private int numCorrect;
 	
-	public ShowMeTheLight(String title) {
+	public ShowMeTheLight(String title, Coma c) {
 		super(title);
+		this.c = c;
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    score = new JLabel("Score: " + numCorrect);
-	    //add(score);
 	    score.setVisible(true);
 	    win = new JLabel();
 		win.setLocation(270, 45);
@@ -38,18 +42,14 @@ public class ShowMeTheLight extends JFrame {
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
 	    
-	    
-	    OccipitalRules r = new OccipitalRules();
-	    r.setVisible(true);
-	    panel = new Occipital();
+	    OccipitalRules panel1 = new OccipitalRules(this, c);
+	    panel = new Occipital(this, c);
 	    panel.add(score);
 	    panel.setVisible(true);
 	    sp = new SymbolPanel();
 	    sp.add(score);
-	   
-	    add(r);
 	
-	    cardPanel.add(r, "1");
+	    cardPanel.add(panel1, "1");
 	    cardPanel.add(panel, "2");
 	    cardPanel.add(sp, "3");
 
@@ -139,7 +139,7 @@ public class ShowMeTheLight extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		ShowMeTheLight luz = new ShowMeTheLight("Show Me the Light");
+		Coma c = new Coma("COMA");
 	}
 
 }

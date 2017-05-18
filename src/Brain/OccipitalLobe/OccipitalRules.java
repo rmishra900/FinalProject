@@ -13,28 +13,24 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Brain.Rules;
+import Brain.ParietalLobe.HoleInTheWall;
+import Coma.Coma;
 
 public class OccipitalRules extends Rules{
+	private ShowMeTheLight s;
+	private Coma c;
 
-	private String text;
-	private Image background;
-	private JButton begin;
-	private JLabel rulesBackground, rules;
-
-	
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
-	public OccipitalRules() {
+	public OccipitalRules(ShowMeTheLight s, Coma c) {
 		super();
-		
+		this.s = s;
+		this.c = c;
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-	
 	}
 	
 	/**
@@ -58,7 +54,7 @@ public class OccipitalRules extends Rules{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ShowMeTheLight game = new ShowMeTheLight("Show Me the Light");
+		ShowMeTheLight game = new ShowMeTheLight("Show Me the Light", c);
 		Thread t = new Thread("my non EDT thread") {
 	            public void run() {
 	                //my work
@@ -66,5 +62,11 @@ public class OccipitalRules extends Rules{
 	            }
 	        };
 	        t.start();
+        Object src = e.getSource();
+		if (src == begin)
+			s.changePanel("2");
+		else if (src == back)
+			c.changePanel("3");
+			
 	}
 }
