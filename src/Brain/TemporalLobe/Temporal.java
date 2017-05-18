@@ -40,6 +40,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private JButton back, menu;
 	private int numCorrect;
 	private int panelNumber;
+	private int[] passcode;
 	
 
 	public Temporal(Locked l, Coma c) {
@@ -52,6 +53,7 @@ public class Temporal extends JPanel implements ActionListener {
 		
 		rooms = new Room[8];
 		initializeRooms();
+		setRandPasscode();
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -76,7 +78,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
 		
-		//g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
+		g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
 		
 		Graphics2D g2 = (Graphics2D)g;
 
@@ -88,13 +90,6 @@ public class Temporal extends JPanel implements ActionListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-
-//		JPanel back = new JPanel();
-//		back.setLayout(null);
-//		back.setBackground(new Color(255,255,255, 127));
-//		back.setOpaque(true);
-//		back.setBounds(30, 100, 400, 400);
-//		add(back);
 	}
 	
 	public void setPanelNum(int x) {
@@ -105,23 +100,30 @@ public class Temporal extends JPanel implements ActionListener {
 		return panelNumber;
 	}
 	
-	public void switchRooms() {
+	public void reset() {
 		panelNumber++;
+		setRandPasscode();
 	}
 	
 	public Room[] getRooms() {
 		return rooms;
 	}
 	
+	private void setRandPasscode() {
+		for (int i = 0; i < 4; i++) {
+			passcode[i] = (int)(Math.random()*10);
+		}
+	}
+	
 	private void initializeRooms() {
-//		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[2] = new Room("Room2.png", "Room2.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[3] = new Room("Room3.png", "Room3.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[4] = new Room("Room4.png", "Room4.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[5] = new Room("Room5.png", "Room5.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[6] = new Room("Room6.png", "Room6.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-//		rooms[7] = new Room("Room7.png", "Room7.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[2] = new Room("Room2.png", "Room2.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[3] = new Room("Room3.png", "Room3.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[4] = new Room("Room4.png", "Room4.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[5] = new Room("Room5.png", "Room5.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[6] = new Room("Room6.png", "Room6.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[7] = new Room("Room7.png", "Room7.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
 
 	public void actionPerformed(ActionEvent e) {

@@ -54,8 +54,8 @@ public class Keypad extends JPanel {
         
        for(Button b: buttons) {
     	  b.getJButton().setLayout(null);
-    	   b.getJButton().setOpaque(true);
-    	   add(b.getJButton());
+    	  b.getJButton().setOpaque(true);
+    	  add(b.getJButton());
        }
     }
 
