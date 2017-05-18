@@ -21,11 +21,12 @@ import javax.swing.JTextField;
  *
  * @author reetmishra
  */
-public class Keypad extends JPanel {
+public class Keypad extends JPanel{
 	
 	  private Button[] buttons;  
 	  private Sound[] sounds;
 	  private final int x, y, width, height;
+	  private boolean isPressed;
 
  
     public Keypad() {
@@ -38,14 +39,7 @@ public class Keypad extends JPanel {
     	setBackground(Color.WHITE);
     	setBounds(x, y, width, height);
    		
-		/*JPanel back = new JPanel();
-		back.setLayout(null);
-		back.setBackground(new Color(255,255,255, 127));
-		back.setOpaque(true);
-		back.setBounds(30, 100, 400, 400);
-		add(back);*/
- 
-    
+		isPressed = false;
 
     	buttons = new Button[10];
     	sounds = new Sound[10];
@@ -61,8 +55,6 @@ public class Keypad extends JPanel {
 
                          
     private void initializeButtons() {
-
-    	
     	int a = y;
     	int b = x-width/2 + 70;
     	 buttons[0] = new Button("1", b+5, a, sounds[0].getFilename());
@@ -110,38 +102,5 @@ public class Keypad extends JPanel {
     	return buttons[x];
     }
     
-//    public void paintComponent(Graphics g) {
-//    	super.paintComponent(g);
-//    //	g.drawImage(img, 0, 0, getWidth(), getHeight() , this);
-//		
-//    	Graphics2D g2 = (Graphics2D)g;
-//
-//	    int w = getWidth();
-//	    int h = getHeight();
-//	    
-//	    double ratioX = (double)w/width;
-//		double ratioY = (double)h/height;
-//		        
-//		AffineTransform at = g2.getTransform();
-//		g2.scale(ratioX, ratioY);
-//		
-//		
-//    	
-//    }
-    
-//    public void scale(Graphics g) {
-//    	Graphics2D g2 = (Graphics2D)g;
-//
-//	    int w = getWidth();
-//	    int h = getHeight();
-//	    
-//	    double ratioX = (double)w/width;
-//		double ratioY = (double)h/height;
-//		        
-//		AffineTransform at = g2.getTransform();
-//		g2.scale(ratioX, ratioY);
-//
-//    }
- 
              
 }

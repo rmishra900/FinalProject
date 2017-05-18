@@ -16,9 +16,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Coma.Coma;
@@ -41,6 +41,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private int numCorrect;
 	private int panelNumber;
 	private int[] passcode;
+	private JLabel userPress;
 	
 
 	public Temporal(Locked l, Coma c) {
@@ -55,6 +56,9 @@ public class Temporal extends JPanel implements ActionListener {
 		rooms = new Room[8];
 		initializeRooms();
 		setRandPasscode();
+		
+		userPress = new JLabel();
+		
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
