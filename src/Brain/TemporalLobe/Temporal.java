@@ -29,9 +29,14 @@ public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_HEIGHT = 600;
 
 	
+
 	//private Locked l;
+	private Locked l;
+
 	private Rectangle screenRect;
 	private Locked i;
+
+
 	private Coma c;
 	
 	private Room[] rooms;
@@ -42,6 +47,28 @@ public class Temporal extends JPanel implements ActionListener {
 	private int panelNumber;
 	
 
+//	public Temporal(Locked l, Coma c) {
+//		super();
+//		this.l = l;
+//		this.c = c;
+//		k = new Keypad();
+//		setLayout(null);
+//		add(k);
+//		
+//		rooms = new Room[8];
+//		initializeRooms();
+//		//add(k);
+//		setVisible(true);
+
+//	public Temporal() {
+//		super();
+//		k = new Keypad();
+//		setBackground(Color.WHITE);
+//		rooms = new Room[8];
+//		initializeRooms();
+//		//add(k);
+//	}
+
 
 
 	public Temporal(Locked i, Coma c) {
@@ -50,7 +77,7 @@ public class Temporal extends JPanel implements ActionListener {
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		this.i = i;
 		this.c = c;
-//		k = new Keypad();
+		k = new Keypad();
 		setBackground(Color.WHITE);
 		rooms = new Room[8];
 
