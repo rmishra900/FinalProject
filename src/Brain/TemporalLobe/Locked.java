@@ -9,6 +9,11 @@ import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.FrontalRules;
 import Coma.Coma;
 
+/**
+ * Represents the window that pops up when the user selects this game in the menu. 
+ * @author 
+ *
+ */
 public class Locked extends JFrame{
 
 	private JPanel cardPanel;
