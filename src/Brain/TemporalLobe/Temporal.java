@@ -45,6 +45,7 @@ public class Temporal extends JPanel implements ActionListener {
 	//private JLabel buttonsPressed;
 	private JTextField buttonsPressed;
 	private String buttonsPressedText;
+	private JLabel win;
 
 	/**
 	 * Creates a new instance of this game. 
@@ -56,6 +57,7 @@ public class Temporal extends JPanel implements ActionListener {
 		this.l = l;
 		this.c = c;
 		k = new Keypad();
+		k.setTemporal(this);
 		setLayout(null);
 		
 		rooms = new Room[8];
@@ -78,6 +80,11 @@ public class Temporal extends JPanel implements ActionListener {
   		buttonsPressed.setBackground(Color.WHITE);
   		buttonsPressed.setEditable(false);
 		
+  		win = new JLabel();
+  		win.setLocation(100,100);
+  		win.setSize(300,300);
+  		win.setForeground(Color.WHITE);
+  		win.setText("YOU WIN");
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -105,7 +112,7 @@ public class Temporal extends JPanel implements ActionListener {
 		add(play);
 		play.addActionListener(this);
 		
-		
+		add(win);
 		add(buttonsPressed);
 		add(k);
 		setVisible(true);
@@ -146,18 +153,34 @@ public class Temporal extends JPanel implements ActionListener {
 			System.out.println(k.getEntered());	
 		}
 		
+		if(winGame() == true) {
+			win.setText("YOU WIN");
+			win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+			return;
+		}
 		g2.setTransform(at);
 	}
 	
-	public void winGame() {
+	public boolean winGame() {
 		
-//		for(int i = 0; i<rooms[0].getPasscode().length; i++) {
-//			for(int j = 0; j<k.getEntered().length(); j++) {
-//				if(rooms[0].getPasscode)
-//			}
-//		}
+		int counter = 0;
 		
-	//	if(k.getEntered().equals(rooms[0].getPasscode()))
+		for(int i = 0; i<rooms[0].getPasscode().length; i++) {
+			for(int j = 0; j<k.getEntered().length(); j++) {
+				if(i==j) {
+					if(rooms[0].getPasscodeIndex(i).equals(k.getEntered(i))) {
+						counter++;
+					}
+				}
+			}
+		}
+		
+		if(counter == 4) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	

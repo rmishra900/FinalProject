@@ -35,6 +35,8 @@ public class Keypad extends JPanel implements ActionListener {
 	  private final int x, y, width, height;
 	  private boolean isPressed;
 	  private String passcodeEntered;
+	  private Temporal temporal = null;
+	  
 
 	  /**
 	   * Creates a default instance of a keypad. 
@@ -170,6 +172,16 @@ public class Keypad extends JPanel implements ActionListener {
     	return passcodeEntered;
     }
     
+    public String getEntered(int x) {
+    	String s = "";
+    	for (int i = 0; i<passcodeEntered.length(); i++) {
+    		if(i==x) {
+    			return Character.toString(passcodeEntered.charAt(i));
+    		}
+    	}
+    	return s;
+    }
+    
     public void setEntered(String p) {
     	passcodeEntered = p;
     }
@@ -219,7 +231,9 @@ public class Keypad extends JPanel implements ActionListener {
 		}
 	}*/
 
-
+    public void setTemporal(Temporal temp) {
+    	temporal = temp;
+    }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -228,6 +242,11 @@ public class Keypad extends JPanel implements ActionListener {
 			resetEntered();
 		passcodeEntered += e.getActionCommand();
 		setEntered(passcodeEntered);
+		
+		if (temporal != null) {
+			temporal.repaint();
+		}
+		
 		System.out.println(passcodeEntered);
 	}
 

@@ -109,6 +109,18 @@ public class Room extends Rectangle2D.Double {
 		}
 		return -1;
 	}
+	
+	public String getPasscodeIndex(int x) {
+		String s = "";
+		
+		for(int i = 0; i<passcode.length; i++) {
+			if(i==x) {
+				return Integer.toString(passcode[x]);
+			}
+		}
+		
+		return s;
+	}
 
 	public void draw(Graphics g, Image img, double width, double height, ImageObserver io) {
 		g.drawImage(background, 0, 0, (int)width, (int)height, io);
