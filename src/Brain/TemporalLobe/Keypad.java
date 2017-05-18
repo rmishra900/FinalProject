@@ -62,7 +62,7 @@ public class Keypad extends JPanel {
                          
     private void initializeButtons() {
 
-    	System.out.println(y+" "+getY());
+    	
     	int a = y;
     	int b = x-width/2 + 70;
     	 buttons[0] = new Button("1", b+5, a, sounds[0].getFilename());
@@ -75,7 +75,7 @@ public class Keypad extends JPanel {
     	 buttons[7] = new Button("8", b+105, a+200, sounds[7].getFilename());
     	 buttons[8] = new Button("9", b+205, a+200, sounds[8].getFilename());
     	 buttons[9] = new Button("0", b+105, a+300, sounds[9].getFilename()); 	
-    	 System.out.println("button 1"+" "+buttons[0].getY());
+    	
                   
     }
     
@@ -92,6 +92,22 @@ public class Keypad extends JPanel {
     		sounds[8] = new Sound("temporal" + System.getProperty("file.separator") + "F.wav");
     		sounds[9] = new Sound("temporal" + System.getProperty("file.separator") + "C.wav");
     		
+    }
+    
+    public Sound[] getSounds() {
+    	return sounds;
+    }
+    
+    public Button[] getButtons() {
+    	return buttons;
+    }
+    
+    public Sound getSound(int x) {
+    	return sounds[x];
+    }
+    
+    public Button getButton(int x) {
+    	return buttons[x];
     }
     
 //    public void paintComponent(Graphics g) {
