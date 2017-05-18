@@ -27,13 +27,8 @@ import Coma.Coma;
 public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-<<<<<<< HEAD
-	
+
 	private Locked l;
-=======
-	private Rectangle screenRect;
-	private Locked i;
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
 	private Coma c;
 	
 	private Room[] rooms;
@@ -43,7 +38,6 @@ public class Temporal extends JPanel implements ActionListener {
 	private int numCorrect;
 	private int panelNumber;
 	
-<<<<<<< HEAD
 	public Temporal(Locked l, Coma c) {
 		super();
 		this.l = l;
@@ -55,28 +49,6 @@ public class Temporal extends JPanel implements ActionListener {
 		rooms = new Room[8];
 		initializeRooms();
 		//add(k);
-		setVisible(true);
-=======
-//	public Temporal() {
-//		super();
-//		k = new Keypad();
-//		setBackground(Color.WHITE);
-//		rooms = new Room[8];
-//		initializeRooms();
-//		//add(k);
-//	}
-
-	public Temporal(Locked i, Coma c) {
-		super();
-		setLayout(null);
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		this.i = i;
-		this.c = c;
-//		k = new Keypad();
-		setBackground(Color.WHITE);
-		rooms = new Room[8];
-		initializeRooms();
-		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
@@ -93,8 +65,10 @@ public class Temporal extends JPanel implements ActionListener {
 		back.addActionListener(this);
 		add(menu);
 		menu.addActionListener(this);
->>>>>>> branch 'master' of https://github.com/rmishra900/FinalProject.git
+		
+		setVisible(true);
 	}
+
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
@@ -150,7 +124,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			i.changePanel("1");
+			l.changePanel("1");
 		else if (src == menu)
 			c.changePanel("3");
 	}
