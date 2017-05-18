@@ -35,7 +35,6 @@ public class Frontal extends JPanel implements ActionListener {
 	private FlyingArrows f;
 	private Coma coma;
 	
-	private Timer t;
 	private Arrow arrow;
 	private ArrayList<Arrow> arrows;
 	
@@ -45,8 +44,7 @@ public class Frontal extends JPanel implements ActionListener {
 	private Image img;
 	private JLabel timer, win, score;
 	
-	private int prevX, direction, pointingTo, 
-	correct, threshold, seconds;
+	private int prevX, direction, pointingTo, correct, threshold, seconds;
 	
 	private Color c;
 	
@@ -115,16 +113,12 @@ public class Frontal extends JPanel implements ActionListener {
 		timer.setSize(150, 30);
 		timer.setForeground(Color.WHITE);
 		timer.setFont(new Font("Roman Baseline", Font.BOLD, 30));
-		t = new Timer(1000, new ActionListener() {
-			int time = seconds;
-			
-			@Override
+		
+		Timer t = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				time--;
-				seconds = time;
-				timer.setText(format(time/60)+":"+format(time%60));
-				if(time == 0 || winGame()==true) {
+				seconds--;
+				timer.setText(format(seconds/60)+":"+format(seconds%60));
+				if(seconds == 0 || winGame()==true) {
 					Timer x = (Timer) e.getSource();
 					x.stop();
 				}
