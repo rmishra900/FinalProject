@@ -70,8 +70,18 @@ public abstract class Rules extends JPanel implements ActionListener {
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D)g;
+
+//	    int width = getWidth();
+//	    int height = getHeight();
+//	    
+//	    double ratioX = (double)width/DRAWING_WIDTH;
+//		double ratioY = (double)height/DRAWING_HEIGHT;
+//		        
+//		AffineTransform at = g2.getTransform();
+//		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
+		g.drawImage(background, 0, 0, (int)(DRAWING_WIDTH / 800.0 * getWidth()), (int)(DRAWING_HEIGHT / 600.0 * getHeight()), this);
 	
 	}
 	
