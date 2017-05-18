@@ -28,14 +28,9 @@ public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 
-	
-
-	//private Locked l;
 	private Locked l;
 
 	private Rectangle screenRect;
-	private Locked i;
-
 
 	private Coma c;
 	
@@ -47,42 +42,15 @@ public class Temporal extends JPanel implements ActionListener {
 	private int panelNumber;
 	
 
-//	public Temporal(Locked l, Coma c) {
-//		super();
-//		this.l = l;
-//		this.c = c;
-//		k = new Keypad();
-//		setLayout(null);
-//		add(k);
-//		
-//		rooms = new Room[8];
-//		initializeRooms();
-//		//add(k);
-//		setVisible(true);
-
-//	public Temporal() {
-//		super();
-//		k = new Keypad();
-//		setBackground(Color.WHITE);
-//		rooms = new Room[8];
-//		initializeRooms();
-//		//add(k);
-//	}
-
-
-
-	public Temporal(Locked i, Coma c) {
+	public Temporal(Locked l, Coma c) {
 		super();
-		setLayout(null);
-		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
-		this.i = i;
+		this.l = l;
 		this.c = c;
 		k = new Keypad();
-		setBackground(Color.WHITE);
+		setLayout(null);
+		add(k);
+		
 		rooms = new Room[8];
-
-		//initializeRooms();
-
 		initializeRooms();
 		
 		back = new JButton("BACK");
@@ -101,13 +69,14 @@ public class Temporal extends JPanel implements ActionListener {
 		back.addActionListener(this);
 		add(menu);
 		menu.addActionListener(this);
-
+		
+		setVisible(true);
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
 		
-	//	g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
+		//g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
 		
 		Graphics2D g2 = (Graphics2D)g;
 
@@ -144,7 +113,6 @@ public class Temporal extends JPanel implements ActionListener {
 		return rooms;
 	}
 	
-
 	private void initializeRooms() {
 //		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
 //		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
@@ -159,7 +127,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			i.changePanel("1");
+			l.changePanel("1");
 		else if (src == menu)
 			c.changePanel("3");
 	}

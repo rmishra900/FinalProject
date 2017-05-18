@@ -21,9 +21,10 @@ public class Button implements ActionListener{
 		this.x = x;
 		this.y = y;
 		s = new Sound(filename);
-		w = 10;
-		h = 10;
+		w = 50;
+		h = 50;
 		b = new JButton();
+		b.setLayout(null);
 		b.setText(text);
 		b.setForeground(Color.BLACK);
 		b.setFont(new Font("Roman Baseline", 0, 16));
