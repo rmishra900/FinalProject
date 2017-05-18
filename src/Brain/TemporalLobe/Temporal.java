@@ -29,9 +29,6 @@ public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_HEIGHT = 600;
 
 	private Locked l;
-
-	private Rectangle screenRect;
-
 	private Coma c;
 	
 	private Room[] rooms;
@@ -41,6 +38,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private int numCorrect;
 	private int panelNumber;
 	private int[] passcode;
+	private int[][] previousCodes;
 	
 
 	public Temporal(Locked l, Coma c) {
@@ -54,6 +52,7 @@ public class Temporal extends JPanel implements ActionListener {
 		rooms = new Room[8];
 		initializeRooms();
 		setRandPasscode();
+		previousCodes = new int[8][4];
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -113,6 +112,15 @@ public class Temporal extends JPanel implements ActionListener {
 		for (int i = 0; i < 4; i++) {
 			passcode[i] = (int)(Math.random()*10);
 		}
+		for (int[] code : previousCodes) {
+			if (code.equals(passcode)) {
+				while (code[3] == passcode[3])
+					passcode[3] = (int)(Math.random()*10);
+			}
+		}
+		for (int c = 0; c < 4; c++) {
+			previousCodes[panelNumber][c] = passcode[c];
+		}
 	}
 	
 	private void initializeRooms() {
@@ -133,7 +141,4 @@ public class Temporal extends JPanel implements ActionListener {
 		else if (src == menu)
 			c.changePanel("3");
 	}
-	
-	
-
 }
