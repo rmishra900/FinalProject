@@ -57,20 +57,18 @@ public class Temporal extends JPanel implements ActionListener {
 		k = new Keypad();
 		setLayout(null);
 		
-		buttonsPressedText = "";
 		rooms = new Room[8];
 		previousCodes = new int[8][4];
 
 		panelNumber = 0;
 		initializeRooms();
 		buttonsPressed = new JLabel();
-		buttonsPressed.setLocation(0, 0);
-		buttonsPressed.setForeground(Color.BLACK);
+		buttonsPressed.setLocation(600, 0);
+		//buttonsPressed.setForeground(Color.BLACK);
 		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
 		buttonsPressed.setSize(150,50);
 		buttonsPressed.setBackground(Color.WHITE);
-		//buttonsPressed.setEditable(false);
-		buttonsPressed.setText(buttonsPressedText);
+		add(buttonsPressed);
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -132,40 +130,12 @@ public class Temporal extends JPanel implements ActionListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-//		
-//		if(buttonsPressed.getText().length()==4) {
-//			buttonsPressed.setText("");
-//		}
-//		else {
+	
 		if (k.getEntered() != null) {
 			buttonsPressed.setText(k.getEntered());
 			System.out.println(k.getEntered());	
 		}
-		/*
-		Button button;
-		for(int i = 0; i< k.getButtons().length; i++) {
-			button = k.getButton(i);
-			
-			
-			if(button.isPressed()) {
-				System.out.println("button is Pressed");
-				String prev = buttonsPressedText;
-				String x =addText(Integer.toString(i+1));
-				System.out.println(prev+x);
-				//System.out.println("X: "+x);
-				buttonsPressed.setText(prev+x);
-//				String prev = buttonsPressedText;  
-//				buttonsPressed.setText(Integer.toString(i+1));	
-//				String now = buttonsPressed.getText();
-//				buttonsPressed.setText(prev+now);
-//				buttonsPressedText = buttonsPressed.getText();
-//				System.out.println(buttonsPressedText);
-			}
-			
-//			else {
-//				buttonsPressed.setText(Integer.toString(0));
-//			}*/
-		}
+	}
 
 	
 	/**
@@ -256,15 +226,7 @@ public class Temporal extends JPanel implements ActionListener {
 			c.changePanel("3");
 		else if(src == play) {
 			rooms[getPanelNum()].playSound();
-		}
-		System.out.println("im here");
-		for(int i =0; i<k.getButtons().length; i++) {
-			if(k.getButton(i).isPressed()) {
-				System.out.println("text: ");
-				System.out.println(k.getButton(i).getText());
-			}
-		}
-			
+		}	
 	}
 
 }

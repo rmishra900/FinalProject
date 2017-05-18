@@ -223,7 +223,6 @@ public class Keypad extends JPanel implements ActionListener {
 		if (passcodeEntered.length() == 4)
 			resetEntered();
 		passcodeEntered += e.getActionCommand();
-		System.out.println(passcodeEntered);
 	}
 
   
