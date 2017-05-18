@@ -65,8 +65,10 @@ public class ParietalRules extends Rules{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == begin)
+		if (src == begin) {
+			h.getPanel().reset();
 			h.changePanel("2");
+		}
 		else if (src == back)
 			c.changePanel("3");
 		

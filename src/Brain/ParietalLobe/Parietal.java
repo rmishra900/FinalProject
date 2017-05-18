@@ -71,7 +71,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 1000;
+		threshold = 500;
 		
 		Timer clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -199,7 +199,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	}
 	
 	/**
-	 * Redraws an instance of a wall to wrap around the screen once it disappeared out of view.
+	 * Redraws an instance of a wall to wrap around the screen once it disappears out of view.
 	 */
 	public void redrawWall() {
 		if (w.getY() + w.getWidth() >= DRAWING_HEIGHT)
@@ -221,6 +221,15 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW);
 		else 
 			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW);
+	}
+	
+	/**
+	 * Resets game panel to be counting down from 45 seconds.
+	 * 
+	 */
+	public void reset() {
+		seconds = 45;
+		numCorrect = 0;
 	}
 
 	public void keyPressed(KeyEvent e) {
