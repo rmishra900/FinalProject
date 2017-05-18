@@ -26,10 +26,20 @@ public class Temporal extends JPanel {
 	private Locked i;
 	private Coma c;
 	private Room[] rooms;
+	private Keypad k;
 
 	int numCorrect;
 	int panelNumber;
 	
+	public Temporal() {
+		super();
+		k = new Keypad();
+		//setBackground(Color.BLUE);
+		rooms = new Room[8];
+		initializeRooms();
+		//add(k);
+	}
+
 	public Temporal(Locked i, Coma c) {
 		super();
 		this.i = i;
@@ -41,7 +51,8 @@ public class Temporal extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
 		
-		g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
+		//g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
+		
 		Graphics2D g2 = (Graphics2D)g;
 
 	    int width = getWidth();
@@ -53,12 +64,28 @@ public class Temporal extends JPanel {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
-		JPanel back = new JPanel();
-		back.setLayout(null);
-		back.setBackground(new Color(255,255,255, 127));
-		back.setOpaque(true);
-		back.setBounds(30, 100, 400, 400);
-		add(back);
+//		JPanel back = new JPanel();
+//		back.setLayout(null);
+//		back.setBackground(new Color(255,255,255, 127));
+//		back.setOpaque(true);
+//		back.setBounds(30, 100, 400, 400);
+//		add(back);
+	}
+	
+	public void setPanelNum(int x) {
+		panelNumber = x;
+	}
+	
+	public int getPanelNum() {
+		return panelNumber;
+	}
+	
+	public void switchRooms() {
+		panelNumber++;
+	}
+	
+	public Room[] getRooms() {
+		return rooms;
 	}
 	
 	public void setPanelNum(int x) {
@@ -78,14 +105,14 @@ public class Temporal extends JPanel {
 	}
 	
 	private void initializeRooms() {
-		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[2] = new Room("Room2.png", "Room2.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[3] = new Room("Room3.png", "Room3.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[4] = new Room("Room4.png", "Room4.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[5] = new Room("Room5.png", "Room5.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[6] = new Room("Room6.png", "Room6.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[7] = new Room("Room7.png", "Room7.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[2] = new Room("Room2.png", "Room2.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[3] = new Room("Room3.png", "Room3.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[4] = new Room("Room4.png", "Room4.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[5] = new Room("Room5.png", "Room5.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[6] = new Room("Room6.png", "Room6.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+//		rooms[7] = new Room("Room7.png", "Room7.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
 	
 	

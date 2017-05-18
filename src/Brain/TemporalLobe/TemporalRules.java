@@ -36,7 +36,7 @@ public class TemporalRules extends Rules{
 
 		Object src = e.getSource();
 		if (src == begin)
-			c.changePanel("2");
+			 l = new Locked("LOCKED");
 		else if (src == back)
 			c.changePanel("3");
 	}
