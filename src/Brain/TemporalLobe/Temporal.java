@@ -16,10 +16,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Coma.Coma;
 
@@ -37,8 +38,8 @@ public class Temporal extends JPanel implements ActionListener {
 	private JButton back, menu, play;
 	private int numCorrect;
 	private int panelNumber;
-	//private int[] passcode;
 	private int[][] previousCodes;
+	private JTextField buttonsPressed;
 	
 
 	public Temporal(Locked l, Coma c) {
@@ -47,15 +48,23 @@ public class Temporal extends JPanel implements ActionListener {
 		this.c = c;
 		k = new Keypad();
 		setLayout(null);
-		add(k);
-		//passcode = new int[4];
+		
 		
 		rooms = new Room[8];
 		previousCodes = new int[8][4];
 
 		panelNumber = 0;
 		initializeRooms();
+		buttonsPressed = new JTextField();
+		buttonsPressed.setLocation(350, 550);
+		buttonsPressed.setForeground(Color.BLACK);
+		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
+		buttonsPressed.setSize(150,50);
+		buttonsPressed.setBackground(Color.WHITE);
+		buttonsPressed.setEditable(false);
 		
+		
+	
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -75,6 +84,7 @@ public class Temporal extends JPanel implements ActionListener {
 		play.setSize(100, 50);
 		play.setLocation(275, 0);
 		
+		
 		add(back);
 		back.addActionListener(this);
 		add(menu);
@@ -82,7 +92,33 @@ public class Temporal extends JPanel implements ActionListener {
 		add(play);
 		play.addActionListener(this);
 		
+		add(buttonsPressed);
+		add(k);
 		setVisible(true);
+	}
+	
+	public String getText() {
+//		
+//		ArrayList<Button> arr = k.getButtonsPressed(k.getButtons());
+//		
+//		String text = "";
+//		for(Button b : arr) {
+//			text+=b.getText();
+//		}
+//		return text;
+		
+		String text = "";
+	
+		for(int i = 0; i< k.getButtons().length; i++) {
+		
+			if(k.isPressed(k.getButton(i))) {
+				System.out.println(k.getButtons().length);
+				text+= k.getButton(i).getText();
+			}
+			System.out.println(k.isPressed(k.getButton(i)));
+		}
+		System.out.println("text: "+text);
+		return text;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -100,6 +136,16 @@ public class Temporal extends JPanel implements ActionListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+//		
+//		if(buttonsPressed.getText().length()==4) {
+//			buttonsPressed.setText("");
+//		}
+//		else {
+		
+			buttonsPressed.setText(getText());
+			System.out.println(getText());
+	//	}
+		
 	}
 	
 	public void setPanelNum(int x) {
@@ -168,4 +214,5 @@ public class Temporal extends JPanel implements ActionListener {
 		}
 			
 	}
+
 }

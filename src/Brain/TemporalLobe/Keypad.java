@@ -109,14 +109,18 @@ public class Keypad extends JPanel{
     		return false;
     }
     
-    public Button[] getButtonsPressed(Button[] buttons) {
+    public ArrayList<Button> getButtonsPressed(Button[] buttons) {
     	ArrayList<Button> pressed = new ArrayList<Button>();
     	for(Button b: buttons) {
     		if(b.getJButton().getModel().isPressed()) {
     			pressed.add(b);
     		}
     	}
-    	return (Button[]) pressed.toArray();
+    	
+    	
+    	//Button[] p = (Button[])pressed.toArray();
+    	
+    	return  pressed;
     }
     
     
