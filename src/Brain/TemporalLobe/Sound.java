@@ -13,9 +13,11 @@ public class Sound
   private SourceDataLine line = null;
   private byte[] audioBytes;
   private int numBytes;
+  private String fileName;
 
   public Sound(String fileName)
   {
+	this.fileName = fileName;
     File  soundFile = new File(fileName);
     AudioInputStream audioInputStream = null;
     try
@@ -60,5 +62,9 @@ public class Sound
   public void play()
   {
     line.write(audioBytes, 0, numBytes);
+  }
+  
+  public String getFilename() {
+	  return fileName;
   }
 }
