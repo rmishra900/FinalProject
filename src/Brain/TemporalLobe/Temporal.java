@@ -53,7 +53,9 @@ public class Temporal extends JPanel implements ActionListener {
 		rooms = new Room[8];
 		previousCodes = new int[8][4];
 
+		panelNumber = 0;
 		initializeRooms();
+		
 		
 		
 		back = new JButton("BACK");
@@ -118,6 +120,14 @@ public class Temporal extends JPanel implements ActionListener {
 	}
 	
 	public int[] getRandPasscode() {
+		int[]p = new int[4];
+		for (int i = 0; i < 4; i++) {
+			p[i] = (int)(Math.random()*10);
+		}
+		return p;
+	}
+	
+	public int[] getUniqueRandPasscode() {
 		int[] p = rooms[getPanelNum()].getPasscode();
 
 		for (int i = 0; i < 4; i++) {
@@ -139,13 +149,13 @@ public class Temporal extends JPanel implements ActionListener {
 	
 	private void initializeRooms() {
 		rooms[0] = new Room("Room0.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[1] = new Room("Room1.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[2] = new Room("Room2.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[3] = new Room("Room3.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[4] = new Room("Room4.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[5] = new Room("Room5.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[6] = new Room("Room6.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[7] = new Room("Room7.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[1] = new Room("Room1.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[2] = new Room("Room2.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[3] = new Room("Room3.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[4] = new Room("Room4.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[5] = new Room("Room5.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[6] = new Room("Room6.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[7] = new Room("Room7.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
 
 	public void actionPerformed(ActionEvent e) {

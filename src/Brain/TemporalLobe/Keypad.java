@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -101,6 +102,20 @@ public class Keypad extends JPanel{
     public Button getButton(int x) {
     	return buttons[x];
     }
+    public boolean isPressed(Button b) {
+    	if(b.getJButton().getModel().isPressed())
+    		return true;
+    	else
+    		return false;
+    }
+    
+//    public ArrayList<Button> getButtonsPressed(Button[] buttons) {
+//    	ArrayList<Button> pressed = new ArrayList<Button>();
+//    	for(Button b: buttons) {
+//    		if(b)
+//    	}
+//    }
+    
     
              
 }
