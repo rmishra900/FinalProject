@@ -545,6 +545,18 @@ public class Frontal extends JPanel implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Resets game panel to be counting down from 45 seconds.
+	 * 
+	 */
+	public void reset() {
+		seconds = 30;
+		correct = 0;
+		
+		timer.setText(format(seconds/60)+":"+format(seconds%60));
+		score.setText("SCORE: " + correct);
+	}
+	
 	
 	public class KeyHandler implements KeyListener {
 		private ArrayList<Integer> keys;

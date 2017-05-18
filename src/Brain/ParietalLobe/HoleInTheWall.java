@@ -10,7 +10,6 @@ public class HoleInTheWall extends JFrame {
 	
 	private JPanel gamePanel;
 	private Coma c; 
-	private ParietalRules panel1;
 	private  Parietal panel2;
 	
 	
@@ -24,7 +23,7 @@ public class HoleInTheWall extends JFrame {
 	    CardLayout cl = new CardLayout();
 	    gamePanel.setLayout(cl);
 	    
-	    panel1 = new ParietalRules(this, c);
+	    ParietalRules panel1 = new ParietalRules(this, c);
 	    panel2 = new Parietal(this, c);
 
 	    gamePanel.add(panel1, "1");

@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Brain.ParietalLobe.Parietal;
 import Coma.Coma;
 import Coma.Home;
 import Coma.Menu;
@@ -14,6 +15,7 @@ public class FlyingArrows extends JFrame {
 
 	private JPanel cardPanel;
 	private Coma c;
+	private Frontal panel2;
 	
 	public FlyingArrows(String title, Coma c) {
 		super(title);
@@ -27,7 +29,7 @@ public class FlyingArrows extends JFrame {
 	    
 	    
 	    FrontalRules panel1 = new FrontalRules(this, c);
-	    Frontal panel2 = new Frontal(this, c);
+	    panel2 = new Frontal(this, c);
 
 	    cardPanel.add(panel1, "1");
 	    cardPanel.add(panel2, "2"); 
@@ -50,6 +52,10 @@ public class FlyingArrows extends JFrame {
 		
 		((CardLayout)cardPanel.getLayout()).show(cardPanel, name);
 		requestFocus();
+	}
+	
+	public Frontal getPanel() {
+		return panel2;
 	}
 
 }
