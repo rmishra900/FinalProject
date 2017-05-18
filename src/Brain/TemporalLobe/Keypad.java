@@ -124,26 +124,7 @@ public class Keypad extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		if (src == buttons[0])
 			
-		else if (src == buttons[1])
-			
-		else if (src == buttons[2]) 
-			
-		else if (src == buttons[3])
-			
-		else if (src == buttons[4])
-		
-		else if (src == buttons[5])
-			
-		else if (src == buttons[6])
-			
-		else if (src == buttons[7])
-			
-		else if (src == buttons[8])
-			
-		else if (src == buttons[9])
 	}
    
 }
