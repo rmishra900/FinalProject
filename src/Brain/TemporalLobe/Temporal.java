@@ -16,9 +16,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Coma.Coma;
@@ -29,9 +29,6 @@ public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_HEIGHT = 600;
 
 	private Locked l;
-
-	private Rectangle screenRect;
-
 	private Coma c;
 	
 	private Room[] rooms;
@@ -40,8 +37,8 @@ public class Temporal extends JPanel implements ActionListener {
 	private JButton back, menu, play;
 	private int numCorrect;
 	private int panelNumber;
-	private int[] passcode;
-	private JLabel userPress;
+	//private int[] passcode;
+	private int[][] previousCodes;
 	
 
 	public Temporal(Locked l, Coma c) {
@@ -51,14 +48,12 @@ public class Temporal extends JPanel implements ActionListener {
 		k = new Keypad();
 		setLayout(null);
 		add(k);
-		passcode = new int[4];
+		//passcode = new int[4];
 		
 		rooms = new Room[8];
 		initializeRooms();
-		setRandPasscode();
 		
-		userPress = new JLabel();
-		
+		previousCodes = new int[8][4];
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -115,24 +110,28 @@ public class Temporal extends JPanel implements ActionListener {
 	
 	public void reset() {
 		panelNumber++;
-		setRandPasscode();
 	}
 	
 	public Room[] getRooms() {
 		return rooms;
 	}
 	
-	private void setRandPasscode() {
-		for (int i = 0; i < 4; i++) {
-			passcode[i] = (int)(Math.random()*10);
-		}
-	}
-	
 	public int[] getRandPasscode() {
+		int[] p = rooms[getPanelNum()].getPasscode();
+		
 		for (int i = 0; i < 4; i++) {
-			passcode[i] = (int)(Math.random()*10);
+			p[i] = (int)(Math.random()*10);
 		}
-		return passcode;
+		for (int[] code : previousCodes) {
+			if (code.equals(p)) {
+				while (code[3] == p[3])
+					p[3] = (int)(Math.random()*10);
+			}
+		}
+		for (int c = 0; c < 4; c++) {
+			previousCodes[panelNumber][c] = p[c];
+		}
+		return p;
 	}
 	
 	private void initializeRooms() {
@@ -157,7 +156,4 @@ public class Temporal extends JPanel implements ActionListener {
 		}
 			
 	}
-	
-	
-
 }
