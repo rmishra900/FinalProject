@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 public class Coma extends JFrame {
 
 	private JPanel gamePanel;
+	protected static int wins;
+	protected boolean frontalWin, occipitalWin, parietalWin, temporalWin;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -40,6 +42,12 @@ public class Coma extends JFrame {
 	    add(gamePanel);
 	    addKeyListener(panel1);
 	    addMouseListener(panel2);
+	    addKeyListener(panel4);
+	    
+	    frontalWin = false;
+	    occipitalWin = false;
+	    parietalWin = false;
+	    temporalWin = false;
 	    
 	    setVisible(true);
 	}
@@ -55,6 +63,43 @@ public class Coma extends JFrame {
 	public void changePanel(String name) {
 		((CardLayout)gamePanel.getLayout()).show(gamePanel, name);
 		requestFocus();
+	}
+	
+	public void setWon(int i) {
+		wins++;
+		if (i == 1)
+			frontalWin = true;
+		else if (i == 2)
+			occipitalWin = true;
+		else if (i == 3)
+			parietalWin = true;
+		else if (i == 4)
+			temporalWin = true;
+	}
+	
+	public void resetWins(int i) {
+		wins--;
+		if (i == 1)
+			frontalWin = false;
+		else if (i == 2)
+			occipitalWin = false;
+		else if (i == 3)
+			parietalWin = false;
+		else if (i == 4)
+			temporalWin = false;
+	}
+	
+	public boolean getWon(int i) {
+		if (i == 1)
+			return frontalWin;
+		else if (i == 2)
+			return occipitalWin;
+		else if (i == 3)
+			return parietalWin;
+		else if (i == 4)
+			return temporalWin;
+		else
+			return false;
 	}
 	
 

@@ -26,10 +26,10 @@ import Brain.FrontalLobe.FlyingArrows;
  */
 public class Menu extends JPanel implements ActionListener {
 	private Coma c;
-	JButton occipital;
-	JButton frontal;
-	JButton parietal;
-	JButton temporal;
+	private JButton occipital;
+	private JButton frontal;
+	private JButton parietal;
+	private JButton temporal;
 		
 	/**
 	 * Constructs a new instance of this menu screen. 
@@ -51,11 +51,18 @@ public class Menu extends JPanel implements ActionListener {
 		parietal.addActionListener(this);
 		add(temporal);
 		temporal.addActionListener(this);
+		
+		
 	}
 	
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		
+		if(c.wins == 4)
+			c.changePanel("4");
+		
+		repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
