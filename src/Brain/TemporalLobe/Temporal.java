@@ -57,7 +57,6 @@ public class Temporal extends JPanel implements ActionListener {
 		initializeRooms();
 		
 		
-		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
