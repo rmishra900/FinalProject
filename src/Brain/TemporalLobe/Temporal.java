@@ -37,7 +37,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private Room[] rooms;
 	private Keypad k;
 
-	private JButton back, menu;
+	private JButton back, menu, play;
 	private int numCorrect;
 	private int panelNumber;
 	private int[] passcode;
@@ -50,6 +50,7 @@ public class Temporal extends JPanel implements ActionListener {
 		k = new Keypad();
 		setLayout(null);
 		add(k);
+		passcode = new int[4];
 		
 		rooms = new Room[8];
 		initializeRooms();
@@ -67,10 +68,18 @@ public class Temporal extends JPanel implements ActionListener {
 		menu.setSize(100, 50);
 		menu.setLocation(150, 0);
 		
+		play = new JButton("PLAY");
+		play.setBackground(Color.YELLOW);
+		play.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		play.setSize(100, 50);
+		play.setLocation(275, 0);
+		
 		add(back);
 		back.addActionListener(this);
 		add(menu);
 		menu.addActionListener(this);
+		add(play);
+		play.addActionListener(this);
 		
 		setVisible(true);
 	}
@@ -115,15 +124,22 @@ public class Temporal extends JPanel implements ActionListener {
 		}
 	}
 	
+	public int[] getRandPasscode() {
+		for (int i = 0; i < 4; i++) {
+			passcode[i] = (int)(Math.random()*10);
+		}
+		return passcode;
+	}
+	
 	private void initializeRooms() {
-		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[1] = new Room("Room1.png", "Room1.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[2] = new Room("Room2.png", "Room2.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[3] = new Room("Room3.png", "Room3.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[4] = new Room("Room4.png", "Room4.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[5] = new Room("Room5.png", "Room5.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[6] = new Room("Room6.png", "Room6.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
-		rooms[7] = new Room("Room7.png", "Room7.wav", DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[0] = new Room("Room0.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[1] = new Room("Room1.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[2] = new Room("Room2.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[3] = new Room("Room3.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[4] = new Room("Room4.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[5] = new Room("Room5.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[6] = new Room("Room6.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		rooms[7] = new Room("Room7.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -132,6 +148,10 @@ public class Temporal extends JPanel implements ActionListener {
 			l.changePanel("1");
 		else if (src == menu)
 			c.changePanel("3");
+		else if(src == play) {
+			rooms[getPanelNum()].playSound();
+		}
+			
 	}
 	
 	

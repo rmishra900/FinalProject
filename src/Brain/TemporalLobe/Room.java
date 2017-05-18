@@ -46,30 +46,44 @@ import javax.swing.ImageIcon;
 public class Room extends Rectangle2D.Double {
 	
 	private Image background; 
-	private Sound sound;
-	private int passcode;
+	private Keypad k;
+	private int[] passcode;
 	
-	public Room(Image img, String soundFilename) {
+	public Room(Image img, int[] p) {
 		background = img;
-		sound = new Sound(soundFilename);
+		passcode = p;
 	}
 	
 	
-	public Room(String imgFilename, String soundFilename, int w, int h) {
-		/*background = new ImageIcon(imgFilename).getImage();
-		sound = new Sound(soundFilename);*/
+	public Room(String imgFilename, int[] passcode, int w, int h) {
 		background = new ImageIcon("temporal" + System.getProperty("file.separator") + imgFilename).getImage();
-		sound = new Sound("temporal" + System.getProperty("file.separator") + soundFilename);
-
+		this.passcode = passcode;
+		k = new Keypad();
 		this.width = w;
 		this.height = h;
+		initializeSounds();
+	}
+	
+	private void initializeSounds() {
+		
 	}
 
-	public void setPasscode(int x) {
+	public void setPasscode(int[] x) {
 		passcode = x;
 	}
 	
+	public int[] getPasscode() {
+		return passcode;
+	}
 	
+	public int getPasscodeDigit(int x) {
+		for(int i = 0; i<passcode.length; i++) {
+			if(i==x) {
+				return passcode[x];
+			}
+		}
+		return -1;
+	}
 
 	public void draw(Graphics g, Image img, double width, double height, ImageObserver io) {
 		g.drawImage(background, 0, 0, (int)width, (int)height, io);
@@ -79,8 +93,12 @@ public class Room extends Rectangle2D.Double {
 		return background;
 	}
 
-	public Sound getSound() {
-		return sound;
+	public void playSound() {
+		for(int i =0; i<passcode.length; i++) {
+			k.getButton(passcode[i]).getSound().play();
+		}
+		
+		
 	}
 	
 	
