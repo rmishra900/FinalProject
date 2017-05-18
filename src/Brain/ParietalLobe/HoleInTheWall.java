@@ -9,7 +9,9 @@ import Coma.Coma;
 public class HoleInTheWall extends JFrame {
 	
 	private JPanel gamePanel;
-	private Coma c;
+	private Coma c; 
+	private  Parietal panel2;
+	
 	
 	public HoleInTheWall(String title, Coma c) {
 		super(title);
@@ -22,7 +24,7 @@ public class HoleInTheWall extends JFrame {
 	    gamePanel.setLayout(cl);
 	    
 	    ParietalRules panel1 = new ParietalRules(this, c);
-	    Parietal panel2 = new Parietal(this, c);
+	    panel2 = new Parietal(this, c);
 
 	    gamePanel.add(panel1, "1");
 	    gamePanel.add(panel2, "2");
@@ -42,9 +44,12 @@ public class HoleInTheWall extends JFrame {
 	 * @param name the name of the panel to be displayed
 	 */
 	public void changePanel(String name) {
-		
 		((CardLayout)gamePanel.getLayout()).show(gamePanel, name);
 		requestFocus();
+	}
+	
+	public Parietal getPanel() {
+		return panel2;
 	}
 
 }
