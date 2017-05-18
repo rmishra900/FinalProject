@@ -5,11 +5,21 @@ import java.awt.event.ActionEvent;
 import Brain.Rules;
 import Coma.Coma;
 
+/**
+ * Represents the rules for "Locked"
+ * @author 
+ * @version 5/18/17
+ */
 public class TemporalRules extends Rules{
 	
 	private Locked l;
 	private Coma c;
 	
+	/**
+	 * Initializes this rules panel.
+	 * @param l the Locked panel these rules belong to
+	 * @param c the overall Coma game the rules of this mini game belongs to
+	 */
 	public TemporalRules(Locked l, Coma c) {
 		super();
 		this.l = l;
@@ -17,6 +27,10 @@ public class TemporalRules extends Rules{
 	}
 
 	@Override
+
+	/**
+	 * returns the instructions of this game
+	 */
 	public String getText() {
 		String rules;
 		rules = "<html>This lobe of the brain coordinates auditory information. <br>"
@@ -35,7 +49,6 @@ public class TemporalRules extends Rules{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin)
-
 			l.changePanel("2");
 		else if (src == back)
 			c.changePanel("3");

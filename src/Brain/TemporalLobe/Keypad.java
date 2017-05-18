@@ -10,10 +10,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -21,17 +24,21 @@ import javax.swing.JTextField;
 
 
 /**
- *
+ * Represents the keypad for the user to click a passcode on. 
  * @author reetmishra
+ * @version 5/18/17
  */
-public class Keypad extends JPanel implements ActionListener{
+public class Keypad extends JPanel implements ActionListener {
 	
 	  private Button[] buttons;  
 	  private Sound[] sounds;
 	  private final int x, y, width, height;
 	  private boolean isPressed;
+	  private String passcodeEntered;
 
- 
+	  /**
+	   * Creates a default instance of a keypad. 
+	   */
     public Keypad() {
     	width = 400;
     	height = 450;
@@ -42,7 +49,8 @@ public class Keypad extends JPanel implements ActionListener{
     	setBackground(Color.WHITE);
     	setBounds(x, y, width, height);
    		
-		isPressed = false;
+		//isPressed = false;
+		passcodeEntered = "";
 
     	buttons = new Button[10];
     	sounds = new Sound[10];
@@ -53,10 +61,14 @@ public class Keypad extends JPanel implements ActionListener{
     	  b.getJButton().setLayout(null);
     	  b.getJButton().setOpaque(true);
     	  add(b.getJButton());
+    	  b.addActionListener(this);
        }
+   	
     }
 
-                         
+           /**
+            * Initializes the 10 buttons for the keypad.              
+            */
     private void initializeButtons() {
     	int a = y;
     	int b = x-width/2 + 70;
@@ -74,6 +86,9 @@ public class Keypad extends JPanel implements ActionListener{
                   
     }
     
+    /**
+     * Initializes the array of sounds that correspond to the buttons.
+     */
     private void initializeSounds() {
     
     		sounds[0] = new Sound("temporal" + System.getProperty("file.separator") + "C#.wav");
@@ -89,28 +104,47 @@ public class Keypad extends JPanel implements ActionListener{
     		
     }
     
+    /**
+     * 
+     * @return an array of sounds that correspond to the buttons
+     */
     public Sound[] getSounds() {
     	return sounds;
     }
     
+    /**
+     * 
+     * @return an array of buttons on the keypad
+     */
     public Button[] getButtons() {
     	return buttons;
     }
     
+    /**
+     * Returns the sound of a button at a specific index.
+     * @param x index of the button
+     * @return sound of the button at index x 
+     */
     public Sound getSound(int x) {
     	return sounds[x];
     }
     
+    /**
+     * Returns the button at a specific index
+     * @param x the index of the button
+     * @return button at index x
+     */
     public Button getButton(int x) {
     	return buttons[x];
     }
+    
     public boolean isPressed(Button b) {
     	if(b.getJButton().getModel().isPressed())
     		return true;
     	else
     		return false;
     }
-    
+
     public Button[] getButtonsPressed(Button[] buttons) {
     	ArrayList<Button> pressed = new ArrayList<Button>();
     	for(Button b: buttons) {
@@ -120,32 +154,76 @@ public class Keypad extends JPanel implements ActionListener{
     	}
     	return (Button[]) pressed.toArray();
     }
+    
+    /**
+     * Resets the passcode the user entered.
+     */
+    public void resetEntered() {
+    	passcodeEntered = ""; 
+    }
+    
+    /**
+     * 
+     * @return the passcode String the user entered
+     */
+    public String getEntered() {
+    	return passcodeEntered;
+    }
+
+	/*public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+
+		if (src == buttons[0]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[0].getText();
+		}	
+		else if (src == buttons[1]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[1].getText();
+		}
+		else if (src == buttons[2]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[2].getText();
+		}	
+		else if (src == buttons[3]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[3].getText();
+		}
+		else if (src == buttons[4]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[4].getText();
+		}	
+		else if (src == buttons[5]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[5].getText();
+		}	
+		else if (src == buttons[6]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[6].getText();
+		}
+		else if (src == buttons[7]) {
+			if (passcodeEntered.length() == 4)
+				resetEntered();
+			passcodeEntered += buttons[7].getText();
+		}
+	}*/
+
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		if (src == buttons[0]) {
-			
-		}
-			
-//		else if (src == buttons[1])
-//			
-//		else if (src == buttons[2]) 
-//			
-//		else if (src == buttons[3])
-//			
-//		else if (src == buttons[4])
-//		
-//		else if (src == buttons[5])
-//			
-//		else if (src == buttons[6])
-//			
-//		else if (src == buttons[7])
-//			
-//		else if (src == buttons[8])
-//			
-//		else if (src == buttons[9])
+		// TODO Auto-generated method stub
+		if (passcodeEntered.length() == 4)
+			resetEntered();
+		passcodeEntered += e.getActionCommand();
 	}
-   
+
+  
 }

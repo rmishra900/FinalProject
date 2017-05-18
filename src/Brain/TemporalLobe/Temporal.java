@@ -24,7 +24,10 @@ import javax.swing.JTextField;
 
 import Coma.Coma;
 
-
+/**
+ * @author 
+ * @version 5/18/17
+ */
 public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -39,9 +42,14 @@ public class Temporal extends JPanel implements ActionListener {
 	private int numCorrect;
 	private int panelNumber;
 	private int[][] previousCodes;
-	private JTextField buttonsPressed;
-	
+	private JLabel buttonsPressed;
+	private String buttonsPressedText;
 
+	/**
+	 * Creates a new instance of this game. 
+	 * @param l the main panel this game belongs to
+	 * @param c the overall Coma game this mini game belongs to
+	 */
 	public Temporal(Locked l, Coma c) {
 		super();
 		this.l = l;
@@ -49,22 +57,18 @@ public class Temporal extends JPanel implements ActionListener {
 		k = new Keypad();
 		setLayout(null);
 		
-		
 		rooms = new Room[8];
 		previousCodes = new int[8][4];
 
 		panelNumber = 0;
 		initializeRooms();
-		buttonsPressed = new JTextField();
-		buttonsPressed.setLocation(350, 550);
-		buttonsPressed.setForeground(Color.BLACK);
+		buttonsPressed = new JLabel();
+		buttonsPressed.setLocation(600, 0);
+		//buttonsPressed.setForeground(Color.BLACK);
 		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
 		buttonsPressed.setSize(150,50);
 		buttonsPressed.setBackground(Color.WHITE);
-		buttonsPressed.setEditable(false);
-		
-		
-	
+		add(buttonsPressed);
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -97,28 +101,18 @@ public class Temporal extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 	
-	public String getText() {
-//		
-//		ArrayList<Button> arr = k.getButtonsPressed(k.getButtons());
-//		
-//		String text = "";
-//		for(Button b : arr) {
-//			text+=b.getText();
-//		}
-//		return text;
+	public String addText(String t){
 		
-		String text = "";
-	
-		for(int i = 0; i< k.getButtons().length; i++) {
-		
-			if(k.isPressed(k.getButton(i))) {
-				System.out.println(k.getButtons().length);
-				text+= k.getButton(i).getText();
-			}
-			System.out.println(k.isPressed(k.getButton(i)));
-		}
-		System.out.println("text: "+text);
-		return text;
+		String prev = buttonsPressedText;  
+		//buttonsPressed.setText(t);	
+		String now = t;
+		System.out.println("NOW: "+now);
+		buttonsPressed.setText(now);
+	//	System.out.println("buttonsPressed JTEXTFIELD: "+buttonsPressed.getText());
+		buttonsPressedText = now;
+		System.out.println("buttonsPressed STRING: "+buttonsPressedText);
+
+		return buttonsPressedText;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -136,34 +130,48 @@ public class Temporal extends JPanel implements ActionListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-//		
-//		if(buttonsPressed.getText().length()==4) {
-//			buttonsPressed.setText("");
-//		}
-//		else {
-		
-			buttonsPressed.setText(getText());
-			System.out.println(getText());
-	//	}
-		
-	}
 	
+		if (k.getEntered() != null) {
+			buttonsPressed.setText(k.getEntered());
+			System.out.println(k.getEntered());	
+		}
+	}
+
+	
+	/**
+	 * Sets the number of the room currently shown.
+	 * @param x the number of the room that is currently displayed
+	 */
 	public void setPanelNum(int x) {
 		panelNumber = x;
 	}
 	
+	/**
+	 * 
+	 * @return the number of the room currently displayed
+	 */
 	public int getPanelNum() {
 		return panelNumber;
 	}
 	
+	/**
+	 * Iterates the number of the room so that the next room is displayed. 
+	 */
 	public void reset() {
 		panelNumber++;
 	}
 	
+	/**
+	 * 
+	 * @return the array of Rooms used in this game
+	 */
 	public Room[] getRooms() {
 		return rooms;
 	}
 	
+	/**
+	 * @return a random 4-digit code
+	 */
 	public int[] getRandPasscode() {
 		int[]p = new int[4];
 		for (int i = 0; i < 4; i++) {
@@ -172,6 +180,10 @@ public class Temporal extends JPanel implements ActionListener {
 		return p;
 	}
 	
+	/**
+	 * 
+	 * @return a random 4-digit code that has not been used yet
+	 */
 	public int[] getUniqueRandPasscode() {
 		int[] p = rooms[getPanelNum()].getPasscode();
 
@@ -192,6 +204,9 @@ public class Temporal extends JPanel implements ActionListener {
 		return p;
 	}
 	
+	/**
+	 * Initializes the rooms used in this game. 
+	 */
 	private void initializeRooms() {
 		rooms[0] = new Room("Room0.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 		rooms[1] = new Room("Room1.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
@@ -211,8 +226,7 @@ public class Temporal extends JPanel implements ActionListener {
 			c.changePanel("3");
 		else if(src == play) {
 			rooms[getPanelNum()].playSound();
-		}
-			
+		}	
 	}
 
 }

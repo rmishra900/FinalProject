@@ -8,6 +8,11 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+/**
+ * Represents a sound. 
+ * @author anisha
+ *
+ */
 public class Sound
 {
   private SourceDataLine line = null;
@@ -15,6 +20,10 @@ public class Sound
   private int numBytes;
   private String fileName;
 
+  /**
+   * Creates a new sound using a file name.
+   * @param fileName the file name of the sound
+   */
   public Sound(String fileName)
   {
 	this.fileName = fileName;
@@ -59,11 +68,17 @@ public class Sound
     }
   }
 
+  /**
+   * Plays this sound.
+   */
   public void play()
   {
     line.write(audioBytes, 0, numBytes);
   }
   
+  /**
+   * @return the file name of this sound
+   */
   public String getFilename() {
 	  return fileName;
   }
