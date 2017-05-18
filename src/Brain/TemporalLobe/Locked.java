@@ -18,6 +18,7 @@ public class Locked extends JFrame{
 		super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    this.c = c;
 	    
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
@@ -40,7 +41,7 @@ public class Locked extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		Locked c = new Locked("Locked");
+		Coma c = new Coma("Coma");
 	}
 
 }

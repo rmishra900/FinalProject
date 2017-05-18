@@ -5,16 +5,19 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Coma.Coma;
 import Coma.Home;
 import Coma.Menu;
 import Coma.StoryScreen;
 
 public class FlyingArrows extends JFrame {
 
-	JPanel cardPanel;
+	private JPanel cardPanel;
+	private Coma c;
 	
-	public FlyingArrows(String title) {
+	public FlyingArrows(String title, Coma c) {
 		super(title);
+		this.c = c;
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
@@ -23,27 +26,24 @@ public class FlyingArrows extends JFrame {
 	    cardPanel.setLayout(cl);
 	    
 	    
-	    FrontalRules r = new FrontalRules();
-	    Frontal fp = new Frontal();
-	    fp.setVisible(true);
-	    add(fp);
-	    addKeyListener(fp.getKeyHandler());
+	    FrontalRules panel1 = new FrontalRules(this, c);
+	    Frontal panel2 = new Frontal(this, c);
 
-	    cardPanel.add(r, "1");
-	    cardPanel.add(fp, "2");   
-	    
-
+	    cardPanel.add(panel1, "1");
+	    cardPanel.add(panel2, "2"); 
 	    add(cardPanel);
+	    
+	    addKeyListener(panel2.getKeyHandler());
 	    setVisible(true);
 	}
 	
 	
 	public static void main(String[] args) {
-		FlyingArrows fa = new FlyingArrows("FlyingArrows");
+		Coma c = new Coma("COMA");
 	}
 
 	/**
-	 * Allows to change what is displayed on the screen. 
+	 * Changes what panel is displayed on the screen. 
 	 * @param name the name of the panel to be displayed
 	 */
 	public void changePanel(String name) {

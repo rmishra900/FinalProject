@@ -13,8 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Brain.FrontalLobe.FrontalMain;
-
 
 public abstract class Rules extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;

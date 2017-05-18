@@ -10,17 +10,21 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import Brain.Rules;
+import Brain.ParietalLobe.HoleInTheWall;
+import Coma.Coma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class FrontalRules extends Rules {
-	private FlyingArrows flying;
+	private FlyingArrows f;
+	private Coma c;
 	
-	public FrontalRules() {
+	public FrontalRules(FlyingArrows f, Coma c) {
 		super();
-		flying = new FlyingArrows("FlyingArrows");
+		this.f = f;
+		this.c = c;
 	}
 
 	@Override
@@ -40,8 +44,11 @@ public class FrontalRules extends Rules {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//FrontalMain fm = new FrontalMain("FlyingArrows");
-		flying.changePanel("2");
+		Object src = e.getSource();
+		if (src == begin)
+			f.changePanel("2");
+		else if (src == back)
+			c.changePanel("3");
 	}
 	
 }
