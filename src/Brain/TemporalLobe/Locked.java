@@ -17,8 +17,6 @@ public class Locked extends JFrame{
 	
 	public Locked(String title, Coma c) {
 		super(title);
-		k = new Keypad();
-		add(k);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.c = c;
@@ -28,22 +26,16 @@ public class Locked extends JFrame{
 	    cardPanel.setLayout(cl);
 	    
 	    
-//	    TemporalRules r = new TemporalRules(this, c);
-//	    r.setVisible(true);
-//	    add(r);
-//	    
-	    Temporal panel = new Temporal();
-	    panel.setVisible(true);
-	    add(panel);
-
-	 //   cardPanel.add(r);
-	    cardPanel.add(panel);
-
 	    TemporalRules r = new TemporalRules(this, c);
 	    r.setVisible(true);
 	    add(r);
-	
-	    cardPanel.add(r);
+	    
+	    Temporal panel = new Temporal(this, c);
+	    panel.setVisible(true);
+	    add(panel);
+
+	    cardPanel.add(r, "1");
+	    cardPanel.add(panel, "2");
 
 	    add(cardPanel);
 	    setVisible(true);

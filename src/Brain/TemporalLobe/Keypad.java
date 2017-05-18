@@ -30,15 +30,15 @@ public class Keypad extends JPanel {
     	setLayout(null);
     	setOpaque(true);
     	setBackground(Color.BLUE);
-    	setBounds(30, 100, 400, 400);
+    	setBounds(250, 150, 300, 300);
     	setFocusCycleRoot(true);
     	
-//		JPanel back = new JPanel();
-//		back.setLayout(null);
-//		back.setBackground(new Color(255,255,255, 127));
-//		back.setOpaque(true);
-//		back.setBounds(30, 100, 400, 400);
-//		add(back);
+		/*JPanel back = new JPanel();
+		back.setLayout(null);
+		back.setBackground(new Color(255,255,255, 127));
+		back.setOpaque(true);
+		back.setBounds(30, 100, 400, 400);
+		add(back);*/
     	
     
     	buttons = new Button[10];
@@ -50,6 +50,7 @@ public class Keypad extends JPanel {
     private void initializeButtons() {
         
     	for(Button b: buttons) {
+    		
     	}
                                     
     }

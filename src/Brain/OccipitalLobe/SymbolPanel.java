@@ -7,8 +7,12 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import Coma.Coma;
+
+import java.awt.Font;
 import java.awt.Graphics;
-import com.sun.prism.paint.Color;
+import java.awt.Color;
+import java.awt.Color.*;
 
 /**
  * Represents the screen displayed for the user to select a symbol.
@@ -22,11 +26,16 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	private static final int RADIUS = 30;
 	ActionListener listener;
 	private int correct;
+	private JButton back, menu;
 	
+	private ShowMeTheLight s;
+	private Coma c;
 	/**
 	 * Constructs a new instance of SymbolPanel by initializing all buttons. 
 	 */
-	public SymbolPanel() {
+	public SymbolPanel(ShowMeTheLight s, Coma c) {
+		this.s = s;
+		this.c = c;
 		symbols = new JButton[5];
 		correct = -1;
 		double angleDiff = symbols.length/Math.toRadians(360);
@@ -42,6 +51,22 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	        symbols[i].addActionListener(this);
 	        //symbols[i].setOpaque(true);
 		}
+		back = new JButton("BACK");
+		back.setBackground(Color.YELLOW);
+		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		back.setSize(100, 50);
+		back.setLocation(25, 0);
+		
+		menu = new JButton("MENU");
+		menu.setBackground(Color.YELLOW);
+		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		menu.setSize(100, 50);
+		menu.setLocation(150, 0);
+		
+		add(back);
+		back.addActionListener(this);
+		add(menu);
+		menu.addActionListener(this);
 	}
 	
 	/*public void paintComponent(Graphics g) {
@@ -75,5 +100,9 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		} else {
 			correct = 0;
 		}
+		if (src == back)
+			s.changePanel("1");
+		else if (src == menu)
+			c.changePanel("3");
 	}
 }

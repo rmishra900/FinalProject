@@ -42,7 +42,7 @@ public class Menu extends JPanel implements ActionListener {
 		occipital = new JButton("Show Me the Light");
 		frontal = new JButton("Flying Arrows");
 		parietal = new JButton("Hole in the Wall");
-		temporal = new JButton("In the Neighborhood");
+		temporal = new JButton("Locked");
 		add(occipital);
 		occipital.addActionListener(this);
 		add(frontal);

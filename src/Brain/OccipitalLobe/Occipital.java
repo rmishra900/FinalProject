@@ -56,7 +56,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		setBackground(Color.WHITE);
 		background = new ImageIcon("occipital" + System.getProperty("file.separator") + "OccipitalBackground.jpg").getImage();
 		super.addMouseListener(this);
-		//plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
+		
 		correct = -1;
 		showObjects = true;
 		initializeObstacles();

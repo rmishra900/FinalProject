@@ -1,5 +1,6 @@
 package Brain.TemporalLobe;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,7 +24,7 @@ public class Temporal extends JPanel {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
-	private Locked i;
+	private Locked l;
 	private Coma c;
 	private Room[] rooms;
 	private Keypad k;
@@ -31,21 +32,18 @@ public class Temporal extends JPanel {
 	int numCorrect;
 	int panelNumber;
 	
-	public Temporal() {
+	public Temporal(Locked l, Coma c) {
 		super();
+		this.l = l;
+		this.c = c;
 		k = new Keypad();
-		//setBackground(Color.BLUE);
+		setLayout(null);
+		add(k);
+		
 		rooms = new Room[8];
 		initializeRooms();
 		//add(k);
-	}
-
-	public Temporal(Locked i, Coma c) {
-		super();
-		this.i = i;
-		this.c = c;
-		rooms = new Room[8];
-		initializeRooms();
+		setVisible(true);
 	}
 	
 	public void paintComponent(Graphics g) {

@@ -46,7 +46,7 @@ public class ShowMeTheLight extends JFrame {
 	    panel = new Occipital(this, c);
 	    panel.add(score);
 	    panel.setVisible(true);
-	    sp = new SymbolPanel();
+	    sp = new SymbolPanel(this, c);
 	    sp.add(score);
 	
 	    cardPanel.add(panel1, "1");
@@ -65,7 +65,7 @@ public class ShowMeTheLight extends JFrame {
 	 	    glass.setOpaque(false);
 	 	    
 	 	    glass.addMouseListener(new MouseAdapter() {});
-	 	    glass.addMouseMotionListener(new MouseMotionAdapter() {});
+	 	    glass.addMouseMotionListener(new MouseAdapter() {});
 	 	    
 	 	    glass.setFocusCycleRoot(true);
 	 	    setGlassPane(glass);
