@@ -8,6 +8,8 @@ package Brain.TemporalLobe;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
@@ -22,7 +24,7 @@ import javax.swing.JTextField;
  *
  * @author reetmishra
  */
-public class Keypad extends JPanel{
+public class Keypad extends JPanel implements ActionListener{
 	
 	  private Button[] buttons;  
 	  private Sound[] sounds;
@@ -109,20 +111,39 @@ public class Keypad extends JPanel{
     		return false;
     }
     
-    public ArrayList<Button> getButtonsPressed(Button[] buttons) {
+    public Button[] getButtonsPressed(Button[] buttons) {
     	ArrayList<Button> pressed = new ArrayList<Button>();
     	for(Button b: buttons) {
     		if(b.getJButton().getModel().isPressed()) {
     			pressed.add(b);
     		}
     	}
-    	
-    	
-    	//Button[] p = (Button[])pressed.toArray();
-    	
-    	return  pressed;
+    	return (Button[]) pressed.toArray();
     }
-    
-    
-             
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		if (src == buttons[0])
+			
+		else if (src == buttons[1])
+			
+		else if (src == buttons[2]) 
+			
+		else if (src == buttons[3])
+			
+		else if (src == buttons[4])
+		
+		else if (src == buttons[5])
+			
+		else if (src == buttons[6])
+			
+		else if (src == buttons[7])
+			
+		else if (src == buttons[8])
+			
+		else if (src == buttons[9])
+	}
+   
 }
