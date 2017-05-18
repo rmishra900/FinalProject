@@ -23,6 +23,7 @@ public class StoryScreen extends JPanel implements MouseListener {
 	private Coma c;
 	private Image i1, i2, i3;
 	private int x, y, w, h;
+	private int x1, y1, w1, h1;
 	
 	/**
 	 * Constructs a new instance of a story screen.
@@ -41,6 +42,11 @@ public class StoryScreen extends JPanel implements MouseListener {
 		y = 330;
 		w = 400;
 		h = 50;
+		
+		x1 = 25;
+		y1 = DRAWING_HEIGHT - 60;
+		w1 = 100;
+		h1 = 50;
 	}
 
 	public void paintComponent(Graphics g){
@@ -74,10 +80,13 @@ public class StoryScreen extends JPanel implements MouseListener {
 		
 		g.setColor(Color.WHITE);
 		g.fillRoundRect(x, y, w, h, 10, 10);
+		g.fillRoundRect(x1, y1, w1, h1, 10, 10);
 		g.setColor(Color.BLACK);
 		g.drawRoundRect(x, y, w, h, 10, 10);
+		g.drawRoundRect(x1, y1, w1, h1, 10, 10);
 		g.setFont(new Font("SansSerif", 3, 30));
 		g.drawString("Click here to continue", 220, 360);
+		g.drawString("Home", 35, 575);
 //        a coma and have damaged your entire brain! This is a major problem
 //        because you need your brain for basic abilities such as vision, hearing,
 //        cognition, and perception. Your job is to navigate through the four lobes of
@@ -107,16 +116,17 @@ public class StoryScreen extends JPanel implements MouseListener {
 	}
 
 	public void mousePressed(MouseEvent e) {
-		double xC = e.getX();
-		double yC = e.getY();
+		double xC = e.getX() * 800.0 / getWidth();
+		double yC = e.getY() * 600.0 / getHeight();
 		 
 		if (e.getButton() == 1)
 		{
-//			System.out.println(x + " " + y );
-			if(xC >= 170 && xC <= 570 && yC >= 330 && y <= 380) {
+			if(xC >= x && xC <= x + w && yC >= y && yC <= y + h + 40) {
 				c.changePanel("3");
 			}
-			
+			else if(xC >= x1 && xC <= x1 + w1 && yC >= y1 && yC <= y1 + h1 + 40) {
+				c.changePanel("1");
+			}
 		}
 	}
 
