@@ -124,75 +124,86 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
-		if (continueGame) {
-			g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-			g.setColor(Color.WHITE);
-			g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
-			g.setColor(Color.BLACK);
-			g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
-			
-			g.setFont(new Font("SansSerif", 3, 24));
-			g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
-			
-			g.setColor(Color.YELLOW);
-			g.setFont(new Font("SansSerif", 3, 50));
-			g.drawString("00:" + format(seconds % 60), 600, 50);
-			
-			w.draw(g2);
-			drawS1.draw(g2);
-			
-			if (w.passes(drawS1)) {
-				numCorrect++;
-	//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
-			}
+		if (!c.getWon(3)) {
+			if (continueGame) {
+				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
+				g.setColor(Color.WHITE);
+				g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+				g.setColor(Color.BLACK);
+				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 				
-			if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
-				if (drawS1.x <= w.x) {
-					shootShape();
+				g.setFont(new Font("SansSerif", 3, 24));
+				g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
+				
+				g.setColor(Color.YELLOW);
+				g.setFont(new Font("SansSerif", 3, 50));
+				g.drawString("00:" + format(seconds % 60), 600, 50);
+				
+				w.draw(g2);
+				drawS1.draw(g2);
+				
+				if (w.passes(drawS1)) {
+					numCorrect++;
+		//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
 				}
-			}
-			else {
-				Triangle t = (Triangle)drawS1;
-				if (t.getXCoords()[1] <= w.x) {
-					shootShape();
+					
+				if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
+					if (drawS1.x <= w.x) {
+						shootShape();
+					}
+				}
+				else {
+					Triangle t = (Triangle)drawS1;
+					if (t.getXCoords()[1] <= w.x) {
+						shootShape();
+					}
+				}
+				
+				if (!screenRect.intersects(w))
+			  		redrawWall();
+				
+				if(numCorrect >= threshold && seconds > 0 || seconds == 0 && numCorrect < threshold) {
+					continueGame = false;
 				}
 			}
 			
-			if (!screenRect.intersects(w))
-		  		redrawWall();
+			g2.setTransform(at);
 			
-			if(numCorrect >= threshold && seconds > 0 || seconds == 0 && numCorrect < threshold) {
-				continueGame = false;
+			if(!continueGame) {
+				g.setColor(Color.WHITE);
+				g.fillRect(0, 0, getWidth(), getHeight());
+				g.setColor(Color.YELLOW);
+				g.setFont(new Font("SansSerif", 3, 100));
+				
+				if(numCorrect >= threshold && seconds > 0) {
+					c.setWon(3);
+						
+					g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+				}
+				else if (seconds == 0 && numCorrect < threshold) {
+					g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
+				}
+				
+				g.setColor(Color.WHITE);
+				g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
+				g.setColor(Color.BLACK);
+				g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
+				
+				g.setFont(new Font("SansSerif", 3, 24));
+				g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
+			
+				g.setColor(Color.YELLOW);
+				g.setFont(new Font("SansSerif", 3, 50));
+				g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
+				return;
 			}
 		}
-		
-		g2.setTransform(at);
-		
-		if(!continueGame) {
+		else {
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.YELLOW);
 			g.setFont(new Font("SansSerif", 3, 100));
-			
-			if(numCorrect >= threshold && seconds > 0) {
-				g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
-			}
-			else if (seconds == 0 && numCorrect < threshold) {
-				g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
-			}
-			
-			g.setColor(Color.WHITE);
-			g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
-			g.setColor(Color.BLACK);
-			g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
-			
-			g.setFont(new Font("SansSerif", 3, 24));
-			g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
-		
-			g.setColor(Color.YELLOW);
-			g.setFont(new Font("SansSerif", 3, 50));
-			g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
-			return;
+			g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
 		}
 		 
 		repaint(); 	
