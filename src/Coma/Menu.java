@@ -71,7 +71,7 @@ public class Menu extends JPanel implements ActionListener {
 		add(temporal);
 		temporal.addActionListener(this);
 		
-		home = new JButton("MENU");
+		home = new JButton("HOME");
 		home.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		home.setSize(100, 50);
 		home.setLocation(325, 500);
