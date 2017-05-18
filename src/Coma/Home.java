@@ -55,7 +55,6 @@ public class Home extends JPanel implements KeyListener{
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-		System.out.println(c.frontalWin + " " + c.occipitalWin+" " + c.parietalWin+" " + c.temporalWin);
 		g.setFont(new Font("SansSerif", 3, 100));
 		g.drawString("C.O.M.A", 200, 300);
 		g.setFont(new Font("SansSerif", 1, 20));
