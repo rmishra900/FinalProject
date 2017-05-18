@@ -104,12 +104,7 @@ public class Keypad extends JPanel implements ActionListener{
     public Button getButton(int x) {
     	return buttons[x];
     }
-    public boolean isPressed(Button b) {
-    	if(b.getJButton().getModel().isPressed())
-    		return true;
-    	else
-    		return false;
-    }
+   
     
     public Button[] getButtonsPressed(Button[] buttons) {
     	ArrayList<Button> pressed = new ArrayList<Button>();
@@ -124,7 +119,13 @@ public class Keypad extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+//		Object x = e.getSource();
+//		
+//		//for(int i =0; i<buttons.length; i++) {
+//			if(buttons[0].getJButton().getModel().isPressed()) {
+//				System.out.println(buttons[0].getText());
+//			}
+//		//}
 	}
    
 }

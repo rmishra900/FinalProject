@@ -15,6 +15,7 @@ public class Button implements ActionListener{
 	private int x, y, w, h;
 	private Sound s;
 	private JButton b;
+	private boolean pressed;
 	
 	public Button(String text, int x, int y, String filename) {
 		this.text = text;
@@ -30,12 +31,18 @@ public class Button implements ActionListener{
 		b.setFont(new Font("Roman Baseline", 0, 16));
 		b.setBounds(x, y, w, h);
 		b.addActionListener(this);
+		pressed = false;
 	
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		s.play();
+		pressed = true;
+	}
+	
+	public boolean isPressed() {
+		return pressed;
 	}
 	
 	public void setSound(String filename) {
@@ -102,5 +109,17 @@ public class Button implements ActionListener{
 		this.b = b;
 	}
 	
+//	 public boolean isPressed() {
+//	    	if(getJButton().getModel().isPressed()) {
+//	    		
+//	    		return true;
+//	    	}
+//	    	else {
+//	    		System.out.println("hello");
+//	    		return false;
+//	    	}
+//	    		
+//	    }
+//	
 
 }

@@ -40,6 +40,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private int panelNumber;
 	private int[][] previousCodes;
 	private JTextField buttonsPressed;
+	private String buttonsPressedText;
 	
 
 	public Temporal(Locked l, Coma c) {
@@ -49,7 +50,7 @@ public class Temporal extends JPanel implements ActionListener {
 		k = new Keypad();
 		setLayout(null);
 		
-		
+		buttonsPressedText = "";
 		rooms = new Room[8];
 		previousCodes = new int[8][4];
 
@@ -62,8 +63,7 @@ public class Temporal extends JPanel implements ActionListener {
 		buttonsPressed.setSize(150,50);
 		buttonsPressed.setBackground(Color.WHITE);
 		buttonsPressed.setEditable(false);
-		
-		
+		buttonsPressed.setText(buttonsPressedText);
 	
 		
 		back = new JButton("BACK");
@@ -97,28 +97,18 @@ public class Temporal extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 	
-	public String getText() {
-//		
-//		ArrayList<Button> arr = k.getButtonsPressed(k.getButtons());
-//		
-//		String text = "";
-//		for(Button b : arr) {
-//			text+=b.getText();
-//		}
-//		return text;
+	public String addText(String t){
 		
-		String text = "";
-	
-		for(int i = 0; i< k.getButtons().length; i++) {
-		
-			if(k.isPressed(k.getButton(i))) {
-				System.out.println(k.getButtons().length);
-				text+= k.getButton(i).getText();
-			}
-			System.out.println(k.isPressed(k.getButton(i)));
-		}
-		System.out.println("text: "+text);
-		return text;
+		String prev = buttonsPressedText;  
+		//buttonsPressed.setText(t);	
+		String now = t;
+		System.out.println("NOW: "+now);
+		buttonsPressed.setText(now);
+	//	System.out.println("buttonsPressed JTEXTFIELD: "+buttonsPressed.getText());
+		buttonsPressedText = now;
+		System.out.println("buttonsPressed STRING: "+buttonsPressedText);
+
+		return buttonsPressedText;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -141,10 +131,35 @@ public class Temporal extends JPanel implements ActionListener {
 //			buttonsPressed.setText("");
 //		}
 //		else {
-		
-			buttonsPressed.setText(getText());
-			System.out.println(getText());
-	//	}
+		Button button;
+		for(int i = 0; i< k.getButtons().length; i++) {
+			button = k.getButton(i);
+			
+			
+			if(button.isPressed()) {
+				System.out.println("button is Pressed");
+				String prev = buttonsPressedText;
+				String x =addText(Integer.toString(i+1));
+				System.out.println(prev+x);
+				//System.out.println("X: "+x);
+				buttonsPressed.setText(prev+x);
+//				String prev = buttonsPressedText;  
+//				buttonsPressed.setText(Integer.toString(i+1));	
+//				String now = buttonsPressed.getText();
+//				buttonsPressed.setText(prev+now);
+//				buttonsPressedText = buttonsPressed.getText();
+//				System.out.println(buttonsPressedText);
+			}
+			
+//			else {
+//				buttonsPressed.setText(Integer.toString(0));
+//			}
+		}
+//		for(int i = 0; i<k; i++)
+//			
+//		
+//			//System.out.println(getText());
+//	//	}
 		
 	}
 	
@@ -211,6 +226,13 @@ public class Temporal extends JPanel implements ActionListener {
 			c.changePanel("3");
 		else if(src == play) {
 			rooms[getPanelNum()].playSound();
+		}
+		System.out.println("im here");
+		for(int i =0; i<k.getButtons().length; i++) {
+			if(k.getButton(i).isPressed()) {
+				System.out.println("text: ");
+				System.out.println(k.getButton(i).getText());
+			}
 		}
 			
 	}
