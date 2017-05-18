@@ -45,13 +45,13 @@ public class Temporal extends JPanel {
 		this.i = i;
 		this.c = c;
 		rooms = new Room[8];
-		initializeRooms();
+		//initializeRooms();
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
 		
-		//g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
+	//	g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
 		
 		Graphics2D g2 = (Graphics2D)g;
 
@@ -88,21 +88,6 @@ public class Temporal extends JPanel {
 		return rooms;
 	}
 	
-	public void setPanelNum(int x) {
-		panelNumber = x;
-	}
-	
-	public int getPanelNum() {
-		return panelNumber;
-	}
-	
-	public void switchRooms() {
-		panelNumber++;
-	}
-	
-	public Room[] getRooms() {
-		return rooms;
-	}
 	
 	private void initializeRooms() {
 //		rooms[0] = new Room("Room0.png", "Room0.wav", DRAWING_WIDTH, DRAWING_HEIGHT);

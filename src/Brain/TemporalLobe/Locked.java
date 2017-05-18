@@ -15,7 +15,8 @@ public class Locked extends JFrame{
 	private Coma c;
 	private Keypad k;
 	
-	public Locked(String title) {
+	public Locked(String title, Coma c) {
+	//public Locked(String title) {
 		super(title);
 		k = new Keypad();
 		add(k);
