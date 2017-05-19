@@ -32,6 +32,7 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton parietal;
 	private JButton temporal;
 	private JButton home;
+	FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
 	 * Constructs a new instance of this menu screen. 
@@ -94,8 +95,14 @@ public class Menu extends JPanel implements ActionListener {
 		Object src = e.getSource();
 		if (src == occipital) {
 			ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
-		} else if (src == frontal) {
-			FlyingArrows f = new FlyingArrows("Flying Arrows", c);
+		} else if (src == frontal) {	
+			//add(f);
+			//FlyingArrows fa = new FlyingArrows("FlyingArrows", c);
+			c.changePanel("6");
+			//f.setVisible(true);
+		//	f.setEnabled(true);
+	//		f.setVisible(true);
+			//c.changePanel("6");
 			add(f);
 		} else if (src == parietal) {
 			HoleInTheWall p = new HoleInTheWall("Hole in the Wall", c);

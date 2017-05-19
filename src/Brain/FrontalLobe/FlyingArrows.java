@@ -22,7 +22,7 @@ public class FlyingArrows extends JPanel {
 	
 	public FlyingArrows(String t, Coma c) {
 		//super(title);
-		setBounds(100, 100, 800, 600);
+		setBounds(0, 0, 800, 600);
 //		this.title = new JLabel(t);
 //		title.setLocation(0, 0);
 //		title.setSize(800,600);
@@ -49,9 +49,9 @@ public class FlyingArrows extends JPanel {
 	}
 	
 	
-	public static void main(String[] args) {
-		Coma c = new Coma("COMA");
-	}
+//	public static void main(String[] args) {
+//		Coma c = new Coma("COMA");
+//	}
 
 	/**
 	 * Changes what panel is displayed on the screen. 

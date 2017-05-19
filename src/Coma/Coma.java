@@ -45,10 +45,15 @@ public class Coma extends JFrame {
 	    gamePanel.add(panel4, "4");
 	    
 	    
-//	    ShowMeTheLight smtl = new ShowMeTheLight("Show Me The Light",this);
-//	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
-//	    HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
-//	    Locked l = new Locked("Locked", this);
+	//    ShowMeTheLight smtl = new ShowMeTheLight("Show Me The Light",this);
+	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
+	 //   HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
+	 //   Locked l = new Locked("Locked", this);
+	    
+	//    gamePanel.add(smtl, "5");
+	    gamePanel.add(fa, "6");
+	  //  gamePanel.add(hitw, "7");
+	  //  gamePanel.add(l, "8");
 //	    
 	   // panel3.add(smtl);
 	 //   panel3.add(fa);
@@ -59,7 +64,6 @@ public class Coma extends JFrame {
 	    addKeyListener(panel1);
 	    addMouseListener(panel2);
 	    addKeyListener(panel4);
-	    
 	    frontalWin = false;
 	    occipitalWin = false;
 	    parietalWin = false;
