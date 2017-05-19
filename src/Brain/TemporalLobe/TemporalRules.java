@@ -49,8 +49,8 @@ public class TemporalRules extends Rules{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin) {
-			l.getPanel().reset();
-			l.changePanel("2");
+			c.getTemporalPanel().reset();
+			c.changePanel("10");
 		}
 		else if (src == back)
 			c.changePanel("3");

@@ -48,7 +48,7 @@ public class Keypad extends JPanel implements ActionListener {
     	y = 80;
     	setLayout(null);
     	setOpaque(true);
-    	setBackground(Color.WHITE);
+    	//setBackground(Color.LIGHT_GRAY);
     	setBounds(x, y, width, height);
    		
 		//isPressed = false;

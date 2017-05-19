@@ -46,7 +46,7 @@ public class FrontalRules extends Rules {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin) {
-			c.getPanel().reset();
+			c.getFrontalPanel().reset();
 			c.changePanel("7");
 		}
 		else if (src == back)

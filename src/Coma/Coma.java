@@ -10,7 +10,11 @@ import Brain.FrontalLobe.Frontal;
 import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.ParietalLobe.HoleInTheWall;
+import Brain.ParietalLobe.Parietal;
+import Brain.ParietalLobe.ParietalRules;
 import Brain.TemporalLobe.Locked;
+import Brain.TemporalLobe.Temporal;
+import Brain.TemporalLobe.TemporalRules;
 
 /**
  * Represents the window that the game begins on. 
@@ -23,6 +27,8 @@ public class Coma extends JFrame {
 	protected static int wins;
 	protected boolean frontalWin, occipitalWin, parietalWin, temporalWin;
 	private Frontal f;
+	private Temporal t;
+	private Parietal p;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -50,17 +56,28 @@ public class Coma extends JFrame {
 	    
 	//    ShowMeTheLight smtl = new ShowMeTheLight("Show Me The Light",this);
 	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
-	     f = new Frontal(fa, this);
+	    f = new Frontal(fa, this);
 	    FrontalRules fr = new FrontalRules(fa, this);
-	   
-	   
-	 //   HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
-	 //   Locked l = new Locked("Locked", this);
-	    
-	//    gamePanel.add(smtl, "5");
 	    gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
+	   
+	
+	    Locked l = new Locked("Locked", this);
+	    t = new Temporal(l, this);
+	    TemporalRules tr = new TemporalRules(l,this);
+	    gamePanel.add(l, "9");
+	    gamePanel.add(t,"10");
+	    gamePanel.add(tr, "11");
+	    
+	    HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
+	    p = new Parietal(hitw, this);
+	    ParietalRules pr = new ParietalRules(hitw, this);
+	    gamePanel.add(hitw, "12");
+	    gamePanel.add(p, "13");
+	    gamePanel.add(pr, "14");
+	//    gamePanel.add(smtl, "5");
+	   
 	  //  gamePanel.add(hitw, "7");
 	  //  gamePanel.add(l, "8");
 //	    
@@ -74,6 +91,8 @@ public class Coma extends JFrame {
 	    addMouseListener(panel2);
 	    addKeyListener(panel4);
 	    addKeyListener(f.getKeyHandler());
+	    addKeyListener(p);
+	    
 	    frontalWin = false;
 	    occipitalWin = false;
 	    parietalWin = false;
@@ -85,8 +104,16 @@ public class Coma extends JFrame {
 	    setVisible(true);
 	}
 	
-	public Frontal getPanel() {
+	public Frontal getFrontalPanel() {
 		return f;
+	}
+	
+	public Temporal getTemporalPanel() {
+		return t;
+	}
+	
+	public Parietal getParietalPanel() {
+		return p;
 	}
 	
 	public static void main(String[] args) {

@@ -105,9 +105,10 @@ public class Menu extends JPanel implements ActionListener {
 			//c.changePanel("6");
 			//add(f);
 		} else if (src == parietal) {
-			HoleInTheWall p = new HoleInTheWall("Hole in the Wall", c);
+			c.changePanel("14");
 		} else if (src == temporal) {
-			Locked l = new Locked("Locked", c);
+			//Locked l = new Locked("Locked", c);
+			c.changePanel("11");
 		} else if (src == home) {
 			c.changePanel("1");
 		}
