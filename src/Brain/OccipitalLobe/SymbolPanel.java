@@ -11,6 +11,7 @@ import Coma.Coma;
 
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Color.*;
 
@@ -27,6 +28,7 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	ActionListener listener;
 	private int correct;
 	private JButton back, menu;
+	private GridLayout symbolLayout;
 	
 	private ShowMeTheLight s;
 	private Coma c;
@@ -38,19 +40,19 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		this.c = c;
 		symbols = new JButton[5];
 		correct = -1;
-		double angleDiff = symbols.length/Math.toRadians(360);
+		setLayout(null);
 		for (int i = 0; i < symbols.length; i++) {
 			symbols[i] = new JButton();
 			symbols[i].setIcon(new ImageIcon("occipital" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
-			double phi = i*angleDiff; 
-			double x = (RADIUS * Math.cos(phi));
-	        double y = (RADIUS * Math.sin(phi));
-	        symbols[i].setBounds((int)x, (int)y, 3, 3);
 	        add(symbols[i]);
-	        //symbols[i].setLocation((int)x, (int)y);
 	        symbols[i].addActionListener(this);
-	        //symbols[i].setOpaque(true);
 		}
+		symbols[0].setLocation(0, 100);
+		symbols[1].setLocation(250, 100);
+		symbols[2].setLocation(500, 100);
+		symbols[3].setLocation(0, 350);
+		symbols[4].setLocation(250, 350);
+		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
