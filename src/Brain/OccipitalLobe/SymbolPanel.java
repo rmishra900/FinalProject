@@ -52,6 +52,10 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		symbols[2].setLocation(500, 100);
 		symbols[3].setLocation(0, 350);
 		symbols[4].setLocation(250, 350);
+		for(JButton sym: symbols) {
+			sym.setEnabled(true);
+			sym.setSize(300,300);
+		}
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -69,6 +73,7 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		back.addActionListener(this);
 		add(menu);
 		menu.addActionListener(this);
+		
 	}
 	
 	/*public void paintComponent(Graphics g) {
