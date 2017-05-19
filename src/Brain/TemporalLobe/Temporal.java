@@ -160,6 +160,7 @@ public class Temporal extends JPanel implements ActionListener {
 				remove(k);
 				remove(buttonsPressed);
 				win.setText("YOU WIN!");
+				c.setWon(4);
 				return;
 			}
 		}

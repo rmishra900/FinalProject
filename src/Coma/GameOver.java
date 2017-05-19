@@ -1,4 +1,5 @@
 package Coma;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,6 +13,7 @@ import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -27,11 +29,16 @@ public class GameOver extends JPanel implements KeyListener{
 	private Coma c;
 	private JButton home;
 	private Image background;
+	private JLabel gameOver;
 	
 	public GameOver(Coma c) {
 		super();
 		this.c = c;
 		background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMA background.jpg").getImage();
+		gameOver = new JLabel("Game Over");
+		gameOver.setFont(new Font("Roman Baseline", 3, 100));
+		setBackground(Color.WHITE);
+		gameOver.setForeground(Color.BLACK);
 	}
 
 	public void paintComponent(Graphics g)
@@ -39,7 +46,7 @@ public class GameOver extends JPanel implements KeyListener{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		//g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 		
 		int width = getWidth();
 		int height = getHeight();
@@ -50,12 +57,26 @@ public class GameOver extends JPanel implements KeyListener{
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-		g.setFont(new Font("SansSerif", 3, 100));
-		g.drawString("GAME OVER", 100, 300);
-		g.setFont(new Font("SansSerif", 1, 20));
-		g.drawString("Press the enter button to go back to home", 200, 320);
+	//	if(c.wins==1) {
+			//g.setFont(new Font("Roman Baseline", 3, 100));
+			endGame();
+			//c.setWon(1);
+			//c.changePanel("3");
+			//add(gameOver);
+			//g.drawString("GAME OVER", 100, 300);
+		//	g.setFont(new Font("Roman Baseline", 1, 20));
+	//		g.drawString("Press the enter button to go back to home", 200, 320);
+	//	}
+		
 		
 		repaint();
+	}
+	
+	public void endGame() {
+		//c.changePanel("3");
+		repaint();
+		add(gameOver);
+		
 	}
 
 	@Override

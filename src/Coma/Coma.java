@@ -5,6 +5,11 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Brain.FrontalLobe.FlyingArrows;
+import Brain.OccipitalLobe.ShowMeTheLight;
+import Brain.ParietalLobe.HoleInTheWall;
+import Brain.TemporalLobe.Locked;
+
 /**
  * Represents the window that the game begins on. 
  * @author Thanh Luong
@@ -39,6 +44,17 @@ public class Coma extends JFrame {
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
 	    
+	    
+//	    ShowMeTheLight smtl = new ShowMeTheLight("Show Me The Light",this);
+//	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
+//	    HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
+//	    Locked l = new Locked("Locked", this);
+//	    
+	   // panel3.add(smtl);
+	 //   panel3.add(fa);
+	   // panel3.add(hitw);
+	   // panel3.add(l);
+	    
 	    add(gamePanel);
 	    addKeyListener(panel1);
 	    addMouseListener(panel2);
@@ -48,6 +64,9 @@ public class Coma extends JFrame {
 	    occipitalWin = false;
 	    parietalWin = false;
 	    temporalWin = false;
+	    
+	  
+	    
 	    
 	    setVisible(true);
 	}

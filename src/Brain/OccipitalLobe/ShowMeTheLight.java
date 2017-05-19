@@ -120,8 +120,10 @@ public class ShowMeTheLight extends JFrame {
 	 	    else if (sp.getCorrect() == 0){
 	 	    	if (numCorrect < 10)
 	 	    		score.setText("YOU LOSE! Score: " + numCorrect);
-	 	    	else
+	 	    	else {
 	 	    		score.setText("YOU WIN! Score: " + numCorrect);
+	 	    		c.setWon(2);
+	 	    	}
 	 	    	sp.setVisible(false);
 	 	    	break;
 	 	    }

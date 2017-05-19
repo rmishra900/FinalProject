@@ -1,8 +1,10 @@
 package Brain.FrontalLobe;
 
 import java.awt.CardLayout;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Brain.ParietalLobe.Parietal;
@@ -11,17 +13,24 @@ import Coma.Home;
 import Coma.Menu;
 import Coma.StoryScreen;
 
-public class FlyingArrows extends JFrame {
+public class FlyingArrows extends JPanel {
 
 	private JPanel cardPanel;
 	private Coma c;
 	private Frontal panel2;
+	private JLabel title;
 	
-	public FlyingArrows(String title, Coma c) {
-		super(title);
-		this.c = c;
+	public FlyingArrows(String t, Coma c) {
+		//super(title);
 		setBounds(100, 100, 800, 600);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.title = new JLabel(t);
+//		title.setLocation(0, 0);
+//		title.setSize(800,600);
+//		title.setFont(new Font("Roman Baseline", 0,20));
+//		
+		this.c = c;
+		
+	    //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();

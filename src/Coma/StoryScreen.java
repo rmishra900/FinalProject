@@ -61,18 +61,20 @@ public class StoryScreen extends JPanel implements MouseListener {
 
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		g.setFont(new Font("Serif", 0, 25));
-		g.drawString("Imagine getting in a car accident or slipping on the bathroom floor. The", 30, 50);
-		g.drawString("next thing you know (but you actually do not) is that you have fallen into", 30, 75);
-		g.drawString("a coma and have damaged your entire brain! This is a major problem", 30, 100);
-		g.drawString("because you need your brain for basic abilities such as vision, hearing,", 30, 125);
-		g.drawString("cognition, and perception. Your job is to navigate through the four lobes", 30, 150);
-		g.drawString("of the brain: the frontal lobe, temporal lobe, occipital lobe, and parietal", 30, 175);
-		g.drawString("lobe, all of which are responsible for basic human skills. You will activate", 30, 200);
-		g.drawString("these areas by playing games that stimulate each lobe of the brain.", 30, 225);
-		g.drawString("Ultimately, COMA strengthens your natural abilities through entertaining", 30, 250);
-		g.drawString("mini games and engages your brain by providing an incentive to wake up", 30, 275);
-		g.drawString("from a coma.", 30, 300);
+		g.setFont(new Font("Roman Baseline", 0, 18));
+		int xcoord = 47;
+		int ycoord = 50;
+		g.drawString("Imagine getting in a car accident or slipping on the bathroom floor. The", xcoord, ycoord);
+		g.drawString("next thing you know (but you actually do not) is that you have fallen into", xcoord, ycoord+25);
+		g.drawString("a coma and have damaged your entire brain! This is a major problem", xcoord, ycoord+(2*25));
+		g.drawString("because you need your brain for basic abilities such as vision, hearing,", xcoord, ycoord+(3*25));
+		g.drawString("cognition, and perception. Your job is to navigate through the four lobes", xcoord, ycoord+(4*25));
+		g.drawString("of the brain: the frontal lobe, temporal lobe, occipital lobe, and parietal", xcoord, ycoord+(5*25));
+		g.drawString("lobe, all of which are responsible for basic human skills. You will activate", xcoord, ycoord+(6*25));
+		g.drawString("these areas by playing games that stimulate each lobe of the brain.", xcoord, ycoord+(7*25));
+		g.drawString("Ultimately, COMA strengthens your natural abilities through entertaining", xcoord, ycoord+(8*25));
+		g.drawString("mini games and engages your brain by providing an incentive to wake up", xcoord, ycoord+(9*25));
+		g.drawString("from a coma.", xcoord, ycoord+(10*25));
 		
 		g.drawImage(i1, 50, 320, 150, 200, this);
 		g.drawImage(i2, 300, 320, 150, 200, this);
@@ -84,7 +86,7 @@ public class StoryScreen extends JPanel implements MouseListener {
 		g.setColor(Color.BLACK);
 		g.drawRoundRect(x, y, w, h, 10, 10);
 		g.drawRoundRect(x1, y1, w1, h1, 10, 10);
-		g.setFont(new Font("SansSerif", 3, 30));
+		g.setFont(new Font("Roman Baseline", 3, 30));
 		g.drawString("Click here to continue", 220, 360);
 		g.drawString("Home", 35, 575);
 //        a coma and have damaged your entire brain! This is a major problem

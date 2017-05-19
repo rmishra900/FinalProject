@@ -83,7 +83,7 @@ public class Menu extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		
+		System.out.println(c.wins);
 		if(c.wins == 4)
 			c.changePanel("4");
 		
@@ -96,6 +96,7 @@ public class Menu extends JPanel implements ActionListener {
 			ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
 		} else if (src == frontal) {
 			FlyingArrows f = new FlyingArrows("Flying Arrows", c);
+			add(f);
 		} else if (src == parietal) {
 			HoleInTheWall p = new HoleInTheWall("Hole in the Wall", c);
 		} else if (src == temporal) {

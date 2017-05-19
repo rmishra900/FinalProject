@@ -371,6 +371,7 @@ public class Frontal extends JPanel implements ActionListener {
 	   if(winGame()==true) {
 		   win.setText("YOU WIN");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		   coma.setWon(1);
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
