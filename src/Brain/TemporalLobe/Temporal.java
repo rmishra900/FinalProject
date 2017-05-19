@@ -32,7 +32,6 @@ public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 
-	private Locked l;
 	private Coma c;
 	
 	private Room[] rooms;
@@ -53,9 +52,8 @@ public class Temporal extends JPanel implements ActionListener {
 	 * @param l the main panel this game belongs to
 	 * @param c the overall Coma game this mini game belongs to
 	 */
-	public Temporal(Locked l, Coma c) {
+	public Temporal(Coma c) {
 		super();
-		this.l = l;
 		this.c = c;
 		k = new Keypad();
 		k.setTemporal(this);
@@ -268,7 +266,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			l.changePanel("1");
+			c.changePanel("13");
 		else if (src == menu)
 			c.changePanel("3");
 		else if(src == play) {

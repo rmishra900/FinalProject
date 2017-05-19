@@ -11,8 +11,6 @@ import Coma.Coma;
  * @version 5/18/17
  */
 public class TemporalRules extends Rules{
-	
-	private Locked l;
 	private Coma c;
 	
 	/**
@@ -20,9 +18,8 @@ public class TemporalRules extends Rules{
 	 * @param l the Locked panel these rules belong to
 	 * @param c the overall Coma game the rules of this mini game belongs to
 	 */
-	public TemporalRules(Locked l, Coma c) {
+	public TemporalRules(Coma c) {
 		super();
-		this.l = l;
 		this.c = c;
 	}
 
@@ -49,8 +46,8 @@ public class TemporalRules extends Rules{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin) {
-			l.getPanel().reset();
-			l.changePanel("2");
+			((Temporal)c.getPanel(4)).reset();
+			c.changePanel("14");
 		}
 		else if (src == back)
 			c.changePanel("3");

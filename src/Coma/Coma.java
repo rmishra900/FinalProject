@@ -8,9 +8,15 @@ import javax.swing.JPanel;
 import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.Frontal;
 import Brain.FrontalLobe.FrontalRules;
+import Brain.OccipitalLobe.Occipital;
+import Brain.OccipitalLobe.OccipitalRules;
 import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.ParietalLobe.HoleInTheWall;
+import Brain.ParietalLobe.Parietal;
+import Brain.ParietalLobe.ParietalRules;
 import Brain.TemporalLobe.Locked;
+import Brain.TemporalLobe.Temporal;
+import Brain.TemporalLobe.TemporalRules;
 
 /**
  * Represents the window that the game begins on. 
@@ -23,6 +29,9 @@ public class Coma extends JFrame {
 	protected static int wins;
 	protected boolean frontalWin, occipitalWin, parietalWin, temporalWin;
 	private Frontal f;
+	private Parietal p;
+	private Occipital o;
+	private Temporal t;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -42,51 +51,58 @@ public class Coma extends JFrame {
 	    Menu panel3 = new Menu(this);
 	    GameOver panel4 = new GameOver(this);
 	    
+	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
+	    f = new Frontal(fa, this);
+	    FrontalRules fr = new FrontalRules(fa, this);
+	    
+	    ParietalRules pr = new ParietalRules(this);
+	    p = new Parietal(this);
+	    
+//	    OccipitalRules or = new OccipitalRules(this);
+//	    o = new Occipital(this);
+	    
+	    TemporalRules tr = new TemporalRules(this);
+	    t = new Temporal(this);
+	    
 	    gamePanel.add(panel1, "1");
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
-	    
-	    
-	//    ShowMeTheLight smtl = new ShowMeTheLight("Show Me The Light",this);
-	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
-	     f = new Frontal(fa, this);
-	    FrontalRules fr = new FrontalRules(fa, this);
-	   
-	   
-	 //   HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
-	 //   Locked l = new Locked("Locked", this);
-	    
-	//    gamePanel.add(smtl, "5");
 	    gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
-	  //  gamePanel.add(hitw, "7");
-	  //  gamePanel.add(l, "8");
-//	    
-	   // panel3.add(smtl);
-	 //   panel3.add(fa);
-	   // panel3.add(hitw);
-	   // panel3.add(l);
+	    gamePanel.add(pr, "9");
+	    gamePanel.add(p, "10");
+//	    gamePanel.add(or, "11");
+//	    gamePanel.add(o, "12");
+	    gamePanel.add(tr, "13");
+	    gamePanel.add(t, "14");
 	    
 	    add(gamePanel);
 	    addKeyListener(panel1);
 	    addMouseListener(panel2);
 	    addKeyListener(panel4);
+	    addKeyListener(p);
 	    addKeyListener(f.getKeyHandler());
 	    frontalWin = false;
 	    occipitalWin = false;
 	    parietalWin = false;
 	    temporalWin = false;
 	    
-	  
-	    
-	    
 	    setVisible(true);
 	}
 	
-	public Frontal getPanel() {
-		return f;
+	public JPanel getPanel(int i) {
+		if (i == 1)
+			return f;
+		else if(i == 2)
+			return p;
+		else if (i == 3)
+			return o;
+		else if (i == 4)
+			return t;
+		else
+			return null;
 	}
 	
 	public static void main(String[] args) {

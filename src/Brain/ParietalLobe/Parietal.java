@@ -21,7 +21,6 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
-	private HoleInTheWall h;
 	private Coma c;
 	
 	private JButton back, menu;
@@ -35,7 +34,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	/**
 	 * Constucts a new instance of this panel.
 	 */
-	public Parietal(HoleInTheWall h, Coma c) {
+	public Parietal(Coma c) {
 		super();
 		setLayout(null);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
@@ -44,9 +43,8 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		s = new ArrayList<Shape>();
 		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 20, Color.YELLOW));
 		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 40, Color.YELLOW));
 		setBackground(Color.WHITE);
-		this.h = h;
 		this.c = c;
 		
 		back = new JButton("BACK");
@@ -71,7 +69,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 500;
+		threshold = 650;
 		
 		Timer clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -177,7 +175,6 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 				
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
-						
 					g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
 				}
 				else if (seconds == 0 && numCorrect < threshold) {
@@ -269,7 +266,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			h.changePanel("1");
+			c.changePanel("9");
 		else if (src == menu)
 			c.changePanel("3");
 	}

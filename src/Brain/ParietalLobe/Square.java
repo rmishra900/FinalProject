@@ -38,7 +38,7 @@ public class Square extends Shape{
 	 * Moves this square to the left by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act() {
-		x -= 3;
+		x -= 2;
 	}
 
 	/**

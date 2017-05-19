@@ -32,15 +32,15 @@ public class Locked extends JFrame{
 	    cardPanel.setLayout(cl);
 	    
 
-	    TemporalRules r = new TemporalRules(this, c);
-	    r.setVisible(true);
-	    add(r);
-	    
-	    panel = new Temporal(this, c);
+//	    TemporalRules r = new TemporalRules(this, c);
+//	    r.setVisible(true);
+//	    add(r);
+//	    
+//	    panel = new Temporal(this, c);
 	    panel.setVisible(true);
 	    add(panel);
 
-	    cardPanel.add(r, "1");
+//	    cardPanel.add(r, "1");
 	    cardPanel.add(panel, "2");
 
 	    add(cardPanel);

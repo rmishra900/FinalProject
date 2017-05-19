@@ -23,12 +23,12 @@ public class HoleInTheWall extends JFrame {
 	    CardLayout cl = new CardLayout();
 	    gamePanel.setLayout(cl);
 	    
-	    ParietalRules panel1 = new ParietalRules(this, c);
-	    panel2 = new Parietal(this, c);
+//	    ParietalRules panel1 = new ParietalRules(this, c);
+//	    panel2 = new Parietal(this, c);
 
-	    gamePanel.add(panel1, "1");
-	    gamePanel.add(panel2, "2");
-	    add(gamePanel);
+//	    gamePanel.add(panel1, "1");
+//	    gamePanel.add(panel2, "2");
+//	    add(gamePanel);
 	    
 	    addKeyListener(panel2);
 	    setVisible(true);
