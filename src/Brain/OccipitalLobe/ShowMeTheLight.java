@@ -89,10 +89,6 @@ public class ShowMeTheLight extends JFrame {
 	 	    }
 	 	    
 	 	    if (panel.getCorrect() == 0) {
-	 	    	if (numCorrect < 10)
-	 	    		score.setText("YOU LOSE! Score: " + numCorrect);
-	 	    	else
-	 	    		score.setText("YOU WIN! Score: " + numCorrect);
 	 	    	break;
 	 	    }
 	 	    panel.setCorrect();
@@ -118,17 +114,17 @@ public class ShowMeTheLight extends JFrame {
 	 	    	score.setText("Score: " + numCorrect );
 	 	    }
 	 	    else if (sp.getCorrect() == 0){
-	 	    	if (numCorrect < 10)
-	 	    		score.setText("YOU LOSE! Score: " + numCorrect);
-	 	    	else {
-	 	    		score.setText("YOU WIN! Score: " + numCorrect);
-	 	    		c.setWon(2);
-	 	    	}
+	 	    	score.setText("YOU LOSE! Score: " + numCorrect);
 	 	    	sp.setVisible(false);
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
 	    	sp.setVisible(false);
+	    	if (numCorrect == 10) {
+	    		score.setText("YOU WIN! Score: " + numCorrect);
+ 	    		c.setWon(2);
+ 	    		break;
+	    	}
 	    	panel.reset();
 		} while (numCorrect > 0);
 		

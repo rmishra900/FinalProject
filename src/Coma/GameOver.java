@@ -22,6 +22,7 @@ import javax.swing.JPanel;
  *
  */
 public class GameOver extends JPanel implements KeyListener{
+	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;

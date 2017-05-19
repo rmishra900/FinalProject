@@ -46,16 +46,18 @@ public class SymbolPanel extends JPanel implements ActionListener {
 			symbols[i].setIcon(new ImageIcon("occipital" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
 	        add(symbols[i]);
 	        symbols[i].addActionListener(this);
+	        symbols[i].setEnabled(true);
+	        symbols[i].setSize(250, 250);
 		}
-		symbols[0].setLocation(0, 100);
-		symbols[1].setLocation(250, 100);
-		symbols[2].setLocation(500, 100);
-		symbols[3].setLocation(0, 350);
-		symbols[4].setLocation(250, 350);
-		for(JButton sym: symbols) {
+		symbols[0].setLocation(0, 50);
+		symbols[1].setLocation(263, 50);
+		symbols[2].setLocation(526, 50);
+		symbols[3].setLocation(131, 300);
+		symbols[4].setLocation(394, 300);
+		/*for(JButton sym: symbols) {
 			sym.setEnabled(true);
 			sym.setSize(300,300);
-		}
+		}*/
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);

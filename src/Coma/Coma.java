@@ -20,8 +20,8 @@ import Brain.TemporalLobe.Locked;
 public class Coma extends JFrame {
 
 	private JPanel gamePanel;
-	protected static int wins;
-	protected boolean frontalWin, occipitalWin, parietalWin, temporalWin;
+	private static int wins;
+	private boolean frontalWin, occipitalWin, parietalWin, temporalWin;
 	private Frontal f;
 	
 	/**
@@ -79,9 +79,6 @@ public class Coma extends JFrame {
 	    parietalWin = false;
 	    temporalWin = false;
 	    
-	  
-	    
-	    
 	    setVisible(true);
 	}
 	
@@ -114,6 +111,40 @@ public class Coma extends JFrame {
 			temporalWin = true;
 	}
 	
+	public int getWins() {
+		return wins;
+	}
+	
+	/*public void setFrontalWin(boolean bool) {
+		frontalWin = bool;
+		if (frontalWin)
+			wins++;
+	}
+	public void setOccipitalWin(boolean bool) {
+		occipitalWin = bool;
+		if (occipitalWin)
+			wins++;
+	}
+	public void setParietalWin(boolean bool) {
+		parietalWin = bool;
+		if (parietalWin)
+			wins++;
+	}
+	public void setTemporalWin(boolean bool) {
+		temporalWin = bool;
+		if (temporalWin)
+			wins++;
+	}*/
+	
+	public void resetWins() {
+		frontalWin = false;
+		occipitalWin = false;
+		parietalWin = false;
+		temporalWin = false;
+		wins = 0;
+	}
+	
+	
 	public void resetWins(int i) {
 		wins--;
 		if (i == 1)
@@ -138,6 +169,5 @@ public class Coma extends JFrame {
 		else
 			return false;
 	}
-	
 
 }
