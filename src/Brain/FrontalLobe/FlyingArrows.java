@@ -42,7 +42,7 @@ public class FlyingArrows extends JPanel {
 
 	    cardPanel.add(panel1, "1");
 	    cardPanel.add(panel2, "2"); 
-	    add(cardPanel);
+	  //  add(cardPanel);
 	    
 	    addKeyListener(panel2.getKeyHandler());
 	    setVisible(true);

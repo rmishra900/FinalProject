@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Brain.FrontalLobe.FlyingArrows;
+import Brain.FrontalLobe.Frontal;
+import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.ParietalLobe.HoleInTheWall;
 import Brain.TemporalLobe.Locked;
@@ -20,6 +22,7 @@ public class Coma extends JFrame {
 	private JPanel gamePanel;
 	protected static int wins;
 	protected boolean frontalWin, occipitalWin, parietalWin, temporalWin;
+	private Frontal f;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -47,11 +50,17 @@ public class Coma extends JFrame {
 	    
 	//    ShowMeTheLight smtl = new ShowMeTheLight("Show Me The Light",this);
 	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
+	     f = new Frontal(fa, this);
+	    FrontalRules fr = new FrontalRules(fa, this);
+	   
+	   
 	 //   HoleInTheWall hitw = new HoleInTheWall("Hole In The Wall", this);
 	 //   Locked l = new Locked("Locked", this);
 	    
 	//    gamePanel.add(smtl, "5");
 	    gamePanel.add(fa, "6");
+	    gamePanel.add(f,"7");
+	    gamePanel.add(fr, "8");
 	  //  gamePanel.add(hitw, "7");
 	  //  gamePanel.add(l, "8");
 //	    
@@ -64,6 +73,7 @@ public class Coma extends JFrame {
 	    addKeyListener(panel1);
 	    addMouseListener(panel2);
 	    addKeyListener(panel4);
+	    addKeyListener(f.getKeyHandler());
 	    frontalWin = false;
 	    occipitalWin = false;
 	    parietalWin = false;
@@ -73,6 +83,10 @@ public class Coma extends JFrame {
 	    
 	    
 	    setVisible(true);
+	}
+	
+	public Frontal getPanel() {
+		return f;
 	}
 	
 	public static void main(String[] args) {

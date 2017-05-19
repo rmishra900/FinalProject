@@ -589,9 +589,11 @@ public class Frontal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			f.changePanel("1");
+			coma.changePanel("8");
 		else if (src == menu)
 			coma.changePanel("3");
 
-	}	
+	}
+
+	
 }
