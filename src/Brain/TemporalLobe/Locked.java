@@ -19,6 +19,7 @@ public class Locked extends JFrame{
 	private JPanel cardPanel;
 	private Coma c;
 	private Keypad k;
+	private Temporal panel;
 	
 	public Locked(String title, Coma c) {
 		super(title);
@@ -35,7 +36,7 @@ public class Locked extends JFrame{
 	    r.setVisible(true);
 	    add(r);
 	    
-	    Temporal panel = new Temporal(this, c);
+	    panel = new Temporal(this, c);
 	    panel.setVisible(true);
 	    add(panel);
 
@@ -56,4 +57,7 @@ public class Locked extends JFrame{
 		Coma c = new Coma("COMA");
 	}
 
+	public Temporal getPanel() {
+		return panel;
+	}
 }

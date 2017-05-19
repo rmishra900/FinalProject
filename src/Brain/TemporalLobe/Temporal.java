@@ -196,7 +196,11 @@ public class Temporal extends JPanel implements ActionListener {
 	 * Iterates the number of the room so that the next room is displayed. 
 	 */
 	public void reset() {
-		panelNumber++;
+		panelNumber=0;
+		buttonsPressed.setText("");
+		buttonsPressedText = "";
+		k.setEntered("");
+		rooms[0] = new Room("Room0.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
 	
 	/**
@@ -258,6 +262,7 @@ public class Temporal extends JPanel implements ActionListener {
 		rooms[6] = new Room("Room6.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 		rooms[7] = new Room("Room7.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
