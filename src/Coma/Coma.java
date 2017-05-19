@@ -71,6 +71,7 @@ public class Coma extends JFrame {
 	    gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
+
 	    gamePanel.add(pr, "9");
 	    gamePanel.add(p, "10");
 //	    gamePanel.add(or, "11");
@@ -84,6 +85,8 @@ public class Coma extends JFrame {
 	    addKeyListener(panel4);
 	    addKeyListener(p);
 	    addKeyListener(f.getKeyHandler());
+	    addKeyListener(p);
+	    
 	    frontalWin = false;
 	    occipitalWin = false;
 	    parietalWin = false;
@@ -92,6 +95,7 @@ public class Coma extends JFrame {
 	    setVisible(true);
 	}
 	
+
 	public JPanel getPanel(int i) {
 		if (i == 1)
 			return f;

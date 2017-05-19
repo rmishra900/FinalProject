@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 import Coma.Coma;
 
-public class HoleInTheWall extends JFrame {
+public class HoleInTheWall extends JPanel {
 	
 	private JPanel gamePanel;
 	private Coma c; 
@@ -14,10 +14,10 @@ public class HoleInTheWall extends JFrame {
 	
 	
 	public HoleInTheWall(String title, Coma c) {
-		super(title);
+		//super(title);
 		this.c = c;
 		setBounds(100, 100, 800, 600);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	    gamePanel = new JPanel();
 	    CardLayout cl = new CardLayout();
@@ -26,9 +26,6 @@ public class HoleInTheWall extends JFrame {
 //	    ParietalRules panel1 = new ParietalRules(this, c);
 //	    panel2 = new Parietal(this, c);
 
-//	    gamePanel.add(panel1, "1");
-//	    gamePanel.add(panel2, "2");
-//	    add(gamePanel);
 	    
 	    addKeyListener(panel2);
 	    setVisible(true);
