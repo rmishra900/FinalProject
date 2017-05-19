@@ -58,7 +58,7 @@ public class Triangle extends Shape {
 	 */
 	public void act() {
 		for (int i = 0; i < xCoords.length; i ++) {
-			xCoords[i] -= 2.5;
+			xCoords[i] -= 2;
 		}
 	}
 

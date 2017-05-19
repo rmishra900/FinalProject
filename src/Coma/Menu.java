@@ -84,6 +84,7 @@ public class Menu extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+
 		System.out.println(c.getWins());
 		if(c.getWins() == 4)
 			c.changePanel("4");
@@ -105,9 +106,9 @@ public class Menu extends JPanel implements ActionListener {
 			//c.changePanel("6");
 			//add(f);
 		} else if (src == parietal) {
-			HoleInTheWall p = new HoleInTheWall("Hole in the Wall", c);
+			c.changePanel("9");
 		} else if (src == temporal) {
-			Locked l = new Locked("Locked", c);
+			c.changePanel("13");
 		} else if (src == home) {
 			c.changePanel("1");
 		}

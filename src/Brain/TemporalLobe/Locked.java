@@ -14,7 +14,7 @@ import Coma.Coma;
  * @author 
  *
  */
-public class Locked extends JFrame{
+public class Locked extends JPanel{
 
 	private JPanel cardPanel;
 	private Coma c;
@@ -22,28 +22,28 @@ public class Locked extends JFrame{
 	private Temporal panel;
 	
 	public Locked(String title, Coma c) {
-		super(title);
+	//	super(title);
 		this.c = c;
 		setBounds(100, 100, 800, 600);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 //   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
 	    
 
-	    TemporalRules r = new TemporalRules(this, c);
-	    r.setVisible(true);
-	    add(r);
-	    
-	    panel = new Temporal(this, c);
+//	    TemporalRules r = new TemporalRules(this, c);
+//	    r.setVisible(true);
+//	    add(r);
+//	    
+//	    panel = new Temporal(this, c);
 	    panel.setVisible(true);
 	    add(panel);
 
-	    cardPanel.add(r, "1");
+//	    cardPanel.add(r, "1");
 	    cardPanel.add(panel, "2");
 
-	    add(cardPanel);
+	   // add(cardPanel);
 	 
 	    setVisible(true);
 	}

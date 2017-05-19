@@ -32,7 +32,6 @@ public class Temporal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 
-	private Locked l;
 	private Coma c;
 	
 	private Room[] rooms;
@@ -53,9 +52,8 @@ public class Temporal extends JPanel implements ActionListener {
 	 * @param l the main panel this game belongs to
 	 * @param c the overall Coma game this mini game belongs to
 	 */
-	public Temporal(Locked l, Coma c) {
+	public Temporal(Coma c) {
 		super();
-		this.l = l;
 		this.c = c;
 		k = new Keypad();
 		k.setTemporal(this);
@@ -70,10 +68,10 @@ public class Temporal extends JPanel implements ActionListener {
 	
 		
 		buttonsPressed = new JTextField();
- 		buttonsPressed.setLocation(325, 500);
+ 		buttonsPressed.setLocation(315, 530);
  		buttonsPressed.setForeground(Color.BLACK);
  		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
-  		buttonsPressed.setSize(150,50);
+  		buttonsPressed.setSize(175,50);
   		buttonsPressed.setBackground(Color.WHITE);
   		buttonsPressed.setEditable(false);
 		
@@ -159,6 +157,7 @@ public class Temporal extends JPanel implements ActionListener {
 				g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 				remove(k);
 				remove(buttonsPressed);
+				remove(play);
 				win.setText("YOU WIN!");
 				c.setWon(4);
 				return;
@@ -202,6 +201,10 @@ public class Temporal extends JPanel implements ActionListener {
 		buttonsPressedText = "";
 		k.setEntered("");
 		rooms[0] = new Room("Room0.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		win.setText("");
+		add(buttonsPressed);
+		add(play);
+		add(k);
 	}
 	
 	/**
@@ -268,7 +271,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			l.changePanel("1");
+			c.changePanel("13");
 		else if (src == menu)
 			c.changePanel("3");
 		else if(src == play) {
