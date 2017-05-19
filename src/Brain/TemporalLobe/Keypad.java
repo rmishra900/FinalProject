@@ -74,16 +74,16 @@ public class Keypad extends JPanel implements ActionListener {
     private void initializeButtons() {
     	int a = y;
     	int b = x-width/2 + 70;
-    	 buttons[0] = new Button("1", b+5, a, sounds[0].getFilename());
-    	 buttons[1] = new Button("2", b+105, a, sounds[1].getFilename());
-    	 buttons[2] = new Button("3", b+205, a, sounds[2].getFilename());
-    	 buttons[3] = new Button("4", b+5, a+100, sounds[3].getFilename());
-    	 buttons[4] = new Button("5", b+105, a+100, sounds[4].getFilename());
-    	 buttons[5] = new Button("6", b+205, a+100, sounds[5].getFilename());
-    	 buttons[6] = new Button("7", b+5, a+200, sounds[6].getFilename());
-    	 buttons[7] = new Button("8", b+105, a+200, sounds[7].getFilename());
-    	 buttons[8] = new Button("9", b+205, a+200, sounds[8].getFilename());
-    	 buttons[9] = new Button("0", b+105, a+300, sounds[9].getFilename()); 	
+    	 buttons[1] = new Button("1", b+5, a, sounds[0].getFilename());
+    	 buttons[2] = new Button("2", b+105, a, sounds[1].getFilename());
+    	 buttons[3] = new Button("3", b+205, a, sounds[2].getFilename());
+    	 buttons[4] = new Button("4", b+5, a+100, sounds[3].getFilename());
+    	 buttons[5] = new Button("5", b+105, a+100, sounds[4].getFilename());
+    	 buttons[6] = new Button("6", b+205, a+100, sounds[5].getFilename());
+    	 buttons[7] = new Button("7", b+5, a+200, sounds[6].getFilename());
+    	 buttons[8] = new Button("8", b+105, a+200, sounds[7].getFilename());
+    	 buttons[9] = new Button("9", b+205, a+200, sounds[8].getFilename());
+    	 buttons[0] = new Button("0", b+105, a+300, sounds[9].getFilename()); 	
     	
                   
     }
@@ -93,16 +93,16 @@ public class Keypad extends JPanel implements ActionListener {
      */
     private void initializeSounds() {
     
-    		sounds[0] = new Sound("temporal" + System.getProperty("file.separator") + "C#.wav");
-    		sounds[1] = new Sound("temporal" + System.getProperty("file.separator") + "E.wav");
-    		sounds[2] = new Sound("temporal" + System.getProperty("file.separator") + "A.wav");
+    		sounds[1] = new Sound("temporal" + System.getProperty("file.separator") + "C.wav");
+    		sounds[2] = new Sound("temporal" + System.getProperty("file.separator") + "C#.wav");
     		sounds[3] = new Sound("temporal" + System.getProperty("file.separator") + "D.wav");
-    		sounds[4] = new Sound("temporal" + System.getProperty("file.separator") + "G.wav");
-    		sounds[5] = new Sound("temporal" + System.getProperty("file.separator") + "A#.wav");
-    		sounds[6] = new Sound("temporal" + System.getProperty("file.separator") + "B.wav");
+    		sounds[4] = new Sound("temporal" + System.getProperty("file.separator") + "E.wav");
+    		sounds[5] = new Sound("temporal" + System.getProperty("file.separator") + "F.wav");
+    		sounds[6] = new Sound("temporal" + System.getProperty("file.separator") + "G.wav");
     		sounds[7] = new Sound("temporal" + System.getProperty("file.separator") + "G#.wav");
-    		sounds[8] = new Sound("temporal" + System.getProperty("file.separator") + "F.wav");
-    		sounds[9] = new Sound("temporal" + System.getProperty("file.separator") + "C.wav");
+    		sounds[8] = new Sound("temporal" + System.getProperty("file.separator") + "A.wav");
+    		sounds[9] = new Sound("temporal" + System.getProperty("file.separator") + "A#.wav");
+    		sounds[0] = new Sound("temporal" + System.getProperty("file.separator") + "B.wav");
     		
     }
     
@@ -176,60 +176,17 @@ public class Keypad extends JPanel implements ActionListener {
     	String s = "";
     	for (int i = 0; i<passcodeEntered.length(); i++) {
     		if(i==x) {
+
     			return Character.toString(passcodeEntered.charAt(i));
     		}
     	}
     	return s;
     }
+   
     
     public void setEntered(String p) {
     	passcodeEntered = p;
     }
-
-	/*public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-
-		if (src == buttons[0]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[0].getText();
-		}	
-		else if (src == buttons[1]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[1].getText();
-		}
-		else if (src == buttons[2]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[2].getText();
-		}	
-		else if (src == buttons[3]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[3].getText();
-		}
-		else if (src == buttons[4]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[4].getText();
-		}	
-		else if (src == buttons[5]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[5].getText();
-		}	
-		else if (src == buttons[6]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[6].getText();
-		}
-		else if (src == buttons[7]) {
-			if (passcodeEntered.length() == 4)
-				resetEntered();
-			passcodeEntered += buttons[7].getText();
-		}
-	}*/
 
     public void setTemporal(Temporal temp) {
     	temporal = temp;
@@ -247,7 +204,7 @@ public class Keypad extends JPanel implements ActionListener {
 			temporal.repaint();
 		}
 		
-		System.out.println(passcodeEntered);
+		//System.out.println(passcodeEntered);
 	}
 
   

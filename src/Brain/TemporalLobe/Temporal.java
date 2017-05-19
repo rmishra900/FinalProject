@@ -46,6 +46,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private JTextField buttonsPressed;
 	private String buttonsPressedText;
 	private JLabel win;
+	int counter = 0;
 
 	/**
 	 * Creates a new instance of this game. 
@@ -60,17 +61,13 @@ public class Temporal extends JPanel implements ActionListener {
 		k.setTemporal(this);
 		setLayout(null);
 		
+		
 		rooms = new Room[8];
 		previousCodes = new int[8][4];
 
 		panelNumber = 0;
 		initializeRooms();
-		//buttonsPressed = new JLabel();
-//		buttonsPressed.setLocation(0, 500);
-//		//buttonsPressed.setForeground(Color.BLACK);
-//		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
-//		buttonsPressed.setSize(150,50);
-//		buttonsPressed.setForeground(Color.WHITE);
+	
 		
 		buttonsPressed = new JTextField();
  		buttonsPressed.setLocation(325, 500);
@@ -81,10 +78,10 @@ public class Temporal extends JPanel implements ActionListener {
   		buttonsPressed.setEditable(false);
 		
   		win = new JLabel();
-  		win.setLocation(100,100);
-  		win.setSize(300,300);
-  		win.setForeground(Color.WHITE);
-  		win.setText("YOU WIN");
+  		win.setLocation(165,150);
+  		win.setSize(500,300);
+  		win.setForeground(Color.RED);
+  		win.setFont(new Font("Roman Baseline", Font.BOLD, 100));
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -153,34 +150,29 @@ public class Temporal extends JPanel implements ActionListener {
 			System.out.println(k.getEntered());	
 		}
 		
-		if(winGame() == true) {
-			win.setText("YOU WIN");
-			win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
-			return;
+		if(buttonsPressed.getText().length()==4) {
+			System.out.println("passcode: "+rooms[0].getPasscodeAtIndex(0)+rooms[0].getPasscodeAtIndex(1)
+					+rooms[0].getPasscodeAtIndex(2) + rooms[0].getPasscodeAtIndex(3));
+			if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
+				g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+				g.setColor(Color.BLACK);
+				g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+				remove(k);
+				remove(buttonsPressed);
+				win.setText("YOU WIN!");
+				return;
+			}
 		}
+	
 		g2.setTransform(at);
 	}
 	
-	public boolean winGame() {
-		
-		int counter = 0;
-		
-		for(int i = 0; i<rooms[0].getPasscode().length; i++) {
-			for(int j = 0; j<k.getEntered().length(); j++) {
-				if(i==j) {
-					if(rooms[0].getPasscodeIndex(i).equals(k.getEntered(i))) {
-						counter++;
-					}
-				}
-			}
-		}
-		
-		if(counter == 4) {
+	public boolean winGame(int x) {
+		if(rooms[0].getPasscodeAtIndex(x).equals(k.getEntered(x))) {
 			return true;
 		}
-		else {
-			return false;
-		}
+		return false;
+
 	}
 
 	
@@ -223,6 +215,7 @@ public class Temporal extends JPanel implements ActionListener {
 		for (int i = 0; i < 4; i++) {
 			p[i] = (int)(Math.random()*10);
 		}
+
 		return p;
 	}
 	
@@ -247,6 +240,8 @@ public class Temporal extends JPanel implements ActionListener {
 		for (int c = 0; c < 4; c++) {
 			previousCodes[panelNumber][c] = p[c];
 		}
+		
+		
 		return p;
 	}
 	
