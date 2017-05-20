@@ -85,7 +85,7 @@ public class Menu extends JPanel implements ActionListener {
 	{
 		super.paintComponent(g);
 
-		System.out.println(c.getWins());
+		//System.out.println(c.getWins());
 		if(c.getWins() == 4)
 			c.changePanel("4");
 		

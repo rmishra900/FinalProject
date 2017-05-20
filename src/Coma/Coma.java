@@ -143,27 +143,7 @@ public class Coma extends JFrame {
 	public int getWins() {
 		return wins;
 	}
-	
-	/*public void setFrontalWin(boolean bool) {
-		frontalWin = bool;
-		if (frontalWin)
-			wins++;
-	}
-	public void setOccipitalWin(boolean bool) {
-		occipitalWin = bool;
-		if (occipitalWin)
-			wins++;
-	}
-	public void setParietalWin(boolean bool) {
-		parietalWin = bool;
-		if (parietalWin)
-			wins++;
-	}
-	public void setTemporalWin(boolean bool) {
-		temporalWin = bool;
-		if (temporalWin)
-			wins++;
-	}*/
+
 	
 	public void resetWins() {
 		frontalWin = false;

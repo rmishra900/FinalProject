@@ -34,7 +34,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
-	private ShowMeTheLight s;
 	private Coma c;
 	
 	private JButton back, menu;
@@ -91,9 +90,9 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		win.setLocation(270, 45);
 		//win.setForeground(Color.WHITE);
 		win.setSize(300, 100);
-		add(win);
+		//add(win);
 		
-		score = new JLabel("SCORE: " + sp.getScore());
+		score = new JLabel(); // "SCORE: " + sp.getScore()
 		score.setForeground(Color.BLACK);
 		score.setLocation(600, 20);
 		score.setSize(150,30);
@@ -129,7 +128,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public void reset() {
 		initializeObstacles();
 		initializeSymbol();
-		showObjects = true;
 	}
 	
 	/**
@@ -150,7 +148,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 
 		Graphics2D g2 = (Graphics2D) g;
 		
-
 		int width = getWidth();
 		int height = getHeight();
 
@@ -173,24 +170,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		}
 	}
 	
-	/**
-	 * Decides whether or not the JPanel should display anything at all. 
-	 * @param bool If true, then show FlyingObjects. If false, do not show anything. 
-	 */
-	public void setShowObjects(boolean bool) {
-		showObjects = bool;
-	}
-	
-	/**
-	 * Resets the JPanel's history of correctness. 
-	 */
-	public void setCorrect() { correct = -1; }
-	
-	/**
-	 * Returns the value that determines if the user answered correctly or not. 
-	 * @return the value that determines if the user answered correctly or not. 
-	 */
-	public int getCorrect() { return correct; }
 	
 	public void mouseClicked(MouseEvent e) {
 		if (plane.intersects(e.getX(), e.getY(), plane.PLANE_WIDTH/1.5, plane.PLANE_HEIGHT/1.5)) {
@@ -219,10 +198,13 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	}
 	
 	public void act() {
+		remove(win);
+		score.setText("Score: " + sp.getScore());
 		do {
+			showObjects = true;
 			c.changePanel("12");
 
-	 	    this.setOpaque(false);
+	 	    setOpaque(false);
 	 	    glass.setOpaque(false);
 	 	    
 	 	    glass.addMouseListener(new MouseAdapter() {});
@@ -232,16 +214,18 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 	    c.setGlassPane(glass); 
 	 	    glass.setVisible(true);
 	 	    
-	 	    this.setOpaque(true);
+	 	    setOpaque(true);
+	 	    
 	 	    try {
 	 			Thread.sleep(2000);
 	 		} catch (InterruptedException e) {
 	 			e.printStackTrace();
 	 		}
-	 	    this.setShowObjects(false);
+	 	    
+	 	    showObjects = false;
 	 	    glass.setVisible(false);	
 	 	    
-	 	    while (this.getCorrect() == -1) {
+	 	    while (correct == -1) {
 	 	    	 try {
 	 	 			Thread.sleep(200);
 	 	 		} catch (InterruptedException e) {
@@ -249,12 +233,20 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 	 		}
 	 	    }
 	 	    
-	 	    if (this.getCorrect() == 0) {
-	 	    	break;
+	 	    if (correct == 0) {
+	 	    	c.changePanel("12");
+		    	setBackground(Color.WHITE);
+		    	win.setText("YOU LOSE");
+		    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		    	add(win);
+		    	sp.setScore(0);
+		    	sp.getScoreLabel().setText("Score: " + sp.getScore());
+		    	reset();
+		    	break;
 	 	    }
-	 	    this.setCorrect();
+	 	    correct = -1;
 	 	    
-	 	    sp.setTarget(this.getSymNum());
+	 	    sp.setTarget(getSymNum());
 	 	    c.changePanel("13");
 	    	
 	 	    try {
@@ -270,26 +262,35 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 	 			e.printStackTrace();
 	 	 		}
 	    	}
+	    	
 	    	if (sp.getCorrect() == 1) {	
 	    		sp.setScore(sp.getScore()+1);
 	    		sp.getScoreLabel().setText("Score: " + sp.getScore());
 	 	    	score.setText("Score: " + sp.getScore());
 	 	    }
-	 	    else if (sp.getCorrect() == 0){
+	    	
+	 	    else if (sp.getCorrect() == 0) {
 	 	    	c.changePanel("12");
 	 	    	setBackground(Color.WHITE);
 	 	    	win.setText("YOU LOSE");
 	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+	 	    	add(win);
+	 	    	sp.setScore(0);
+	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
+	 	    	reset();
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
 	    	if (sp.getScore() == 10) {
 	    		c.changePanel("12");
+	    		showObjects = false;
 	    		setBackground(Color.WHITE);
 	    		win.setVisible(true);
 	 		    win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 	 		    win.setText("YOU WIN");
+	 		    add(win);
  	    		c.setWon(2);
+ 	    		System.out.print(c.getWon(2));
  	    		break;
 	    	}
 	    	reset();

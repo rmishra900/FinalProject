@@ -56,14 +56,15 @@ public class OccipitalRules extends Rules {
         Object src = e.getSource();
 		if (src == begin) {
 			c.changePanel("12");
-			//ShowMeTheLight game = new ShowMeTheLight("Show Me the Light", c);
-			Thread t = new Thread("my non EDT thread") {
+			if (!c.getWon(2)) {
+				Thread t = new Thread("my non EDT thread") {
 		            public void run() {
 		                //my work
 		               ((Occipital) c.getPanel(3)).act();
 		            }
-		    };
-		    t.start();	
+				};
+		        t.start();		
+			}
 		}
 		else if (src == back)
 			c.changePanel("3");
