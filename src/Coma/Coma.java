@@ -61,7 +61,7 @@ public class Coma extends JFrame {
 	    
 	    OccipitalRules or = new OccipitalRules(this);
 	    o = new Occipital(this);
-	    SymbolPanel sp = new SymbolPanel(this);
+	    SymbolPanel sp = o.getSP();
 	    
 	    TemporalRules tr = new TemporalRules(this);
 	    t = new Temporal(this);

@@ -57,7 +57,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public Occipital(Coma c) {
 		super();
 		setLayout(null);
-		//this.s = s;
+		
 		this.c = c;
 		setBackground(Color.WHITE);
 		background = new ImageIcon("occipital" + System.getProperty("file.separator") + "OccipitalBackground.jpg").getImage();
@@ -138,6 +138,10 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 */
 	public int getSymNum() {
 		return symNum;
+	}
+	
+	public SymbolPanel getSP() {
+		return sp;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -225,7 +229,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 	    glass.addMouseMotionListener(new MouseAdapter() {});
 	 	    
 	 	    glass.setFocusCycleRoot(true);
-	 	    c.setGlassPane(glass); // check on this?
+	 	    c.setGlassPane(glass); 
 	 	    glass.setVisible(true);
 	 	    
 	 	    this.setOpaque(true);
@@ -250,8 +254,8 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 	    }
 	 	    this.setCorrect();
 	 	    
-	 	    c.changePanel("13");
 	 	    sp.setTarget(this.getSymNum());
+	 	    c.changePanel("13");
 	    	
 	 	    try {
 	 			Thread.sleep(2000);
@@ -284,6 +288,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
  	    		break;
 	    	}
 	    	reset();
-		} while (sp.getCorrect() > 0);
+		} while (sp.getScore() > 0);
 	}
 }

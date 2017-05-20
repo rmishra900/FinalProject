@@ -37,7 +37,6 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	 * Constructs a new instance of SymbolPanel by initializing all buttons. 
 	 */
 	public SymbolPanel(Coma c) {
-		//this.s = s;
 		this.c = c;
 		symbols = new JButton[5];
 		correct = -1;
@@ -82,9 +81,6 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		
 	}
 	
-	/*public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}*/
 	
 	/**
 	 * Sets the target symbol that the user needs to click on this SymbolPanel. 
