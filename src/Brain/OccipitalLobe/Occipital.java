@@ -89,13 +89,13 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		
 		win = new JLabel();
 		win.setLocation(270, 45);
-		win.setForeground(Color.WHITE);
+		//win.setForeground(Color.WHITE);
 		win.setSize(300, 100);
 		add(win);
 		
 		score = new JLabel("SCORE: " + sp.getScore());
-		score.setForeground(Color.WHITE);
-		score.setLocation(10, 20);
+		score.setForeground(Color.BLACK);
+		score.setLocation(600, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
@@ -272,18 +272,23 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	    	}
 	    	if (sp.getCorrect() == 1) {	
 	    		sp.setScore(sp.getScore()+1);
+	    		sp.getScoreLabel().setText("Score: " + sp.getScore());
 	 	    	score.setText("Score: " + sp.getScore());
 	 	    }
 	 	    else if (sp.getCorrect() == 0){
-	 	    	score.setText("YOU LOSE! Score: " + sp.getScore());
-	 	    	sp.setVisible(false);
+	 	    	c.changePanel("12");
+	 	    	setBackground(Color.WHITE);
+	 	    	win.setText("YOU LOSE");
+	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
-	    	sp.setVisible(false);
 	    	if (sp.getScore() == 10) {
-	    		win.setText("YOU WIN");
+	    		c.changePanel("12");
+	    		setBackground(Color.WHITE);
+	    		win.setVisible(true);
 	 		    win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+	 		    win.setText("YOU WIN");
  	    		c.setWon(2);
  	    		break;
 	    	}

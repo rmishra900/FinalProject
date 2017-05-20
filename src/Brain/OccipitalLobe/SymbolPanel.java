@@ -73,8 +73,8 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		menu.addActionListener(this);
 		
 		score = new JLabel("SCORE: " + numCorrect);
-		score.setForeground(Color.WHITE);
-		score.setLocation(10, 20);
+		score.setForeground(Color.BLACK);
+		score.setLocation(600, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
@@ -109,6 +109,10 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	
 	public void setScore(int score) {
 		numCorrect = score;
+	}
+	
+	public JLabel getScoreLabel() {
+		return score;
 	}
 
 	@Override
