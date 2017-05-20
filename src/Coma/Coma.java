@@ -11,6 +11,7 @@ import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalRules;
 import Brain.OccipitalLobe.ShowMeTheLight;
+import Brain.OccipitalLobe.SymbolPanel;
 import Brain.ParietalLobe.HoleInTheWall;
 import Brain.ParietalLobe.Parietal;
 import Brain.ParietalLobe.ParietalRules;
@@ -58,8 +59,9 @@ public class Coma extends JFrame {
 	    ParietalRules pr = new ParietalRules(this);
 	    p = new Parietal(this);
 	    
-//	    OccipitalRules or = new OccipitalRules(this);
-//	    o = new Occipital(this);
+	    OccipitalRules or = new OccipitalRules(this);
+	    o = new Occipital(this);
+	    SymbolPanel sp = new SymbolPanel(this);
 	    
 	    TemporalRules tr = new TemporalRules(this);
 	    t = new Temporal(this);
@@ -68,16 +70,20 @@ public class Coma extends JFrame {
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
+	    
 	    gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
 
 	    gamePanel.add(pr, "9");
 	    gamePanel.add(p, "10");
-//	    gamePanel.add(or, "11");
-//	    gamePanel.add(o, "12");
-	    gamePanel.add(tr, "13");
-	    gamePanel.add(t, "14");
+	    
+	    gamePanel.add(or, "11");
+	    gamePanel.add(o, "12");
+	    gamePanel.add(sp, "13");
+	    
+	    gamePanel.add(tr, "14");
+	    gamePanel.add(t, "15");
 	    
 	    add(gamePanel);
 	    addKeyListener(panel1);

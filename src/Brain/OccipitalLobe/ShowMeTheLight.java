@@ -2,6 +2,7 @@ package Brain.OccipitalLobe;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
 
@@ -15,13 +16,12 @@ public class ShowMeTheLight extends JFrame {
 
 	private JPanel cardPanel;
 	private JPanel glass = new JPanel();
+	private OccipitalRules r;
 	private Occipital panel;
 	private SymbolPanel sp;
 	
 	private Coma c;
 	
-	private JLabel score;
-	private JLabel win;
 	private int numCorrect;
 	
 	public ShowMeTheLight(String title, Coma c) {
@@ -29,27 +29,19 @@ public class ShowMeTheLight extends JFrame {
 		this.c = c;
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    
-	    score = new JLabel("Score: " + numCorrect);
-	    score.setVisible(true);
-	    win = new JLabel();
-		win.setLocation(270, 45);
-		win.setForeground(Color.WHITE);
-		win.setSize(300, 100);
-		add(win);
 		
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
 	    
-	    OccipitalRules panel1 = new OccipitalRules(this, c);
-	    panel = new Occipital(this, c);
-	    panel.add(score);
+	    r = new OccipitalRules(c);
+	    //add(r);
+	    panel = new Occipital(c);
 	    panel.setVisible(true);
-	    sp = new SymbolPanel(this, c);
-	    sp.add(score);
+
+	    sp = new SymbolPanel(c);
 	
-	    cardPanel.add(panel1, "1");
+	    cardPanel.add(r, "1");
 	    cardPanel.add(panel, "2");
 	    cardPanel.add(sp, "3");
 
@@ -57,7 +49,7 @@ public class ShowMeTheLight extends JFrame {
 	    setVisible(true);
 	}
 	
-	public void act() {
+	/*public void act() {
 		do {
 			changePanel("2");
 
@@ -121,14 +113,15 @@ public class ShowMeTheLight extends JFrame {
 	    	sp.setCorrect();
 	    	sp.setVisible(false);
 	    	if (numCorrect == 10) {
-	    		score.setText("YOU WIN! Score: " + numCorrect);
+	    		win.setText("YOU WIN");
+	 		    win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
  	    		c.setWon(2);
  	    		break;
 	    	}
 	    	panel.reset();
 		} while (numCorrect > 0);
 		
-	}
+	}*/
 	
 	public void changePanel(String name) {
 		((CardLayout)cardPanel.getLayout()).show(cardPanel, name);

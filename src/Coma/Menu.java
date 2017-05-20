@@ -95,7 +95,8 @@ public class Menu extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
-			ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
+			//ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
+			c.changePanel("11");
 		} else if (src == frontal) {	
 			//add(f);
 			//FlyingArrows fa = new FlyingArrows("FlyingArrows", c);

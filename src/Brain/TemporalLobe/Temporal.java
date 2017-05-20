@@ -122,7 +122,7 @@ public class Temporal extends JPanel implements ActionListener {
 		buttonsPressed.setText(now);
 	//	System.out.println("buttonsPressed JTEXTFIELD: "+buttonsPressed.getText());
 		buttonsPressedText = now;
-		System.out.println("buttonsPressed STRING: "+buttonsPressedText);
+		//System.out.println("buttonsPressed STRING: "+buttonsPressedText);
 
 		return buttonsPressedText;
 	}
@@ -145,7 +145,7 @@ public class Temporal extends JPanel implements ActionListener {
 
 		if (k.getEntered() != null) {
 			buttonsPressed.setText(k.getEntered());
-			System.out.println(k.getEntered());	
+			//System.out.println(k.getEntered());	
 		}
 		
 		if(buttonsPressed.getText().length()==4) {
@@ -271,7 +271,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			c.changePanel("13");
+			c.changePanel("14");
 		else if (src == menu)
 			c.changePanel("3");
 		else if(src == play) {

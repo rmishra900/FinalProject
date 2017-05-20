@@ -16,16 +16,15 @@ import Brain.Rules;
 import Brain.ParietalLobe.HoleInTheWall;
 import Coma.Coma;
 
-public class OccipitalRules extends Rules{
-	private ShowMeTheLight s;
+public class OccipitalRules extends Rules {
+	
 	private Coma c;
 
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
-	public OccipitalRules(ShowMeTheLight s, Coma c) {
+	public OccipitalRules(Coma c) {
 		super();
-		this.s = s;
 		this.c = c;
 	}
 	
@@ -56,19 +55,17 @@ public class OccipitalRules extends Rules{
 	public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
 		if (src == begin) {
-			s.changePanel("2");
-			ShowMeTheLight game = new ShowMeTheLight("Show Me the Light", c);
+			c.changePanel("12");
+			//ShowMeTheLight game = new ShowMeTheLight("Show Me the Light", c);
 			Thread t = new Thread("my non EDT thread") {
 		            public void run() {
 		                //my work
-		               game.act();
+		               ((Occipital) c.getPanel(3)).act();
 		            }
-		        };
-		        t.start();
-			
+		    };
+		    t.start();	
 		}
 		else if (src == back)
 			c.changePanel("3");
-			
 	}
 }

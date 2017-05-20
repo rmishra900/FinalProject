@@ -24,19 +24,20 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	
 	private JButton[] symbols;
 	private JButton targetSymbol;
-	private static final int RADIUS = 30;
+
 	ActionListener listener;
 	private int correct;
 	private JButton back, menu;
-	private GridLayout symbolLayout;
 	
-	private ShowMeTheLight s;
+	private int numCorrect;
+	private JLabel score, win;
+	
 	private Coma c;
 	/**
 	 * Constructs a new instance of SymbolPanel by initializing all buttons. 
 	 */
-	public SymbolPanel(ShowMeTheLight s, Coma c) {
-		this.s = s;
+	public SymbolPanel(Coma c) {
+		//this.s = s;
 		this.c = c;
 		symbols = new JButton[5];
 		correct = -1;
@@ -54,10 +55,6 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		symbols[2].setLocation(526, 50);
 		symbols[3].setLocation(131, 300);
 		symbols[4].setLocation(394, 300);
-		/*for(JButton sym: symbols) {
-			sym.setEnabled(true);
-			sym.setSize(300,300);
-		}*/
 		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
@@ -75,6 +72,13 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		back.addActionListener(this);
 		add(menu);
 		menu.addActionListener(this);
+		
+		score = new JLabel("SCORE: " + numCorrect);
+		score.setForeground(Color.WHITE);
+		score.setLocation(10, 20);
+		score.setSize(150,30);
+		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		add(score);
 		
 	}
 	
@@ -99,7 +103,17 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	 * Returns the value that determines if the user got the answer correct. 
 	 * @return the value that determines if the user got the answer correct. 
 	 */
-	public int getCorrect() { return correct; }
+	public int getCorrect() { 
+		return correct; 
+	}
+	
+	public int getScore() { 
+		return numCorrect; 
+	}
+	
+	public void setScore(int score) {
+		numCorrect = score;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -110,7 +124,7 @@ public class SymbolPanel extends JPanel implements ActionListener {
 			correct = 0;
 		}
 		if (src == back)
-			s.changePanel("1");
+			c.changePanel("11");
 		else if (src == menu)
 			c.changePanel("3");
 	}

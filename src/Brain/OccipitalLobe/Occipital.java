@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
@@ -32,6 +33,7 @@ import Coma.Coma;
 public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
+	
 	private ShowMeTheLight s;
 	private Coma c;
 	
@@ -40,22 +42,28 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	private ArrayList<Helicopter> obstacles;
 
 	private Symbol sym;
+	private SymbolPanel sp;
 	private int symNum;
 	private boolean showObjects;
 	private Image background;
 	private int correct;
+	
+	private JPanel glass = new JPanel();
+	private JLabel score, win;
 
 	/**
 	 * Constructs a new instance of the background with all the FlyingObjects on it. 
 	 */
-	public Occipital(ShowMeTheLight s, Coma c) {
+	public Occipital(Coma c) {
 		super();
 		setLayout(null);
-		this.s = s;
+		//this.s = s;
 		this.c = c;
 		setBackground(Color.WHITE);
 		background = new ImageIcon("occipital" + System.getProperty("file.separator") + "OccipitalBackground.jpg").getImage();
 		super.addMouseListener(this);
+		
+		sp = new SymbolPanel(c);
 		
 		correct = -1;
 		showObjects = true;
@@ -79,7 +87,21 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		add(menu);
 		menu.addActionListener(this);
 		
+		win = new JLabel();
+		win.setLocation(270, 45);
+		win.setForeground(Color.WHITE);
+		win.setSize(300, 100);
+		add(win);
+		
+		score = new JLabel("SCORE: " + sp.getScore());
+		score.setForeground(Color.WHITE);
+		score.setLocation(10, 20);
+		score.setSize(150,30);
+		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		add(score);
+		
 		setVisible(true);
+		
 	}
 	
 	private void initializeSymbol() {
@@ -186,9 +208,82 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			s.changePanel("1");
+			c.changePanel("11");
 		else if (src == menu)
 			c.changePanel("3");
 		
+	}
+	
+	public void act() {
+		do {
+			c.changePanel("12");
+
+	 	    this.setOpaque(false);
+	 	    glass.setOpaque(false);
+	 	    
+	 	    glass.addMouseListener(new MouseAdapter() {});
+	 	    glass.addMouseMotionListener(new MouseAdapter() {});
+	 	    
+	 	    glass.setFocusCycleRoot(true);
+	 	    c.setGlassPane(glass); // check on this?
+	 	    glass.setVisible(true);
+	 	    
+	 	    this.setOpaque(true);
+	 	    try {
+	 			Thread.sleep(2000);
+	 		} catch (InterruptedException e) {
+	 			e.printStackTrace();
+	 		}
+	 	    this.setShowObjects(false);
+	 	    glass.setVisible(false);	
+	 	    
+	 	    while (this.getCorrect() == -1) {
+	 	    	 try {
+	 	 			Thread.sleep(200);
+	 	 		} catch (InterruptedException e) {
+	 	 			e.printStackTrace();
+	 	 		}
+	 	    }
+	 	    
+	 	    if (this.getCorrect() == 0) {
+	 	    	break;
+	 	    }
+	 	    this.setCorrect();
+	 	    
+	 	    c.changePanel("13");
+	 	    sp.setTarget(this.getSymNum());
+	    	
+	 	    try {
+	 			Thread.sleep(2000);
+	 		} catch (InterruptedException e) {
+	 			e.printStackTrace();
+	 		}	
+	    	
+	    	while (sp.getCorrect() == -1) {
+	    		try {
+	 	 			Thread.sleep(2000);
+	 	 		} catch (InterruptedException e) {
+	 	 			e.printStackTrace();
+	 	 		}
+	    	}
+	    	if (sp.getCorrect() == 1) {	
+	    		sp.setScore(sp.getScore()+1);
+	 	    	score.setText("Score: " + sp.getScore());
+	 	    }
+	 	    else if (sp.getCorrect() == 0){
+	 	    	score.setText("YOU LOSE! Score: " + sp.getScore());
+	 	    	sp.setVisible(false);
+	 	    	break;
+	 	    }
+	    	sp.setCorrect();
+	    	sp.setVisible(false);
+	    	if (sp.getScore() == 10) {
+	    		win.setText("YOU WIN");
+	 		    win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+ 	    		c.setWon(2);
+ 	    		break;
+	    	}
+	    	reset();
+		} while (sp.getCorrect() > 0);
 	}
 }
