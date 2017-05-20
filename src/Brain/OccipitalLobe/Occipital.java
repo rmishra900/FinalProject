@@ -88,7 +88,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		
 		win = new JLabel();
 		win.setLocation(270, 45);
-		//win.setForeground(Color.WHITE);
+		//win.setForeground(Color.RED);
 		win.setSize(300, 100);
 		//add(win);
 		
@@ -200,7 +200,9 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public void act() {
 		remove(win);
 		score.setText("Score: " + sp.getScore());
+		setBackground(Color.WHITE);
 		do {
+			correct = -1;
 			showObjects = true;
 			c.changePanel("12");
 
@@ -235,14 +237,14 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 	    
 	 	    if (correct == 0) {
 	 	    	c.changePanel("12");
-		    	setBackground(Color.WHITE);
-		    	win.setText("YOU LOSE");
-		    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
-		    	add(win);
-		    	sp.setScore(0);
-		    	sp.getScoreLabel().setText("Score: " + sp.getScore());
-		    	reset();
-		    	break;
+	 	    	setBackground(Color.YELLOW);
+	 	    	win.setText("YOU LOSE");
+	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+	 	    	add(win);
+	 	    	sp.setScore(0);
+	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
+	 	    	reset();
+	 	    	break;
 	 	    }
 	 	    correct = -1;
 	 	    
@@ -295,5 +297,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	    	}
 	    	reset();
 		} while (sp.getScore() > 0);
+		sp.setCorrect();
 	}
 }
