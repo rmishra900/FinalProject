@@ -109,7 +109,7 @@ public class Menu extends JPanel implements ActionListener {
 		} else if (src == parietal) {
 			c.changePanel("9");
 		} else if (src == temporal) {
-			c.changePanel("13");
+			c.changePanel("14");
 		} else if (src == home) {
 			c.changePanel("1");
 		}
