@@ -12,6 +12,7 @@ import java.awt.Graphics;
 public class Triangle extends Shape {
 	private double length;
 	private double[] xCoords, yCoords;
+	private double vY;
 	
 	/**
 	 * Constructs a new instance of this triangle. 
@@ -33,6 +34,8 @@ public class Triangle extends Shape {
 		yCoords[0] = y - length * Math.sin(Math.PI / 3) / 2;
 		yCoords[1] = y + length * Math.sin(Math.PI / 3) / 2;
 		yCoords[2] = y + length * Math.sin(Math.PI / 3) / 2;
+		
+		vY = 0;
 	}
 
 	/**
@@ -69,14 +72,16 @@ public class Triangle extends Shape {
 	 */
 	public void moveWithWall(int a) {
 //		vY += 0.85;
+		vY += 0.5;
+		
 		if (a > 0) {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] -= 20;
+				yCoords[i] -= 15;
 			}
 		}
 		else {
 			for (int i = 0; i < yCoords.length; i ++) {
-				yCoords[i] += 20;	
+				yCoords[i] += 15;	
 			}
 		}
 		

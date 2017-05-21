@@ -1,11 +1,16 @@
 package Coma;
 
 import java.awt.CardLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Brain.FrontalLobe.FlyingArrows;
+//import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.Frontal;
 import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.Occipital;
@@ -31,6 +36,7 @@ public class Coma extends JFrame {
 	private Parietal p;
 	private Occipital o;
 	private Temporal t;
+	private Image background;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -40,6 +46,8 @@ public class Coma extends JFrame {
 	    super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
+		
     
 	    gamePanel = new JPanel();
 	    CardLayout cl = new CardLayout();
@@ -50,9 +58,10 @@ public class Coma extends JFrame {
 	    Menu panel3 = new Menu(this);
 	    GameOver panel4 = new GameOver(this);
 	    
-	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
-	    f = new Frontal(fa, this);
-	    FrontalRules fr = new FrontalRules(fa, this);
+	//    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
+	//    f = new Frontal(fa, this);
+	    f = new Frontal(this);
+	    FrontalRules fr = new FrontalRules(this);
 	    
 	    ParietalRules pr = new ParietalRules(this);
 	    p = new Parietal(this);
@@ -68,18 +77,14 @@ public class Coma extends JFrame {
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
-	    
-	    gamePanel.add(fa, "6");
+	   // gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
-
 	    gamePanel.add(pr, "9");
 	    gamePanel.add(p, "10");
-	    
 	    gamePanel.add(or, "11");
 	    gamePanel.add(o, "12");
 	    gamePanel.add(sp, "13");
-	    
 	    gamePanel.add(tr, "14");
 	    gamePanel.add(t, "15");
 	    
@@ -111,6 +116,23 @@ public class Coma extends JFrame {
 			return t;
 		else
 			return null;
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D) g;
+		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		
+		
+		int width = getWidth();
+		int height = getHeight();
+//
+//		double ratioX = (double) width / DRAWING_WIDTH;
+//		double ratioY = (double) height / DRAWING_HEIGHT;
+
+		AffineTransform at = g2.getTransform();
+		//g2.scale(ratioX, ratioY);
+		
 	}
 	
 	public static void main(String[] args) {

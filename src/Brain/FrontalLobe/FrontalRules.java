@@ -17,12 +17,12 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class FrontalRules extends Rules {
-	private FlyingArrows f;
+//	private FlyingArrows f;
 	private Coma c;
 	
-	public FrontalRules(FlyingArrows f, Coma c) {
+	public FrontalRules( Coma c) {
 		super();
-		this.f = f;
+		//this.f = f;
 		this.c = c;
 	}
 
@@ -45,10 +45,28 @@ public class FrontalRules extends Rules {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin) {
-			((Frontal)c.getPanel(1)).reset();
-			c.changePanel("7");
+		//if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU WIN") || 
+//			for(Arrow a: ((Frontal)c.getPanel(1)).getArrows()) {
+//					a = null;
+//			}
+			
+			if(	((Frontal)c.getPanel(1)).getWin().getText().equals("")) {
+				((Frontal)c.getPanel(1)).reset();
+				System.out.println("here");
+			}
+				
+			
+			else if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
+				((Frontal)c.getPanel(1)).reset();
+			//	((Frontal)c.getPanel(1)).repaint();
+				System.out.println("you lost");
+			//	((Frontal)c.getPanel(1)).setWinText("");
+				System.out.println(((Frontal)c.getPanel(1)).getWin().getText());
+				
+			}
+		c.changePanel("7");
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 	}
 	

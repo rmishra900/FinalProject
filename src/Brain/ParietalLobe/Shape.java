@@ -52,7 +52,6 @@ public abstract class Shape {
 	 * Returns an integer determining the shape this is, out of a circle, square, or triangle
 	 * depending on its order in the main array (constructed in the ParietalPanel class)
 	 * @return the integer 0, 1, or 2 to determine its index in the array
-
 	 */
 	public abstract int whichShape();
 	

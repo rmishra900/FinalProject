@@ -56,7 +56,7 @@ public class OccipitalRules extends Rules {
 		        t.start();		
 			}
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 	}
 }

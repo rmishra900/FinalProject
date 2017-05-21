@@ -30,6 +30,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	private Shape drawS1;
 	private int random, numCorrect, seconds, threshold;
 	private boolean continueGame;
+	private Timer clock1, clock2;
 	
 	/**
 	 * Constucts a new instance of this panel.
@@ -41,9 +42,9 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 20, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 40, Color.YELLOW));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.c = c;
 		
@@ -51,13 +52,13 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
-		back.setLocation(25, 0);
+		back.setLocation(25, 10);
 		
 		menu = new JButton("MENU");
 		menu.setBackground(Color.YELLOW);
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
-		menu.setLocation(150, 0);
+		menu.setLocation(150, 10);
 		
 		add(back);
 		back.addActionListener(this);
@@ -65,13 +66,13 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		menu.addActionListener(this);
 		
 		numCorrect = 0;
-		seconds = 45;
+		seconds = 30;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 650;
+		threshold = 900;
 		
-		Timer clock1 = new Timer(7, new ActionListener() {
+		clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (continueGame) {
 					drawS1.act();
@@ -79,7 +80,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 				}
 			}
 		});
-		Timer clock2 = new Timer(1000, new ActionListener() {
+		clock2 = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				seconds--;
 //				timer.setText(format(seconds/60)+":"+format(seconds%60));
@@ -90,9 +91,8 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 			}
 		});
 		
-//		add(timer);
-		clock1.start();
-		clock2.start();
+//		clock1.start();
+//		clock2.start();
 	}
 	
 	/**
@@ -122,28 +122,27 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
+		
 		if (!c.getWon(3)) {
 			if (continueGame) {
 				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-				g.setColor(Color.WHITE);
-				g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
-				g.setColor(Color.BLACK);
-				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
+//				g.setColor(Color.WHITE);
+//				g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+//				g.setColor(Color.BLACK);
+//				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 				
-				g.setFont(new Font("SansSerif", 3, 24));
+				g.setColor(Color.WHITE);
+				g.setFont(new Font("SansSerif", 1, 24));
 				g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
 				
-				g.setColor(Color.YELLOW);
-				g.setFont(new Font("SansSerif", 3, 50));
+				g.setFont(new Font("SansSerif", 1, 50));
 				g.drawString("00:" + format(seconds % 60), 600, 50);
 				
 				w.draw(g2);
 				drawS1.draw(g2);
 				
-				if (w.passes(drawS1)) {
+				if (w.passes(drawS1))
 					numCorrect++;
-		//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
-				}
 					
 				if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
 					if (drawS1.x <= w.x) {
@@ -182,15 +181,10 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 					g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
 				}
 				
-				g.setColor(Color.WHITE);
-				g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
 				g.setColor(Color.BLACK);
-				g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
-				
-				g.setFont(new Font("SansSerif", 3, 24));
+				g.setFont(new Font("SansSerif", 1, 24));
 				g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 			
-				g.setColor(Color.YELLOW);
 				g.setFont(new Font("SansSerif", 3, 50));
 				g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
 				return;
@@ -203,6 +197,9 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 			g.setFont(new Font("SansSerif", 3, 100));
 			g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
 		}
+		
+		clock1.start();
+		clock2.start();
 		 
 		repaint(); 	
 	}
@@ -225,11 +222,11 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		int shape = (int)(Math.random() * 3);
 		
 		if (shape == 0)
-			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.YELLOW);
+			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 23, Color.YELLOW);
 		else if (shape == 1)
-			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW);
+			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, Color.YELLOW);
 		else 
-			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW);
+			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW);
 	}
 	
 	/**
@@ -242,15 +239,19 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		int code = e.getKeyCode();
-		if (code == KeyEvent.VK_UP) {
-			w.act(1);
+		long lastPressProcessed = 0;
+		
+		if(System.currentTimeMillis() - lastPressProcessed > 500) {
+			int code = e.getKeyCode();
+			if (code == KeyEvent.VK_UP) {
+				w.act(1);
+			}
+			else if (code == KeyEvent.VK_DOWN) {
+				w.act(-1);
+			}
+            lastPressProcessed = System.currentTimeMillis();
+            repaint();
 		}
-		else if (code == KeyEvent.VK_DOWN) {
-			w.act(-1);
-		}
-  
-		repaint();
 	}
 
 	@Override
@@ -266,11 +267,17 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == back)
+		if (src == back) {
 			c.changePanel("9");
+			if (!c.getWon(3))
+				continueGame = true;
 			
-		else if (src == menu)
+		}
+		if (src == menu) {
+			if (!c.getWon(3))
+				continueGame = true;
 			c.changePanel("3");
+		}
 	}
 
 }
