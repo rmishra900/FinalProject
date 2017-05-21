@@ -77,8 +77,7 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		score.setLocation(600, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		add(score);
-		
+		add(score);	
 	}
 	
 	
