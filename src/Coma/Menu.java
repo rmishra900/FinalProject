@@ -85,17 +85,9 @@ public class Menu extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
-			//ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
 			c.changePanel("11");
 		} else if (src == frontal) {	
-			//add(f);
-			//FlyingArrows fa = new FlyingArrows("FlyingArrows", c);
 			c.changePanel("8");
-			//f.setVisible(true);
-		//	f.setEnabled(true);
-	//		f.setVisible(true);
-			//c.changePanel("6");
-			//add(f);
 		} else if (src == parietal) {
 			c.changePanel("9");
 		} else if (src == temporal) {
@@ -104,4 +96,5 @@ public class Menu extends JPanel implements ActionListener {
 			c.changePanel("1");
 		}
 	}
+
 }
