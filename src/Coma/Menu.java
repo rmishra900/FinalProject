@@ -114,4 +114,5 @@ public class Menu extends JPanel implements ActionListener {
 			c.changePanel("1");
 		}
 	}
+
 }

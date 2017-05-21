@@ -293,6 +293,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 		    add(win);
  	    		c.setWon(2);
  	    		System.out.print(c.getWon(2));
+ 	    		c.changeToOver();
  	    		break;
 	    	}
 	    	reset();

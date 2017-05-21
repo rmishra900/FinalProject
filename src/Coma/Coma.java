@@ -178,5 +178,10 @@ public class Coma extends JFrame {
 		else
 			return false;
 	}
+	
+	public void changeToOver() {
+		if(frontalWin && occipitalWin && parietalWin && temporalWin)
+			changePanel("4");
+	}
 
 }

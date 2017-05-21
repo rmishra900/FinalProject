@@ -176,6 +176,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
 					g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+					c.changeToOver();
 				}
 				else if (seconds == 0 && numCorrect < threshold) {
 					g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);

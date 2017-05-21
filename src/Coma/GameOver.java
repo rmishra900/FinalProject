@@ -38,46 +38,34 @@ public class GameOver extends JPanel implements KeyListener{
 		background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMA background.jpg").getImage();
 		gameOver = new JLabel("Game Over");
 		gameOver.setFont(new Font("Roman Baseline", 3, 100));
+		gameOver.setVisible(true);
 		setBackground(Color.WHITE);
 		gameOver.setForeground(Color.BLACK);
+		add(gameOver);
 	}
 
 	public void paintComponent(Graphics g)
 	{
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D) g;
-
-		//g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		super.paintComponent(g); 
 		
-		int width = getWidth();
-		int height = getHeight();
+		Graphics2D g2 = (Graphics2D)g;
 
-		double ratioX = (double) width / DRAWING_WIDTH;
-		double ratioY = (double) height / DRAWING_HEIGHT;
-
+	    int width = getWidth();
+	    int height = getHeight();
+	    
+	    double ratioX = (double)width/DRAWING_WIDTH;
+		double ratioY = (double)height/DRAWING_HEIGHT;
+		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-	//	if(c.wins==1) {
-			//g.setFont(new Font("Roman Baseline", 3, 100));
-			endGame();
-			//c.setWon(1);
-			//c.changePanel("3");
-			//add(gameOver);
-			//g.drawString("GAME OVER", 100, 300);
-		//	g.setFont(new Font("Roman Baseline", 1, 20));
-	//		g.drawString("Press the enter button to go back to home", 200, 320);
-	//	}
-		
-		
-		repaint();
+		g2.setTransform(at);
 	}
-	
+	  
 	public void endGame() {
 		//c.changePanel("3");
 		repaint();
 		add(gameOver);
-		
 	}
 
 	@Override
