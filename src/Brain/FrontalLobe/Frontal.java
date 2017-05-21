@@ -152,14 +152,16 @@ public class Frontal extends JPanel implements ActionListener {
 		arrows = new ArrayList<Arrow>();
 		
 		Color c = getRandomColor();
+	//	System.out.println("initial color: "+c.toString());
 
-		Image random = arrow.getRandomImage();
+		Image random = arrow.getRandomImage(c);
 		
 		for(int i = 0; i < 100; i++) {
 			int xcoord = getRandomX();
 			int ycoord = getRandomY();
 			arrows.add(new Arrow(xcoord, ycoord, c));
 			arrows.get(i).setImage(random);
+			
 			
 		}
 		
@@ -177,6 +179,10 @@ public class Frontal extends JPanel implements ActionListener {
 	 */
 	public void setCorrect(int c) { correct = c; }
 	
+	public ArrayList<Arrow> getArrows() {
+		return arrows;
+	}
+	
 	/**
 	 * Sets the JLabel representing the score of the user
 	 * @param s the JLabel to display the user's score
@@ -189,6 +195,14 @@ public class Frontal extends JPanel implements ActionListener {
 	 */
 	public JLabel getScore() { return score; }
 	
+	public JLabel getWin() {
+		return win; 
+	}
+	
+	public void setWinText(String w) {
+		win.setText(w);
+	}
+	
 	/**
 	 * Increments scoreCount of user and sets JLabel representing score
 	 */
@@ -197,6 +211,14 @@ public class Frontal extends JPanel implements ActionListener {
 	  correct+=10;
 	  if(correct<=threshold)
 		  score.setText("SCORE: " + correct);
+	}
+	
+	public void someoneLostPoints() {
+		
+		if(correct<=threshold && correct>0) {
+			correct-=10;
+			score.setText("SCORE: "+correct);
+		}
 	}
 	
 	/**
@@ -365,7 +387,8 @@ public class Frontal extends JPanel implements ActionListener {
 		   int orientation = changeOrientation();
 		   pointingTo = orientation;
 		   direction = getRandomDirection(direction);
-	   }
+	      }
+	
 	   
 	   
 	   if(winGame()==true) {
@@ -548,9 +571,10 @@ public class Frontal extends JPanel implements ActionListener {
 		seconds = 30;
 		correct = 0;
 		initializeArrows();
-		
 		timer.setText(format(seconds/60)+":"+format(seconds%60));
+		
 		score.setText("SCORE: " + correct);
+		win.setText("");
 	}
 	
 	
@@ -568,6 +592,43 @@ public class Frontal extends JPanel implements ActionListener {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			keys.add(e.getKeyCode());
+			
+			//System.out.println(e.getKeyCode());
+			//   System.out.println(arrows.get(0).getColor().toString());
+			if(arrows.get(0).getColor()==Color.GREEN) {
+				//System.out.println("green");
+				if(direction != 37 && isPressed(KeyEvent.VK_LEFT)
+						|| direction!=38 && isPressed(KeyEvent.VK_UP)
+						|| direction!=39 && isPressed(KeyEvent.VK_RIGHT)
+						|| direction!=40 && isPressed(KeyEvent.VK_DOWN)) {
+					//System.out.println("incorrect");
+					someoneLostPoints();
+				}
+					
+			}
+			else if(arrows.get(0).getColor()==Color.BLUE) {
+			//	System.out.println("blue");
+				if(direction != 39 && isPressed(KeyEvent.VK_LEFT)
+						|| direction!=40 && isPressed(KeyEvent.VK_UP)
+						|| direction!=37 && isPressed(KeyEvent.VK_RIGHT)
+						|| direction!=38 && isPressed(KeyEvent.VK_DOWN)) {
+				//	System.out.println("lostPoints");
+					someoneLostPoints();
+				}
+			}
+			
+			else {
+			//	System.out.println("RED");
+				if((isPressed(KeyEvent.VK_LEFT) && pointingTo != 37) 
+						|| (isPressed(KeyEvent.VK_UP) && pointingTo != 38) 
+						|| (isPressed(KeyEvent.VK_RIGHT)&& pointingTo != 39)
+						|| (keyControl.isPressed(KeyEvent.VK_DOWN) && pointingTo != 40)) {
+					someoneLostPoints();
+				}
+			}
+			
+
+				
 			
 		}
 
