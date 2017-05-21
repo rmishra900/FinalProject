@@ -66,7 +66,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		menu.addActionListener(this);
 		
 		numCorrect = 0;
-		seconds = 45;
+		seconds = 30;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;

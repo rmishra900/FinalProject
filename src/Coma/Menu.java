@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import Brain.FrontalLobe.FlyingArrows;
+//import Brain.FrontalLobe.FlyingArrows;
 
 /**
  * Represents the screen displayed for the user to select a game to play. 
@@ -22,7 +22,7 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton parietal;
 	private JButton temporal;
 	private JButton home;
-	FlyingArrows f = new FlyingArrows("Flying Arrows", c);
+	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
 	 * Constructs a new instance of this menu screen. 

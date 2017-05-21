@@ -17,12 +17,12 @@ import java.awt.event.ActionListener;
 import java.awt.Color;
 
 public class FrontalRules extends Rules {
-	private FlyingArrows f;
+//	private FlyingArrows f;
 	private Coma c;
 	
-	public FrontalRules(FlyingArrows f, Coma c) {
+	public FrontalRules( Coma c) {
 		super();
-		this.f = f;
+		//this.f = f;
 		this.c = c;
 	}
 
