@@ -145,28 +145,42 @@ public class Temporal extends JPanel implements ActionListener {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
-		if (k.getEntered() != null) {
-			buttonsPressed.setText(k.getEntered());
-		}
-		
-		if(buttonsPressed.getText().length()==4) {		
-			System.out.println("passcode: "+room.getPasscodeAtIndex(0) +
-					room.getPasscodeAtIndex(1)+room.getPasscodeAtIndex(2)+room.getPasscodeAtIndex(3));
-			if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
-				g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
-				g.setColor(Color.BLACK);
-				g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
-				remove(k);
-				remove(buttonsPressed);
-				remove(play);
-				win.setText("YOU WIN!");
-				c.setWon(4);
-				c.changeToOver();
-				return;
+
+		if (!c.getWon(4)) {
+			if (k.getEntered() != null) {
+				buttonsPressed.setText(k.getEntered());
+			}
+			
+			if(buttonsPressed.getText().length()==4) {		
+				System.out.println("passcode: "+room.getPasscodeAtIndex(0) +
+						room.getPasscodeAtIndex(1)+room.getPasscodeAtIndex(2)+room.getPasscodeAtIndex(3));
+				if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
+					g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+					g.setColor(Color.BLACK);
+					g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+					remove(k);
+					remove(buttonsPressed);
+					remove(play);
+					win.setText("YOU WIN!");
+					c.setWon(4);
+					c.changeToOver();
+					return;
+			}
+	
+				else {
+					g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+					g.setColor(Color.BLACK);
+					g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+					remove(k);
+					remove(buttonsPressed);
+					remove(play);
+					win.setText("YOU WIN!");
+				}
 			}
 		}
-	
 		g2.setTransform(at);
+			
+	
 	}
 	
 	public boolean winGame(int x) {

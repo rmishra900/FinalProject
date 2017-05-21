@@ -163,10 +163,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 					continueGame = false;
 				}
 			}
-			
-			g2.setTransform(at);
-			
-			if(!continueGame) {
+			else {
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
 				g.setColor(Color.YELLOW);
@@ -200,7 +197,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		
 		clock1.start();
 		clock2.start();
-		 
+		g2.setTransform(at);
 		repaint(); 	
 	}
 	
