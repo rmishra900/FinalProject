@@ -76,13 +76,13 @@ public class Frontal extends JPanel implements ActionListener {
 		back.setBackground(Color.WHITE);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
-		back.setLocation(25, DRAWING_HEIGHT - 105);
+		back.setLocation(25, 20);
 		
 		menu = new JButton("MENU");
 		menu.setBackground(Color.WHITE);
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
-		menu.setLocation(150, DRAWING_HEIGHT - 105);
+		menu.setLocation(150, 20);
 		
 		add(back);
 		back.addActionListener(this);
@@ -102,7 +102,7 @@ public class Frontal extends JPanel implements ActionListener {
 		
 		score = new JLabel("SCORE: "+correct);
 		score.setForeground(Color.WHITE);
-		score.setLocation(10, 20);
+		score.setLocation(350, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
@@ -394,6 +394,7 @@ public class Frontal extends JPanel implements ActionListener {
 		   win.setText("YOU WIN");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 		   coma.setWon(1);
+		   coma.changeToOver();
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {

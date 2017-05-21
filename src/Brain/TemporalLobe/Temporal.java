@@ -147,7 +147,6 @@ public class Temporal extends JPanel implements ActionListener {
 				buttonsPressed.setText(k.getEntered());
 				//System.out.println(k.getEntered());	
 			}
-			
 			if(buttonsPressed.getText().length()==4) {
 				System.out.println("passcode: "+rooms[0].getPasscodeAtIndex(0)+rooms[0].getPasscodeAtIndex(1)
 						+rooms[0].getPasscodeAtIndex(2) + rooms[0].getPasscodeAtIndex(3));
@@ -160,6 +159,7 @@ public class Temporal extends JPanel implements ActionListener {
 					remove(play);
 					win.setText("YOU WIN!");
 					c.setWon(4);
+					c.changeToOver();
 					return;
 				}
 			}

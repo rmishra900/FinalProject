@@ -52,14 +52,14 @@ public class FrontalRules extends Rules {
 			
 			if(	((Frontal)c.getPanel(1)).getWin().getText().equals("")) {
 				((Frontal)c.getPanel(1)).reset();
-				System.out.println("here");
+			//	System.out.println("here");
 			}
 				
 			
 			else if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
 				((Frontal)c.getPanel(1)).reset();
 			//	((Frontal)c.getPanel(1)).repaint();
-				System.out.println("you lost");
+			//	System.out.println("you lost");
 			//	((Frontal)c.getPanel(1)).setWinText("");
 				System.out.println(((Frontal)c.getPanel(1)).getWin().getText());
 				

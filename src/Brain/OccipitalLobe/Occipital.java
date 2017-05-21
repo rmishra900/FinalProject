@@ -88,13 +88,11 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		
 		win = new JLabel();
 		win.setLocation(270, 45);
-		//win.setForeground(Color.RED);
 		win.setSize(300, 100);
-		//add(win);
 		
-		score = new JLabel(); // "SCORE: " + sp.getScore()
-		score.setForeground(Color.BLACK);
-		score.setLocation(600, 20);
+		score = new JLabel(); 
+		score.setForeground(Color.WHITE);
+		score.setLocation(400, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
@@ -154,7 +152,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
 		
-
+		
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		g2.setTransform(at);
@@ -168,6 +166,8 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 				heli.draw(g2, this);
 			}	
 		}
+		
+		repaint();
 	}
 	
 	
@@ -192,9 +192,9 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		Object src = e.getSource();
 		if (src == back)
 			c.changePanel("11");
-		else if (src == menu)
+		else if (src == menu) {
 			c.changePanel("3");
-		
+		}
 	}
 	
 	public void act() {
@@ -293,6 +293,7 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	 		    add(win);
  	    		c.setWon(2);
  	    		System.out.print(c.getWon(2));
+ 	    		c.changeToOver();
  	    		break;
 	    	}
 	    	reset();
