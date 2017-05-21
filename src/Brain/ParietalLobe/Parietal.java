@@ -42,20 +42,19 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 23, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.c = c;
 		
 		back = new JButton("BACK");
-		back.setBackground(Color.YELLOW);
+		back.setBackground(Color.WHITE);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
 		back.setLocation(25, 0);
 		
 		menu = new JButton("MENU");
-		menu.setBackground(Color.YELLOW);
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
 		menu.setLocation(150, 0);
@@ -126,25 +125,23 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		if (!c.getWon(3)) {
 			if (continueGame) {
 				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-				g.setColor(Color.WHITE);
-				g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
-				g.setColor(Color.BLACK);
-				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
+//				g.setColor(Color.WHITE);
+//				g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
+//				g.setColor(Color.BLACK);
+//				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 				
-				g.setFont(new Font("SansSerif", 3, 24));
+				g.setColor(Color.WHITE);
+				g.setFont(new Font("SansSerif", 1, 24));
 				g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
 				
-				g.setColor(Color.YELLOW);
-				g.setFont(new Font("SansSerif", 3, 50));
+				g.setFont(new Font("SansSerif", 1, 50));
 				g.drawString("00:" + format(seconds % 60), 600, 50);
 				
 				w.draw(g2);
 				drawS1.draw(g2);
 				
-				if (w.passes(drawS1)) {
+				if (w.passes(drawS1))
 					numCorrect++;
-		//			g.drawString("SCORE :" + numCorrect, DRAWING_WIDTH / 2 - 35, 10);
-				}
 					
 				if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
 					if (drawS1.x <= w.x) {
@@ -182,15 +179,10 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 					g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
 				}
 				
-				g.setColor(Color.WHITE);
-				g.fillRoundRect(getWidth() / 2 - 100, 5, 190, 50, 10, 10);
 				g.setColor(Color.BLACK);
-				g.drawRoundRect(getWidth() / 2 - 90, 15, 170, 30, 10, 10);
-				
-				g.setFont(new Font("SansSerif", 3, 24));
+				g.setFont(new Font("SansSerif", 1, 24));
 				g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 			
-				g.setColor(Color.YELLOW);
 				g.setFont(new Font("SansSerif", 3, 50));
 				g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
 				return;
