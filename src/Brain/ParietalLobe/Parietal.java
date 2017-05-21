@@ -49,15 +49,16 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		this.c = c;
 		
 		back = new JButton("BACK");
-		back.setBackground(Color.WHITE);
+		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
-		back.setLocation(25, 0);
+		back.setLocation(25, 10);
 		
 		menu = new JButton("MENU");
+		menu.setBackground(Color.YELLOW);
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
-		menu.setLocation(150, 0);
+		menu.setLocation(150, 10);
 		
 		add(back);
 		back.addActionListener(this);
