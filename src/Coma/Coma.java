@@ -1,7 +1,12 @@
 package Coma;
 
 import java.awt.CardLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -31,6 +36,7 @@ public class Coma extends JFrame {
 	private Parietal p;
 	private Occipital o;
 	private Temporal t;
+	private Image background;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -40,6 +46,8 @@ public class Coma extends JFrame {
 	    super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
+		
     
 	    gamePanel = new JPanel();
 	    CardLayout cl = new CardLayout();
@@ -107,6 +115,23 @@ public class Coma extends JFrame {
 			return t;
 		else
 			return null;
+	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponents(g);
+		Graphics2D g2 = (Graphics2D) g;
+		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		
+		
+		int width = getWidth();
+		int height = getHeight();
+//
+//		double ratioX = (double) width / DRAWING_WIDTH;
+//		double ratioY = (double) height / DRAWING_HEIGHT;
+
+		AffineTransform at = g2.getTransform();
+		//g2.scale(ratioX, ratioY);
+		
 	}
 	
 	public static void main(String[] args) {
