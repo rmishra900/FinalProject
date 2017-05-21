@@ -4,20 +4,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingWorker;
 
-import Brain.OccipitalLobe.Occipital;
-import Brain.OccipitalLobe.ShowMeTheLight;
-import Brain.OccipitalLobe.SymbolPanel;
-import Brain.ParietalLobe.HoleInTheWall;
-import Brain.TemporalLobe.Locked;
 import Brain.FrontalLobe.FlyingArrows;
 
 /**
@@ -85,7 +75,7 @@ public class Menu extends JPanel implements ActionListener {
 	{
 		super.paintComponent(g);
 
-		System.out.println(c.getWins());
+		//System.out.println(c.getWins());
 		if(c.getWins() == 4)
 			c.changePanel("4");
 		
@@ -95,7 +85,8 @@ public class Menu extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == occipital) {
-			ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
+			//ShowMeTheLight s = new ShowMeTheLight("Show Me the Light", c);
+			c.changePanel("11");
 		} else if (src == frontal) {	
 			//add(f);
 			//FlyingArrows fa = new FlyingArrows("FlyingArrows", c);
@@ -108,7 +99,7 @@ public class Menu extends JPanel implements ActionListener {
 		} else if (src == parietal) {
 			c.changePanel("9");
 		} else if (src == temporal) {
-			c.changePanel("13");
+			c.changePanel("14");
 		} else if (src == home) {
 			c.changePanel("1");
 		}

@@ -118,11 +118,10 @@ public class Temporal extends JPanel implements ActionListener {
 		String prev = buttonsPressedText;  
 		//buttonsPressed.setText(t);	
 		String now = t;
-		System.out.println("NOW: "+now);
 		buttonsPressed.setText(now);
 	//	System.out.println("buttonsPressed JTEXTFIELD: "+buttonsPressed.getText());
 		buttonsPressedText = now;
-		System.out.println("buttonsPressed STRING: "+buttonsPressedText);
+		//System.out.println("buttonsPressed STRING: "+buttonsPressedText);
 
 		return buttonsPressedText;
 	}
@@ -145,12 +144,12 @@ public class Temporal extends JPanel implements ActionListener {
 
 		if (k.getEntered() != null) {
 			buttonsPressed.setText(k.getEntered());
-			System.out.println(k.getEntered());	
+			//System.out.println(k.getEntered());	
 		}
 		
 		if(buttonsPressed.getText().length()==4) {
-			System.out.println("passcode: "+rooms[0].getPasscodeAtIndex(0)+rooms[0].getPasscodeAtIndex(1)
-					+rooms[0].getPasscodeAtIndex(2) + rooms[0].getPasscodeAtIndex(3));
+//			System.out.println("passcode: "+rooms[0].getPasscodeAtIndex(0)+rooms[0].getPasscodeAtIndex(1)
+//					+rooms[0].getPasscodeAtIndex(2) + rooms[0].getPasscodeAtIndex(3));
 			if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
 				g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 				g.setColor(Color.BLACK);
@@ -271,7 +270,7 @@ public class Temporal extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			c.changePanel("13");
+			c.changePanel("14");
 		else if (src == menu)
 			c.changePanel("3");
 		else if(src == play) {

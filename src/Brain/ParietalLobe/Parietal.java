@@ -267,6 +267,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		Object src = e.getSource();
 		if (src == back)
 			c.changePanel("9");
+			
 		else if (src == menu)
 			c.changePanel("3");
 	}
