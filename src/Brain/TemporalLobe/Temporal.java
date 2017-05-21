@@ -165,18 +165,18 @@ public class Temporal extends JPanel implements ActionListener {
 					c.setWon(4);
 					c.changeToOver();
 					return;
-			}
-	
-				else {
-					g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
-					g.setColor(Color.BLACK);
-					g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
-					remove(k);
-					remove(buttonsPressed);
-					remove(play);
-					win.setText("YOU WIN!");
 				}
 			}
+		}
+		
+		else {
+			g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+			remove(k);
+			remove(buttonsPressed);
+			remove(play);
+			win.setText("YOU WIN!");
 		}
 		g2.setTransform(at);
 			
