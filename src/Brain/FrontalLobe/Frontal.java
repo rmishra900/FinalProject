@@ -32,7 +32,7 @@ public class Frontal extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
-	private FlyingArrows f;
+	//private FlyingArrows f;
 	private Coma coma;
 	
 	private Arrow arrow;
@@ -51,10 +51,9 @@ public class Frontal extends JPanel implements ActionListener {
 	/**
 	 * Contructs a timer, Jlabels for winning and losing, keyHandler, and initializes the arrows onto the screen
 	 */
-	public Frontal(FlyingArrows f, Coma coma) {
+	public Frontal(Coma coma) {
 		super();
 		setLayout(null);
-		this.f = f;
 		this.coma = coma;
 		prevX = -1;
 		direction = 37;

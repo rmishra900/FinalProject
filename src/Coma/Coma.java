@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Brain.FrontalLobe.FlyingArrows;
+//import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.Frontal;
 import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.Occipital;
@@ -58,9 +58,10 @@ public class Coma extends JFrame {
 	    Menu panel3 = new Menu(this);
 	    GameOver panel4 = new GameOver(this);
 	    
-	    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
-	    f = new Frontal(fa, this);
-	    FrontalRules fr = new FrontalRules(fa, this);
+	//    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
+	//    f = new Frontal(fa, this);
+	    f = new Frontal(this);
+	    FrontalRules fr = new FrontalRules(this);
 	    
 	    ParietalRules pr = new ParietalRules(this);
 	    p = new Parietal(this);
@@ -76,7 +77,7 @@ public class Coma extends JFrame {
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
-	    gamePanel.add(fa, "6");
+	   // gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
 	    gamePanel.add(pr, "9");
