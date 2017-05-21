@@ -36,7 +36,7 @@ public class Home extends JPanel implements KeyListener{
 		super();
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		this.c = c;
-		background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
+		background = new ImageIcon("coma" + System.getProperty("file.separator") + "comaBackground.jpg").getImage();
 	}
 
 	public void paintComponent(Graphics g)
@@ -55,10 +55,11 @@ public class Home extends JPanel implements KeyListener{
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
+		g.setColor(Color.WHITE);
 		g.setFont(new Font("Roman Baseline", 3, 100));
-		g.drawString("C.O.M.A", 200, 300);
-		g.setFont(new Font("Roman Baseline", 1, 20));
-		g.drawString("Press the space button to begin", 250, 320);
+		g.drawString("C.O.M.A", 200, 100);
+		g.setFont(new Font("Roman Baseline", 1, 25));
+		g.drawString("Press the space button to begin", 230, 540);
 		
 		repaint();
 	}
