@@ -1,8 +1,10 @@
 package Brain.FrontalLobe;
 
 import java.awt.CardLayout;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Brain.ParietalLobe.Parietal;
@@ -11,17 +13,24 @@ import Coma.Home;
 import Coma.Menu;
 import Coma.StoryScreen;
 
-public class FlyingArrows extends JFrame {
+public class FlyingArrows extends JPanel {
 
 	private JPanel cardPanel;
 	private Coma c;
 	private Frontal panel2;
+	private JLabel title;
 	
-	public FlyingArrows(String title, Coma c) {
-		super(title);
+	public FlyingArrows(String t, Coma c) {
+		//super(title);
+		setBounds(0, 0, 800, 600);
+//		this.title = new JLabel(t);
+//		title.setLocation(0, 0);
+//		title.setSize(800,600);
+//		title.setFont(new Font("Roman Baseline", 0,20));
+//		
 		this.c = c;
-		setBounds(100, 100, 800, 600);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	    //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    cardPanel = new JPanel();
 	    CardLayout cl = new CardLayout();
@@ -33,16 +42,16 @@ public class FlyingArrows extends JFrame {
 
 	    cardPanel.add(panel1, "1");
 	    cardPanel.add(panel2, "2"); 
-	    add(cardPanel);
+	  //  add(cardPanel);
 	    
 	    addKeyListener(panel2.getKeyHandler());
 	    setVisible(true);
 	}
 	
 	
-	public static void main(String[] args) {
-		Coma c = new Coma("COMA");
-	}
+//	public static void main(String[] args) {
+//		Coma c = new Coma("COMA");
+//	}
 
 	/**
 	 * Changes what panel is displayed on the screen. 

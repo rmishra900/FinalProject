@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
@@ -32,7 +33,7 @@ import Coma.Coma;
 public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-	private ShowMeTheLight s;
+	
 	private Coma c;
 	
 	private JButton back, menu;
@@ -40,22 +41,28 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	private ArrayList<Helicopter> obstacles;
 
 	private Symbol sym;
+	private SymbolPanel sp;
 	private int symNum;
 	private boolean showObjects;
 	private Image background;
 	private int correct;
+	
+	private JPanel glass = new JPanel();
+	private JLabel score, win;
 
 	/**
 	 * Constructs a new instance of the background with all the FlyingObjects on it. 
 	 */
-	public Occipital(ShowMeTheLight s, Coma c) {
+	public Occipital(Coma c) {
 		super();
 		setLayout(null);
-		this.s = s;
+		
 		this.c = c;
 		setBackground(Color.WHITE);
 		background = new ImageIcon("occipital" + System.getProperty("file.separator") + "OccipitalBackground.jpg").getImage();
 		super.addMouseListener(this);
+		
+		sp = new SymbolPanel(c);
 		
 		correct = -1;
 		showObjects = true;
@@ -79,7 +86,21 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		add(menu);
 		menu.addActionListener(this);
 		
+		win = new JLabel();
+		win.setLocation(270, 45);
+		//win.setForeground(Color.RED);
+		win.setSize(300, 100);
+		//add(win);
+		
+		score = new JLabel(); // "SCORE: " + sp.getScore()
+		score.setForeground(Color.BLACK);
+		score.setLocation(600, 20);
+		score.setSize(150,30);
+		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		add(score);
+		
 		setVisible(true);
+		
 	}
 	
 	private void initializeSymbol() {
@@ -107,7 +128,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public void reset() {
 		initializeObstacles();
 		initializeSymbol();
-		showObjects = true;
 	}
 	
 	/**
@@ -118,13 +138,16 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		return symNum;
 	}
 	
+	public SymbolPanel getSP() {
+		return sp;
+	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // Call JPanel's paintComponent method to paint
 									// the background
 
 		Graphics2D g2 = (Graphics2D) g;
 		
-
 		int width = getWidth();
 		int height = getHeight();
 
@@ -147,24 +170,6 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 		}
 	}
 	
-	/**
-	 * Decides whether or not the JPanel should display anything at all. 
-	 * @param bool If true, then show FlyingObjects. If false, do not show anything. 
-	 */
-	public void setShowObjects(boolean bool) {
-		showObjects = bool;
-	}
-	
-	/**
-	 * Resets the JPanel's history of correctness. 
-	 */
-	public void setCorrect() { correct = -1; }
-	
-	/**
-	 * Returns the value that determines if the user answered correctly or not. 
-	 * @return the value that determines if the user answered correctly or not. 
-	 */
-	public int getCorrect() { return correct; }
 	
 	public void mouseClicked(MouseEvent e) {
 		if (plane.intersects(e.getX(), e.getY(), plane.PLANE_WIDTH/1.5, plane.PLANE_HEIGHT/1.5)) {
@@ -186,9 +191,112 @@ public class Occipital extends JPanel implements MouseListener, ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back)
-			s.changePanel("1");
+			c.changePanel("11");
 		else if (src == menu)
 			c.changePanel("3");
 		
+	}
+	
+	public void act() {
+		remove(win);
+		score.setText("Score: " + sp.getScore());
+		setBackground(Color.WHITE);
+		do {
+			correct = -1;
+			showObjects = true;
+			c.changePanel("12");
+
+	 	    setOpaque(false);
+	 	    glass.setOpaque(false);
+	 	    
+	 	    glass.addMouseListener(new MouseAdapter() {});
+	 	    glass.addMouseMotionListener(new MouseAdapter() {});
+	 	    
+	 	    glass.setFocusCycleRoot(true);
+	 	    c.setGlassPane(glass); 
+	 	    glass.setVisible(true);
+	 	    
+	 	    setOpaque(true);
+	 	    
+	 	    try {
+	 			Thread.sleep(2000);
+	 		} catch (InterruptedException e) {
+	 			e.printStackTrace();
+	 		}
+	 	    
+	 	    showObjects = false;
+	 	    glass.setVisible(false);	
+	 	    
+	 	    while (correct == -1) {
+	 	    	 try {
+	 	 			Thread.sleep(200);
+	 	 		} catch (InterruptedException e) {
+	 	 			e.printStackTrace();
+	 	 		}
+	 	    }
+	 	    
+	 	    if (correct == 0) {
+	 	    	c.changePanel("12");
+	 	    	setBackground(Color.YELLOW);
+	 	    	win.setText("YOU LOSE");
+	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+	 	    	add(win);
+	 	    	sp.setScore(0);
+	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
+	 	    	reset();
+	 	    	break;
+	 	    }
+	 	    correct = -1;
+	 	    
+	 	    sp.setTarget(getSymNum());
+	 	    c.changePanel("13");
+	    	
+	 	    try {
+	 			Thread.sleep(2000);
+	 		} catch (InterruptedException e) {
+	 			e.printStackTrace();
+	 		}	
+	    	
+	    	while (sp.getCorrect() == -1) {
+	    		try {
+	 	 			Thread.sleep(2000);
+	 	 		} catch (InterruptedException e) {
+	 	 			e.printStackTrace();
+	 	 		}
+	    	}
+	    	
+	    	if (sp.getCorrect() == 1) {	
+	    		sp.setScore(sp.getScore()+1);
+	    		sp.getScoreLabel().setText("Score: " + sp.getScore());
+	 	    	score.setText("Score: " + sp.getScore());
+	 	    }
+	    	
+	 	    else if (sp.getCorrect() == 0) {
+	 	    	c.changePanel("12");
+	 	    	setBackground(Color.WHITE);
+	 	    	win.setText("YOU LOSE");
+	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+	 	    	add(win);
+	 	    	sp.setScore(0);
+	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
+	 	    	reset();
+	 	    	break;
+	 	    }
+	    	sp.setCorrect();
+	    	if (sp.getScore() == 10) {
+	    		c.changePanel("12");
+	    		showObjects = false;
+	    		setBackground(Color.WHITE);
+	    		win.setVisible(true);
+	 		    win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+	 		    win.setText("YOU WIN");
+	 		    add(win);
+ 	    		c.setWon(2);
+ 	    		System.out.print(c.getWon(2));
+ 	    		break;
+	    	}
+	    	reset();
+		} while (sp.getScore() > 0);
+		sp.setCorrect();
 	}
 }

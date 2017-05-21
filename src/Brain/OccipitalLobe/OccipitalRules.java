@@ -1,31 +1,20 @@
 package Brain.OccipitalLobe;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import Brain.Rules;
-import Brain.ParietalLobe.HoleInTheWall;
 import Coma.Coma;
 
-public class OccipitalRules extends Rules{
-	private ShowMeTheLight s;
+public class OccipitalRules extends Rules {
+	
 	private Coma c;
 
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
-	public OccipitalRules(ShowMeTheLight s, Coma c) {
+	public OccipitalRules(Coma c) {
 		super();
-		this.s = s;
 		this.c = c;
 	}
 	
@@ -56,19 +45,18 @@ public class OccipitalRules extends Rules{
 	public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
 		if (src == begin) {
-			s.changePanel("2");
-			ShowMeTheLight game = new ShowMeTheLight("Show Me the Light", c);
-			Thread t = new Thread("my non EDT thread") {
+			c.changePanel("12");
+			if (!c.getWon(2)) {
+				Thread t = new Thread("my non EDT thread") {
 		            public void run() {
 		                //my work
-		               game.act();
+		               ((Occipital) c.getPanel(3)).act();
 		            }
-		        };
-		        t.start();
-			
+				};
+		        t.start();		
+			}
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
-			
 	}
 }

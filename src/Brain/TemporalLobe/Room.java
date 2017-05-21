@@ -75,6 +75,15 @@ public class Room extends Rectangle2D.Double {
 	public Room(String imgFilename, int[] passcode, int w, int h) {
 		background = new ImageIcon("temporal" + System.getProperty("file.separator") + imgFilename).getImage();
 		this.passcode = passcode;
+		
+//		for(int i = 0; i<passcode.length; i++) {
+//			if(passcode[i]<0)
+//				this.passcode[i]--;
+//			else 
+//				this.passcode[i]=9;
+//		}
+			
+		
 		k = new Keypad();
 		this.width = w;
 		this.height = h;
@@ -93,6 +102,14 @@ public class Room extends Rectangle2D.Double {
 	 * @return the passcode of this room
 	 */
 	public int[] getPasscode() {
+		/*
+		for(int i =0; i<passcode.length; i++) {
+			if(passcode[i]<9)
+				passcode[i]++;
+			else
+				passcode[i]=0;
+		}
+		*/
 		return passcode;
 	}
 	
@@ -108,6 +125,18 @@ public class Room extends Rectangle2D.Double {
 			}
 		}
 		return -1;
+	}
+	
+	public String getPasscodeAtIndex(int x) {
+		String s = "";
+		
+		for(int i = 0; i<passcode.length; i++) {
+			if(i==x) {
+				return Integer.toString(passcode[x]);
+			}
+		}
+		
+		return s;
 	}
 
 	public void draw(Graphics g, Image img, double width, double height, ImageObserver io) {
@@ -127,10 +156,16 @@ public class Room extends Rectangle2D.Double {
 	 */
 	public void playSound() {
 		for(int i =0; i<passcode.length; i++) {
-			k.getButton(passcode[i]).getSound().play();
+//			if(passcode[i]<9) {
+//				passcode[i]+=1;
+				k.getButton(passcode[i]).getSound().play();
+				
+//			}
+//			else {
+////				passcode[i]-=9;
+//				k.getButton(passcode[i]).getSound().play();
+//			}
 		}
-		
-		
 	}
 	
 	

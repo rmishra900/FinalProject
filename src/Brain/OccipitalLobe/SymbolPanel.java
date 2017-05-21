@@ -11,6 +11,7 @@ import Coma.Coma;
 
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Color.*;
 
@@ -23,34 +24,37 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	
 	private JButton[] symbols;
 	private JButton targetSymbol;
-	private static final int RADIUS = 30;
+
 	ActionListener listener;
 	private int correct;
 	private JButton back, menu;
 	
-	private ShowMeTheLight s;
+	private int numCorrect;
+	private JLabel score, win;
+	
 	private Coma c;
 	/**
 	 * Constructs a new instance of SymbolPanel by initializing all buttons. 
 	 */
-	public SymbolPanel(ShowMeTheLight s, Coma c) {
-		this.s = s;
+	public SymbolPanel(Coma c) {
 		this.c = c;
 		symbols = new JButton[5];
 		correct = -1;
-		double angleDiff = symbols.length/Math.toRadians(360);
+		setLayout(null);
 		for (int i = 0; i < symbols.length; i++) {
 			symbols[i] = new JButton();
 			symbols[i].setIcon(new ImageIcon("occipital" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
-			double phi = i*angleDiff; 
-			double x = (RADIUS * Math.cos(phi));
-	        double y = (RADIUS * Math.sin(phi));
-	        symbols[i].setBounds((int)x, (int)y, 3, 3);
 	        add(symbols[i]);
-	        //symbols[i].setLocation((int)x, (int)y);
 	        symbols[i].addActionListener(this);
-	        //symbols[i].setOpaque(true);
+	        symbols[i].setEnabled(true);
+	        symbols[i].setSize(250, 250);
 		}
+		symbols[0].setLocation(0, 50);
+		symbols[1].setLocation(263, 50);
+		symbols[2].setLocation(526, 50);
+		symbols[3].setLocation(131, 300);
+		symbols[4].setLocation(394, 300);
+		
 		back = new JButton("BACK");
 		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
@@ -67,11 +71,16 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		back.addActionListener(this);
 		add(menu);
 		menu.addActionListener(this);
+		
+		score = new JLabel("SCORE: " + numCorrect);
+		score.setForeground(Color.BLACK);
+		score.setLocation(600, 20);
+		score.setSize(150,30);
+		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		add(score);
+		
 	}
 	
-	/*public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}*/
 	
 	/**
 	 * Sets the target symbol that the user needs to click on this SymbolPanel. 
@@ -90,7 +99,21 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	 * Returns the value that determines if the user got the answer correct. 
 	 * @return the value that determines if the user got the answer correct. 
 	 */
-	public int getCorrect() { return correct; }
+	public int getCorrect() { 
+		return correct; 
+	}
+	
+	public int getScore() { 
+		return numCorrect; 
+	}
+	
+	public void setScore(int score) {
+		numCorrect = score;
+	}
+	
+	public JLabel getScoreLabel() {
+		return score;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -101,7 +124,7 @@ public class SymbolPanel extends JPanel implements ActionListener {
 			correct = 0;
 		}
 		if (src == back)
-			s.changePanel("1");
+			c.changePanel("11");
 		else if (src == menu)
 			c.changePanel("3");
 	}

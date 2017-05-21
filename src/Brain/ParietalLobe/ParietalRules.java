@@ -20,15 +20,13 @@ public class ParietalRules extends Rules{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
-	private HoleInTheWall h;
 	private Coma c;
 	private Image upArrow, downArrow, wall;
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
 	 */
-	public ParietalRules(HoleInTheWall h, Coma c) {
+	public ParietalRules(Coma c) {
 		super();
-		this.h = h;
 		this.c = c;
 		rules.setLocation(105, 25);
 		upArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "upArrow.png")).getImage();
@@ -46,7 +44,7 @@ public class ParietalRules extends Rules{
 		
 		rules = "<html>This game tests the Parietal Lobe of the brain which is <br>responsible for sensory perception "
 				+ "and integration, including the management of taste, hearing, sigh, touch, and smell.<br><br> You will "
-				+ "have 45 seconds to complete the game and you must <br>reach 1000 points to win. <br><br>To play, "
+				+ "have 45 seconds to complete the game and you must <br>reach 900 points to win. <br><br>To play, "
 				+ "use the up and down arrow keys on your keyboard to control the blue panel on the left called the wall. "
 				+ "Match up the shapes that are shot out from the left side of the screen to the shapes on the wall</html>";
 		
@@ -66,10 +64,10 @@ public class ParietalRules extends Rules{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin) {
-			h.getPanel().reset();
-			h.changePanel("2");
+			((Parietal)c.getPanel(2)).reset();
+			c.changePanel("10");
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 		
 	}

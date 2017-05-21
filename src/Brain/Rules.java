@@ -20,7 +20,7 @@ public abstract class Rules extends JPanel implements ActionListener {
 	
 	//private Image greenArrow, blueArrow, redArrow, background;
 	private Image background;
-	protected JButton begin, back;
+	protected JButton begin, menu;
 	protected JLabel rulesBackground, rules;
 
 	
@@ -35,9 +35,9 @@ public abstract class Rules extends JPanel implements ActionListener {
 		begin.setSize(100, 50);
 		begin.setLocation(325, 500);
 		
-		back = new JButton("MENU");
-		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		back.setSize(100, 50);
+		menu = new JButton("MENU");
+		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		menu.setSize(100, 50);
 		
 		background = new ImageIcon("frontal" + System.getProperty("file.separator") + "RulesBackground.jpg").getImage();
 		
@@ -62,9 +62,9 @@ public abstract class Rules extends JPanel implements ActionListener {
 		add(rulesBackground);
 		
 		add(begin);
-		add(back);
+		add(menu);
 		begin.addActionListener(this);
-		back.addActionListener(this);
+		menu.addActionListener(this);
 		
 	}
 	

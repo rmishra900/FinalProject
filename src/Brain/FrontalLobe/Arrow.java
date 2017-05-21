@@ -35,7 +35,7 @@ public class Arrow {
 		xV = 1;
 		yV = 1;
 		
-		i = getRandomImage();
+		i = getRandomImage(c);
 		
 		iB = new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueLeftArrow.png").getImage();
 		iG = new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenLeftArrow.png").getImage();
@@ -375,18 +375,18 @@ public class Arrow {
 	 * Returns a random image of a colored arrow (red, green, or blue) with a random orientation.
 	 * @return colored image of arrow
 	 */
-	public Image getRandomImage() {
-		Color c;
-		int randCol = (int) (Math.random()*3);
+	public Image getRandomImage(Color c) {
+	//	Color c;
+	//	int randCol = (int) (Math.random()*3);
 		
-		if(randCol == 0) 
-			c = new Color(255,0,0); //red
-		else if(randCol==1) 
-			c = new Color(0,255,0); //green
-		else 
-			c = new Color(0,0,255); //blue
+	//	if(randCol == 0) 
+	//		c = new Color(255,0,0); //red
+	//	else if(randCol==1) 
+		//	c = new Color(0,255,0); //green
+		//else 
+			//c = new Color(0,0,255); //blue
 		
-		
+		setcolor(c);
 		Image randomImage = getRandomOrientation(c);
 		
 		

@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import Brain.Rules;
-import Brain.ParietalLobe.HoleInTheWall;
 import Coma.Coma;
 
 import java.awt.event.ActionEvent;
@@ -46,10 +45,28 @@ public class FrontalRules extends Rules {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == begin) {
-			f.getPanel().reset();
-			f.changePanel("2");
+		//if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU WIN") || 
+//			for(Arrow a: ((Frontal)c.getPanel(1)).getArrows()) {
+//					a = null;
+//			}
+			
+			if(	((Frontal)c.getPanel(1)).getWin().getText().equals("")) {
+				((Frontal)c.getPanel(1)).reset();
+				System.out.println("here");
+			}
+				
+			
+			else if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
+				((Frontal)c.getPanel(1)).reset();
+			//	((Frontal)c.getPanel(1)).repaint();
+				System.out.println("you lost");
+			//	((Frontal)c.getPanel(1)).setWinText("");
+				System.out.println(((Frontal)c.getPanel(1)).getWin().getText());
+				
+			}
+		c.changePanel("7");
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 	}
 	

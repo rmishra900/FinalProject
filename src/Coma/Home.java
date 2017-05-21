@@ -55,9 +55,9 @@ public class Home extends JPanel implements KeyListener{
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-		g.setFont(new Font("SansSerif", 3, 100));
+		g.setFont(new Font("Roman Baseline", 3, 100));
 		g.drawString("C.O.M.A", 200, 300);
-		g.setFont(new Font("SansSerif", 1, 20));
+		g.setFont(new Font("Roman Baseline", 1, 20));
 		g.drawString("Press the space button to begin", 250, 320);
 		
 		repaint();
