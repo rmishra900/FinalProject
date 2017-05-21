@@ -50,13 +50,13 @@ public class Square extends Shape{
 	 * 			if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
-		vY += 0.5;
+//		vY += 0.5;
 		
-		if (x > 0) {
-			y -= vY;
+		if (a > 0) {
+			y -= 15;
 		}
 		else {
-			y -= vY;
+			y += 15;
 		}
 	}
 

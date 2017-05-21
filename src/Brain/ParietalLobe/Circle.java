@@ -51,20 +51,20 @@ public class Circle extends Shape {
 	 */
 	public void moveWithWall(int a) {
 //		vY += 0.85;
-		
-		if (x > 0) {
-			vY += 0.5;
-			y -= vY;
-		}
-		else {
-			y -= vY;
-		}
-//		if (a > 0) {
-//			y -= 20;
+//		vY += 0.5;
+//		
+//		if (x > 0) {
+//			y -= vY;
 //		}
 //		else {
-//			y += 20;
+//			y += vY;
 //		}
+		if (a > 0) {
+			y -= 15;
+		}
+		else {
+			y += 15;
+		}
 	}
 
 	public double getHeight() {

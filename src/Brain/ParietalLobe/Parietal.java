@@ -42,8 +42,8 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 20, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 40, Color.YELLOW));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 23, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
 		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.c = c;
@@ -66,11 +66,11 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		menu.addActionListener(this);
 		
 		numCorrect = 0;
-		seconds = 5;
+		seconds = 45;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 650;
+		threshold = 900;
 		
 		clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -228,9 +228,9 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		int shape = (int)(Math.random() * 3);
 		
 		if (shape == 0)
-			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 20, Color.YELLOW);
+			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 23, Color.YELLOW);
 		else if (shape == 1)
-			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 40, Color.YELLOW);
+			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, Color.YELLOW);
 		else 
 			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW);
 	}
@@ -240,20 +240,24 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	 * 
 	 */
 	public void reset() {
-		seconds = 5;
+		seconds = 45;
 		numCorrect = 0;
 	}
 
 	public void keyPressed(KeyEvent e) {
-		int code = e.getKeyCode();
-		if (code == KeyEvent.VK_UP) {
-			w.act(1);
+		long lastPressProcessed = 0;
+		
+		if(System.currentTimeMillis() - lastPressProcessed > 500) {
+			int code = e.getKeyCode();
+			if (code == KeyEvent.VK_UP) {
+				w.act(1);
+			}
+			else if (code == KeyEvent.VK_DOWN) {
+				w.act(-1);
+			}
+            lastPressProcessed = System.currentTimeMillis();
+            repaint();
 		}
-		else if (code == KeyEvent.VK_DOWN) {
-			w.act(-1);
-		}
-  
-		repaint();
 	}
 
 	@Override

@@ -37,12 +37,12 @@ public class Wall extends Rectangle2D.Double {
 	 * Moves this wall up or down by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act(int x) {
-		vY += 0.5;
+//		vY += 0.5;
 		if (x > 0) {
-			y -= vY;
+			y -= 15;
 		}
 		else {
-			y += vY;
+			y += 15;
 		}
 		
 		for (Shape sh: s) {
@@ -77,7 +77,7 @@ public class Wall extends Rectangle2D.Double {
 	public boolean passes(Shape shape) {
 		if (shape.whichShape() == 0 || shape.whichShape() == 2) {
 			Shape s1 = s.get(shape.whichShape());
-			if (shape.y >= s1.y && shape.y + shape.getHeight() <= s1.y + s1.getHeight()) {
+			if (shape.y >= s1.y - 5 && shape.y + shape.getHeight() <= s1.y + s1.getHeight() + 5) {
 				if(shape.x < x + width) {
 					s1.changeColor();
 					return true;
