@@ -94,6 +94,8 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	 */
 	public void setCorrect() { correct = -1; }
 	
+	public void setCorrect(int x) { correct = x; }
+	
 	/**
 	 * Returns the value that determines if the user got the answer correct. 
 	 * @return the value that determines if the user got the answer correct. 
@@ -124,7 +126,9 @@ public class SymbolPanel extends JPanel implements ActionListener {
 		}
 		if (src == back)
 			c.changePanel("11");
-		else if (src == menu)
-			c.changePanel("3");
+		else if (src == menu) {
+			correct = -1;
+			c.changePanel("3");	
+		}
 	}
 }
