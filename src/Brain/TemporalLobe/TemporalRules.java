@@ -49,7 +49,7 @@ public class TemporalRules extends Rules{
 			((Temporal)c.getPanel(4)).reset();
 			c.changePanel("15");
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 	}
 

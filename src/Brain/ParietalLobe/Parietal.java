@@ -30,6 +30,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	private Shape drawS1;
 	private int random, numCorrect, seconds, threshold;
 	private boolean continueGame;
+	private Timer clock1, clock2;
 	
 	/**
 	 * Constucts a new instance of this panel.
@@ -42,8 +43,8 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
 		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 20, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 40, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 40, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 125)), 45, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.c = c;
 		
@@ -65,13 +66,13 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		menu.addActionListener(this);
 		
 		numCorrect = 0;
-		seconds = 45;
+		seconds = 5;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
 		threshold = 650;
 		
-		Timer clock1 = new Timer(7, new ActionListener() {
+		clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (continueGame) {
 					drawS1.act();
@@ -79,7 +80,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 				}
 			}
 		});
-		Timer clock2 = new Timer(1000, new ActionListener() {
+		clock2 = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				seconds--;
 //				timer.setText(format(seconds/60)+":"+format(seconds%60));
@@ -90,9 +91,8 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 			}
 		});
 		
-//		add(timer);
-		clock1.start();
-		clock2.start();
+//		clock1.start();
+//		clock2.start();
 	}
 	
 	/**
@@ -122,6 +122,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
+		
 		if (!c.getWon(3)) {
 			if (continueGame) {
 				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
@@ -202,6 +203,9 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 			g.setFont(new Font("SansSerif", 3, 100));
 			g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
 		}
+		
+		clock1.start();
+		clock2.start();
 		 
 		repaint(); 	
 	}
@@ -224,11 +228,11 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		int shape = (int)(Math.random() * 3);
 		
 		if (shape == 0)
-			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 25, Color.YELLOW);
+			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 20, Color.YELLOW);
 		else if (shape == 1)
-			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 50, Color.YELLOW);
+			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 40, Color.YELLOW);
 		else 
-			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 50, Color.YELLOW);
+			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW);
 	}
 	
 	/**
@@ -236,7 +240,7 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	 * 
 	 */
 	public void reset() {
-		seconds = 45;
+		seconds = 5;
 		numCorrect = 0;
 	}
 
@@ -265,11 +269,17 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == back)
+		if (src == back) {
 			c.changePanel("9");
+			if (!c.getWon(3))
+				continueGame = true;
 			
-		else if (src == menu)
+		}
+		if (src == menu) {
+			if (!c.getWon(3))
+				continueGame = true;
 			c.changePanel("3");
+		}
 	}
 
 }

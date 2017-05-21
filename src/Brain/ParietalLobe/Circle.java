@@ -12,6 +12,7 @@ import java.awt.Graphics;
  */
 public class Circle extends Shape {
 	private double radius;
+	private double vY;
 	
 	/**
 	 * Constructs a new instance of this circle. 
@@ -23,6 +24,7 @@ public class Circle extends Shape {
 	public Circle(double xCoord, double yCoord, double radius, Color c) {
 		super(xCoord, yCoord, c);
 		this.radius = radius;
+		vY = 0;
 	}
 
 	/**
@@ -49,12 +51,20 @@ public class Circle extends Shape {
 	 */
 	public void moveWithWall(int a) {
 //		vY += 0.85;
-		if (a > 0) {
-			y -= 20;
+		
+		if (x > 0) {
+			vY += 0.5;
+			y -= vY;
 		}
 		else {
-			y += 20;
+			y -= vY;
 		}
+//		if (a > 0) {
+//			y -= 20;
+//		}
+//		else {
+//			y += 20;
+//		}
 	}
 
 	public double getHeight() {

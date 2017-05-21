@@ -48,7 +48,7 @@ public class FrontalRules extends Rules {
 			((Frontal)c.getPanel(1)).reset();
 			c.changePanel("7");
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 	}
 	

@@ -11,7 +11,8 @@ import java.awt.Graphics;
  */
 public class Square extends Shape{
 	private double length;
-		
+	private double vY;
+	
 	/**
 	 * Constructs a new instance of this square. 
 	 * @param xCoord the x-coordinate of the top left corner of the square
@@ -22,6 +23,8 @@ public class Square extends Shape{
 	public Square(double xCoord, double yCoord, double length, Color c) {
 		super(xCoord, yCoord, c);
 		this.length = length;
+		
+		vY = 0;
 	}
 
 	/**
@@ -47,12 +50,14 @@ public class Square extends Shape{
 	 * 			if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
-		if (a > 0) {
-			y -= 20;
+		vY += 0.5;
+		
+		if (x > 0) {
+			y -= vY;
 		}
 		else {
-			y += 20;
-		}	
+			y -= vY;
+		}
 	}
 
 	

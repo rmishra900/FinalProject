@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Wall extends Rectangle2D.Double {
 
 	private ArrayList<Shape> s;
+	private double vY;
 	
 	/**
 	 * Constructs an instance of this wall containing the holes of the three shapes.
@@ -29,17 +30,19 @@ public class Wall extends Rectangle2D.Double {
 		s.add(new Circle(x + 15, y + 20, 30, Color.WHITE));
 		s.add(new Triangle((x * 2 + width) / 2, y + 120, 70, Color.WHITE));
 		s.add(new Square(x + 15, y + height - 90, 60, Color.WHITE));
+		vY = 0;
 	}
 	
 	/**
 	 * Moves this wall up or down by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act(int x) {
+		vY += 0.5;
 		if (x > 0) {
-			y -= 20;
+			y -= vY;
 		}
 		else {
-			y += 20;
+			y += vY;
 		}
 		
 		for (Shape sh: s) {

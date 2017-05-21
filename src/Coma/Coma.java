@@ -68,18 +68,14 @@ public class Coma extends JFrame {
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
-	    
 	    gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
-
 	    gamePanel.add(pr, "9");
 	    gamePanel.add(p, "10");
-	    
 	    gamePanel.add(or, "11");
 	    gamePanel.add(o, "12");
 	    gamePanel.add(sp, "13");
-	    
 	    gamePanel.add(tr, "14");
 	    gamePanel.add(t, "15");
 	    

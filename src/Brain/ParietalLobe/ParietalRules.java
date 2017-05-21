@@ -67,7 +67,7 @@ public class ParietalRules extends Rules{
 			((Parietal)c.getPanel(2)).reset();
 			c.changePanel("10");
 		}
-		else if (src == back)
+		else if (src == menu)
 			c.changePanel("3");
 		
 	}
