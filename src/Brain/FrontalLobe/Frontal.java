@@ -45,7 +45,7 @@ public class Frontal extends JPanel implements ActionListener {
 	private JLabel timer, win, score;
 	
 	private int prevX, direction, pointingTo, correct, threshold, seconds;
-	
+	private Timer t;
 	private Color c;
 	
 	/**
@@ -114,7 +114,7 @@ public class Frontal extends JPanel implements ActionListener {
 		timer.setForeground(Color.WHITE);
 		timer.setFont(new Font("Roman Baseline", Font.BOLD, 30));
 		
-		Timer t = new Timer(1000, new ActionListener() {
+		t = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				seconds--;
 				timer.setText(format(seconds/60)+":"+format(seconds%60));
@@ -127,7 +127,7 @@ public class Frontal extends JPanel implements ActionListener {
 		});
 		
 		add(timer);
-		t.start();
+		
 		
 	}
 	
@@ -407,6 +407,7 @@ public class Frontal extends JPanel implements ActionListener {
 		   return;
 	   }
 	  
+	   t.start();
 	   repaint();
 	   
 	   try {
@@ -415,7 +416,7 @@ public class Frontal extends JPanel implements ActionListener {
 		e.printStackTrace();
 	   }
 	    g2.setTransform(at); 
-		}
+	}
 	
 	/**
 	 * Changes orientation of arrows to a random orientation.

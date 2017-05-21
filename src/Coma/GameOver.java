@@ -35,7 +35,7 @@ public class GameOver extends JPanel implements KeyListener{
 	public GameOver(Coma c) {
 		super();
 		this.c = c;
-		background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMA background.jpg").getImage();
+		background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
 		gameOver = new JLabel("Game Over");
 		gameOver.setFont(new Font("Roman Baseline", 3, 100));
 		setBackground(Color.WHITE);
@@ -47,7 +47,7 @@ public class GameOver extends JPanel implements KeyListener{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 
-		//g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 		
 		int width = getWidth();
 		int height = getHeight();
