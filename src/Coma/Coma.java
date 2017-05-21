@@ -12,10 +12,8 @@ import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalRules;
 import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.OccipitalLobe.SymbolPanel;
-import Brain.ParietalLobe.HoleInTheWall;
 import Brain.ParietalLobe.Parietal;
 import Brain.ParietalLobe.ParietalRules;
-import Brain.TemporalLobe.Locked;
 import Brain.TemporalLobe.Temporal;
 import Brain.TemporalLobe.TemporalRules;
 

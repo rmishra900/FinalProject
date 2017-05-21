@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import Brain.Rules;
-import Brain.ParietalLobe.HoleInTheWall;
 import Coma.Coma;
 
 import java.awt.event.ActionEvent;

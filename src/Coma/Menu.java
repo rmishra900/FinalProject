@@ -4,20 +4,10 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingWorker;
 
-import Brain.OccipitalLobe.Occipital;
-import Brain.OccipitalLobe.ShowMeTheLight;
-import Brain.OccipitalLobe.SymbolPanel;
-import Brain.ParietalLobe.HoleInTheWall;
-import Brain.TemporalLobe.Locked;
 import Brain.FrontalLobe.FlyingArrows;
 
 /**
