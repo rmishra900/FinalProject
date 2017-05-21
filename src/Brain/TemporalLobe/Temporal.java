@@ -39,7 +39,7 @@ public class Temporal extends JPanel implements ActionListener {
 	private Room room;
 	private Keypad k;
 
-	private JButton back, menu, play;
+	private JButton back, menu, play, clear;
 	private int numCorrect;
 	private int panelNumber;
 	private int[][] previousCodes;
@@ -70,7 +70,7 @@ public class Temporal extends JPanel implements ActionListener {
 	
 		
 		buttonsPressed = new JTextField();
- 		buttonsPressed.setLocation(315, 530);
+ 		buttonsPressed.setLocation(300, 530);
  		buttonsPressed.setForeground(Color.BLACK);
  		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
   		buttonsPressed.setSize(175,50);
@@ -84,23 +84,24 @@ public class Temporal extends JPanel implements ActionListener {
   		win.setFont(new Font("Roman Baseline", Font.BOLD, 100));
 		
 		back = new JButton("BACK");
-		back.setBackground(Color.YELLOW);
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
 		back.setLocation(25, 0);
 		
 		menu = new JButton("MENU");
-		menu.setBackground(Color.YELLOW);
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
 		menu.setLocation(150, 0);
 		
 		play = new JButton("PLAY");
-		play.setBackground(Color.YELLOW);
 		play.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		play.setSize(100, 50);
 		play.setLocation(275, 0);
 		
+		clear = new JButton("CLEAR");
+		clear.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+		clear.setSize(100, 50);
+		clear.setLocation(475, 530);
 		
 		add(back);
 		back.addActionListener(this);
@@ -108,6 +109,8 @@ public class Temporal extends JPanel implements ActionListener {
 		menu.addActionListener(this);
 		add(play);
 		play.addActionListener(this);
+		add(clear);
+		clear.addActionListener(this);
 		
 		add(win);
 		add(buttonsPressed);
@@ -276,9 +279,13 @@ public class Temporal extends JPanel implements ActionListener {
 		else if (src == menu)
 			c.changePanel("3");
 		else if(src == play) {
-			//rooms[getPanelNum()].playSound();
 			room.playSound();
-		}	
+		}
+		else if(src == clear) {
+			buttonsPressed.setText("");
+			buttonsPressedText = "";
+			k.setEntered("");
+		}
 	}
 
 }
