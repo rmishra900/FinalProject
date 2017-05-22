@@ -59,7 +59,7 @@ public class Home extends JPanel implements KeyListener{
 		g.setFont(new Font("Roman Baseline", 3, 100));
 		g.drawString("C.O.M.A", 200, 100);
 		g.setFont(new Font("Roman Baseline", 1, 25));
-		g.drawString("Press the space button to begin", 230, 540);
+		g.drawString("Press the space bar to begin", 230, 540);
 		
 		repaint();
 	}
