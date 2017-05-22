@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import Brain.Lobe;
 
 import Coma.Coma;
 
@@ -28,13 +29,11 @@ import Coma.Coma;
  * @author 
  * @version 5/18/17
  */
-public class Temporal extends JPanel implements ActionListener {
+public class Temporal extends Lobe{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 
 	private Coma c;
-	
-	//private Room[] rooms;
 	
 	private Room room;
 	private Keypad k;
@@ -43,7 +42,6 @@ public class Temporal extends JPanel implements ActionListener {
 	private int numCorrect;
 	private int panelNumber;
 	private int[][] previousCodes;
-	//private JLabel buttonsPressed;
 	private JTextField buttonsPressed;
 	private String buttonsPressedText;
 	private JLabel win;
@@ -83,30 +81,33 @@ public class Temporal extends JPanel implements ActionListener {
   		win.setForeground(Color.RED);
   		win.setFont(new Font("Roman Baseline", Font.BOLD, 100));
 		
-		back = new JButton("BACK");
-		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		back.setSize(100, 50);
-		back.setLocation(25, 0);
-		
-		menu = new JButton("MENU");
-		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		menu.setSize(100, 50);
-		menu.setLocation(150, 0);
-		
+//		back = new JButton("BACK");
+//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+//		back.setSize(100, 50);
+//		back.setLocation(25, 0);
+//		
+//		menu = new JButton("MENU");
+//		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+//		menu.setSize(100, 50);
+//		menu.setLocation(150, 0);
+  		
+  		back = getBack();
+  		menu = getMenu();
+  		
 		play = new JButton("PLAY");
 		play.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		play.setSize(100, 50);
-		play.setLocation(275, 0);
+		play.setLocation(275, 20);
 		
 		clear = new JButton("CLEAR");
 		clear.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		clear.setSize(100, 50);
 		clear.setLocation(475, 530);
 		
-		add(back);
-		back.addActionListener(this);
-		add(menu);
-		menu.addActionListener(this);
+//		add(back);
+//		back.addActionListener(this);
+//		add(menu);
+//		menu.addActionListener(this);
 		add(play);
 		play.addActionListener(this);
 		add(clear);
@@ -164,6 +165,7 @@ public class Temporal extends JPanel implements ActionListener {
 					remove(k);
 					remove(buttonsPressed);
 					remove(play);
+					remove(clear);
 					win.setText("YOU WIN!");
 					c.setWon(4);
 					c.changeToOver();
@@ -179,11 +181,10 @@ public class Temporal extends JPanel implements ActionListener {
 			remove(k);
 			remove(buttonsPressed);
 			remove(play);
+			remove(clear);
 			win.setText("YOU WIN!");
 		}
 		g2.setTransform(at);
-			
-	
 	}
 	
 	public boolean winGame(int x) {

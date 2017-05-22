@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+import Brain.Lobe;
+
 
 import Coma.Coma;
 
@@ -28,7 +30,7 @@ import java.awt.event.ActionListener;
  * @author reetmishra
  *
  */
-public class Frontal extends JPanel implements ActionListener {
+public class Frontal extends Lobe {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	
@@ -72,22 +74,18 @@ public class Frontal extends JPanel implements ActionListener {
 		add(win);
 		setLayout(null);
 		
-		back = new JButton("BACK");
-		back.setBackground(Color.WHITE);
-		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		back.setSize(100, 50);
-		back.setLocation(25, 20);
+//		back = new JButton("BACK");
+//		back.setBackground(Color.WHITE);
+//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+//		back.setSize(100, 50);
+//		back.setLocation(25, 20);
+		back = getBack();
+		menu = getMenu();
 		
-		menu = new JButton("MENU");
-		menu.setBackground(Color.WHITE);
-		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		menu.setSize(100, 50);
-		menu.setLocation(150, 20);
-		
-		add(back);
-		back.addActionListener(this);
-		add(menu);
-		menu.addActionListener(this);
+//		add(back);
+//		back.addActionListener(this);
+//		add(menu);
+//		menu.addActionListener(this);
 		
 		keyControl = new KeyHandler();
 	
@@ -108,7 +106,7 @@ public class Frontal extends JPanel implements ActionListener {
 		add(score);
 	
 		timer = new JLabel("0:"+seconds);
-		timer.setLocation(600,25);
+		timer.setLocation(600,20);
 		timer.setSize(150, 30);
 		timer.setForeground(Color.WHITE);
 		timer.setFont(new Font("Roman Baseline", Font.BOLD, 30));
