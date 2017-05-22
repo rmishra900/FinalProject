@@ -124,8 +124,10 @@ public class Menu extends JPanel implements ActionListener {
 		if(c.getWins() == 4)
 			c.changePanel("4");
 		
-		if (c.getWon(1)) 
+		if (c.getWon(1)) {
 			g.drawImage(frontalImg, 200, 100, 223, 204, this);
+			
+		}
 		if (c.getWon(2))
 			g.drawImage(occipitalImg, 475, 175, 123, 210, this);
 		if (c.getWon(3))
