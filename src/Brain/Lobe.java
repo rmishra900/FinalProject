@@ -73,6 +73,7 @@ public abstract class Lobe extends JPanel implements ActionListener{
 		return back;
 	}
 	
+	
 	public Image getWinImage() {
 		return winImage;
 	}

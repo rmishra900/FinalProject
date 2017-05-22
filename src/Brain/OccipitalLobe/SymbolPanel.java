@@ -28,7 +28,6 @@ public class SymbolPanel extends Lobe implements ActionListener {
 
 	ActionListener listener;
 	private int correct;
-	private JButton back, menu;
 	
 	private int numCorrect;
 	private JLabel score, win;
@@ -39,7 +38,7 @@ public class SymbolPanel extends Lobe implements ActionListener {
 	 */
 	public SymbolPanel(Coma c) {
 		this.c = c;
-		symbols = new JButton[5];
+		symbols = new JButton[6];
 		correct = -1;
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
@@ -54,17 +53,13 @@ public class SymbolPanel extends Lobe implements ActionListener {
 	        symbols[i].setEnabled(true);
 	        symbols[i].setSize(250, 250);
 		}
-		
-		symbols[0].setLocation(0, 70);
-		symbols[1].setLocation(263, 70);
-		symbols[2].setLocation(526, 70);
-		symbols[3].setLocation(131, 320);
-		symbols[4].setLocation(394, 320);
 
 		layout.setHorizontalGroup(
 				   layout.createSequentialGroup()
 				   .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
-				      .addComponent(symbols[0], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				   .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				           .addComponent(symbols[0], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				           .addComponent(symbols[5], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				      .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				           .addComponent(symbols[1], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -82,12 +77,14 @@ public class SymbolPanel extends Lobe implements ActionListener {
 				           .addComponent(symbols[2], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				           .addComponent(symbols[3], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				           .addComponent(symbols[4], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				           .addComponent(symbols[4], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				           .addComponent(symbols[5], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				      
 				);
 		
 		score = new JLabel("SCORE: " + numCorrect);
 		score.setForeground(Color.BLACK);
-		score.setLocation(600, 20);
+		score.setLocation(400, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);	
@@ -137,10 +134,12 @@ public class SymbolPanel extends Lobe implements ActionListener {
 		} else {
 			correct = 0;
 		}
-		if (src == back)
+		if (src == getBack()) {
+			correct = 2;
 			c.changePanel("11");
-		else if (src == menu) {
-			correct = -1;
+		}
+		else if (src == getMenu()) {
+			correct = 2;
 			c.changePanel("3");	
 		}
 	}
