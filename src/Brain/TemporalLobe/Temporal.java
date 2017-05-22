@@ -85,7 +85,7 @@ public class Temporal extends Lobe{
   		win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 		win.setSize(500, 100);
   		win.setForeground(Color.BLACK);
-  		win.setFont(new Font("Roman Baseline", Font.BOLD, 100));
+  		win.setFont(new Font("Roman Baseline", 3, 100));
   		
   		winImage = getWinImage();
 
@@ -131,11 +131,19 @@ public class Temporal extends Lobe{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+		
+		menu.setBounds((int)(150*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds((int)(25*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		play.setBounds((int)(275*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		clear.setBounds((int)(475*ratioX), (int)(530*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		
+		buttonsPressed.setBounds((int)(300*ratioX), (int)(530*ratioY), (int)(175*ratioX), (int)(50*ratioY));
+		
+		for(Button b: k.getButtons()) {
+			b.getJButton().setBounds((int)(b.getX()*ratioX), (int)(b.getY()*ratioY), (int)(50*ratioX), (int)(50*ratioY));
+		}
 	
-		System.out.println("width: "+getWidth()+"height: "+getHeight());
-		k.setSize(getWidth()/2, getHeight()*128/100);
-		System.out.println("width: "+getWidth()/2+"height: "+getHeight()*128/100);
-		//k.setSize((int)ratioX, (int)ratioY);
+		k.setBounds((int)(200*ratioX), (int)(80*ratioY), (int)(400*ratioX), (int)(450*ratioY));
 		
 		if (!c.getWon(4)) {
 			if (k.getEntered() != null) {
@@ -150,8 +158,13 @@ public class Temporal extends Lobe{
 					remove(buttonsPressed);
 					remove(play);
 					remove(clear);
-					win.setText("YOU WIN!");
+					//win.setText("YOU WIN!");
+					//win.setBounds((int)((DRAWING_WIDTH / 2 - 250)*ratioX), (int)((DRAWING_HEIGHT / 2 - 50)*ratioY), (int)(500*ratioX), (int)(100*ratioY));
+					
 					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+					g.setFont(new Font("Roman Baseline", 3, 100));
+					g.setColor(Color.BLACK);
+					g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 					c.setWon(4);
 					c.changeToOver();
 					return;
@@ -168,7 +181,12 @@ public class Temporal extends Lobe{
 			remove(play);
 			remove(clear);
 			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
-			win.setText("YOU WIN!");
+		//	win.setText("YOU WIN!");
+		//	win.setBounds((int)(150*ratioX), (int)(200*ratioY), (int)(500*ratioX), (int)(100*ratioY));
+			
+			g.setFont(new Font("Roman Baseline", 3, 100));
+			g.setColor(Color.BLACK);
+			g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 		}
 		
 		g2.setTransform(at);

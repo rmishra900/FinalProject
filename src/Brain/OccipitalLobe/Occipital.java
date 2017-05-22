@@ -151,8 +151,8 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
 		
-		menu.setBounds(150, 20, (int)(100*ratioX), (int)(50*ratioY));
-		back.setBounds(25, 20, (int)(100*ratioX), (int)(50*ratioY));
+		menu.setBounds((int)(150*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds((int)(25*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
 		
 		
 		AffineTransform at = g2.getTransform();
