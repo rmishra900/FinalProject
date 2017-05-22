@@ -21,8 +21,8 @@ public class Triangle extends Shape {
 	 * @param length the side length of the triangle
 	 * @param c the color of this circle
 	 */
-	public Triangle(double xCoord, double yCoord, double length, Color c) {
-		super(xCoord, yCoord, c);
+	public Triangle(double xCoord, double yCoord, double length, double distance, Color c) {
+		super(xCoord, yCoord, distance, c);
 		this.length = length;
 		
 		xCoords = new double[3];
@@ -61,8 +61,9 @@ public class Triangle extends Shape {
 	 */
 	public void act() {
 		for (int i = 0; i < xCoords.length; i ++) {
-			xCoords[i] -= 2;
+			xCoords[i] -= move;
 		}
+//		System.out.println(move);
 	}
 
 	/**

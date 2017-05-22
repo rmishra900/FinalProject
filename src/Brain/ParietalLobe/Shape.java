@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  *
  */
 public abstract class Shape {
-	protected double x, y;
+	protected double x, y, move;
 	protected Color shapeColor;
 	
 	/**
@@ -21,9 +21,10 @@ public abstract class Shape {
 	 * @param yCoord the y-coordinate of the top left corner of the shape
 	 * @param c the color of the shape
 	 */
-	public Shape(double xCoord, double yCoord, Color c) {
+	public Shape(double xCoord, double yCoord, double move, Color c) {
 		x = xCoord;
 		y = yCoord;
+		this.move = move;
 		shapeColor = c;
 	}
 	

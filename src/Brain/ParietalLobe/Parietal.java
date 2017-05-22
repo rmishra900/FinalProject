@@ -45,9 +45,9 @@ public class Parietal extends Lobe implements KeyListener{
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, DRAWING_WIDTH / 400, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, DRAWING_WIDTH / 400, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, DRAWING_WIDTH / 400, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.c = c;
 		
@@ -150,11 +150,15 @@ public class Parietal extends Lobe implements KeyListener{
 				if (!screenRect.intersects(w))
 			  		redrawWall();
 				
-				if(numCorrect >= threshold && seconds > 0 || seconds == 0 && numCorrect < threshold) {
+				if(numCorrect >= threshold && seconds > 0 || seconds == 0) {
 					continueGame = false;
+					clock1.stop();
+					clock2.stop();
 				}
 			}
 			else {
+				clock1.stop();
+				clock2.stop();
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
 				g.setColor(Color.RED);
@@ -166,13 +170,17 @@ public class Parietal extends Lobe implements KeyListener{
 					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);	
 					c.changeToOver();
 				}
-				else if (seconds == 0 && numCorrect < threshold) {
+
+				else if (seconds == 0) {
+
 					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2);
 				}
 				
 				g.setColor(Color.BLACK);
+
 				g.setFont(new Font("Roman Baseline", 1, 24));
 				g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
+
 			
 				g.setFont(new Font("Roman Baseline", 3, 50));
 				g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
@@ -212,13 +220,12 @@ public class Parietal extends Lobe implements KeyListener{
 	 */
 	public void shootShape() {
 		int shape = (int)(Math.random() * 3);
-		
 		if (shape == 0)
-			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 23, Color.YELLOW);
+			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 23, (getWidth() + 18) / 400, Color.YELLOW);
 		else if (shape == 1)
-			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, Color.YELLOW);
+			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, (getWidth() + 18) / 400, Color.YELLOW);
 		else 
-			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW);
+			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, (getWidth() + 18) / 400, Color.YELLOW);
 	}
 	
 	/**

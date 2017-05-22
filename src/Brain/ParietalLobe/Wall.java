@@ -27,9 +27,9 @@ public class Wall extends Rectangle2D.Double {
 	public Wall(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		s = new ArrayList<Shape>();
-		s.add(new Circle(x + 15, y + 20, 30, Color.WHITE));
-		s.add(new Triangle((x * 2 + width) / 2, y + 120, 70, Color.WHITE));
-		s.add(new Square(x + 15, y + height - 90, 60, Color.WHITE));
+		s.add(new Circle(x + 15, y + 20, 30, 0, Color.WHITE));
+		s.add(new Triangle((x * 2 + width) / 2, y + 120, 70, 0, Color.WHITE));
+		s.add(new Square(x + 15, y + height - 90, 60, 0, Color.WHITE));
 		vY = 0;
 	}
 	

@@ -20,11 +20,10 @@ public class Square extends Shape{
 	 * @param length the side length of the square
 	 * @param c the color of this circle
 	 */
-	public Square(double xCoord, double yCoord, double length, Color c) {
-		super(xCoord, yCoord, c);
+	public Square(double xCoord, double yCoord, double length, double distance, Color c) {
+		super(xCoord, yCoord, distance, c);
 		this.length = length;
 		
-		vY = 0;
 	}
 
 	/**
@@ -41,7 +40,8 @@ public class Square extends Shape{
 	 * Moves this square to the left by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act() {
-		x -= 2;
+		x -= move;
+//		System.out.println(move);
 	}
 
 	/**
