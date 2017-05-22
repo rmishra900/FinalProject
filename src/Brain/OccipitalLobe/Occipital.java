@@ -67,7 +67,6 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		correct = -1;
 		showObjects = true;
 		initializeObstacles();
-		initializeSymbol();
 		
 	
 		back = getBack();
@@ -85,17 +84,13 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		win.setSize(500, 100);
 		
 		score = new JLabel(); 
-		score.setForeground(Color.WHITE);
+		score.setForeground(Color.BLACK);
 		score.setLocation(400, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
 		
 		setVisible(true);
-		
-	}
-	
-	private void initializeSymbol() {
 		
 	}
 	
@@ -122,7 +117,6 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	
 	public void reset() {
 		initializeObstacles();
-		initializeSymbol();
 	}
 	
 	/**
