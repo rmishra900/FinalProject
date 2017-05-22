@@ -153,6 +153,8 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		g2.scale(ratioX, ratioY);
 		g2.setTransform(at);
 		
+		score.setBounds((int)(400*ratioX),(int)(20*ratioY),(int)(150*ratioX),(int)(30*ratioY));
+		win.setBounds((int)((DRAWING_WIDTH / 2 - 250)*ratioX),(int)((DRAWING_HEIGHT / 2 - 50)*ratioY),(int)(500*ratioX),(int)(100*ratioY));
 		if (showObjects) {
 			g.drawImage(background, 0, 0, (int)(getWidth()), (int)(getHeight()), this);
 			
