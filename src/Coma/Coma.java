@@ -15,7 +15,6 @@ import Brain.FrontalLobe.Frontal;
 import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.Occipital;
 import Brain.OccipitalLobe.OccipitalRules;
-import Brain.OccipitalLobe.ShowMeTheLight;
 import Brain.OccipitalLobe.SymbolPanel;
 import Brain.ParietalLobe.Parietal;
 import Brain.ParietalLobe.ParietalRules;

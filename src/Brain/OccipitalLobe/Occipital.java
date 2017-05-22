@@ -95,24 +95,27 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	}
 	
 	private void initializeSymbol() {
-		symNum = (int)(Math.random()*5) + 1;
-		int x = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
-		int y = 100 + (int) (Math.random()*(DRAWING_HEIGHT-150));
-		if (!(x == plane.getX() && y == plane.getY()))
-			sym = new Symbol("Symbol" + symNum + ".png", x, y);
-		else 
-			sym = new Symbol("Symbol" + symNum + ".png", x+25, y);
+		
 	}
 	
 	private void initializeObstacles() {
+		
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
+		symNum = (int)(Math.random()*5) + 1;
+		int x1 = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
+		int y1 = 100 + (int) (Math.random()*(DRAWING_HEIGHT-150));
+		if (!(x1 == plane.getX() && y1 == plane.getY()))
+			sym = new Symbol("Symbol" + symNum + ".png", x1, y1);
+		else 
+			sym = new Symbol("Symbol" + symNum + ".png", x1+25, y1);
+		
 		obstacles = new ArrayList<Helicopter>();
 		int randNum = (int) (Math.random() * 8) + 3; // number of helicopters - minimum is 3, maximum is 10 
 		for (int i = 0; i < randNum; i++) {
-			int x = (int) (Math.random()*DRAWING_WIDTH);
-			int y = (int) (Math.random()*DRAWING_HEIGHT);
-			if (!(x == plane.getX() && y == plane.getY()))
-				obstacles.add(new Helicopter(x, y));
+			int x2 = (int) (Math.random()*DRAWING_WIDTH);
+			int y2 = (int) (Math.random()*DRAWING_HEIGHT);
+			if (!(x2 == plane.getX() && y2 == plane.getY()) && !(x2 == sym.getX() && y2 == sym.getY()))
+				obstacles.add(new Helicopter(x2, y2));
 		}
 	}
 	
