@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 //import Brain.FrontalLobe.FlyingArrows;
 
@@ -27,7 +28,6 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton home;
 	private Image background, occipitalImg, frontalImg, parietalImg, temporalImg;
 	
-	private JLabel oLabel;
 	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
@@ -45,38 +45,57 @@ public class Menu extends JPanel implements ActionListener {
 		parietalImg = new ImageIcon("coma" + System.getProperty("file.separator") + "Parietal.png").getImage();
 		temporalImg = new ImageIcon("coma" + System.getProperty("file.separator") + "Temporal.png").getImage();
 		
-		oLabel = new JLabel();
-		oLabel.setFont(new Font("Roman Baseline", Font.BOLD, 12));
-		oLabel.setLocation(600, 300);
-		oLabel.setText("Sightseeing");
-		oLabel.setForeground(Color.BLACK);
-		oLabel.setVisible(true);
-		add(oLabel);
-		
 		occipital = new JButton();
-		occipital.setFont(new Font("Roman Baseline", Font.BOLD, 12));
 		occipital.setSize(195, 141);
 		occipital.setLocation(600, 375);
 		occipital.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "occipitalScreenshot.png"));
 		
+		JLabel oLabel = new JLabel();
+		oLabel.setFont(new Font("Roman Baseline", 3, 16));
+		oLabel.setLocation(600, 510);
+		oLabel.setText("Sightseeing");
+		oLabel.setForeground(Color.BLACK);
+		oLabel.setSize(150, 30);
+		add(oLabel);
 		
 		frontal = new JButton("Flying Arrows");
-		frontal.setFont(new Font("Roman Baseline", Font.BOLD, 16));
 		frontal.setSize(190, 136);
 		frontal.setLocation(20, 10);
 		frontal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "frontalScreenshot.png"));
 		
+		JLabel fLabel = new JLabel();
+		fLabel.setFont(new Font("Roman Baseline", 3, 16));
+		fLabel.setLocation(20, 140);
+		fLabel.setText("Flying Arrows");
+		fLabel.setForeground(Color.BLACK);
+		fLabel.setSize(150, 30);
+		add(fLabel);
+		
 		parietal = new JButton("Hole in the Wall");
-		parietal.setFont(new Font("Roman Baseline", Font.BOLD, 12));
 		parietal.setSize(195, 141);
 		parietal.setLocation(600, 10);
 		parietal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "parietalScreenshot.png"));
 		
+		JLabel pLabel = new JLabel();
+		pLabel.setFont(new Font("Roman Baseline", 3, 16));
+		pLabel.setLocation(600, 145);
+		pLabel.setText("Hole in the Wall");
+		pLabel.setForeground(Color.BLACK);
+		pLabel.setSize(150, 30);
+		add(pLabel);
+		
 		temporal = new JButton("Locked");
-		temporal.setFont(new Font("Roman Baseline", Font.BOLD, 16));
 		temporal.setSize(190, 138);
 		temporal.setLocation(20, 375);
 		temporal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "temporalScreenshot.png"));
+		
+		JLabel tLabel = new JLabel();
+		tLabel.setFont(new Font("Roman Baseline", 3, 16));
+		tLabel.setLocation(20, 510);
+		tLabel.setText("Locked");
+		tLabel.setForeground(Color.BLACK);
+		tLabel.setSize(150, 30);
+		add(tLabel);
 		
 		add(occipital);
 		occipital.addActionListener(this);
@@ -113,6 +132,7 @@ public class Menu extends JPanel implements ActionListener {
 			g.drawImage(parietalImg, 375, 100, 211, 150, this);
 		if (c.getWon(4)) 
 			g.drawImage(temporalImg, 295, 230, 246, 238, this);
+		
 		repaint();
 	}
 	

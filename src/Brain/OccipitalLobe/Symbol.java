@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 public class Symbol extends FlyingObject {
 	private Image image;
 	public static final int SYMBOL_WIDTH = 40;
+	
+	private int x, y;
 
 	/**
 	 * Constructs a new instance of a symbol at location (x, y)
@@ -25,4 +27,5 @@ public class Symbol extends FlyingObject {
 	public Symbol(String filename, int x, int y) {
 		super("occipital" + System.getProperty("file.separator") + filename, x, y, SYMBOL_WIDTH, SYMBOL_WIDTH);
 	}
+	
 }
