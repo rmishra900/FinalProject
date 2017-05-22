@@ -1,5 +1,6 @@
 package Brain.ParietalLobe;
 import java.awt.Color;
+import Brain.Lobe;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -17,7 +18,7 @@ import Coma.Coma;
  * @version 5/15/2017
  *
  */
-public class Parietal extends JPanel implements KeyListener, ActionListener {
+public class Parietal extends Lobe implements KeyListener{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
@@ -48,23 +49,27 @@ public class Parietal extends JPanel implements KeyListener, ActionListener {
 		setBackground(Color.WHITE);
 		this.c = c;
 		
-		back = new JButton("BACK");
-		back.setBackground(Color.YELLOW);
-		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		back.setSize(100, 50);
-		back.setLocation(25, 10);
-		
-		menu = new JButton("MENU");
-		menu.setBackground(Color.YELLOW);
-		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		menu.setSize(100, 50);
-		menu.setLocation(150, 10);
-		
-		add(back);
-		back.addActionListener(this);
-		add(menu);
-		menu.addActionListener(this);
-		
+		back = getBack();
+		menu = getMenu();
+
+//		back = new JButton("BACK");
+//		back.setBackground(Color.WHITE);
+//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+//		back.setSize(100, 50);
+//		back.setLocation(25, 10);
+//		
+//		menu = new JButton("MENU");
+//		menu.setBackground(Color.WHITE);
+//		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
+//		menu.setSize(100, 50);
+//		menu.setLocation(150, 10);
+//		
+//		add(back);
+//		back.addActionListener(this);
+//		add(menu);
+//		menu.addActionListener(this);
+//		
+
 		numCorrect = 0;
 		seconds = 30;
 		random = (int)(Math.random() * 3);

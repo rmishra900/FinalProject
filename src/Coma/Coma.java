@@ -200,7 +200,16 @@ public class Coma extends JFrame {
 	}
 	
 	public void changeToOver() {
-		if(frontalWin && occipitalWin && parietalWin && temporalWin) {
+		
+		
+		
+		
+		
+		
+		
+		if(frontalWin && occipitalWin && parietalWin && temporalWin 
+				&& (f.isMenuPressed() || t.isMenuPressed() || o.isMenuPressed()
+				|| p.isMenuPressed())) {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
