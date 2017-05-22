@@ -131,7 +131,11 @@ public class Temporal extends Lobe{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		
+	
+		System.out.println("width: "+getWidth()+"height: "+getHeight());
+		k.setSize(getWidth()/2, getHeight()*128/100);
+		System.out.println("width: "+getWidth()/2+"height: "+getHeight()*128/100);
+		//k.setSize((int)ratioX, (int)ratioY);
 		
 		if (!c.getWon(4)) {
 			if (k.getEntered() != null) {
