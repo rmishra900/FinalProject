@@ -43,12 +43,13 @@ public class Frontal extends Lobe {
 	private JButton back, menu;
 	private KeyHandler keyControl;
 	
-	private Image img;
+	private Image img, winImage;
 	private JLabel timer, win, score;
 	
 	private int prevX, direction, pointingTo, correct, threshold, seconds;
 	private Timer t;
 	private Color c;
+	
 	
 	/**
 	 * Contructs a timer, Jlabels for winning and losing, keyHandler, and initializes the arrows onto the screen
@@ -72,21 +73,12 @@ public class Frontal extends Lobe {
 		win.setForeground(Color.WHITE);
 		win.setSize(300, 100);
 		add(win);
+	
 		setLayout(null);
-		
-//		back = new JButton("BACK");
-//		back.setBackground(Color.WHITE);
-//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		back.setSize(100, 50);
-//		back.setLocation(25, 20);
+	
 		back = getBack();
 		menu = getMenu();
-		
-//		add(back);
-//		back.addActionListener(this);
-//		add(menu);
-//		menu.addActionListener(this);
-		
+
 		keyControl = new KeyHandler();
 	
 		arrow = new Arrow(0,0,Color.BLUE);
@@ -95,6 +87,7 @@ public class Frontal extends Lobe {
 		//img = new ImageIcon("BlueSky.png").getImage();
 		//img = new ImageIcon("clouds.jpg").getImage();
 		img = new ImageIcon("frontal" + System.getProperty("file.separator") + "sky.png").getImage();
+		winImage = new ImageIcon("youWin.gif").getImage();
 		initializeArrows();
 		
 		
@@ -392,6 +385,7 @@ public class Frontal extends Lobe {
 		   win.setText("YOU WIN");
 		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 		   coma.setWon(1);
+		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 		   coma.changeToOver();
 		   return;
 	   }

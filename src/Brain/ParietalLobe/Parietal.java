@@ -1,6 +1,8 @@
 package Brain.ParietalLobe;
 import java.awt.Color;
+
 import Brain.Lobe;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,7 +11,9 @@ import java.awt.Rectangle;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
+
 import javax.swing.*;
+
 import Coma.Coma;
 
 /**
@@ -25,7 +29,7 @@ public class Parietal extends Lobe implements KeyListener{
 	private Coma c;
 	
 	private JButton back, menu;
-	private Image background;
+	private Image background, winImage;
 	private Wall w;
 	private ArrayList<Shape> s;
 	private Shape drawS1;
@@ -51,6 +55,8 @@ public class Parietal extends Lobe implements KeyListener{
 		
 		back = getBack();
 		menu = getMenu();
+		winImage = new ImageIcon("youWin.gif").getImage();
+		
 
 //		back = new JButton("BACK");
 //		back.setBackground(Color.WHITE);
@@ -171,12 +177,13 @@ public class Parietal extends Lobe implements KeyListener{
 			else {
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
-				g.setColor(Color.YELLOW);
+				g.setColor(Color.BLACK);
 				g.setFont(new Font("SansSerif", 3, 100));
 				
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
-					g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, getHeight() / 2);	
 					c.changeToOver();
 				}
 				else if (seconds == 0 && numCorrect < threshold) {
@@ -195,9 +202,12 @@ public class Parietal extends Lobe implements KeyListener{
 		else {
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, getWidth(), getHeight());
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.BLACK);
 			g.setFont(new Font("SansSerif", 3, 100));
-			g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+			g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, getHeight() / 2);
+			
+			
 		}
 		
 		clock1.start();
