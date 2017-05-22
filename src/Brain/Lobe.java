@@ -1,4 +1,3 @@
-
 package Brain;
 import java.awt.Color;
 import java.awt.Font;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 
 public abstract class Lobe extends JPanel implements ActionListener{
 	private JButton menu, back;
-	private JLabel win;
 	
 	public Lobe() {
 		menu = new JButton();

@@ -12,7 +12,6 @@ import java.awt.Graphics;
  */
 public class Circle extends Shape {
 	private double radius;
-	private double vY;
 	
 	/**
 	 * Constructs a new instance of this circle. 
@@ -21,10 +20,9 @@ public class Circle extends Shape {
 	 * @param radius the radius of the circle
 	 * @param c the color of this circle
 	 */
-	public Circle(double xCoord, double yCoord, double radius, Color c) {
-		super(xCoord, yCoord, c);
+	public Circle(double xCoord, double yCoord, double radius, double distance, Color c) {
+		super(xCoord, yCoord, distance, c);
 		this.radius = radius;
-		vY = 0;
 	}
 
 	/**
@@ -41,7 +39,8 @@ public class Circle extends Shape {
 	 * Moves this circle to the left by decreasing its x-coordinate by a certain velocity.
 	 */
 	public void act() {
-		x -= 2;
+		x -= move;
+//		System.out.println(move);
 	}
 
 	/**
@@ -50,15 +49,6 @@ public class Circle extends Shape {
 	 * 			if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
-//		vY += 0.85;
-//		vY += 0.5;
-//		
-//		if (x > 0) {
-//			y -= vY;
-//		}
-//		else {
-//			y += vY;
-//		}
 		if (a > 0) {
 			y -= 15;
 		}

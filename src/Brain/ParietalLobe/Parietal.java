@@ -1,6 +1,8 @@
 package Brain.ParietalLobe;
 import java.awt.Color;
+
 import Brain.Lobe;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,7 +11,9 @@ import java.awt.Rectangle;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
+
 import javax.swing.*;
+
 import Coma.Coma;
 
 /**
@@ -25,7 +29,7 @@ public class Parietal extends Lobe implements KeyListener{
 	private Coma c;
 	
 	private JButton back, menu;
-	private Image background;
+	private Image background, winImage;
 	private Wall w;
 	private ArrayList<Shape> s;
 	private Shape drawS1;
@@ -43,14 +47,16 @@ public class Parietal extends Lobe implements KeyListener{
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
 		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
 		s = new ArrayList<Shape>();
-		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, Color.YELLOW));
-		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
-		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, Color.YELLOW));
+		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, DRAWING_WIDTH / 400, Color.YELLOW));
+		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, DRAWING_WIDTH / 400, Color.YELLOW));
+		s.add(new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, DRAWING_WIDTH / 400, Color.YELLOW));
 		setBackground(Color.WHITE);
 		this.c = c;
 		
 		back = getBack();
 		menu = getMenu();
+		winImage = new ImageIcon("youWin.gif").getImage();
+		
 
 //		back = new JButton("BACK");
 //		back.setBackground(Color.WHITE);
@@ -164,28 +170,33 @@ public class Parietal extends Lobe implements KeyListener{
 				if (!screenRect.intersects(w))
 			  		redrawWall();
 				
-				if(numCorrect >= threshold && seconds > 0 || seconds == 0 && numCorrect < threshold) {
+				if(numCorrect >= threshold && seconds > 0 || seconds == 0) {
 					continueGame = false;
+					clock1.stop();
+					clock2.stop();
 				}
 			}
 			else {
+				clock1.stop();
+				clock2.stop();
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
-				g.setColor(Color.YELLOW);
+				g.setColor(Color.BLACK);
 				g.setFont(new Font("SansSerif", 3, 100));
 				
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
-					g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);	
 					c.changeToOver();
 				}
-				else if (seconds == 0 && numCorrect < threshold) {
-					g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
+				else if (seconds == 0) {
+					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2);
 				}
 				
 				g.setColor(Color.BLACK);
 				g.setFont(new Font("SansSerif", 1, 24));
-				g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
+				g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
 			
 				g.setFont(new Font("SansSerif", 3, 50));
 				g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
@@ -195,9 +206,12 @@ public class Parietal extends Lobe implements KeyListener{
 		else {
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, getWidth(), getHeight());
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.BLACK);
 			g.setFont(new Font("SansSerif", 3, 100));
-			g.drawString("YOU WIN", getWidth() / 2 - 220, getHeight() / 2);
+			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+			g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, getHeight() / 2);
+			
+			
 		}
 		
 		clock1.start();
@@ -222,13 +236,12 @@ public class Parietal extends Lobe implements KeyListener{
 	 */
 	public void shootShape() {
 		int shape = (int)(Math.random() * 3);
-		
 		if (shape == 0)
-			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 23, Color.YELLOW);
+			drawS1 = new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 23, (getWidth() + 18) / 400, Color.YELLOW);
 		else if (shape == 1)
-			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, Color.YELLOW);
+			drawS1 = new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 25)), 45, (getWidth() + 18) / 400, Color.YELLOW);
 		else 
-			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, Color.YELLOW);
+			drawS1 = new Square(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 50)), 45, (getWidth() + 18) / 400, Color.YELLOW);
 	}
 	
 	/**
