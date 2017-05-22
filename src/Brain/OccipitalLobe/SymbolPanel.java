@@ -41,7 +41,8 @@ public class SymbolPanel extends Lobe implements ActionListener {
 		this.c = c;
 		symbols = new JButton[5];
 		correct = -1;
-		setLayout(null);
+		GroupLayout layout = new GroupLayout(this);
+		setLayout(layout);
 		for (int i = 0; i < symbols.length; i++) {
 			symbols[i] = new JButton();
 			symbols[i].setIcon(new ImageIcon("occipital" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
@@ -50,6 +51,22 @@ public class SymbolPanel extends Lobe implements ActionListener {
 	        symbols[i].setEnabled(true);
 	        symbols[i].setSize(250, 250);
 		}
+		layout.setHorizontalGroup(
+				   layout.createSequentialGroup()
+				      .addComponent(symbols[0], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				      .addComponent(symbols[1], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				           .addComponent(symbols[2], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				           .addComponent(symbols[4], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				);
+				layout.setVerticalGroup(
+				   layout.createSequentialGroup()
+				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+				           .addComponent(symbols[0], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				           .addComponent(symbols[1], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				           .addComponent(symbols[2], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				      .addComponent(symbols[4], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				);
 		symbols[0].setLocation(0, 70);
 		symbols[1].setLocation(263, 70);
 		symbols[2].setLocation(526, 70);
