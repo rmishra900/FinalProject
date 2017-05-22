@@ -31,17 +31,28 @@ public class GameOver extends JPanel implements KeyListener{
 	private JButton home;
 	private Image background;
 	private JLabel gameOver;
+	private JLabel text;
 	
 	public GameOver(Coma c) {
 		super();
 		this.c = c;
+		setLayout(null);
 		background = new ImageIcon("coma" + System.getProperty("file.separator") + "comaBackground.jpg").getImage();
-		gameOver = new JLabel("Game Over");
+		gameOver = new JLabel("GAME OVER");
 		gameOver.setFont(new Font("Roman Baseline", 3, 100));
 		gameOver.setVisible(true);
 		setBackground(Color.WHITE);
-		gameOver.setForeground(Color.BLACK);
+		gameOver.setForeground(Color.WHITE);
 		add(gameOver);
+		
+		text = new JLabel();
+		text.setLocation(0, 500);
+		text.setSize(800, 50);
+		text.setFont(new Font("Roman Baseline", 1, 25));
+		text.setForeground(Color.WHITE);
+		text.setText("<html>Congratulations! You've unlocked all four lobes of your brain!<br> You are out of your coma!<br> Now, you can"
+				+ "enjoy life!</html>");
+		add(text);
 	}
 
 	public void paintComponent(Graphics g)

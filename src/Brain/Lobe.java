@@ -39,10 +39,15 @@ public abstract class Lobe extends JPanel implements ActionListener{
 	}
 	
 	public boolean isMenuPressed() {
-		if(menu.getModel().isPressed())
+		if(menu.getModel().isPressed()) {
+			//System.out.println("true");
 			return true;
-		else
+		}
+		
+		else {
+			//System.out.println("false");
 			return false;
+		}
 	}
 	
 	public JButton getMenu() {

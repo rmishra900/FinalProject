@@ -47,6 +47,7 @@ public class Temporal extends Lobe{
 	private JTextField buttonsPressed;
 	private String buttonsPressedText;
 	private JLabel win;
+	private Image winImage;
 	private Image winBackground;
 //	int counter = 0;
 
@@ -76,20 +77,13 @@ public class Temporal extends Lobe{
   		buttonsPressed.setEditable(false);
 		
   		win = new JLabel();
-  		win.setLocation(165,150);
-  		win.setSize(500,300);
+  		win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
+		win.setSize(500, 100);
   		win.setForeground(Color.BLACK);
   		win.setFont(new Font("Roman Baseline", Font.BOLD, 100));
-		
-//		back = new JButton("BACK");
-//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		back.setSize(100, 50);
-//		back.setLocation(25, 0);
-//		
-//		menu = new JButton("MENU");
-//		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		menu.setSize(100, 50);
-//		menu.setLocation(150, 0);
+  		
+  		winImage = getWinImage();
+
   		
   		back = getBack();
   		menu = getMenu();
@@ -104,10 +98,7 @@ public class Temporal extends Lobe{
 		clear.setSize(100, 50);
 		clear.setLocation(475, 530);
 		
-//		add(back);
-//		back.addActionListener(this);
-//		add(menu);
-//		menu.addActionListener(this);
+
 		add(play);
 		play.addActionListener(this);
 		add(clear);
@@ -117,19 +108,6 @@ public class Temporal extends Lobe{
 		add(buttonsPressed);
 		add(k);
 		setVisible(true);
-	}
-	
-	public String addText(String t){
-		
-		String prev = buttonsPressedText;  
-		//buttonsPressed.setText(t);	
-		String now = t;
-		buttonsPressed.setText(now);
-	//	System.out.println("buttonsPressed JTEXTFIELD: "+buttonsPressed.getText());
-		buttonsPressedText = now;
-		//System.out.println("buttonsPressed STRING: "+buttonsPressedText);
-
-		return buttonsPressedText;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -159,12 +137,12 @@ public class Temporal extends Lobe{
 				System.out.println("passcode: "+room.getPasscodeAtIndex(0) +
 						room.getPasscodeAtIndex(1)+room.getPasscodeAtIndex(2)+room.getPasscodeAtIndex(3));
 				if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
-//					g.drawImage(winBackground, 0, 0, getWidth() + 10, getHeight(), this);
 					remove(k);
 					remove(buttonsPressed);
 					remove(play);
 					remove(clear);
 					win.setText("YOU WIN!");
+					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 					c.setWon(4);
 					c.changeToOver();
 					return;
@@ -180,9 +158,7 @@ public class Temporal extends Lobe{
 			remove(buttonsPressed);
 			remove(play);
 			remove(clear);
-
-
-//			g.drawImage(winBackground, 0, 0, getWidth(), getHeight(), this);
+			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 			win.setText("YOU WIN!");
 		}
 		

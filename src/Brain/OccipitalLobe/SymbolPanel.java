@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
+import Brain.Lobe;
 import Coma.Coma;
 
 import java.awt.Font;
@@ -20,7 +21,7 @@ import java.awt.Color.*;
  * @author Anisha
  * @version 5/15/2017
  */
-public class SymbolPanel extends JPanel implements ActionListener {
+public class SymbolPanel extends Lobe implements ActionListener {
 	
 	private JButton[] symbols;
 	private JButton targetSymbol;
@@ -49,28 +50,13 @@ public class SymbolPanel extends JPanel implements ActionListener {
 	        symbols[i].setEnabled(true);
 	        symbols[i].setSize(250, 250);
 		}
-		symbols[0].setLocation(0, 50);
-		symbols[1].setLocation(263, 50);
-		symbols[2].setLocation(526, 50);
-		symbols[3].setLocation(131, 300);
-		symbols[4].setLocation(394, 300);
+		symbols[0].setLocation(0, 70);
+		symbols[1].setLocation(263, 70);
+		symbols[2].setLocation(526, 70);
+		symbols[3].setLocation(131, 320);
+		symbols[4].setLocation(394, 320);
 		
-		back = new JButton("BACK");
-		back.setBackground(Color.YELLOW);
-		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		back.setSize(100, 50);
-		back.setLocation(25, 0);
-		
-		menu = new JButton("MENU");
-		menu.setBackground(Color.YELLOW);
-		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		menu.setSize(100, 50);
-		menu.setLocation(150, 0);
-		
-		add(back);
-		back.addActionListener(this);
-		add(menu);
-		menu.addActionListener(this);
+	
 		
 		score = new JLabel("SCORE: " + numCorrect);
 		score.setForeground(Color.BLACK);

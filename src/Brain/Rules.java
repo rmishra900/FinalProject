@@ -85,6 +85,13 @@ public abstract class Rules extends JPanel implements ActionListener {
 	
 	}
 	
+	public boolean isMenuPressed() {
+		if(menu.getModel().isPressed())
+			return true;
+		else
+			return false;
+	}
+	
 	/**
 	 * Returns the text representing rules for the game
 	 * @return String that represents the rules for FlyingArrows
