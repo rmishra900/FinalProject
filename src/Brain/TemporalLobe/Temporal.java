@@ -39,14 +39,20 @@ public class Temporal extends Lobe{
 	private Keypad k;
 
 	private JButton back, menu, play, clear;
+
 	private int numCorrect;
 	private int panelNumber;
-	private int[][] previousCodes;
+	
+	private int[] previousCodes;
+	//private JLabel buttonsPressed;
+
 	private JTextField buttonsPressed;
 	private String buttonsPressedText;
 	private JLabel win;
-	int counter = 0;
+	private Image winBackground;
+//	int counter = 0;
 
+	
 	/**
 	 * Creates a new instance of this game. 
 	 * @param l the main panel this game belongs to
@@ -59,14 +65,10 @@ public class Temporal extends Lobe{
 		k.setTemporal(this);
 		setLayout(null);
 		
-		room = new Room("Room0.png", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
-	//	rooms = new Room[8];
-		previousCodes = new int[8][4];
-
-		panelNumber = 0;
-		//initializeRooms();
+		room = new Room("temporalBackground.jpg", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		previousCodes = new int[4];
+		winBackground = new ImageIcon("temporal" + System.getProperty("file.separator") + "temporalWin.jpg").getImage();
 	
-		
 		buttonsPressed = new JTextField();
  		buttonsPressed.setLocation(300, 530);
  		buttonsPressed.setForeground(Color.BLACK);
@@ -78,7 +80,7 @@ public class Temporal extends Lobe{
   		win = new JLabel();
   		win.setLocation(165,150);
   		win.setSize(500,300);
-  		win.setForeground(Color.RED);
+  		win.setForeground(Color.BLACK);
   		win.setFont(new Font("Roman Baseline", Font.BOLD, 100));
 		
 //		back = new JButton("BACK");
@@ -159,9 +161,7 @@ public class Temporal extends Lobe{
 				System.out.println("passcode: "+room.getPasscodeAtIndex(0) +
 						room.getPasscodeAtIndex(1)+room.getPasscodeAtIndex(2)+room.getPasscodeAtIndex(3));
 				if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
-					g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
-					g.setColor(Color.BLACK);
-					g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+//					g.drawImage(winBackground, 0, 0, getWidth() + 10, getHeight(), this);
 					remove(k);
 					remove(buttonsPressed);
 					remove(play);
@@ -176,15 +176,22 @@ public class Temporal extends Lobe{
 		
 		else {
 			g.drawRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
-			g.setColor(Color.BLACK);
+			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 			remove(k);
 			remove(buttonsPressed);
 			remove(play);
 			remove(clear);
+
+
+//			g.drawImage(winBackground, 0, 0, getWidth(), getHeight(), this);
 			win.setText("YOU WIN!");
 		}
+		
 		g2.setTransform(at);
+
+			
+		repaint();
 	}
 	
 	public boolean winGame(int x) {
@@ -197,30 +204,13 @@ public class Temporal extends Lobe{
 
 	
 	/**
-	 * Sets the number of the room currently shown.
-	 * @param x the number of the room that is currently displayed
-	 */
-	public void setPanelNum(int x) {
-		panelNumber = x;
-	}
-	
-	/**
-	 * 
-	 * @return the number of the room currently displayed
-	 */
-	public int getPanelNum() {
-		return panelNumber;
-	}
-	
-	/**
 	 * Iterates the number of the room so that the next room is displayed. 
 	 */
 	public void reset() {
-		panelNumber=0;
 		buttonsPressed.setText("");
 		buttonsPressedText = "";
 		k.setEntered("");
-		room = new Room("Room0.png", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		room = new Room("temporalBackground.jpg", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 		win.setText("");
 		add(buttonsPressed);
 		add(play);
@@ -252,21 +242,19 @@ public class Temporal extends Lobe{
 	 * @return a random 4-digit code that has not been used yet
 	 */
 	public int[] getUniqueRandPasscode() {
-		int[]p = room.getPasscode();
+		int[] p = room.getPasscode();
 		
 		for (int i = 0; i < 4; i++) {
 			p[i] = (int)(Math.random()*10);
 		}
 
-		for (int[] code : previousCodes) {
-		if (code.equals(p)) {
-			while (code[3] == p[3])
+		for (int code : previousCodes) {
+			while (code == p[3])
 				p[3] = (int)(Math.random()*10);
-			}
 		}
 
 		for (int c = 0; c < 4; c++) {
-			previousCodes[panelNumber][c] = p[c];
+			previousCodes[c] = p[c];
 		}
 		
 		
