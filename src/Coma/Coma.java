@@ -2,6 +2,7 @@ package Coma;
 
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -52,6 +53,8 @@ public class Coma extends JFrame {
 	    super(title);
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setResizable(true);
+	    setMinimumSize(new Dimension(200, 150));
 	    background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
     
 	    gamePanel = new JPanel();
@@ -205,7 +208,7 @@ public class Coma extends JFrame {
 		
 	if(frontalWin && occipitalWin && parietalWin && temporalWin) {
 		
-			changePanel("3");
+			//changePanel("3");
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {

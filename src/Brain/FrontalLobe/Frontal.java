@@ -62,7 +62,7 @@ public class Frontal extends Lobe {
 		
 		correct = 0;
 		c = null;
-		threshold = 300;
+		threshold = 200;
 		
 		seconds = 30;
 	
@@ -351,7 +351,11 @@ public class Frontal extends Lobe {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		 
+		
+		menu.setBounds((int)(150*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds((int)(25*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+	
+		
 	   for(Arrow a: arrows) {
 		   a.setPointingTo(pointingTo);
 		   a.setDirection(direction);
@@ -374,11 +378,11 @@ public class Frontal extends Lobe {
 		   pointingTo = orientation;
 		   direction = getRandomDirection(direction);
 	      }
-	
 	   
 	   
 	   if(winGame()) {
-		   win.setText("YOU WIN!");
+		   //win.setText("YOU WIN!");
+		   
 		   coma.setWon(1);
 		   coma.changeToOver();
 		   score.setForeground(Color.BLACK);
@@ -386,22 +390,32 @@ public class Frontal extends Lobe {
 		   g.setColor(Color.WHITE);
 		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		
+		   g.setColor(Color.BLACK);
+		   g.setFont(new Font("Roman Baseline", 3, 100));
+		  
 		 
 		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+		   g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 		   
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
-		   win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
-		   win.setSize(550,100);
+		  // win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+		 //  win.setSize(550,100);
 		   
+		    
 		   score.setForeground(Color.BLACK);
 		   timer.setForeground(Color.BLACK);
 		   g.setColor(Color.WHITE);
 		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		 
+		   g.setColor(Color.RED);
+		   g.setFont(new Font("Roman Baseline", 3, 100));
+		  
+		  
 		   g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-		   win.setText("YOU LOSE");
+		   g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+		  // win.setText("YOU LOSE");
 		  
 		   return;
 	   }

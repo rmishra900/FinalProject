@@ -43,6 +43,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	private SymbolPanel sp;
 	private int symNum;
 	private boolean showObjects;
+	private boolean lost;
 	private Image background, winImage;
 	private int correct;
 	
@@ -66,7 +67,6 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		correct = -1;
 		showObjects = true;
 		initializeObstacles();
-		initializeSymbol();
 		
 	
 		back = getBack();
@@ -84,17 +84,13 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		win.setSize(500, 100);
 		
 		score = new JLabel(); 
-		score.setForeground(Color.WHITE);
+		score.setForeground(Color.BLACK);
 		score.setLocation(400, 20);
 		score.setSize(150,30);
 		score.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		add(score);
 		
 		setVisible(true);
-		
-	}
-	
-	private void initializeSymbol() {
 		
 	}
 	
@@ -121,7 +117,6 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	
 	public void reset() {
 		initializeObstacles();
-		initializeSymbol();
 	}
 	
 	/**
@@ -140,6 +135,8 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		super.paintComponent(g); // Call JPanel's paintComponent method to paint
 									// the background
 
+		
+		
 		Graphics2D g2 = (Graphics2D) g;
 		
 		int width = getWidth();
@@ -147,6 +144,9 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
+		
+		menu.setBounds((int)(150*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds((int)(25*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
 		
 		
 		AffineTransform at = g2.getTransform();
@@ -156,17 +156,33 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		if (showObjects) {
 			g.drawImage(background, 0, 0, (int)(getWidth()), (int)(getHeight()), this);
 			
-			sym.draw(g2, this);
-			plane.draw(g2, this);
+			int sw = (int) (sym.SYMBOL_WIDTH*ratioX);
+			int sh = (int) (sym.SYMBOL_WIDTH*ratioY);
+			
+			sym.draw(g2, sym.getImage(), (int)sym.getX(), (int)sym.getY(), sw, sh, this);
+	//		sym.draw(g2, this);
+			
+			int pw = (int) (plane.PLANE_WIDTH*ratioX);
+			int ph = (int) (plane.PLANE_HEIGHT*ratioY);
+//			
+			plane.draw(g2, plane.getImage(), (int)plane.getX(), (int) plane.getY(), pw, ph, this);
+		
+//			plane.draw(g2, this);
+			
 			for (Helicopter heli : obstacles) {
-				heli.draw(g2, this);
+				
+				int hw = (int) (heli.COPTER_WIDTH*ratioX);
+				int hh = (int) (heli.COPTER_HEIGHT*ratioY);
+//				
+//				heli.draw(g2, this);
+				heli.draw(g2, heli.getImage(), (int)heli.getX(), (int) heli.getY(), hw, hh, this);
 			}	
 		}
 		
 		if(c.getWon(2)) {
 			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 			score.setForeground(Color.BLACK);
-		}
+		} 
 		repaint();
 	}
 	
@@ -199,6 +215,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	
 	public void act() {
 		remove(win);
+
 		score.setText("Score: " + sp.getScore());
 		setBackground(Color.WHITE);
 		do {

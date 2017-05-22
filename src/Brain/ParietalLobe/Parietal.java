@@ -113,6 +113,8 @@ public class Parietal extends Lobe implements KeyListener{
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 
+		menu.setBounds((int)(150*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds((int)(25*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
 		
 		if (!c.getWon(3)) {
 			if (continueGame) {
