@@ -80,10 +80,12 @@ public abstract class Rules extends JPanel implements ActionListener {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		g2.setTransform(at);
+		
+		
 		
 		g.drawImage(background, 0, 0, (int)(DRAWING_WIDTH / 800.0 * getWidth()), (int)(DRAWING_HEIGHT / 600.0 * getHeight()), this);
-	
+		//g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+		g2.setTransform(at);
 	}
 	
 	public boolean isMenuPressed() {

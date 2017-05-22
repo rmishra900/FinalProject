@@ -132,14 +132,23 @@ public class Menu extends JPanel implements ActionListener {
 		double ratioY = (double)height/DRAWING_HEIGHT;
 		        
 		AffineTransform at = g2.getTransform();
+		
 		g2.scale(ratioX, ratioY);
 		
 		g.drawImage(background, 200, 100, 400, 368, this);
 		
+		
+		
+//		occipital.setBounds((int)(600*ratioX),(int)(375*ratioY),(int)(195*ratioX),(int)(141*ratioY));
+//		frontal.setBounds((int)(20*ratioX),(int)(10*ratioY),(int)(190*ratioX),(int)(136*ratioY));
+//		parietal.setBounds((int)(600*ratioX),(int)(10*ratioY),(int)(195*ratioX),(int)(141*ratioY));
+//		temporal.setBounds((int)(20*ratioX),(int)(375*ratioY),(int)(190*ratioX),(int)(138*ratioY));
+//		
+	//	g2.translate(-(int)(frontal.getWidth()/20*ratioX), -(int)(frontal.getHeight()/20*ratioY));
+	//	occipital.setLocation((2*occipital.getWidth())+(int)(occipital.getWidth()*ratioX), (2*occipital.getHeight())-45+(int)(occipital.getHeight()*ratioY));
 	
 		if(c.getWins() == 4)
 			c.changePanel("4");
-		
 		if (c.getWon(1)) 
 			g.drawImage(frontalImg, 200, 100, 223, 204, this);
 		if (c.getWon(2))
@@ -148,6 +157,8 @@ public class Menu extends JPanel implements ActionListener {
 			g.drawImage(parietalImg, 375, 100, 211, 150, this);
 		if (c.getWon(4)) 
 			g.drawImage(temporalImg, 295, 230, 246, 238, this);
+		
+		g2.transform(at);
 		
 		repaint();
 	}
