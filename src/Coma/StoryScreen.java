@@ -53,7 +53,7 @@ public class StoryScreen extends JPanel implements ActionListener {
 		menu.setBackground(Color.WHITE);
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
-		menu.setLocation(DRAWING_WIDTH - 140, 10);
+		menu.setLocation(135, 10);
 		
 		add(home);
 		home.addActionListener(this);

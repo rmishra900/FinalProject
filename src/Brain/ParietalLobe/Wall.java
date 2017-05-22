@@ -78,7 +78,7 @@ public class Wall extends Rectangle2D.Double {
 		if (shape.whichShape() == 0 || shape.whichShape() == 2) {
 			Shape s1 = s.get(shape.whichShape());
 			if (shape.y >= s1.y - 5 && shape.y + shape.getHeight() <= s1.y + s1.getHeight() + 5) {
-				if(shape.x < x + width) {
+				if(shape.x <= x + width && shape.x >= x + width - 4) {
 					s1.changeColor();
 					return true;
 				}
@@ -88,7 +88,7 @@ public class Wall extends Rectangle2D.Double {
 			Triangle t1 = (Triangle)s.get(1);
 			Triangle tri = (Triangle)shape;
 			if (tri.getYCoords()[0] >= t1.getYCoords()[0] - 5 && tri.getYCoords()[0] + tri.getHeight() <= t1.getYCoords()[0] + t1.getHeight() + 5) {
-				if(tri.getXCoords()[1] >= x && tri.getXCoords()[2] <= x + width) {
+				if(tri.getXCoords()[2] <= x + width && tri.getXCoords()[2] >= x + width - 4) {
 					t1.changeColor(); 
 				return true;
 				}

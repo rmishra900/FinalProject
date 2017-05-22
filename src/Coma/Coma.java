@@ -121,24 +121,24 @@ public class Coma extends JFrame {
 		else
 			return null;
 	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		Graphics2D g2 = (Graphics2D) g;
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-		
-		
-		int width = getWidth();
-		int height = getHeight();
-	
+//	
+//	public void paintComponent(Graphics g) {
+//		super.paintComponents(g);
+//		Graphics2D g2 = (Graphics2D) g;
+//		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+//		
+//		
+//		int width = getWidth();
+//		int height = getHeight();
+//	
+////
+////		double ratioX = (double) width / DRAWING_WIDTH;
+////		double ratioY = (double) height / DRAWING_HEIGHT;
 //
-//		double ratioX = (double) width / DRAWING_WIDTH;
-//		double ratioY = (double) height / DRAWING_HEIGHT;
-
-		AffineTransform at = g2.getTransform();
-		//g2.scale(ratioX, ratioY);
-		
-	}
+//		AffineTransform at = g2.getTransform();
+//		//g2.scale(ratioX, ratioY);
+//		
+//	}
 	
 	public static void main(String[] args) {
 		Coma coma = new Coma("COMA");
