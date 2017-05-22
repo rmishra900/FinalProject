@@ -74,6 +74,9 @@ public class StoryScreen extends JPanel implements ActionListener {
 
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+		
+		menu.setBounds((int)((DRAWING_WIDTH - 140)*ratioX), (int)(10*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		home.setBounds((int)(25*ratioX), (int)(10*ratioY), (int)(100*ratioX), (int)(50*ratioY));
 
 		g.drawImage(comic1, 0, 0, DRAWING_WIDTH / 2, DRAWING_HEIGHT / 2, this);
 		g.drawImage(comic2, DRAWING_WIDTH / 2, 0, DRAWING_WIDTH / 2, DRAWING_HEIGHT / 2, this);

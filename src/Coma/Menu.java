@@ -135,6 +135,7 @@ public class Menu extends JPanel implements ActionListener {
 		g2.scale(ratioX, ratioY);
 		
 		g.drawImage(background, 200, 100, 400, 368, this);
+		
 	
 		if(c.getWins() == 4)
 			c.changePanel("4");
