@@ -158,9 +158,8 @@ public class Menu extends JPanel implements ActionListener {
 		if (c.getWon(4)) 
 			g.drawImage(temporalImg, 294, 225, 246, 238, this);
 		
-		g2.transform(at);
+		g2.setTransform(at);
 		
-		repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
