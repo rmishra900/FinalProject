@@ -163,21 +163,18 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 			int sh = (int) (sym.SYMBOL_WIDTH*ratioY);
 			
 			sym.draw(g2, sym.getImage(), (int)sym.getX(), (int)sym.getY(), sw, sh, this);
-	//		sym.draw(g2, this);
 			
 			int pw = (int) (plane.PLANE_WIDTH*ratioX);
 			int ph = (int) (plane.PLANE_HEIGHT*ratioY);
-//			
+			
 			plane.draw(g2, plane.getImage(), (int)plane.getX(), (int) plane.getY(), pw, ph, this);
 		
-//			plane.draw(g2, this);
 			
 			for (Helicopter heli : obstacles) {
 				
 				int hw = (int) (heli.COPTER_WIDTH*ratioX);
 				int hh = (int) (heli.COPTER_HEIGHT*ratioY);
-//				
-//				heli.draw(g2, this);
+
 				heli.draw(g2, heli.getImage(), (int)heli.getX(), (int) heli.getY(), hw, hh, this);
 			}	
 		}
@@ -280,6 +277,10 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
 	 	    	reset();
 	 	    	break;
+	 	    } else if (correct == 1) {
+	 	    	sp.setScore(sp.getScore()+10);
+	    		sp.getScoreLabel().setText("Score: " + sp.getScore());
+	 	    	score.setText("Score: " + sp.getScore());
 	 	    }
 	 	    correct = -1;
 	 	    
@@ -301,7 +302,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	    	}
 	    	
 	    	if (sp.getCorrect() == 1) {	
-	    		sp.setScore(sp.getScore()+1);
+	    		sp.setScore(sp.getScore()+10);
 	    		sp.getScoreLabel().setText("Score: " + sp.getScore());
 	 	    	score.setText("Score: " + sp.getScore());
 	 	    }
@@ -323,7 +324,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
-	    	if (sp.getScore() == 10) {
+	    	if (sp.getScore() == 200) {
 	    		c.changePanel("12");
 	    		showObjects = false;
 	    		setBackground(Color.WHITE);
