@@ -165,9 +165,6 @@ public class Parietal extends Lobe implements KeyListener{
 				g.setFont(new Font("Roman Baseline", 3, 100));
 				
 				if(numCorrect >= threshold && seconds > 0) {
-					
-					System.out.println("parietal menu pressed: "+isMenuPressed());
-					
 					c.setWon(3);
 					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);	

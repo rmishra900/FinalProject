@@ -1,5 +1,6 @@
 package Brain;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ public abstract class Lobe extends JPanel implements ActionListener{
 	private Image winImage, loseImage;
 	
 	public Lobe() {
+	   
 		menu = new JButton();
 		menu = new JButton("MENU");
 		menu.setBackground(Color.WHITE);
@@ -29,6 +31,7 @@ public abstract class Lobe extends JPanel implements ActionListener{
 		back.setSize(100, 50);
 		back.setLocation(25, 20);
 		
+		 
 		add(back);
 		back.addActionListener(this);
 		add(menu);

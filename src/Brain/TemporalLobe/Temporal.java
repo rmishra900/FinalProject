@@ -2,10 +2,15 @@ package Brain.TemporalLobe;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +26,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import Brain.Lobe;
 
+import Brain.Lobe;
 import Coma.Coma;
 
 /**
@@ -126,8 +131,8 @@ public class Temporal extends Lobe{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-
-
+		
+		
 		if (!c.getWon(4)) {
 			if (k.getEntered() != null) {
 				buttonsPressed.setText(k.getEntered());

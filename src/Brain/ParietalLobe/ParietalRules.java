@@ -68,7 +68,6 @@ public class ParietalRules extends Rules{
 			c.changePanel("10");
 		}
 		else if (src == menu) {
-			System.out.println("parietal rules: "+isMenuPressed());
 			c.changePanel("3");
 		}
 	}

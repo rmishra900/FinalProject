@@ -1,6 +1,7 @@
 package Coma;
 
 import java.awt.CardLayout;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -9,6 +10,7 @@ import java.awt.geom.AffineTransform;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 
 //import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.Frontal;
@@ -52,7 +54,6 @@ public class Coma extends JFrame {
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
-		
     
 	    gamePanel = new JPanel();
 	    CardLayout cl = new CardLayout();
@@ -203,10 +204,7 @@ public class Coma extends JFrame {
 	
 	public void changeToOver() {
 		
-	//	if(frontalWin && occipitalWin && parietalWin && temporalWin 
-	//			&& (f.isMenuPressed() || fr.isMenuPressed() || t.isMenuPressed() || tr.isMenuPressed()
-	//					|| o.isMenuPressed() || or.isMenuPressed() || p.isMenuPressed() || pr.isMenuPressed())) {
-		if(frontalWin && occipitalWin && parietalWin && temporalWin) {
+	if(frontalWin && occipitalWin && parietalWin && temporalWin) {
 		
 			changePanel("3");
 			try {
