@@ -43,6 +43,7 @@ public class Button implements ActionListener{
 		b.setForeground(Color.BLACK);
 		b.setFont(new Font("Roman Baseline", 0, 16));
 		b.setBounds(x, y, w, h);
+		b.setSize(w, h);
 
 		b.addActionListener(this);
 		pressed = false;

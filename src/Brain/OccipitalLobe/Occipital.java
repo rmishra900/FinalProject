@@ -43,6 +43,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	private SymbolPanel sp;
 	private int symNum;
 	private boolean showObjects;
+	private boolean lost;
 	private Image background, winImage;
 	private int correct;
 	
@@ -166,7 +167,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		if(c.getWon(2)) {
 			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 			score.setForeground(Color.BLACK);
-		}
+		} 
 		repaint();
 	}
 	
@@ -199,6 +200,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	
 	public void act() {
 		remove(win);
+
 		score.setText("Score: " + sp.getScore());
 		setBackground(Color.WHITE);
 		do {

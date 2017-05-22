@@ -44,7 +44,7 @@ public class OccipitalRules extends Rules {
 	@Override
 	public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-		if (src == begin) {
+		if (src == getBegin()) {
 			c.changePanel("12");
 			if (!c.getWon(2)) {
 				Thread t = new Thread("my non EDT thread") {
@@ -56,7 +56,7 @@ public class OccipitalRules extends Rules {
 		        t.start();		
 			}
 		}
-		else if (src == menu)
+		else if (src == getMenu())
 			c.changePanel("3");
 	}
 }

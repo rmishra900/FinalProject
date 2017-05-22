@@ -45,6 +45,7 @@ public class SymbolPanel extends Lobe implements ActionListener {
 		setLayout(layout);
 		layout.setAutoCreateGaps(true);
 		layout.setAutoCreateContainerGaps(true);
+		
 		for (int i = 0; i < symbols.length; i++) {
 			symbols[i] = new JButton();
 			symbols[i].setIcon(new ImageIcon("occipital" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
@@ -62,15 +63,19 @@ public class SymbolPanel extends Lobe implements ActionListener {
 
 		layout.setHorizontalGroup(
 				   layout.createSequentialGroup()
+				   .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
 				      .addComponent(symbols[0], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				      .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				           .addComponent(symbols[1], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				           .addComponent(symbols[3], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				      .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				           .addComponent(symbols[2], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				           .addComponent(symbols[4], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 				layout.setVerticalGroup(
 				   layout.createSequentialGroup()
+				      .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, GroupLayout.PREFERRED_SIZE+100, Short.MAX_VALUE)
 				      .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				           .addComponent(symbols[0], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 				           .addComponent(symbols[1], 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

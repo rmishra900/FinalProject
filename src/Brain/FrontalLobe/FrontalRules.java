@@ -44,7 +44,7 @@ public class FrontalRules extends Rules {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == begin) {
+		if (src == getBegin()) {
 		//if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU WIN") || 
 //			for(Arrow a: ((Frontal)c.getPanel(1)).getArrows()) {
 //					a = null;
@@ -66,7 +66,7 @@ public class FrontalRules extends Rules {
 			}
 		c.changePanel("7");
 		}
-		else if (src == menu)
+		else if (src == getMenu())
 			c.changePanel("3");
 	}
 	

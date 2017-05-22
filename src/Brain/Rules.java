@@ -20,8 +20,8 @@ public abstract class Rules extends JPanel implements ActionListener {
 	
 	//private Image greenArrow, blueArrow, redArrow, background;
 	private Image background;
-	protected JButton begin, menu;
-	protected JLabel rulesBackground, rules;
+	private JButton begin, menu;
+	private JLabel rulesBackground, rules;
 
 	
 	/**
@@ -72,14 +72,15 @@ public abstract class Rules extends JPanel implements ActionListener {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 
-//	    int width = getWidth();
-//	    int height = getHeight();
-//	    
-//	    double ratioX = (double)width/DRAWING_WIDTH;
-//		double ratioY = (double)height/DRAWING_HEIGHT;
-//		        
-//		AffineTransform at = g2.getTransform();
-//		g2.scale(ratioX, ratioY);
+	    int width = getWidth();
+	    int height = getHeight();
+
+	    double ratioX = (double)width/DRAWING_WIDTH;
+		double ratioY = (double)height/DRAWING_HEIGHT;
+		        
+		AffineTransform at = g2.getTransform();
+		g2.scale(ratioX, ratioY);
+		g2.setTransform(at);
 		
 		g.drawImage(background, 0, 0, (int)(DRAWING_WIDTH / 800.0 * getWidth()), (int)(DRAWING_HEIGHT / 600.0 * getHeight()), this);
 	
@@ -92,6 +93,10 @@ public abstract class Rules extends JPanel implements ActionListener {
 			return false;
 	}
 	
+	public JLabel getRules() {
+		return rules;
+	}
+	
 	/**
 	 * Returns the text representing rules for the game
 	 * @return String that represents the rules for FlyingArrows
@@ -100,4 +105,12 @@ public abstract class Rules extends JPanel implements ActionListener {
 
 	@Override
 	public abstract void actionPerformed(ActionEvent e);
+	
+	public JButton getBegin() {
+		return begin;
+	}
+	
+	public JButton getMenu() {
+		return menu;
+	}
 }

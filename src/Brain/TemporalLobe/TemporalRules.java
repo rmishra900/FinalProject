@@ -45,11 +45,11 @@ public class TemporalRules extends Rules{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == begin) {
+		if (src == getBegin()) {
 			((Temporal)c.getPanel(4)).reset();
 			c.changePanel("15");
 		}
-		else if (src == menu)
+		else if (src == getMenu())
 			c.changePanel("3");
 	}
 

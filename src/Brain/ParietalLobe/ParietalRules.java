@@ -28,7 +28,7 @@ public class ParietalRules extends Rules{
 	public ParietalRules(Coma c) {
 		super();
 		this.c = c;
-		rules.setLocation(105, 25);
+		getRules().setLocation(105, 25);
 		upArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "upArrow.png")).getImage();
 		downArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "downArrow.png")).getImage();
 		wall = (new ImageIcon("parietal" + System.getProperty("file.separator") + "wallParietal.png")).getImage();
@@ -63,11 +63,11 @@ public class ParietalRules extends Rules{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == begin) {
+		if (src == getBegin()) {
 			((Parietal)c.getPanel(2)).reset();
 			c.changePanel("10");
 		}
-		else if (src == menu) {
+		else if (src == getMenu()) {
 			c.changePanel("3");
 		}
 	}
