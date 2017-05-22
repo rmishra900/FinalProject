@@ -68,8 +68,8 @@ public class Frontal extends Lobe {
 	
 		win = new JLabel();
 		win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
-		win.setForeground(Color.BLACK);
 		win.setSize(500, 100);
+		win.setForeground(Color.BLACK);
 		win.setFont(new Font("Roman Baseline", 3, 100));
 		add(win);
 	
@@ -377,7 +377,7 @@ public class Frontal extends Lobe {
 	
 	   
 	   
-	   if(winGame()==true) {
+	   if(winGame()) {
 		   win.setText("YOU WIN!");
 		   coma.setWon(1);
 		   coma.changeToOver();

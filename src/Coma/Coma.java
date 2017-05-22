@@ -37,6 +37,11 @@ public class Coma extends JFrame {
 	private Occipital o;
 	private Temporal t;
 	private Image background;
+	private FrontalRules fr;
+	private ParietalRules pr;
+	private OccipitalRules or;
+	private  SymbolPanel sp;
+	private TemporalRules tr;
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -58,26 +63,23 @@ public class Coma extends JFrame {
 	    Menu panel3 = new Menu(this);
 	    GameOver panel4 = new GameOver(this);
 	    
-	//    FlyingArrows fa = new FlyingArrows("Flying Arrows", this);
-	//    f = new Frontal(fa, this);
+	    fr = new FrontalRules(this);
 	    f = new Frontal(this);
-	    FrontalRules fr = new FrontalRules(this);
 	    
-	    ParietalRules pr = new ParietalRules(this);
+	    pr = new ParietalRules(this);
 	    p = new Parietal(this);
 	    
-	    OccipitalRules or = new OccipitalRules(this);
+	    or = new OccipitalRules(this);
 	    o = new Occipital(this);
-	    SymbolPanel sp = o.getSP();
+	    sp = o.getSP();
 	    
-	    TemporalRules tr = new TemporalRules(this);
+	    tr = new TemporalRules(this);
 	    t = new Temporal(this);
 	    
 	    gamePanel.add(panel1, "1");
 	    gamePanel.add(panel2, "2");
 	    gamePanel.add(panel3, "3");
 	    gamePanel.add(panel4, "4");
-	   // gamePanel.add(fa, "6");
 	    gamePanel.add(f,"7");
 	    gamePanel.add(fr, "8");
 	    gamePanel.add(pr, "9");
@@ -126,6 +128,7 @@ public class Coma extends JFrame {
 		
 		int width = getWidth();
 		int height = getHeight();
+	
 //
 //		double ratioX = (double) width / DRAWING_WIDTH;
 //		double ratioY = (double) height / DRAWING_HEIGHT;
@@ -200,9 +203,13 @@ public class Coma extends JFrame {
 	}
 	
 	public void changeToOver() {
-		if(frontalWin && occipitalWin && parietalWin && temporalWin 
-				&& (f.isMenuPressed() || t.isMenuPressed() || o.isMenuPressed()
-				|| p.isMenuPressed())) {
+		
+	//	if(frontalWin && occipitalWin && parietalWin && temporalWin 
+	//			&& (f.isMenuPressed() || fr.isMenuPressed() || t.isMenuPressed() || tr.isMenuPressed()
+	//					|| o.isMenuPressed() || or.isMenuPressed() || p.isMenuPressed() || pr.isMenuPressed())) {
+		if(frontalWin && occipitalWin && parietalWin && temporalWin) {
+		
+			changePanel("3");
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
