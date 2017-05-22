@@ -2,9 +2,11 @@ package Coma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -22,6 +24,7 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton parietal;
 	private JButton temporal;
 	private JButton home;
+	private Image background;
 	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
@@ -32,7 +35,7 @@ public class Menu extends JPanel implements ActionListener {
 		super();
 		setLayout(null);
 		this.c = c;
-		setBackground(Color.WHITE);
+		background = new ImageIcon("coma" + System.getProperty("file.separator") + "MenuBrain.png").getImage();
 		occipital = new JButton("Show Me the Light");
 		occipital.setFont(new Font("Roman Baseline", Font.BOLD, 12));
 		occipital.setSize(175, 50);
@@ -74,8 +77,9 @@ public class Menu extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		
+		g.drawImage(background, 200, 100, 400, 360, this);
 
-		//System.out.println(c.getWins());
 		if(c.getWins() == 4)
 			c.changePanel("4");
 		
