@@ -378,7 +378,6 @@ public class Frontal extends Lobe {
 		   pointingTo = orientation;
 		   direction = getRandomDirection(direction);
 	      }
-	
 	   
 	   
 	   if(winGame()) {
