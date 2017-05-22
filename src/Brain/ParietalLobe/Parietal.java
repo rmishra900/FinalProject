@@ -23,8 +23,6 @@ import Coma.Coma;
  *
  */
 public class Parietal extends Lobe implements KeyListener{
-	public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 600;
 	private Rectangle screenRect;
 	private Coma c;
 	
@@ -55,26 +53,8 @@ public class Parietal extends Lobe implements KeyListener{
 		
 		back = getBack();
 		menu = getMenu();
-		winImage = new ImageIcon("youWin.gif").getImage();
+		winImage = getWinImage();
 		
-
-//		back = new JButton("BACK");
-//		back.setBackground(Color.WHITE);
-//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		back.setSize(100, 50);
-//		back.setLocation(25, 10);
-//		
-//		menu = new JButton("MENU");
-//		menu.setBackground(Color.WHITE);
-//		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		menu.setSize(100, 50);
-//		menu.setLocation(150, 10);
-//		
-//		add(back);
-//		back.addActionListener(this);
-//		add(menu);
-//		menu.addActionListener(this);
-//		
 
 		numCorrect = 0;
 		seconds = 30;
@@ -143,10 +123,10 @@ public class Parietal extends Lobe implements KeyListener{
 //				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 				
 				g.setColor(Color.WHITE);
-				g.setFont(new Font("SansSerif", 1, 24));
+				g.setFont(new Font("Roman Baseline", 1, 24));
 				g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);
 				
-				g.setFont(new Font("SansSerif", 1, 50));
+				g.setFont(new Font("Roman Baseline", 1, 50));
 				g.drawString("00:" + format(seconds % 60), 600, 50);
 				
 				w.draw(g2);
@@ -177,24 +157,24 @@ public class Parietal extends Lobe implements KeyListener{
 			else {
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
-				g.setColor(Color.BLACK);
-				g.setFont(new Font("SansSerif", 3, 100));
+				g.setColor(Color.RED);
+				g.setFont(new Font("Roman Baseline", 3, 100));
 				
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
 					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
-					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, getHeight() / 2);	
+					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);	
 					c.changeToOver();
 				}
 				else if (seconds == 0 && numCorrect < threshold) {
-					g.drawString("YOU LOSE", getWidth() / 2 - 250, getHeight() / 2);
+					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2);
 				}
 				
 				g.setColor(Color.BLACK);
-				g.setFont(new Font("SansSerif", 1, 24));
+				g.setFont(new Font("Roman Baseline", 1, 24));
 				g.drawString("SCORE: " + numCorrect, getWidth() / 2 - 80, 40);
 			
-				g.setFont(new Font("SansSerif", 3, 50));
+				g.setFont(new Font("Roman Baseline", 3, 50));
 				g.drawString(format(seconds/60) + ":" + format(seconds % 60), 600, 50);
 				return;
 			}
@@ -203,9 +183,9 @@ public class Parietal extends Lobe implements KeyListener{
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.BLACK);
-			g.setFont(new Font("SansSerif", 3, 100));
+			g.setFont(new Font("Roman Baseline", 3, 100));
 			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
-			g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, getHeight() / 2);
+			g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);
 			
 			
 		}

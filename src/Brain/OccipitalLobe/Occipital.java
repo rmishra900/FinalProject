@@ -32,8 +32,6 @@ import Coma.Coma;
  *
  */
 public class Occipital extends Lobe implements MouseListener, ActionListener {
-	public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 600;
 	
 	private Coma c;
 	
@@ -45,7 +43,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	private SymbolPanel sp;
 	private int symNum;
 	private boolean showObjects;
-	private Image background;
+	private Image background, winImage;
 	private int correct;
 	
 	private JPanel glass = new JPanel();
@@ -70,19 +68,10 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		initializeObstacles();
 		initializeSymbol();
 		
-//		back = new JButton("BACK");
-//		back.setBackground(Color.YELLOW);
-//		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		back.setSize(100, 50);
-//		back.setLocation(25, 0);
-		
+	
 		back = getBack();
 		menu = getMenu();
-//		menu = new JButton("MENU");
-//		menu.setBackground(Color.YELLOW);
-//		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-//		menu.setSize(100, 50);
-//		menu.setLocation(150, 0);
+		winImage = getWinImage();
 		
 		add(back);
 		back.addActionListener(this);
@@ -90,8 +79,9 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		menu.addActionListener(this);
 		
 		win = new JLabel();
-		win.setLocation(270, 45);
-		win.setSize(300, 100);
+		win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
+		win.setFont(new Font("Roman Baseline",3, 100));
+		win.setSize(500, 100);
 		
 		score = new JLabel(); 
 		score.setForeground(Color.WHITE);
@@ -170,6 +160,10 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 			}	
 		}
 		
+		if(c.getWon(2)) {
+			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+			score.setForeground(Color.BLACK);
+		}
 		repaint();
 	}
 	
@@ -240,9 +234,12 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    
 	 	    if (correct == 0) {
 	 	    	c.changePanel("12");
-	 	    	setBackground(Color.YELLOW);
+	 	    	setBackground(Color.WHITE);
+	 	    	score.setForeground(Color.BLACK);
+	 	    	win.setForeground(Color.RED);
+	 	    	win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+	 	    	win.setSize(550,100);
 	 	    	win.setText("YOU LOSE");
-	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 	 	    	add(win);
 	 	    	sp.setScore(0);
 	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
@@ -277,8 +274,11 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    else if (sp.getCorrect() == 0) {
 	 	    	c.changePanel("12");
 	 	    	setBackground(Color.WHITE);
+	 	    	score.setForeground(Color.BLACK);
+	 	    	win.setForeground(Color.RED);
+	 	    	win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+	 	    	win.setSize(550,100);
 	 	    	win.setText("YOU LOSE");
-	 	    	win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 	 	    	add(win);
 	 	    	sp.setScore(0);
 	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
@@ -290,12 +290,13 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	    		c.changePanel("12");
 	    		showObjects = false;
 	    		setBackground(Color.WHITE);
+	    		score.setForeground(Color.BLACK);
+	 	    	win.setForeground(Color.RED);
 	    		win.setVisible(true);
-	 		    win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
 	 		    win.setText("YOU WIN");
 	 		    add(win);
  	    		c.setWon(2);
- 	    		System.out.print(c.getWon(2));
+ 	    		
  	    		c.changeToOver();
  	    		break;
 	    	}

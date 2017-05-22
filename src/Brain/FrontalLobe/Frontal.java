@@ -31,8 +31,6 @@ import java.awt.event.ActionListener;
  *
  */
 public class Frontal extends Lobe {
-	public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 600;
 	
 	//private FlyingArrows f;
 	private Coma coma;
@@ -69,9 +67,10 @@ public class Frontal extends Lobe {
 		seconds = 30;
 	
 		win = new JLabel();
-		win.setLocation(270, 45);
-		win.setForeground(Color.WHITE);
-		win.setSize(300, 100);
+		win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
+		win.setForeground(Color.BLACK);
+		win.setSize(500, 100);
+		win.setFont(new Font("Roman Baseline", 3, 100));
 		add(win);
 	
 		setLayout(null);
@@ -83,11 +82,8 @@ public class Frontal extends Lobe {
 	
 		arrow = new Arrow(0,0,Color.BLUE);
 
-		//img = new ImageIcon("FrontalBackground.jpg").getImage();
-		//img = new ImageIcon("BlueSky.png").getImage();
-		//img = new ImageIcon("clouds.jpg").getImage();
 		img = new ImageIcon("frontal" + System.getProperty("file.separator") + "sky.png").getImage();
-		winImage = new ImageIcon("youWin.gif").getImage();
+		winImage = getWinImage();
 		initializeArrows();
 		
 		
@@ -382,16 +378,31 @@ public class Frontal extends Lobe {
 	   
 	   
 	   if(winGame()==true) {
-		   win.setText("YOU WIN");
-		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		   win.setText("YOU WIN!");
 		   coma.setWon(1);
-		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 		   coma.changeToOver();
+		   score.setForeground(Color.BLACK);
+		   timer.setForeground(Color.BLACK);
+		   g.setColor(Color.WHITE);
+		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+		
+		 
+		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
+		   
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
+		   win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+		   win.setSize(550,100);
+		   
+		   score.setForeground(Color.BLACK);
+		   timer.setForeground(Color.BLACK);
+		   g.setColor(Color.WHITE);
+		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
+		 
+		   g.drawImage(getLoseImage(), 0, 0, getWidth(), getHeight(), this);
 		   win.setText("YOU LOSE");
-		   win.setFont(new Font("Roman Baseline", Font.BOLD, 50));
+		  
 		   return;
 	   }
 	   
