@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
+import javax.swing.GroupLayout;
 import javax.swing.JPanel;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -46,7 +47,11 @@ public class Keypad extends JPanel implements ActionListener {
     	height = 450;
     	x = 200;
     	y = 80;
-    	setLayout(null);
+    	//setLayout(null);
+    	GroupLayout layout = new GroupLayout(this);
+		setLayout(layout);
+		layout.setAutoCreateGaps(true);
+		layout.setAutoCreateContainerGaps(true);
 //    	setPrefferedSize(new Dimension(temporal.getWidth(), temporal.getHeight()));
     	setOpaque(true);
     	//setBackground(Color.LIGHT_GRAY);
@@ -67,6 +72,10 @@ public class Keypad extends JPanel implements ActionListener {
     	  add(b.getJButton());
     	  b.addActionListener(this);
        }
+       
+       
+       
+       
    	
     }
 
