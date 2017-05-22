@@ -2,6 +2,7 @@ package Coma;
 
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -53,6 +54,7 @@ public class Coma extends JFrame {
 		setBounds(100, 100, 800, 600);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setResizable(true);
+	    setMinimumSize(new Dimension(200, 150));
 	    background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
     
 	    gamePanel = new JPanel();
