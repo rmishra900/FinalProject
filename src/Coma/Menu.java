@@ -141,13 +141,13 @@ public class Menu extends JPanel implements ActionListener {
 			c.changePanel("4");
 		
 		if (c.getWon(1)) 
-			g.drawImage(frontalImg, 200, 100, 223, 204, this);
+			g.drawImage(frontalImg, 205, 100, 223, 204, this);
 		if (c.getWon(2))
-			g.drawImage(occipitalImg, 475, 175, 123, 210, this);
+			g.drawImage(occipitalImg, 475, 178, 123, 210, this);
 		if (c.getWon(3))
 			g.drawImage(parietalImg, 375, 100, 211, 150, this);
 		if (c.getWon(4)) 
-			g.drawImage(temporalImg, 295, 230, 246, 238, this);
+			g.drawImage(temporalImg, 294, 225, 246, 238, this);
 		
 		repaint();
 	}
