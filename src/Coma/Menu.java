@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //import Brain.FrontalLobe.FlyingArrows;
@@ -25,6 +26,8 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton temporal;
 	private JButton home;
 	private Image background, occipitalImg, frontalImg, parietalImg, temporalImg;
+	
+	private JLabel oLabel;
 	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
@@ -35,32 +38,45 @@ public class Menu extends JPanel implements ActionListener {
 		super();
 		setLayout(null);
 		this.c = c;
+		setBackground(Color.WHITE);
 		background = new ImageIcon("coma" + System.getProperty("file.separator") + "MenuBrain.png").getImage();
 		occipitalImg = new ImageIcon("coma" + System.getProperty("file.separator") + "Occipital.png").getImage();
 		frontalImg = new ImageIcon("coma" + System.getProperty("file.separator") + "Frontal.png").getImage();
 		parietalImg = new ImageIcon("coma" + System.getProperty("file.separator") + "Parietal.png").getImage();
 		temporalImg = new ImageIcon("coma" + System.getProperty("file.separator") + "Temporal.png").getImage();
 		
-		occipital = new JButton("Show Me the Light");
+		oLabel = new JLabel();
+		oLabel.setFont(new Font("Roman Baseline", Font.BOLD, 12));
+		oLabel.setLocation(600, 300);
+		oLabel.setText("Sightseeing");
+		oLabel.setForeground(Color.BLACK);
+		oLabel.setVisible(true);
+		add(oLabel);
+		
+		occipital = new JButton();
 		occipital.setFont(new Font("Roman Baseline", Font.BOLD, 12));
-		occipital.setSize(175, 50);
-		occipital.setLocation(600, 500);
-		//occipital.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "Symbol" + (i+1) + ".png"));
+		occipital.setSize(195, 141);
+		occipital.setLocation(600, 375);
+		occipital.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "occipitalScreenshot.png"));
+		
 		
 		frontal = new JButton("Flying Arrows");
 		frontal.setFont(new Font("Roman Baseline", Font.BOLD, 16));
-		frontal.setSize(150, 50);
+		frontal.setSize(190, 136);
 		frontal.setLocation(20, 10);
+		frontal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "frontalScreenshot.png"));
 		
 		parietal = new JButton("Hole in the Wall");
 		parietal.setFont(new Font("Roman Baseline", Font.BOLD, 12));
-		parietal.setSize(175, 50);
+		parietal.setSize(195, 141);
 		parietal.setLocation(600, 10);
+		parietal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "parietalScreenshot.png"));
 		
 		temporal = new JButton("Locked");
 		temporal.setFont(new Font("Roman Baseline", Font.BOLD, 16));
-		temporal.setSize(150, 50);
-		temporal.setLocation(20, 500);
+		temporal.setSize(190, 138);
+		temporal.setLocation(20, 375);
+		temporal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "temporalScreenshot.png"));
 		
 		add(occipital);
 		occipital.addActionListener(this);

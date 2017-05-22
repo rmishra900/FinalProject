@@ -92,7 +92,6 @@ public class Coma extends JFrame {
 	    
 	    add(gamePanel);
 	    addKeyListener(panel1);
-	    addMouseListener(panel2);
 	    addKeyListener(panel4);
 	    addKeyListener(p);
 	    addKeyListener(f.getKeyHandler());
