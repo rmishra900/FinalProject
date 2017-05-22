@@ -2,8 +2,10 @@ package Brain.ParietalLobe;
 
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
 
@@ -44,7 +46,7 @@ public class ParietalRules extends Rules{
 		
 		rules = "<html>This game tests the Parietal Lobe of the brain which is <br>responsible for sensory perception "
 				+ "and integration, including the management of taste, hearing, sigh, touch, and smell.<br><br> You will "
-				+ "have 45 seconds to complete the game and you must <br>reach 900 points to win. <br><br>To play, "
+				+ "have 45 seconds to complete the game and you must <br>reach <b><u>1000 points</b></u> to win. <br><br>To play, "
 				+ "use the up and down arrow keys on your keyboard to control the blue panel on the left called the wall. "
 				+ "Match up the shapes that are shot out from the left side of the screen to the shapes on the wall</html>";
 		
@@ -54,10 +56,23 @@ public class ParietalRules extends Rules{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D)g;
+
+	    int width = getWidth();
+	    int height = getHeight();
+
+	    double ratioX = (double)width/DRAWING_WIDTH;
+		double ratioY = (double)height/DRAWING_HEIGHT;
+		        
+		AffineTransform at = g2.getTransform();
+		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(upArrow, DRAWING_WIDTH / 2 - 50, DRAWING_HEIGHT - 215, 50, 50, this);
-		g.drawImage(downArrow, DRAWING_WIDTH / 2 - 50, DRAWING_HEIGHT - 155, 50, 50, this);
-		g.drawImage(wall, DRAWING_WIDTH / 2 - 150, DRAWING_HEIGHT - 230, 50, 125,this);
+		g.drawImage(upArrow, DRAWING_WIDTH / 2 - 20, DRAWING_HEIGHT - 215, 50, 50, this);
+		g.drawImage(downArrow, DRAWING_WIDTH / 2 - 20, DRAWING_HEIGHT - 155, 50, 50, this);
+		g.drawImage(wall, DRAWING_WIDTH / 2 - 120, DRAWING_HEIGHT - 230, 50, 125,this);
+		
+		g2.setTransform(at);
+		
 	}
 
 	@Override

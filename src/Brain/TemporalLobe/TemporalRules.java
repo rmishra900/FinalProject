@@ -1,6 +1,12 @@
 package Brain.TemporalLobe;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.geom.AffineTransform;
+
+import javax.swing.ImageIcon;
 
 import Brain.Rules;
 import Coma.Coma;
@@ -12,7 +18,7 @@ import Coma.Coma;
  */
 public class TemporalRules extends Rules{
 	private Coma c;
-	
+	private Image upArrow, downArrow, wall;
 	/**
 	 * Initializes this rules panel.
 	 * @param l the Locked panel these rules belong to
@@ -21,6 +27,9 @@ public class TemporalRules extends Rules{
 	public TemporalRules(Coma c) {
 		super();
 		this.c = c;
+		upArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "upArrow.png")).getImage();
+		downArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "downArrow.png")).getImage();
+		wall = (new ImageIcon("parietal" + System.getProperty("file.separator") + "wallParietal.png")).getImage();
 	}
 
 	@Override
@@ -42,6 +51,22 @@ public class TemporalRules extends Rules{
 		return rules;
 	}
 
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D)g;
+
+	    int width = getWidth();
+	    int height = getHeight();
+
+	    double ratioX = (double)width/DRAWING_WIDTH;
+		double ratioY = (double)height/DRAWING_HEIGHT;
+		        
+		AffineTransform at = g2.getTransform();
+		g2.scale(ratioX, ratioY);
+		
+		g2.setTransform(at);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

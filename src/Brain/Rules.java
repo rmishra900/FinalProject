@@ -46,7 +46,7 @@ public abstract class Rules extends JPanel implements ActionListener {
 		
 		rules = new JLabel(getText());
 		rules.setLocation(105, 55);
-		rules.setSize(600,400);
+		rules.setSize(600, 200);
 		rules.setForeground(Color.WHITE);
 		rules.setFont(new Font("Roman Baseline", 0, 20));
 		add(rules);
@@ -87,7 +87,7 @@ public abstract class Rules extends JPanel implements ActionListener {
 		begin.setBounds((int)(325*ratioX),(int)(500*ratioY),(int)(100*ratioX),(int)(50*ratioY));
 		menu.setSize(100, 50);
 		menu.setBounds((int)(menu.getX()*ratioX),(int)(menu.getY()*ratioY),(int)(100*ratioX),(int)(50*ratioY));
-		rulesBackground.setBounds((int)(600*ratioX),(int)(450*ratioY),(int)(100*ratioX),(int)(50*ratioY));
+		rulesBackground.setBounds((int)(100*ratioX),(int)(50*ratioY),(int)(600*ratioX),(int)(450*ratioY));
 		rules.setBounds((int)(105*ratioX),(int)(55*ratioY),(int)(600*ratioX),(int)(400*ratioY));
 		
 		//g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
