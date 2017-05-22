@@ -157,7 +157,6 @@ public class Menu extends JPanel implements ActionListener {
 		
 		g2.setTransform(at);
 		
-		repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
