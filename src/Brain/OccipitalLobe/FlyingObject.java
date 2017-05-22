@@ -47,6 +47,8 @@ public class FlyingObject extends Rectangle2D.Double {
 	 * @param io ImageObserver used to draw the image of the FLyingObject
 	 */
 	public void draw(Graphics g, ImageObserver io) {
-		g.drawImage(image,(int)x,(int)y,(int)width,(int)height,io);
+		double ratioX = (double) getWidth() / Occipital.DRAWING_WIDTH;
+		double ratioY = (double) getHeight() / Occipital.DRAWING_HEIGHT;
+		g.drawImage(image,(int)x,(int)y,(int)(ratioX*width),(int)(ratioY*height),io);
 	}
 }

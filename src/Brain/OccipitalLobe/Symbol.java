@@ -28,4 +28,8 @@ public class Symbol extends FlyingObject {
 		super("occipital" + System.getProperty("file.separator") + filename, x, y, SYMBOL_WIDTH, SYMBOL_WIDTH);
 	}
 	
+	public Image getImage() {
+		return image;
+	}
+	
 }
