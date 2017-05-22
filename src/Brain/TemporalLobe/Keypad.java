@@ -35,7 +35,7 @@ public class Keypad extends JPanel implements ActionListener {
 	  private final int x, y, width, height;
 	  private boolean isPressed;
 	  private String passcodeEntered;
-	  private Temporal temporal = null;
+	  private Temporal temporal=null;
 	  
 
 	  /**
@@ -47,8 +47,10 @@ public class Keypad extends JPanel implements ActionListener {
     	x = 200;
     	y = 80;
     	setLayout(null);
+//    	setPrefferedSize(new Dimension(temporal.getWidth(), temporal.getHeight()));
     	setOpaque(true);
     	//setBackground(Color.LIGHT_GRAY);
+    	
     	setBounds(x, y, width, height);
    		
 		//isPressed = false;
@@ -105,6 +107,8 @@ public class Keypad extends JPanel implements ActionListener {
     		sounds[0] = new Sound("temporal" + System.getProperty("file.separator") + "B.wav");
     		
     }
+    
+    
     
     /**
      * 
