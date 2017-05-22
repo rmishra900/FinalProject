@@ -31,6 +31,7 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton temporal;
 	private JButton home;
 	private Image background, occipitalImg, frontalImg, parietalImg, temporalImg;
+	private JLabel oLabel, tLabel, pLabel, fLabel;
 	
 	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
@@ -54,7 +55,7 @@ public class Menu extends JPanel implements ActionListener {
 		occipital.setLocation(600, 375);
 		occipital.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "occipitalScreenshot.png"));
 		
-		JLabel oLabel = new JLabel();
+		oLabel = new JLabel();
 		oLabel.setFont(new Font("Roman Baseline", 3, 16));
 		oLabel.setLocation(600, 510);
 		oLabel.setText("Sightseeing");
@@ -67,7 +68,7 @@ public class Menu extends JPanel implements ActionListener {
 		frontal.setLocation(20, 10);
 		frontal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "frontalScreenshot.png"));
 		
-		JLabel fLabel = new JLabel();
+		fLabel = new JLabel();
 		fLabel.setFont(new Font("Roman Baseline", 3, 16));
 		fLabel.setLocation(20, 140);
 		fLabel.setText("Flying Arrows");
@@ -80,7 +81,7 @@ public class Menu extends JPanel implements ActionListener {
 		parietal.setLocation(600, 10);
 		parietal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "parietalScreenshot.png"));
 		
-		JLabel pLabel = new JLabel();
+		pLabel = new JLabel();
 		pLabel.setFont(new Font("Roman Baseline", 3, 16));
 		pLabel.setLocation(600, 145);
 		pLabel.setText("Hole in the Wall");
@@ -93,7 +94,7 @@ public class Menu extends JPanel implements ActionListener {
 		temporal.setLocation(20, 375);
 		temporal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "temporalScreenshot.png"));
 		
-		JLabel tLabel = new JLabel();
+		tLabel = new JLabel();
 		tLabel.setFont(new Font("Roman Baseline", 3, 16));
 		tLabel.setLocation(20, 510);
 		tLabel.setText("Locked");
@@ -143,6 +144,12 @@ public class Menu extends JPanel implements ActionListener {
 		frontal.setBounds((int)(20*ratioX),(int)(10*ratioY),(int)(190*ratioX),(int)(136*ratioY));
 		parietal.setBounds((int)(600*ratioX),(int)(10*ratioY),(int)(195*ratioX),(int)(141*ratioY));
 		temporal.setBounds((int)(20*ratioX),(int)(375*ratioY),(int)(190*ratioX),(int)(138*ratioY));
+		
+		oLabel.setBounds((int)(600*ratioX),(int)(510*ratioY),(int)(150*ratioX),(int)(30*ratioY));
+		fLabel.setBounds((int)(20*ratioX),(int)(140*ratioY),(int)(150*ratioX),(int)(30*ratioY));
+		pLabel.setBounds((int)(600*ratioX),(int)(145*ratioY),(int)(150*ratioX),(int)(30*ratioY));
+		tLabel.setBounds((int)(20*ratioX),(int)(510*ratioY),(int)(150*ratioX),(int)(30*ratioY));
+		home.setBounds((int)(325*ratioX),(int)(500*ratioY),(int)(100*ratioX),(int)(50*ratioY));
 		
 //		if(c.getWins() == 4)
 //			c.changePanel("4"); SHELBY SAID DON'T DO THIS HERE
