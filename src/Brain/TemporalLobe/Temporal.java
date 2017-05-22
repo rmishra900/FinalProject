@@ -30,9 +30,7 @@ import Coma.Coma;
  * @version 5/18/17
  */
 public class Temporal extends Lobe{
-	public static final int DRAWING_WIDTH = 800;
-	public static final int DRAWING_HEIGHT = 600;
-
+	
 	private Coma c;
 	
 	private Room room;
