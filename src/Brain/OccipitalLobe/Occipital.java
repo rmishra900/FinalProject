@@ -140,6 +140,8 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		super.paintComponent(g); // Call JPanel's paintComponent method to paint
 									// the background
 
+		
+		
 		Graphics2D g2 = (Graphics2D) g;
 		
 		int width = getWidth();
@@ -147,6 +149,9 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 
 		double ratioX = (double) width / DRAWING_WIDTH;
 		double ratioY = (double) height / DRAWING_HEIGHT;
+		
+		menu.setBounds(150, 20, (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds(25, 20, (int)(100*ratioX), (int)(50*ratioY));
 		
 		
 		AffineTransform at = g2.getTransform();
