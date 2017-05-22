@@ -51,7 +51,7 @@ public class Menu extends JPanel implements ActionListener {
 		occipital.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "occipitalScreenshot.png"));
 		
 		JLabel oLabel = new JLabel();
-		oLabel.setFont(new Font("Roman Baseline", Font.PLAIN, 12));
+		oLabel.setFont(new Font("Roman Baseline", 3, 16));
 		oLabel.setLocation(600, 510);
 		oLabel.setText("Sightseeing");
 		oLabel.setForeground(Color.BLACK);
@@ -59,13 +59,12 @@ public class Menu extends JPanel implements ActionListener {
 		add(oLabel);
 		
 		frontal = new JButton("Flying Arrows");
-		frontal.setFont(new Font("Roman Baseline", Font.BOLD, 16));
 		frontal.setSize(190, 136);
 		frontal.setLocation(20, 10);
 		frontal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "frontalScreenshot.png"));
 		
 		JLabel fLabel = new JLabel();
-		fLabel.setFont(new Font("Roman Baseline", Font.PLAIN, 12));
+		fLabel.setFont(new Font("Roman Baseline", 3, 16));
 		fLabel.setLocation(20, 140);
 		fLabel.setText("Flying Arrows");
 		fLabel.setForeground(Color.BLACK);
@@ -73,13 +72,12 @@ public class Menu extends JPanel implements ActionListener {
 		add(fLabel);
 		
 		parietal = new JButton("Hole in the Wall");
-		parietal.setFont(new Font("Roman Baseline", Font.BOLD, 12));
 		parietal.setSize(195, 141);
 		parietal.setLocation(600, 10);
 		parietal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "parietalScreenshot.png"));
 		
 		JLabel pLabel = new JLabel();
-		pLabel.setFont(new Font("Roman Baseline", Font.PLAIN, 12));
+		pLabel.setFont(new Font("Roman Baseline", 3, 16));
 		pLabel.setLocation(600, 145);
 		pLabel.setText("Hole in the Wall");
 		pLabel.setForeground(Color.BLACK);
@@ -87,13 +85,12 @@ public class Menu extends JPanel implements ActionListener {
 		add(pLabel);
 		
 		temporal = new JButton("Locked");
-		temporal.setFont(new Font("Roman Baseline", Font.BOLD, 16));
 		temporal.setSize(190, 138);
 		temporal.setLocation(20, 375);
 		temporal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "temporalScreenshot.png"));
 		
 		JLabel tLabel = new JLabel();
-		tLabel.setFont(new Font("Roman Baseline", Font.PLAIN, 12));
+		tLabel.setFont(new Font("Roman Baseline", 3, 16));
 		tLabel.setLocation(20, 510);
 		tLabel.setText("Locked");
 		tLabel.setForeground(Color.BLACK);
