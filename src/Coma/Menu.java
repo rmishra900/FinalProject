@@ -136,8 +136,6 @@ public class Menu extends JPanel implements ActionListener {
 		
 		g.drawImage(background, 200, 100, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 250, this);
 		
-		
-		
 		occipital.setBounds((int)(600*ratioX),(int)(375*ratioY),(int)(195*ratioX),(int)(141*ratioY));
 		frontal.setBounds((int)(20*ratioX),(int)(10*ratioY),(int)(190*ratioX),(int)(136*ratioY));
 		parietal.setBounds((int)(600*ratioX),(int)(10*ratioY),(int)(195*ratioX),(int)(141*ratioY));

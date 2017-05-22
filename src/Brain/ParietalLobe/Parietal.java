@@ -153,6 +153,7 @@ public class Parietal extends Lobe implements KeyListener{
 			  		redrawWall();
 				
 				if(numCorrect >= threshold && seconds > 0 || seconds == 0) {
+					c.setWon(3);
 					continueGame = false;
 					clock1.stop();
 					clock2.stop();
@@ -270,15 +271,25 @@ public class Parietal extends Lobe implements KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back) {
-			c.changePanel("9");
-			if (!c.getWon(3))
-				continueGame = true;
-			
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
+			else {
+				c.changePanel("9");
+				if (!c.getWon(3))
+					continueGame = true;
+			}
 		}
-		if (src == menu) {
-			if (!c.getWon(3))
-				continueGame = true;
-			c.changePanel("3");
+		else if (src == menu) {
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
+			else {
+				c.changePanel("3");
+				if (!c.getWon(3))
+					continueGame = true;
+			}
+			
 		}
 	}
 
