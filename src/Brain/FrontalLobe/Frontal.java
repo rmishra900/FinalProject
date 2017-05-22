@@ -62,7 +62,7 @@ public class Frontal extends Lobe {
 		
 		correct = 0;
 		c = null;
-		threshold = 300;
+		threshold = 200;
 		
 		seconds = 30;
 	

@@ -74,7 +74,7 @@ public class Temporal extends Lobe{
 		winBackground = new ImageIcon("temporal" + System.getProperty("file.separator") + "temporalWin.jpg").getImage();
 	
 		buttonsPressed = new JTextField();
- 		buttonsPressed.setLocation(300, 530);
+ 		buttonsPressed.setLocation(250, 530);
  		buttonsPressed.setForeground(Color.BLACK);
  		buttonsPressed.setFont(new Font("Roman Baseline", 0, 18));
   		buttonsPressed.setSize(175,50);
@@ -100,7 +100,7 @@ public class Temporal extends Lobe{
 		
 		clear = new JButton("CLEAR");
 		clear.setFont(new Font("Roman Baseline", Font.BOLD, 20));
-		clear.setSize(100, 50);
+		clear.setSize(150, 50);
 		clear.setLocation(475, 530);
 		
 
