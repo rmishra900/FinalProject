@@ -123,22 +123,18 @@ public class Menu extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
 
-		Graphics2D g2 = (Graphics2D)g;
+		int width = getWidth();
+		int height = getHeight();
 
-	    int width = getWidth();
-	    int height = getHeight();
-	    
-	    double ratioX = (double)width/DRAWING_WIDTH;
-		double ratioY = (double)height/DRAWING_HEIGHT;
-		        
+		double ratioX = (double) width / DRAWING_WIDTH;
+		double ratioY = (double) height / DRAWING_HEIGHT;
+
 		AffineTransform at = g2.getTransform();
-		
 		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(background, 200, 100, 400, 368, this);
-		
-		
+		g.drawImage(background, 200, 100, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 250, this);
 		
 		occipital.setBounds((int)(600*ratioX),(int)(375*ratioY),(int)(195*ratioX),(int)(141*ratioY));
 		frontal.setBounds((int)(20*ratioX),(int)(10*ratioY),(int)(190*ratioX),(int)(136*ratioY));
@@ -164,6 +160,7 @@ public class Menu extends JPanel implements ActionListener {
 		
 		g2.setTransform(at);
 		
+		g2.setTransform(at);
 	}
 	
 	public void actionPerformed(ActionEvent e) {

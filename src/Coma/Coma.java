@@ -33,6 +33,7 @@ public class Coma extends JFrame {
 
 	private JPanel gamePanel;
 	private static int wins;
+	private static boolean isOver;
 	private boolean frontalWin, occipitalWin, parietalWin, temporalWin;
 	private Frontal f;
 	private Parietal p;
@@ -42,8 +43,9 @@ public class Coma extends JFrame {
 	private FrontalRules fr;
 	private ParietalRules pr;
 	private OccipitalRules or;
-	private  SymbolPanel sp;
+	private SymbolPanel sp;
 	private TemporalRules tr;
+	
 	
 	/**
 	 * Constructs a new instance of the game window.
@@ -57,6 +59,9 @@ public class Coma extends JFrame {
 	    setMinimumSize(new Dimension(200, 150));
 	    background = new ImageIcon("coma" + System.getProperty("file.separator") + "COMAbackground.png").getImage();
     
+	    wins = 0;
+	    isOver = false;
+	    
 	    gamePanel = new JPanel();
 	    CardLayout cl = new CardLayout();
 	    gamePanel.setLayout(cl);
@@ -122,24 +127,6 @@ public class Coma extends JFrame {
 			return null;
 	}
 	
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		Graphics2D g2 = (Graphics2D) g;
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-		
-		
-		int width = getWidth();
-		int height = getHeight();
-	
-//
-//		double ratioX = (double) width / DRAWING_WIDTH;
-//		double ratioY = (double) height / DRAWING_HEIGHT;
-
-		AffineTransform at = g2.getTransform();
-		//g2.scale(ratioX, ratioY);
-		
-	}
-	
 	public static void main(String[] args) {
 		Coma coma = new Coma("COMA");
 	}
@@ -153,8 +140,14 @@ public class Coma extends JFrame {
 		requestFocus();
 	}
 	
+	public boolean getOver() {
+		return isOver;
+	}
+	
 	public void setWon(int i) {
 		wins++;
+		if(wins == 4)
+			isOver = true;
 		if (i == 1)
 			frontalWin = true;
 		else if (i == 2)

@@ -61,7 +61,7 @@ public class Parietal extends Lobe implements KeyListener{
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
-		threshold = 900;
+		threshold = 1000;
 		
 		clock1 = new Timer(7, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,7 +135,7 @@ public class Parietal extends Lobe implements KeyListener{
 				drawS1.draw(g2);
 				
 				if (w.passes(drawS1))
-					numCorrect++;
+					numCorrect += 1 * 10;
 					
 				if(drawS1.whichShape() == 0 || drawS1.whichShape() == 2) {
 					if (drawS1.x <= w.x) {
@@ -153,6 +153,7 @@ public class Parietal extends Lobe implements KeyListener{
 			  		redrawWall();
 				
 				if(numCorrect >= threshold && seconds > 0 || seconds == 0) {
+					c.setWon(3);
 					continueGame = false;
 					clock1.stop();
 					clock2.stop();
@@ -164,7 +165,7 @@ public class Parietal extends Lobe implements KeyListener{
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
 				g.setColor(Color.RED);
-				g.setFont(new Font("Roman Baseline", 3, 100));
+				g.setFont(new Font("Roman Baseline", 1, 100));
 				
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
@@ -174,7 +175,8 @@ public class Parietal extends Lobe implements KeyListener{
 				}
 
 				else if (seconds == 0) {
-
+					g.setColor(Color.BLACK);
+					g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2);
 				}
 				
@@ -269,15 +271,25 @@ public class Parietal extends Lobe implements KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == back) {
-			c.changePanel("9");
-			if (!c.getWon(3))
-				continueGame = true;
-			
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
+			else {
+				c.changePanel("9");
+				if (!c.getWon(3))
+					continueGame = true;
+			}
 		}
-		if (src == menu) {
-			if (!c.getWon(3))
-				continueGame = true;
-			c.changePanel("3");
+		else if (src == menu) {
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
+			else {
+				c.changePanel("3");
+				if (!c.getWon(3))
+					continueGame = true;
+			}
+			
 		}
 	}
 

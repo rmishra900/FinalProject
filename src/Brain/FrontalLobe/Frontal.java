@@ -413,7 +413,7 @@ public class Frontal extends Lobe {
 		   g.setFont(new Font("Roman Baseline", 3, 100));
 		  
 		  
-		   g.drawImage(getLoseImage(), 0, 0, getWidth(), getHeight(), this);
+		   g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 		   g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
 		  // win.setText("YOU LOSE");
 		  
