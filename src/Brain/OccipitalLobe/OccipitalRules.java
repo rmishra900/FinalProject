@@ -29,13 +29,11 @@ public class OccipitalRules extends Rules {
 	public String getText() {
 		String rules = "";
 		
-		rules = "<html>This game tests the Occipital Lobe of the brain which is <br>responsible for visual processing. "
-				+ "This game has to do with field of view, which is what an individual can see at any given moment."
-				+ "<br><br>To play:<br>A city will be displayed with 1 airplane, multiple helicopters, and a symbol"
-				+ " in the sky. The city will then disappear.<br>Use your mouse to find the area where"
-				+ " the airplane was. If you are correct, you must then select which symbol you saw. If you are correct"
-				+ " again, you receive one point, and move on to another round.<br><br>The game ends when you get any"
-				+ " answer incorrect. To win, you must get 10 correct in a row.</html>";
+		rules = "<html>This game tests the occipital lobe for field of view, which is <br>what an individual can see"
+				+ " at any given moment.<br><br>To play:<br>A city will be displayed with 1 airplane, multiple "
+				+ "helicopters, and a symbol in the sky. The city will then disappear.<br>Use your mouse to find the area where"
+				+ " the airplane was. Then, select the symbol you saw. <br><br>The game ends when you get any"
+				+ " answer incorrect. To win, you must get 200 points.</html>";
 		
 	
 		return rules;
