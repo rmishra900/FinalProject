@@ -60,7 +60,6 @@ public class GameOver extends JPanel implements KeyListener{
 	{
 		super.paintComponent(g); 
 
-
 		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 
 		Graphics2D g2 = (Graphics2D)g;
