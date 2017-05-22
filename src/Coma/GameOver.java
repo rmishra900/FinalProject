@@ -50,6 +50,7 @@ public class GameOver extends JPanel implements KeyListener{
 		text.setSize(800, 50);
 		text.setFont(new Font("Roman Baseline", 1, 25));
 		text.setForeground(Color.WHITE);
+		text.setHorizontalAlignment(0);
 		text.setText("<html>Congratulations! You've unlocked all four lobes of your brain!<br> You are out of your coma!<br> Now, you can"
 				+ "enjoy life!</html>");
 		add(text);
