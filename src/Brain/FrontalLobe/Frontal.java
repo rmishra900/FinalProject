@@ -384,7 +384,7 @@ public class Frontal extends Lobe {
 		   //win.setText("YOU WIN!");
 		   
 		   coma.setWon(1);
-		   coma.changeToOver();
+		 //  coma.changeToOver();
 		   score.setForeground(Color.BLACK);
 		   timer.setForeground(Color.BLACK);
 		   g.setColor(Color.WHITE);
@@ -667,11 +667,19 @@ public class Frontal extends Lobe {
 
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == back)
+		if (src == back) {
+			if (coma.getOver()) {
+				coma.changePanel("4");
+			}
 			coma.changePanel("8");
-		else if (src == menu)
+		}
+			
+		else if (src == menu) {
+			if (coma.getOver()) {
+				coma.changePanel("4");
+			}
 			coma.changePanel("3");
-
+		}
 	}
 
 	

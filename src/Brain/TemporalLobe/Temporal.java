@@ -166,7 +166,7 @@ public class Temporal extends Lobe{
 					g.setColor(Color.BLACK);
 					g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 					c.setWon(4);
-					c.changeToOver();
+		//			c.changeToOver();
 					return;
 				}
 			}
@@ -264,10 +264,18 @@ public class Temporal extends Lobe{
 
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == back)
+		if (src == back) {
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
 			c.changePanel("14");
-		else if (src == menu)
+		}
+		else if (src == menu) {
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
 			c.changePanel("3");
+		}	
 		else if(src == play) {
 			room.playSound();
 		}

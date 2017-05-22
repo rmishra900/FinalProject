@@ -197,18 +197,19 @@ public class Coma extends JFrame {
 			return false;
 	}
 	
-	public void changeToOver() {
-		
-	if(frontalWin && occipitalWin && parietalWin && temporalWin) {
-		
-			//changePanel("3");
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			changePanel("4");	
-		}
-	}
+//	public void changeToOver() {
+//		
+//		if(getOver()) {
+//	//if(frontalWin && occipitalWin && parietalWin && temporalWin) {
+//		//if()
+//			//changePanel("3");
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			changePanel("4");	
+//		}
+//	}
 
 }
