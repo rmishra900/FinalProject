@@ -62,7 +62,7 @@ public class Menu extends JPanel implements ActionListener {
 		oLabel.setSize(150, 30);
 		add(oLabel);
 		
-		frontal = new JButton("Flying Arrows");
+		frontal = new JButton();
 		frontal.setSize(190, 136);
 		frontal.setLocation(20, 10);
 		frontal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "frontalScreenshot.png"));
@@ -75,7 +75,7 @@ public class Menu extends JPanel implements ActionListener {
 		fLabel.setSize(150, 30);
 		add(fLabel);
 		
-		parietal = new JButton("Hole in the Wall");
+		parietal = new JButton();
 		parietal.setSize(195, 141);
 		parietal.setLocation(600, 10);
 		parietal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "parietalScreenshot.png"));
@@ -88,7 +88,7 @@ public class Menu extends JPanel implements ActionListener {
 		pLabel.setSize(150, 30);
 		add(pLabel);
 		
-		temporal = new JButton("Locked");
+		temporal = new JButton();
 		temporal.setSize(190, 138);
 		temporal.setLocation(20, 375);
 		temporal.setIcon(new ImageIcon("coma" + System.getProperty("file.separator") + "temporalScreenshot.png"));
@@ -139,16 +139,13 @@ public class Menu extends JPanel implements ActionListener {
 		
 		
 		
-//		occipital.setBounds((int)(600*ratioX),(int)(375*ratioY),(int)(195*ratioX),(int)(141*ratioY));
-//		frontal.setBounds((int)(20*ratioX),(int)(10*ratioY),(int)(190*ratioX),(int)(136*ratioY));
-//		parietal.setBounds((int)(600*ratioX),(int)(10*ratioY),(int)(195*ratioX),(int)(141*ratioY));
-//		temporal.setBounds((int)(20*ratioX),(int)(375*ratioY),(int)(190*ratioX),(int)(138*ratioY));
-//		
-	//	g2.translate(-(int)(frontal.getWidth()/20*ratioX), -(int)(frontal.getHeight()/20*ratioY));
-	//	occipital.setLocation((2*occipital.getWidth())+(int)(occipital.getWidth()*ratioX), (2*occipital.getHeight())-45+(int)(occipital.getHeight()*ratioY));
-	
-		if(c.getWins() == 4)
-			c.changePanel("4");
+		occipital.setBounds((int)(600*ratioX),(int)(375*ratioY),(int)(195*ratioX),(int)(141*ratioY));
+		frontal.setBounds((int)(20*ratioX),(int)(10*ratioY),(int)(190*ratioX),(int)(136*ratioY));
+		parietal.setBounds((int)(600*ratioX),(int)(10*ratioY),(int)(195*ratioX),(int)(141*ratioY));
+		temporal.setBounds((int)(20*ratioX),(int)(375*ratioY),(int)(190*ratioX),(int)(138*ratioY));
+		
+//		if(c.getWins() == 4)
+//			c.changePanel("4"); SHELBY SAID DON'T DO THIS HERE
 		if (c.getWon(1)) 
 			g.drawImage(frontalImg, 205, 100, 223, 204, this);
 		if (c.getWon(2))
@@ -158,7 +155,7 @@ public class Menu extends JPanel implements ActionListener {
 		if (c.getWon(4)) 
 			g.drawImage(temporalImg, 294, 225, 246, 238, this);
 		
-		g2.transform(at);
+		g2.setTransform(at);
 		
 		repaint();
 	}
