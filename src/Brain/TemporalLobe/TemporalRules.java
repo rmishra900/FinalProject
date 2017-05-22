@@ -30,13 +30,13 @@ public class TemporalRules extends Rules{
 	 */
 	public String getText() {
 		String rules;
-		rules = "<html>This lobe of the brain coordinates auditory information. <br>"
-				+ "The screen will show a neighborhood full of various objects. "
-				+ "The player will receive information about which objects make which "
-				+ "sounds while playing. Several of these sounds will be similar to test "
-				+ "the player’s ability to distinguish between different sounds. They will "
-				+ "hear a sound, and they have to click on the object it came from. In 30 seconds, "
-				+ "they have to distinguish at least 10 objects to win";
+		rules = "<html>This lobe of the brain coordinates auditory information. <br><br>"
+				+ "You are locked inside of a jail cell but provided with a keypad. To get "
+				+ "out, listen to the music representing the passcode by pressing the play "
+				+ "button. The numbers on the keypad will correspond with these sounds. "
+				+ "Find the correct 4-digit passcode combination to unlock the cell and escape. "
+				+ "<br><br>Use the clear button whenever you need to clear the passcode you have "
+				+ "displayed.";
 		
 		
 		return rules;

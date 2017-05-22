@@ -400,7 +400,7 @@ public class Frontal extends Lobe {
 		   g.setColor(Color.WHITE);
 		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		 
-		   g.drawImage(getLoseImage(), 0, 0, getWidth(), getHeight(), this);
+		   g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 		   win.setText("YOU LOSE");
 		  
 		   return;

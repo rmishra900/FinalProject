@@ -2,9 +2,11 @@ package Coma;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +22,9 @@ import javax.swing.JTextField;
  * @version 5/15/2017
  */
 public class Menu extends JPanel implements ActionListener {
+	public static final int DRAWING_WIDTH = 800;
+	public static final int DRAWING_HEIGHT = 600;
+	
 	private Coma c;
 	private JButton occipital;
 	private JButton frontal;
@@ -118,8 +123,18 @@ public class Menu extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+
+		int width = getWidth();
+		int height = getHeight();
+
+		double ratioX = (double) width / DRAWING_WIDTH;
+		double ratioY = (double) height / DRAWING_HEIGHT;
+
+		AffineTransform at = g2.getTransform();
+		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(background, 200, 100, 400, 368, this);
+		g.drawImage(background, 200, 100, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 250, this);
 
 		if(c.getWins() == 4)
 			c.changePanel("4");
@@ -133,6 +148,7 @@ public class Menu extends JPanel implements ActionListener {
 		if (c.getWon(4)) 
 			g.drawImage(temporalImg, 295, 230, 246, 238, this);
 		
+		g2.setTransform(at);
 		repaint();
 	}
 	
