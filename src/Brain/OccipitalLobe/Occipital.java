@@ -156,10 +156,26 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		if (showObjects) {
 			g.drawImage(background, 0, 0, (int)(getWidth()), (int)(getHeight()), this);
 			
-			sym.draw(g2, this);
-			plane.draw(g2, this);
+			int sw = (int) (sym.SYMBOL_WIDTH*ratioX);
+			int sh = (int) (sym.SYMBOL_WIDTH*ratioY);
+			
+			sym.draw(g2, sym.getImage(), (int)sym.getX(), (int)sym.getY(), sw, sh, this);
+	//		sym.draw(g2, this);
+			
+			int pw = (int) (plane.PLANE_WIDTH*ratioX);
+			int ph = (int) (plane.PLANE_HEIGHT*ratioY);
+//			
+			plane.draw(g2, plane.getImage(), (int)plane.getX(), (int) plane.getY(), pw, ph, this);
+		
+//			plane.draw(g2, this);
+			
 			for (Helicopter heli : obstacles) {
-				heli.draw(g2, this);
+				
+				int hw = (int) (heli.COPTER_WIDTH*ratioX);
+				int hh = (int) (heli.COPTER_HEIGHT*ratioY);
+//				
+//				heli.draw(g2, this);
+				heli.draw(g2, heli.getImage(), (int)heli.getX(), (int) heli.getY(), hw, hh, this);
 			}	
 		}
 		

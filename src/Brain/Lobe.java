@@ -2,6 +2,7 @@ package Brain;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 
@@ -15,9 +16,16 @@ public abstract class Lobe extends JPanel implements ActionListener{
 	public static final int DRAWING_HEIGHT = 600;
 	private JButton menu, back;
 	private Image winImage, loseImage;
+	private JPanel mainPanel;
 	
 	public Lobe() {
-	   
+		
+		mainPanel = new JPanel();
+		
+//		GridLayout layout = new GridLayout(0,2, 30, 0);
+//		setLayout(layout);
+		
+		
 		menu = new JButton();
 		menu = new JButton("MENU");
 		menu.setBackground(Color.WHITE);
@@ -30,7 +38,11 @@ public abstract class Lobe extends JPanel implements ActionListener{
 		back.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		back.setSize(100, 50);
 		back.setLocation(25, 20);
+
+		mainPanel.add(menu);
+		mainPanel.add(back);
 		
+		//add(mainPanel);
 		 
 		add(back);
 		back.addActionListener(this);
@@ -67,6 +79,38 @@ public abstract class Lobe extends JPanel implements ActionListener{
 	
 	public Image getLoseImage() {
 		return loseImage;
+	}
+	
+	public int getMenuX() {
+		return menu.getX();
+	}
+	
+	public int getMenuY() {
+		return menu.getY();
+	}
+	
+	public int getMenuWidth() {
+		return menu.getWidth();
+	}
+	
+	public int getMenuHeight() {
+		return menu.getHeight();
+	}
+	
+	public int getBackX() {
+		return back.getX();
+	}
+	
+	public int getBackY() {
+		return back.getY();
+	}
+	
+	public int getBackWidth() {
+		return back.getWidth();
+	}
+	
+	public int getBackHeight() {
+		return back.getHeight();
 	}
 	
 }

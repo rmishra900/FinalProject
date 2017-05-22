@@ -351,7 +351,12 @@ public class Frontal extends Lobe {
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
-		 
+		
+		menu.setBounds(150, 20, (int)(100*ratioX), (int)(50*ratioY));
+		back.setBounds(25, 20, (int)(100*ratioX), (int)(50*ratioY));
+		
+		score.setBounds(350, 20, (int)(150*ratioX), (int)(30*ratioY));
+		
 	   for(Arrow a: arrows) {
 		   a.setPointingTo(pointingTo);
 		   a.setDirection(direction);

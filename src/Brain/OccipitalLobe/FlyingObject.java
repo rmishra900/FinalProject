@@ -49,4 +49,12 @@ public class FlyingObject extends Rectangle2D.Double {
 	public void draw(Graphics g, ImageObserver io) {
 		g.drawImage(image,(int)x,(int)y,(int)(width),(int)(height),io);
 	}
+	
+	public void draw(Graphics g, Image img, int x, int y, int w, int h, ImageObserver io) {
+		g.drawImage(image, x, y,w, h, io);
+	}
+	
+	public Image getImage() {
+		return image;
+	}
 }
