@@ -97,7 +97,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	private void initializeObstacles() {
 		
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
-		symNum = (int)(Math.random()*5) + 1;
+		symNum = (int)(Math.random()*6) + 1;
 		int x1 = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
 		int y1 = 100 + (int) (Math.random()*(DRAWING_HEIGHT-150));
 		if (!(x1 == plane.getX() && y1 == plane.getY()))
