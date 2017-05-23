@@ -30,7 +30,7 @@ public class SymbolPanel extends Lobe implements ActionListener {
 	private int correct;
 	
 	private int numCorrect;
-	private JLabel score, win;
+	private JLabel score;
 	
 	private Coma c;
 	/**
@@ -104,6 +104,10 @@ public class SymbolPanel extends Lobe implements ActionListener {
 	 */
 	public void setCorrect() { correct = -1; }
 	
+	/**
+	 * Sets the field correct to the value passed in. 
+	 * @param x the new value to indicate if the user is correct or not
+	 */
 	public void setCorrect(int x) { correct = x; }
 	
 	/**
@@ -114,14 +118,26 @@ public class SymbolPanel extends Lobe implements ActionListener {
 		return correct; 
 	}
 	
+	/**
+	 * 
+	 * @return the number of points the user has
+	 */
 	public int getScore() { 
 		return numCorrect; 
 	}
 	
+	/**
+	 * Sets the number of points the user has. 
+	 * @param score the new number of points the user has
+	 */
 	public void setScore(int score) {
 		numCorrect = score;
 	}
 	
+	/**
+	 * 
+	 * @return the JLabel for the points the user has
+	 */
 	public JLabel getScoreLabel() {
 		return score;
 	}

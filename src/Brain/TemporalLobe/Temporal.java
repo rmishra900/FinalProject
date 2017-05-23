@@ -31,7 +31,8 @@ import Brain.Lobe;
 import Coma.Coma;
 
 /**
- * @author 
+ * Sets the scene for the “Locked” game
+ * @author Anisha and Reet
  * @version 5/18/17
  */
 public class Temporal extends Lobe{
@@ -43,18 +44,14 @@ public class Temporal extends Lobe{
 	private JButton back, menu, play, clear;
 	private Image background;
 
-	
-	private int[] previousCodes;
-	//private JLabel buttonsPressed;
 
 	private JTextField buttonsPressed;
-	private String buttonsPressedText;
 	private JLabel win;
 	private Image winImage;
 	private Image winBackground;
 	
 	private int[] passcode;
-//	int counter = 0;
+
 
 	
 	/**
@@ -69,11 +66,10 @@ public class Temporal extends Lobe{
 		k.setTemporal(this);
 		setLayout(null);
 		
-		//room = new Room("temporalBackground.jpg", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
 		passcode = getRandPasscode();
 		background = new ImageIcon("temporal" + System.getProperty("file.separator") + "temporalBackground.jpg").getImage();
 		
-		previousCodes = new int[4];
+
 		winBackground = new ImageIcon("temporal" + System.getProperty("file.separator") + "temporalWin.jpg").getImage();
 	
 		buttonsPressed = new JTextField();
@@ -161,15 +157,12 @@ public class Temporal extends Lobe{
 					remove(buttonsPressed);
 					remove(play);
 					remove(clear);
-					//win.setText("YOU WIN!");
-					//win.setBounds((int)((DRAWING_WIDTH / 2 - 250)*ratioX), (int)((DRAWING_HEIGHT / 2 - 50)*ratioY), (int)(500*ratioX), (int)(100*ratioY));
 					
 					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 					g.setFont(new Font("Roman Baseline", 3, 100));
 					g.setColor(Color.BLACK);
 					g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 					c.setWon(4);
-		//			c.changeToOver();
 					return;
 				}
 			}
@@ -184,9 +177,6 @@ public class Temporal extends Lobe{
 			remove(play);
 			remove(clear);
 			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
-		//	win.setText("YOU WIN!");
-		//	win.setBounds((int)(150*ratioX), (int)(200*ratioY), (int)(500*ratioX), (int)(100*ratioY));
-			
 			g.setFont(new Font("Roman Baseline", 3, 100));
 			g.setColor(Color.BLACK);
 			g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
@@ -198,6 +188,11 @@ public class Temporal extends Lobe{
 		repaint();
 	}
 	
+	/**
+	 * Returns a boolean for whether this game has been won or not. 
+	 * @param x the passcode needed to win the game.
+	 * @return true if the game was won, false if otherwise
+	 */
 	public boolean winGame(int x) {
 		if(Integer.toString(passcode[x]).equals(k.getEntered(x))) {
 			return true;
@@ -212,7 +207,6 @@ public class Temporal extends Lobe{
 	 */
 	public void reset() {
 		buttonsPressed.setText("");
-		buttonsPressedText = "";
 		k.setEntered("");
 		passcode = getRandPasscode();
 		win.setText("");
@@ -263,7 +257,6 @@ public class Temporal extends Lobe{
 		}
 		else if(src == clear) {
 			buttonsPressed.setText("");
-			buttonsPressedText = "";
 			k.setEntered("");
 		}
 	}

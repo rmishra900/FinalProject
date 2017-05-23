@@ -5,21 +5,14 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import Brain.Lobe;
 
@@ -95,7 +88,6 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	}
 	
 	private void initializeObstacles() {
-		
 		plane = new Airplane(100 + (int) (Math.random()*(DRAWING_WIDTH-150)), 100 + (int) (Math.random()*(DRAWING_HEIGHT-150)));
 		symNum = (int)(Math.random()*6) + 1;
 		int x1 = 100 + (int) (Math.random()*(DRAWING_WIDTH-150));
@@ -115,10 +107,6 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		}
 	}
 	
-	public void reset() {
-		initializeObstacles();
-	}
-	
 	/**
 	 * Returns the number used to identify the symbol on this JPanel. 
 	 * @return the number used to identify the symbol on this JPanel. 
@@ -127,15 +115,16 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		return symNum;
 	}
 	
+	/**
+	 * 
+	 * @return the SymbolPanel associated with this game
+	 */
 	public SymbolPanel getSP() {
 		return sp;
 	}
 	
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g); // Call JPanel's paintComponent method to paint
-									// the background
-
-		
+		super.paintComponent(g); 		
 		
 		Graphics2D g2 = (Graphics2D) g;
 		
@@ -224,6 +213,9 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		}
 	}
 	
+	/**
+	 * Displays the game on the screen, handles score, winning/losing, and ends it when needed.
+	 */
 	public void act() {
 		remove(win);
 		lost = false;
@@ -275,7 +267,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	add(win);
 	 	    	sp.setScore(0);
 	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
-	 	    	reset();
+	 	    	initializeObstacles();
 	 	    	break;
 	 	    } else if (correct == 1) {
 	 	    	sp.setScore(sp.getScore()+10);
@@ -320,7 +312,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	add(win);
 	 	    	sp.setScore(0);
 	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
-	 	    	reset();
+	 	    	initializeObstacles();
 	 	    	break;
 	 	    }
 	    	sp.setCorrect();
@@ -334,11 +326,9 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 		    win.setText("YOU WIN");
 	 		    add(win);
  	    		c.setWon(2);
- 	    		
- 	    	//	c.changeToOver();
  	    		break;
 	    	}
-	    	reset();
+	    	initializeObstacles();
 		} while (sp.getScore() > 0);
 		sp.setCorrect();
 	}

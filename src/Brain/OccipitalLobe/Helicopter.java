@@ -7,7 +7,14 @@ package Brain.OccipitalLobe;
  */
 public class Helicopter extends FlyingObject {
 	
+	/**
+	 * The width of the helicopter. 
+	 */
 	public static final int COPTER_WIDTH = 70;
+	
+	/**
+	 * The height of the helicopter. 
+	 */
 	public static final int COPTER_HEIGHT = 40;
 	
 	/**

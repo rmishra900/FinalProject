@@ -8,15 +8,16 @@ import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 
 /**
- * Represents a symbol that can appear randomly on the screen.
+ * Represents a symbol that can appear on the screen.
  * @author Anisha
  * @version 5/15/2017
  */
 public class Symbol extends FlyingObject {
-	private Image image;
-	public static final int SYMBOL_WIDTH = 40;
 	
-	private int x, y;
+	/**
+	 * The width of a symbol. 
+	 */
+	public static final int SYMBOL_WIDTH = 40;
 
 	/**
 	 * Constructs a new instance of a symbol at location (x, y)
@@ -27,9 +28,5 @@ public class Symbol extends FlyingObject {
 	public Symbol(String filename, int x, int y) {
 		super("occipital" + System.getProperty("file.separator") + filename, x, y, SYMBOL_WIDTH, SYMBOL_WIDTH);
 	}
-	
-//	public Image getImage() {
-//		return image;
-//	}
 	
 }

@@ -21,7 +21,7 @@ public class TemporalRules extends Rules{
 	private Image play, clear;
 
 	/**
-	 * Initializes this rules panel.
+	 * Constructs a JPanel with rules of the Locked and a Begin button to start the game
 	 * @param c the overall Coma game the rules of this mini game belongs to
 	 */
 	public TemporalRules(Coma c) {
@@ -34,7 +34,7 @@ public class TemporalRules extends Rules{
 	
 	/**
 	 * Returns the text representing rules for the game
-	 * @return String that represents the rules for Flying Arrows
+	 * @return String that represents the rules for Locked
 	 */
 	public String getText() {
 		String rules;
@@ -62,11 +62,11 @@ public class TemporalRules extends Rules{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+		g2.setTransform(at);
 		
 		g.drawImage(play, DRAWING_WIDTH / 3, DRAWING_HEIGHT / 2 - 100, 100, 40, this);
 		g.drawImage(clear, DRAWING_WIDTH / 2 - 100, DRAWING_HEIGHT - 190, 100, 40, this);
 		
-		g2.setTransform(at);
 	}
 	
 	@Override

@@ -50,6 +50,10 @@ public class Button implements ActionListener{
 	
 	}
 	
+	/**
+	 * Adds an ActionListener to this button
+	 * @param a ActionListener to attach to this button
+	 */
 	public void addActionListener(ActionListener a) {
 		b.addActionListener(a);
 	}
@@ -58,10 +62,6 @@ public class Button implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		s.play();
 		pressed = true;
-	}
-	
-	public boolean isPressed() {
-		return pressed;
 	}
 	
 	/**
@@ -192,18 +192,5 @@ public class Button implements ActionListener{
 	public void setJButton(JButton b) {
 		this.b = b;
 	}
-	
-//	 public boolean isPressed() {
-//	    	if(getJButton().getModel().isPressed()) {
-//	    		
-//	    		return true;
-//	    	}
-//	    	else {
-//	    		System.out.println("hello");
-//	    		return false;
-//	    	}
-//	    		
-//	    }
-//	
 
 }
