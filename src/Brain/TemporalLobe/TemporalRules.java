@@ -26,8 +26,9 @@ public class TemporalRules extends Rules{
 	public TemporalRules(Coma c) {
 		super();
 		this.c = c;
-		play = (new ImageIcon("temporal" + System.getProperty("file.separator") + "playLocked.png")).getImage();
-		clear = (new ImageIcon("temporal" + System.getProperty("file.separator") + "clearLocked.png")).getImage();
+		play = (new ImageIcon("temporal" + System.getProperty("file.separator") + "playImg.png")).getImage();
+		clear = (new ImageIcon("temporal" + System.getProperty("file.separator") + "clearImg.png")).getImage();
+	
 	}
 
 	
@@ -61,11 +62,12 @@ public class TemporalRules extends Rules{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+		
+		
+		g.drawImage(play, DRAWING_WIDTH / 2 - 140 , DRAWING_HEIGHT -190, 100, 40, this);
+		g.drawImage(clear, DRAWING_WIDTH / 2 + 10, DRAWING_HEIGHT - 190, 100, 40, this);
+		
 		g2.setTransform(at);
-		
-		g.drawImage(play, DRAWING_WIDTH / 3, DRAWING_HEIGHT / 2 - 100, 100, 40, this);
-		g.drawImage(clear, DRAWING_WIDTH / 2 - 100, DRAWING_HEIGHT - 190, 100, 40, this);
-		
 	}
 	
 	@Override

@@ -1,9 +1,9 @@
 package Brain.OccipitalLobe;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 
 import javax.swing.*;
 
@@ -11,10 +11,9 @@ import Brain.Lobe;
 import Coma.Coma;
 
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridLayout;
+
 import java.awt.Color;
-import java.awt.Color.*;
+
 
 /**
  * Represents the screen displayed for the user to select a symbol.

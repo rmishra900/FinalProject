@@ -1,23 +1,19 @@
 package Coma;
-import java.awt.BasicStroke;
+
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.Stroke;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.font.GlyphVector;
-//import java.awt.event.MouseEvent;
-//import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+
 import javax.swing.JPanel;
 
 /**
@@ -63,13 +59,13 @@ public class Home extends JPanel implements KeyListener{
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Roman Baseline", 3, 100));
 		
-		g.drawString("C.O.M.A", 190, 100);
+		g.drawString("C.O.M.A", 180, 100);
 		g.setFont(new Font("Roman Baseline", Font.BOLD, 25));
 		g.setColor(Color.BLACK);
-		g.drawString("Press the space bar to begin", 225, 270);
+		g.drawString("Press the space bar to begin", 215, 270);
 		g.setFont(new Font("Roman Baseline", 0, 50));
 		g.setColor(Color.WHITE);
-		g.drawString("Cultivation Of Mind Abilities",90, 540);
+		g.drawString("Cultivation Of Mind Abilities",80, 540);
 		
 		repaint();
 	}

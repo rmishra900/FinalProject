@@ -1,6 +1,7 @@
 package Brain.ParietalLobe;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 
 /**
@@ -63,7 +64,6 @@ public class Triangle extends Shape {
 		for (int i = 0; i < xCoords.length; i ++) {
 			xCoords[i] -= move;
 		}
-//		System.out.println(move);
 	}
 
 	/**
@@ -72,7 +72,6 @@ public class Triangle extends Shape {
 	 * pressed and a is less than 0 if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
-//		vY += 0.85;
 		vY += 0.5;
 		
 		if (a > 0) {

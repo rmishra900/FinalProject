@@ -1,26 +1,25 @@
 package Brain.TemporalLobe;
 
 import java.awt.Color;
+
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
+
 
 import javax.swing.JButton;
 
 /**
- * 
- * @version 5/18/17
  * Represents a button on the keypad. 
+ * @version 5/18/17
  */
 public class Button implements ActionListener{
 	private String text;
 	private int x, y, w, h;
 	private Sound s;
 	private JButton b;
-	private boolean pressed;
+
 	
 	/**
 	 * Creates a new instance of a button on the keypad. 
@@ -45,7 +44,6 @@ public class Button implements ActionListener{
 		b.setSize(w, h);
 
 		b.addActionListener(this);
-		pressed = false;
 	
 	}
 	
@@ -60,7 +58,6 @@ public class Button implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		s.play();
-		pressed = true;
 	}
 	
 	/**

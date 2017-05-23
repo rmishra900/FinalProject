@@ -82,7 +82,6 @@ public class OccipitalRules extends Rules {
 			if (!c.getWon(2)) {
 				Thread t = new Thread("my non EDT thread") {
 		            public void run() {
-		                //my work
 		               ((Occipital) c.getPanel(3)).act();
 		            }
 				};

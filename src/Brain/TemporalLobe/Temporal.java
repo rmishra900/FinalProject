@@ -1,30 +1,23 @@
 package Brain.TemporalLobe;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
+
 import java.awt.Image;
-import java.awt.LayoutManager;
-import java.awt.Rectangle;
+
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
+
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ImageObserver;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+
 import javax.swing.JTextField;
 
 import Brain.Lobe;
@@ -148,8 +141,6 @@ public class Temporal extends Lobe{
 			}
 			
 			if(buttonsPressed.getText().length()==4) {		
-				System.out.println("passcode: "+ passcode[0] +
-						passcode[1]+passcode[2]+passcode[3]);
 				if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
 					remove(k);
 					remove(buttonsPressed);

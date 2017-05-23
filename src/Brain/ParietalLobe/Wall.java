@@ -1,6 +1,7 @@
 package Brain.ParietalLobe;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ public class Wall extends Rectangle2D.Double {
 	 * @param x the amount to move the shpaes by 
 	 */
 	public void act(int x) {
-//		vY += 0.5;
 		if (x > 0) {
 			y -= 15;
 		}
@@ -54,8 +54,6 @@ public class Wall extends Rectangle2D.Double {
 	 * @param g the Graphics object that draws this wall
 	 */
 	public void draw(Graphics g) {
-//		 g.setColor(new Color(219,108,121));
-//		 g.setColor(new Color(241,125,149));
 		 
 		 g.setColor(Color.BLUE);
 		 g.drawRoundRect((int)x, (int)y, (int)width, (int)height, 10, 10);

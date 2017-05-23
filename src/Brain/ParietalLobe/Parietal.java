@@ -43,7 +43,7 @@ public class Parietal extends Lobe implements KeyListener{
 		setLayout(null);
 		screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
 		background = (new ImageIcon("parietal" + System.getProperty("file.separator") + "ParietalBackground.gif")).getImage();
-		w = new Wall(40, 200, 90, 270); // Wall(x, y, vY, width, height)
+		w = new Wall(40, 200, 90, 270); 
 		s = new ArrayList<Shape>();
 		s.add(new Circle(DRAWING_WIDTH - 100, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 23, DRAWING_WIDTH / 400, Color.YELLOW));
 		s.add(new Triangle(DRAWING_WIDTH - 75, (int)(Math.random() * (DRAWING_HEIGHT - 150)), 45, DRAWING_WIDTH / 400, Color.YELLOW));
@@ -74,7 +74,6 @@ public class Parietal extends Lobe implements KeyListener{
 		clock2 = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				seconds--;
-//				timer.setText(format(seconds/60)+":"+format(seconds%60));
 				if(seconds == 0 || numCorrect >= threshold && seconds > 0) {
 					Timer x = (Timer) e.getSource();
 					x.stop();
@@ -115,6 +114,7 @@ public class Parietal extends Lobe implements KeyListener{
 		
 		if (!c.getWon(3)) {
 			if (continueGame) {
+				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);				
 				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 				
 				g.setColor(Color.WHITE);
@@ -146,7 +146,6 @@ public class Parietal extends Lobe implements KeyListener{
 			  		redrawWall();
 				
 				if(numCorrect >= threshold && seconds > 0 || seconds == 0) {
-					//c.setWon(3);
 					continueGame = false;
 					clock1.stop();
 					clock2.stop();
@@ -157,18 +156,17 @@ public class Parietal extends Lobe implements KeyListener{
 				clock2.stop();
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getWidth(), getHeight());
-				g.setColor(Color.RED);
-				g.setFont(new Font("Roman Baseline", 1, 100));
+				g.setColor(Color.BLACK);
+				g.setFont(new Font("Roman Baseline", 3, 100));
 				
 				if(numCorrect >= threshold && seconds > 0) {
 					c.setWon(3);
 					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);	
-	//				c.changeToOver();
 				}
 
 				else if (seconds == 0) {
-					g.setColor(Color.BLACK);
+					g.setColor(Color.RED);
 					g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 300, DRAWING_HEIGHT / 2);
 				}

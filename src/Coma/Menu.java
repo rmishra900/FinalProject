@@ -12,9 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-//import Brain.FrontalLobe.FlyingArrows;
+
 
 /**
  * Represents the screen displayed for the user to select a game to play. 
@@ -32,8 +31,6 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton home;
 	private Image background, occipitalImg, frontalImg, parietalImg, temporalImg;
 	private JLabel oLabel, tLabel, pLabel, fLabel;
-	
-	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
 	 * Constructs a new instance of this menu screen. 

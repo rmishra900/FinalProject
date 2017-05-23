@@ -1,21 +1,10 @@
 package Brain.TemporalLobe;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.AffineTransform;
-import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
 import javax.swing.JPanel;
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
+
 
 /**
  * Represents the keypad for the user to click a passcode on. 
@@ -26,7 +15,6 @@ public class Keypad extends JPanel implements ActionListener {
 	  private Button[] buttons;  
 	  private Sound[] sounds;
 	  private final int x, y, width, height;
-	  private boolean isPressed;
 	  private String passcodeEntered;
 	  private Temporal temporal=null;
 	  
@@ -39,10 +27,8 @@ public class Keypad extends JPanel implements ActionListener {
     	height = 450;
     	x = 200;
     	y = 80;
-    	setLayout(null);
-//    	
+    	setLayout(null);    	
     	setOpaque(true);
-    	
     	setBounds(x, y, width, height);
 
 		passcodeEntered = "";
@@ -184,7 +170,6 @@ public class Keypad extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (passcodeEntered.length() == 4)
 			resetEntered();
 		passcodeEntered += e.getActionCommand();

@@ -89,7 +89,6 @@ public class GameOver extends JPanel implements KeyListener{
 	 * Adds the words "Game Over" to this JPanel. 
 	 */
 	public void endGame() {
-		//c.changePanel("3");
 		repaint();
 		add(gameOver);
 	}
