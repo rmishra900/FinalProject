@@ -159,6 +159,10 @@ public class Frontal extends Lobe {
 	 */
 	public void setCorrect(int c) { correct = c; }
 	
+	/**
+	 * Returns arrayList of arrows on screen
+	 * @return arrayList of arrows
+	 */
 	public ArrayList<Arrow> getArrows() {
 		return arrows;
 	}
@@ -175,10 +179,18 @@ public class Frontal extends Lobe {
 	 */
 	public JLabel getScore() { return score; }
 	
+	/**
+	 * Returns Winning JLabel
+	 * @return JLabel with winning text
+	 */
 	public JLabel getWin() {
 		return win; 
 	}
 	
+	/**
+	 * Sets text of Jlabel used for diplaying win
+	 * @param w text to write in JLabel
+	 */
 	public void setWinText(String w) {
 		win.setText(w);
 	}
@@ -193,6 +205,9 @@ public class Frontal extends Lobe {
 		  score.setText("SCORE: " + correct);
 	}
 	
+	/**
+	 * Decreases scoreCount of user and sets JLabel representing score
+	 */
 	public void someoneLostPoints() {
 		
 		if(correct<=threshold && correct>0) {

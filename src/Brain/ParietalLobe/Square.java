@@ -41,7 +41,7 @@ public class Square extends Shape{
 	 */
 	public void act() {
 		x -= move;
-//		System.out.println(move);
+
 	}
 
 	/**
@@ -50,7 +50,6 @@ public class Square extends Shape{
 	 * 			if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
-//		vY += 0.5;
 		
 		if (a > 0) {
 			y -= 15;

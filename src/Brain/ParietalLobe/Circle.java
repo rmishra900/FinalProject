@@ -40,7 +40,6 @@ public class Circle extends Shape {
 	 */
 	public void act() {
 		x -= move;
-//		System.out.println(move);
 	}
 
 	/**

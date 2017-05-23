@@ -48,10 +48,8 @@ public class Keypad extends JPanel implements ActionListener {
     	height = 450;
     	x = 200;
     	y = 80;
-    	setLayout(null);
-//    	
+    	setLayout(null);    	
     	setOpaque(true);
-    	
     	setBounds(x, y, width, height);
 
 		passcodeEntered = "";
@@ -193,7 +191,6 @@ public class Keypad extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		if (passcodeEntered.length() == 4)
 			resetEntered();
 		passcodeEntered += e.getActionCommand();

@@ -64,13 +64,13 @@ public class Home extends JPanel implements KeyListener{
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Roman Baseline", 3, 100));
 		
-		g.drawString("C.O.M.A", 190, 100);
+		g.drawString("C.O.M.A", 180, 100);
 		g.setFont(new Font("Roman Baseline", Font.BOLD, 25));
 		g.setColor(Color.BLACK);
-		g.drawString("Press the space bar to begin", 225, 270);
+		g.drawString("Press the space bar to begin", 215, 270);
 		g.setFont(new Font("Roman Baseline", 0, 50));
 		g.setColor(Color.WHITE);
-		g.drawString("Cultivation Of Mind Abilities",90, 540);
+		g.drawString("Cultivation Of Mind Abilities",80, 540);
 		
 		repaint();
 	}
