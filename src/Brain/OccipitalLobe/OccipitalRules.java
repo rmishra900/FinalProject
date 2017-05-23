@@ -40,7 +40,7 @@ public class OccipitalRules extends Rules {
 				+ " at any given moment.<br><br>To play:<br>A city will be displayed with 1 airplane, multiple "
 				+ "helicopters, and a symbol in the sky. The city will then disappear. Use your mouse to click on where"
 				+ " the airplane was. Then, select the symbol you saw. <br><br>The game ends when you get any"
-				+ " answer incorrect. To win, you must get 200 points.</html>";
+				+ " answer incorrect. To win, you must get <b><u>200 points</b></u>.</html>";
 		
 	
 		return rules;

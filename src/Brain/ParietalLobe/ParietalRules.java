@@ -45,10 +45,10 @@ public class ParietalRules extends Rules{
 		String rules = "";
 		
 		rules = "<html>This game tests the Parietal Lobe of the brain which is responsible for sensory perception "
-				+ "and integration, including the management of taste, hearing, sigh, touch, and smell.<br><br>To play:<br> "
-				+ "Use the up and down arrow keys on your keyboard to control the blue panel on the left called the wall. "
-				+ "Match up the shapes that are shot out from the left side of the screen to the shapes on the wall. <br>You will "
-				+ "have 45 seconds to complete the game and you must reach <b><u>1000 points</b></u> to win.</html>";
+				+ "and integration.<br><br>To play:<br> "
+				+ "Use the up and down arrow keys on your keyboard to control the blue wall on the left. "
+				+ "Match up the shapes that are shot out from the left side of the screen to the shapes on the wall. You will "
+				+ "have <b><u>45 seconds</b></u> to complete the game and you must reach <b><u>1000 points</b></u> to win.</html>";
 		
 	
 		return rules;

@@ -18,7 +18,7 @@ import Coma.Coma;
  */
 public class TemporalRules extends Rules{
 	private Coma c;
-	private Image upArrow, downArrow, wall;
+	private Image play, clear;
 	/**
 	 * Initializes this rules panel.
 	 * @param l the Locked panel these rules belong to
@@ -27,9 +27,8 @@ public class TemporalRules extends Rules{
 	public TemporalRules(Coma c) {
 		super();
 		this.c = c;
-		upArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "upArrow.png")).getImage();
-		downArrow = (new ImageIcon("parietal" + System.getProperty("file.separator") + "downArrow.png")).getImage();
-		wall = (new ImageIcon("parietal" + System.getProperty("file.separator") + "wallParietal.png")).getImage();
+		play = (new ImageIcon("temporal" + System.getProperty("file.separator") + "playLocked.png")).getImage();
+		clear = (new ImageIcon("temporal" + System.getProperty("file.separator") + "clearLocked.png")).getImage();
 	}
 
 	@Override
@@ -42,8 +41,8 @@ public class TemporalRules extends Rules{
 		rules = "<html>This lobe of the brain coordinates auditory information. <br><br>"
 				+ "You are locked inside of a jail cell but provided with a keypad. To get "
 				+ "out, listen to the music representing the passcode by pressing the play "
-				+ "button. The numbers on the keypad will correspond with these sounds. "
-				+ "Find the correct 4-digit passcode combination to unlock the cell and escape. "
+				+ "button. <br><br>The numbers on the keypad will correspond with these sounds. "
+				+ "Find the correct <b><u>4-digit passcode combination</b></u> to unlock the cell and escape. "
 				+ "<br><br>Use the clear button whenever you need to clear the passcode you have "
 				+ "displayed.";
 		
@@ -63,6 +62,9 @@ public class TemporalRules extends Rules{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+		
+		g.drawImage(play, DRAWING_WIDTH / 3, DRAWING_HEIGHT / 2 - 100, 100, 40, this);
+		g.drawImage(clear, DRAWING_WIDTH / 2 - 100, DRAWING_HEIGHT - 190, 100, 40, this);
 		
 		g2.setTransform(at);
 	}
