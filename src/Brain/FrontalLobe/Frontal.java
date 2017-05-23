@@ -49,6 +49,7 @@ public class Frontal extends Lobe {
 	
 	/**
 	 * Contructs a timer, Jlabels for winning and losing, keyHandler, and initializes the arrows onto the screen
+	 * @param coma the game that this Frontal screen is for
 	 */
 	public Frontal(Coma coma) {
 		super();

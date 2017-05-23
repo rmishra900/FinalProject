@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 
 /**
  * Represents the screen that the user sees when they start playing the game. 
- * @author 
  * @version 5/15/2017
  *
  */

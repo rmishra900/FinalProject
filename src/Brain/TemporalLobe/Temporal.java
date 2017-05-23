@@ -32,7 +32,6 @@ import Coma.Coma;
 
 /**
  * Sets the scene for the “Locked” game
- * @author Anisha and Reet
  * @version 5/18/17
  */
 public class Temporal extends Lobe{
@@ -56,7 +55,6 @@ public class Temporal extends Lobe{
 	
 	/**
 	 * Creates a new instance of this game. 
-	 * @param l the main panel this game belongs to
 	 * @param c the overall Coma game this mini game belongs to
 	 */
 	public Temporal(Coma c) {

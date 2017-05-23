@@ -13,7 +13,6 @@ import Coma.Coma;
 
 /**
  * Represents the rules for "Locked"
- * @author 
  * @version 5/18/17
  */
 public class TemporalRules extends Rules{

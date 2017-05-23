@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 /**
  * Represents an abstract class of a shape object. 
- * @author Thanh Luong
  * @version 5/15/2017
  *
  */
@@ -20,6 +19,7 @@ public abstract class Shape {
 	 * @param xCoord the x-coordinate of the top left corner of the shape
 	 * @param yCoord the y-coordinate of the top left corner of the shape
 	 * @param c the color of the shape
+	 * @param move the amount the shape can move by
 	 */
 	public Shape(double xCoord, double yCoord, double move, Color c) {
 		x = xCoord;
@@ -30,7 +30,7 @@ public abstract class Shape {
 	
 	/**
 	 * Draws an instance of a type of shape object.
-	 * @param g
+	 * @param g the Graphics object used to draw this shape
 	 */
 	public abstract void draw(Graphics g);
 	
@@ -42,7 +42,7 @@ public abstract class Shape {
 	
 	/**
 	 *  Moves this shape with the wall by increasing or decreasing its y-coordinate, depending on the arrow key pressed.
-	 * @param x the integer that determines which arrow key is being pressed, a > 0 if the up arrow key is pressed and a < 0
+	 * @param x the integer that determines which arrow key is being pressed, a is greater than 0 if the up arrow key is pressed and a is less than 0
 	 * 			if the down arrow key is pressed
 	 */
 	public abstract void moveWithWall(int x);

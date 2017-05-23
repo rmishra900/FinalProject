@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 
 /**
  * 
- * @author Anisha
  * @version 5/15/2017
  */
 

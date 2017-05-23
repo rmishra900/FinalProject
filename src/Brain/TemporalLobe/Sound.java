@@ -10,7 +10,6 @@ import javax.sound.sampled.SourceDataLine;
 
 /**
  * Represents a sound. 
- * @author Anisha
  *
  */
 public class Sound

@@ -27,7 +27,6 @@ import javax.swing.LayoutStyle;
 
 /**
  * Represents the keypad for the user to click a passcode on. 
- * @author reetmishra
  * @version 5/18/17
  */
 public class Keypad extends JPanel implements ActionListener {

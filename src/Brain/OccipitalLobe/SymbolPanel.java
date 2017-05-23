@@ -18,7 +18,6 @@ import java.awt.Color.*;
 
 /**
  * Represents the screen displayed for the user to select a symbol.
- * @author Anisha
  * @version 5/15/2017
  */
 public class SymbolPanel extends Lobe implements ActionListener {
@@ -35,6 +34,7 @@ public class SymbolPanel extends Lobe implements ActionListener {
 	private Coma c;
 	/**
 	 * Constructs a new instance of SymbolPanel by initializing all buttons. 
+	 * @param c the game that this SymbolPanel screen is for.
 	 */
 	public SymbolPanel(Coma c) {
 		this.c = c;

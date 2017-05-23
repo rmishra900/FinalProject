@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 
 /**
  * Represents a symbol that can appear on the screen.
- * @author Anisha
  * @version 5/15/2017
  */
 public class Symbol extends FlyingObject {

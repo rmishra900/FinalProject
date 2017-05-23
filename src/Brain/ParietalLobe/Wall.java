@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 /**
  * Represents a 2D rectangle to act as a wall containing three holes of the three shapes (circle, triangle, square). 
- * @author Thanh Luong
  * @version 5/15/2017
  *
  */
@@ -20,7 +19,6 @@ public class Wall extends Rectangle2D.Double {
 	 * Constructs an instance of this wall containing the holes of the three shapes.
 	 * @param x the x-coordinate of the top left corner of the wall
 	 * @param y the y-coordinate of the top left corner of the wall
-	 * @param vY the velocity of the wall object in the y-direction
 	 * @param width the width of the wall
 	 * @param height the height of the wall
 	 */
@@ -35,6 +33,7 @@ public class Wall extends Rectangle2D.Double {
 	
 	/**
 	 * Moves this wall up or down by decreasing its x-coordinate by a certain velocity.
+	 * @param x the amount to move the shpaes by 
 	 */
 	public void act(int x) {
 //		vY += 0.5;
