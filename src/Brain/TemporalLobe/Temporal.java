@@ -37,14 +37,12 @@ import Coma.Coma;
 public class Temporal extends Lobe{
 	
 	private Coma c;
-	
-	private Room room;
+
 	private Keypad k;
 
 	private JButton back, menu, play, clear;
+	private Image background;
 
-	private int numCorrect;
-	private int panelNumber;
 	
 	private int[] previousCodes;
 	//private JLabel buttonsPressed;
@@ -54,6 +52,8 @@ public class Temporal extends Lobe{
 	private JLabel win;
 	private Image winImage;
 	private Image winBackground;
+	
+	private int[] passcode;
 //	int counter = 0;
 
 	
@@ -69,7 +69,10 @@ public class Temporal extends Lobe{
 		k.setTemporal(this);
 		setLayout(null);
 		
-		room = new Room("temporalBackground.jpg", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		//room = new Room("temporalBackground.jpg", getRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		passcode = getRandPasscode();
+		background = new ImageIcon("temporal" + System.getProperty("file.separator") + "temporalBackground.jpg").getImage();
+		
 		previousCodes = new int[4];
 		winBackground = new ImageIcon("temporal" + System.getProperty("file.separator") + "temporalWin.jpg").getImage();
 	
@@ -112,14 +115,14 @@ public class Temporal extends Lobe{
 		add(win);
 		add(buttonsPressed);
 		add(k);
+		k.setVisible(true);
 		setVisible(true);
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); 
 		
-		//g.drawImage(rooms[panelNumber].getBackground(), 0, 0, getWidth(), getHeight() , this);
-		g.drawImage(room.getBackground(), 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 		
 		Graphics2D g2 = (Graphics2D)g;
 
@@ -151,8 +154,8 @@ public class Temporal extends Lobe{
 			}
 			
 			if(buttonsPressed.getText().length()==4) {		
-				System.out.println("passcode: "+room.getPasscodeAtIndex(0) +
-						room.getPasscodeAtIndex(1)+room.getPasscodeAtIndex(2)+room.getPasscodeAtIndex(3));
+				System.out.println("passcode: "+ passcode[0] +
+						passcode[1]+passcode[2]+passcode[3]);
 				if(winGame(0) && winGame(1) && winGame(2) && winGame(3)) {
 					remove(k);
 					remove(buttonsPressed);
@@ -196,7 +199,7 @@ public class Temporal extends Lobe{
 	}
 	
 	public boolean winGame(int x) {
-		if(room.getPasscodeAtIndex(x).equals(k.getEntered(x))) {
+		if(Integer.toString(passcode[x]).equals(k.getEntered(x))) {
 			return true;
 		}
 		return false;
@@ -211,20 +214,13 @@ public class Temporal extends Lobe{
 		buttonsPressed.setText("");
 		buttonsPressedText = "";
 		k.setEntered("");
-		room = new Room("temporalBackground.jpg", getUniqueRandPasscode(), DRAWING_WIDTH, DRAWING_HEIGHT);
+		passcode = getRandPasscode();
 		win.setText("");
 		add(buttonsPressed);
 		add(play);
 		add(k);
 	}
-	
-	/**
-	 * 
-	 * @return the array of Rooms used in this game
-	 */
-	public Room getRoom() {
-		return room;
-	}
+
 	
 	/**
 	 * @return a random 4-digit code
@@ -239,28 +235,14 @@ public class Temporal extends Lobe{
 	}
 	
 	/**
-	 * 
-	 * @return a random 4-digit code that has not been used yet
+	 * Plays the sound of this room that the user needs to enter a passcode for.
 	 */
-	public int[] getUniqueRandPasscode() {
-		int[] p = room.getPasscode();
-		
-		for (int i = 0; i < 4; i++) {
-			p[i] = (int)(Math.random()*10);
+	public void playSound() {
+		for(int i =0; i<passcode.length; i++) {
+			k.getButton(passcode[i]).getSound().play();
 		}
-
-		for (int code : previousCodes) {
-			while (code == p[3])
-				p[3] = (int)(Math.random()*10);
-		}
-
-		for (int c = 0; c < 4; c++) {
-			previousCodes[c] = p[c];
-		}
-		
-		
-		return p;
 	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -277,7 +259,7 @@ public class Temporal extends Lobe{
 			c.changePanel("3");
 		}	
 		else if(src == play) {
-			room.playSound();
+			playSound();
 		}
 		else if(src == clear) {
 			buttonsPressed.setText("");
