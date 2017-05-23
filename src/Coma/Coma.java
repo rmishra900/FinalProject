@@ -1,19 +1,14 @@
 package Coma;
 
 import java.awt.CardLayout;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.AffineTransform;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
-//import Brain.FrontalLobe.FlyingArrows;
 import Brain.FrontalLobe.Frontal;
 import Brain.FrontalLobe.FrontalRules;
 import Brain.OccipitalLobe.Occipital;
@@ -114,6 +109,11 @@ public class Coma extends JFrame {
 	}
 	
 
+	/**
+	 * Returns a panel of a specific game depending on the number parameter. 
+	 * @param i the number of the panel corresponding to a specific game
+	 * @return the JPanel of the game corresponding to the parameter integer
+	 */
 	public JPanel getPanel(int i) {
 		if (i == 1)
 			return f;
@@ -140,10 +140,18 @@ public class Coma extends JFrame {
 		requestFocus();
 	}
 	
+	/**
+	 * 
+	 * @return true if the game is over, false if otherwise
+	 */
 	public boolean getOver() {
 		return isOver;
 	}
 	
+	/**
+	 * Sets a specific game based on an integer value to won.
+	 * @param i the integer corresponding to a specific game
+	 */
 	public void setWon(int i) {
 		wins++;
 		if(wins == 4) {
@@ -165,11 +173,17 @@ public class Coma extends JFrame {
 			temporalWin = true;
 	}
 	
+	/**
+	 * 
+	 * @return the number of mini games won
+	 */
 	public int getWins() {
 		return wins;
 	}
 
-	
+	/**
+	 * Reset each mini game to not won.
+	 */
 	public void resetWins() {
 		frontalWin = false;
 		occipitalWin = false;
@@ -178,7 +192,10 @@ public class Coma extends JFrame {
 		wins = 0;
 	}
 	
-	
+	/**
+	 * Reset a specific mini game to not won. 
+	 * @param i the integer corresponding to a particular mini game
+	 */
 	public void resetWins(int i) {
 		wins--;
 		if (i == 1)
@@ -191,6 +208,11 @@ public class Coma extends JFrame {
 			temporalWin = false;
 	}
 	
+	/**
+	 * 
+	 * @param i the integer corresponding to a specific mini game
+	 * @return true if the mini game corresponding to a particular integer has been won, false if otherwise
+	 */
 	public boolean getWon(int i) {
 		if (i == 1)
 			return frontalWin;
@@ -203,20 +225,5 @@ public class Coma extends JFrame {
 		else
 			return false;
 	}
-	
-//	public void changeToOver() {
-//		
-//		if(getOver()) {
-//	//if(frontalWin && occipitalWin && parietalWin && temporalWin) {
-//		//if()
-//			//changePanel("3");
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//			changePanel("4");	
-//		}
-//	}
 
 }

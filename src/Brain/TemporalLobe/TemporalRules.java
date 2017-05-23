@@ -19,9 +19,9 @@ import Coma.Coma;
 public class TemporalRules extends Rules{
 	private Coma c;
 	private Image play, clear;
+
 	/**
-	 * Initializes this rules panel.
-	 * @param l the Locked panel these rules belong to
+	 * Constructs a JPanel with rules of the Locked and a Begin button to start the game
 	 * @param c the overall Coma game the rules of this mini game belongs to
 	 */
 	public TemporalRules(Coma c) {
@@ -31,10 +31,10 @@ public class TemporalRules extends Rules{
 		clear = (new ImageIcon("temporal" + System.getProperty("file.separator") + "clearLocked.png")).getImage();
 	}
 
-	@Override
-
+	
 	/**
-	 * @return the instructions of this game
+	 * Returns the text representing rules for the game
+	 * @return String that represents the rules for Locked
 	 */
 	public String getText() {
 		String rules;

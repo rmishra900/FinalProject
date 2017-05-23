@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 
 /**
  * The class that represents all the Arrow objects into the screen for the game
- * @author reetmishra
+ * @version 5/22/2017
  *
  */
 public class Frontal extends Lobe {
