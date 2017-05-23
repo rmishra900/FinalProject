@@ -81,9 +81,6 @@ public class Parietal extends Lobe implements KeyListener{
 				}
 			}
 		});
-		
-//		clock1.start();
-//		clock2.start();
 	}
 	
 	/**
@@ -119,10 +116,6 @@ public class Parietal extends Lobe implements KeyListener{
 		if (!c.getWon(3)) {
 			if (continueGame) {
 				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-//				g.setColor(Color.WHITE);
-//				g.fillRoundRect(DRAWING_WIDTH / 2 - 100, 5, 190, 50, 10, 10);
-//				g.setColor(Color.BLACK);
-//				g.drawRoundRect(DRAWING_WIDTH / 2 - 90, 15, 170, 30, 10, 10);
 				
 				g.setColor(Color.WHITE);
 				g.setFont(new Font("Roman Baseline", 1, 24));

@@ -22,10 +22,6 @@ public abstract class Lobe extends JPanel implements ActionListener{
 		
 		mainPanel = new JPanel();
 		
-//		GridLayout layout = new GridLayout(0,2, 30, 0);
-//		setLayout(layout);
-		
-		
 		menu = new JButton();
 		menu = new JButton("MENU");
 		menu.setBackground(Color.WHITE);
