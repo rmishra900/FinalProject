@@ -35,11 +35,11 @@ public class FrontalRules extends Rules {
 		String rules = "";
 		
 		rules = "<html>This game tests the Frontal Lobe of the brain which is responsible for cognitive thinking "
-				+ "including task switching, memory and impulse control.<br><br>To play, "
-				+ "Press arrow key that corresponds to the direction the arrows are moving in."
+				+ "including task switching, memory and impulse control.<br>To play: "
 				+ "<br><br>If arrows are red - press the arrow key that corresponds to the direction the arrows "
 				+ "are pointing to.<br><br>If arrows are blue - press the arrow on the keyboard that corresponds "
-				+ "to the opposite direction the arrows are moving.</html>";
+				+ "to the opposite direction the arrows are moving.<br><br> If arrows are green - press the arrow on the keyboard that corresponds "
+				+ "to the same direction the arrows are moving. <br><br> To win, you must reach 200 points in 30 seconds.</html>";
 		
 	
 		return rules;

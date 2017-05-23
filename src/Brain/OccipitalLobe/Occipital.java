@@ -269,7 +269,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	lost = true;
 	 	    	score.setForeground(Color.BLACK);
 	 	    	win.setForeground(Color.RED);
-	 	    	win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+	 	    	win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 	 	    	win.setSize(750,100);
 	 	    	win.setText("YOU LOSE");
 	 	    	add(win);
@@ -313,7 +313,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	setBackground(Color.WHITE);
 	 	    	score.setForeground(Color.BLACK);
 	 	    	win.setForeground(Color.RED);
-	 	    	win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
+	 	    	win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 	 	    	win.setSize(750,100);
 	 	    	win.setText("YOU LOSE");
 	 	    	lost = true;
