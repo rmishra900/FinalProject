@@ -150,11 +150,11 @@ public class Menu extends JPanel implements ActionListener {
 //		if(c.getWins() == 4)
 //			c.changePanel("4"); SHELBY SAID DON'T DO THIS HERE
 		if (c.getWon(1)) 
-			g.drawImage(frontalImg, 200, 100, 223, 204, this);
+			g.drawImage(frontalImg, 204, 100, 223, 204, this);
 		if (c.getWon(2))
 			g.drawImage(occipitalImg, 475, 178, 123, 210, this);
 		if (c.getWon(3))
-			g.drawImage(parietalImg, 372, 100, 211, 150, this);
+			g.drawImage(parietalImg, 375, 100, 211, 150, this);
 		if (c.getWon(4)) 
 			g.drawImage(temporalImg, 294, 225, 246, 238, this);
 		
