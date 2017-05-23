@@ -1,4 +1,4 @@
-﻿COMA
+COMA - Cultivation Of Mind Abilities
 Anisha Chandra (P1), Reet Mishra (P5), Thanh Luong (P5)
 5/4/2017
 
