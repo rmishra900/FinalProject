@@ -153,6 +153,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		g2.scale(ratioX, ratioY);
 		g2.setTransform(at);
 		
+		
 		score.setBounds((int)(400*ratioX),(int)(20*ratioY),(int)(150*ratioX),(int)(30*ratioY));
 		win.setBounds((int)((DRAWING_WIDTH / 2 - 250)*ratioX),(int)((DRAWING_HEIGHT / 2 - 50)*ratioY),(int)(500*ratioX),(int)(100*ratioY));
 		if (showObjects) {
@@ -182,6 +183,10 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 			g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 			score.setForeground(Color.BLACK);
 		} 
+		
+		if(lost) {
+			g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
+		}
 		repaint();
 	}
 	
@@ -205,16 +210,23 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == back)
+		if (src == back) {
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
 			c.changePanel("11");
+		}
 		else if (src == menu) {
+			if (c.getOver()) {
+				c.changePanel("4");
+			}
 			c.changePanel("3");
 		}
 	}
 	
 	public void act() {
 		remove(win);
-
+		lost = false;
 		score.setText("Score: " + sp.getScore());
 		setBackground(Color.WHITE);
 		do {
@@ -254,10 +266,11 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    if (correct == 0) {
 	 	    	c.changePanel("12");
 	 	    	setBackground(Color.WHITE);
+	 	    	lost = true;
 	 	    	score.setForeground(Color.BLACK);
 	 	    	win.setForeground(Color.RED);
 	 	    	win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
-	 	    	win.setSize(550,100);
+	 	    	win.setSize(750,100);
 	 	    	win.setText("YOU LOSE");
 	 	    	add(win);
 	 	    	sp.setScore(0);
@@ -296,12 +309,14 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	    	
 	 	    else if (sp.getCorrect() == 0) {
 	 	    	c.changePanel("12");
+	 	    	lost = true;
 	 	    	setBackground(Color.WHITE);
 	 	    	score.setForeground(Color.BLACK);
 	 	    	win.setForeground(Color.RED);
 	 	    	win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
-	 	    	win.setSize(550,100);
+	 	    	win.setSize(750,100);
 	 	    	win.setText("YOU LOSE");
+	 	    	lost = true;
 	 	    	add(win);
 	 	    	sp.setScore(0);
 	 	    	sp.getScoreLabel().setText("Score: " + sp.getScore());
@@ -314,13 +329,13 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	    		showObjects = false;
 	    		setBackground(Color.WHITE);
 	    		score.setForeground(Color.BLACK);
-	 	    	win.setForeground(Color.RED);
+	 	    	win.setForeground(Color.BLACK);
 	    		win.setVisible(true);
 	 		    win.setText("YOU WIN");
 	 		    add(win);
  	    		c.setWon(2);
  	    		
- 	    		c.changeToOver();
+ 	    	//	c.changeToOver();
  	    		break;
 	    	}
 	    	reset();

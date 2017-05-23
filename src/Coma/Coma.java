@@ -146,8 +146,15 @@ public class Coma extends JFrame {
 	
 	public void setWon(int i) {
 		wins++;
-		if(wins == 4)
+		if(wins == 4) {
 			isOver = true;
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			changePanel("4");
+		}
 		if (i == 1)
 			frontalWin = true;
 		else if (i == 2)
@@ -197,18 +204,19 @@ public class Coma extends JFrame {
 			return false;
 	}
 	
-	public void changeToOver() {
-		
-	if(frontalWin && occipitalWin && parietalWin && temporalWin) {
-		
-			//changePanel("3");
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			changePanel("4");	
-		}
-	}
+//	public void changeToOver() {
+//		
+//		if(getOver()) {
+//	//if(frontalWin && occipitalWin && parietalWin && temporalWin) {
+//		//if()
+//			//changePanel("3");
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			changePanel("4");	
+//		}
+//	}
 
 }

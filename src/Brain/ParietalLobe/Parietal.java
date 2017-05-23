@@ -57,7 +57,7 @@ public class Parietal extends Lobe implements KeyListener{
 		
 
 		numCorrect = 0;
-		seconds = 30;
+		seconds = 45;
 		random = (int)(Math.random() * 3);
 		drawS1 = s.get(random);
 		continueGame = true;
@@ -153,7 +153,7 @@ public class Parietal extends Lobe implements KeyListener{
 			  		redrawWall();
 				
 				if(numCorrect >= threshold && seconds > 0 || seconds == 0) {
-					c.setWon(3);
+					//c.setWon(3);
 					continueGame = false;
 					clock1.stop();
 					clock2.stop();
@@ -171,13 +171,13 @@ public class Parietal extends Lobe implements KeyListener{
 					c.setWon(3);
 					g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 					g.drawString("YOU WIN", DRAWING_WIDTH / 2 - 220, DRAWING_HEIGHT / 2);	
-					c.changeToOver();
+	//				c.changeToOver();
 				}
 
 				else if (seconds == 0) {
 					g.setColor(Color.BLACK);
 					g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
-					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2);
+					g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 300, DRAWING_HEIGHT / 2);
 				}
 				
 				g.setColor(Color.BLACK);

@@ -37,22 +37,23 @@ public class GameOver extends JPanel implements KeyListener{
 		super();
 		this.c = c;
 		setLayout(null);
-		background = new ImageIcon("coma" + System.getProperty("file.separator") + "comaBackground.jpg").getImage();
+		background = new ImageIcon("coma" + System.getProperty("file.separator") + "Full.png").getImage();
 		gameOver = new JLabel("GAME OVER");
 		gameOver.setFont(new Font("Roman Baseline", 3, 100));
+		gameOver.setLocation(80, -50);
+		gameOver.setSize(800,200);
 		gameOver.setVisible(true);
-		setBackground(Color.WHITE);
+		setBackground(Color.BLACK);
 		gameOver.setForeground(Color.WHITE);
 		add(gameOver);
 		
 		text = new JLabel();
-		text.setLocation(0, 500);
-		text.setSize(800, 50);
+		text.setLocation(100, 430);
+		text.setSize(800, 200);
 		text.setFont(new Font("Roman Baseline", 1, 25));
 		text.setForeground(Color.WHITE);
-		text.setHorizontalAlignment(0);
-		text.setText("<html>Congratulations! You've unlocked all four lobes of your brain!<br> You are out of your coma!<br> Now, you can"
-				+ "enjoy life!</html>");
+		text.setText("<html><div style='text-align: center;'>"+"Congratulations! <br>You've unlocked all four lobes of your brain.<br> You are out of your coma.<br> Now, you can "
+				+ "enjoy life!</div></html>");
 		add(text);
 	}
 
@@ -60,7 +61,6 @@ public class GameOver extends JPanel implements KeyListener{
 	{
 		super.paintComponent(g); 
 
-		g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
 
 		Graphics2D g2 = (Graphics2D)g;
 
@@ -72,6 +72,11 @@ public class GameOver extends JPanel implements KeyListener{
 		        
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
+		
+		g.drawImage(background, 200, 100, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 250, this);
+		
+		gameOver.setBounds((int)(80*ratioX), (int)(-50*ratioY), (int)(800*ratioX), (int)(200*ratioX));
+		text.setBounds((int)(100*ratioX), (int)(400*ratioY), (int)(800*ratioX), (int)(200*ratioY));
 		
 		g2.setTransform(at);
 	}
