@@ -1,10 +1,4 @@
 package Brain.TemporalLobe;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,10 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
-
-
 /**
- * Represents the keypad for the user to click a passcode on. 
+ * Represents the keypad for the user to click a passcode on.
+ * @author Reet Mishra 
  * @version 5/18/17
  */
 public class Keypad extends JPanel implements ActionListener {
