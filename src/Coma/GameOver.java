@@ -87,8 +87,6 @@ public class GameOver extends JPanel implements KeyListener{
 		add(gameOver);
 	}
 	
-	
-	
 
 	@Override
 	public void keyPressed(KeyEvent e) {

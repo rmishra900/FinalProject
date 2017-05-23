@@ -47,6 +47,7 @@ public class Frontal extends Lobe {
 	private int prevX, direction, pointingTo, correct, threshold, seconds;
 	private Timer t;
 	private Color c;
+	private boolean won;
 	
 	
 	/**
@@ -85,7 +86,7 @@ public class Frontal extends Lobe {
 		img = new ImageIcon("frontal" + System.getProperty("file.separator") + "sky.png").getImage();
 		winImage = getWinImage();
 		initializeArrows();
-		
+		won = false;
 		
 		score = new JLabel("SCORE: "+correct);
 		score.setForeground(Color.WHITE);
@@ -385,6 +386,10 @@ public class Frontal extends Lobe {
 		   
 		  
 		 //  coma.changeToOver();
+		   if(!coma.getWon(1)) {
+			   coma.setWon(1);
+		   }
+		 
 		   score.setForeground(Color.BLACK);
 		   timer.setForeground(Color.BLACK);
 		   g.setColor(Color.WHITE);
@@ -393,11 +398,11 @@ public class Frontal extends Lobe {
 		   g.setColor(Color.BLACK);
 		   g.setFont(new Font("Roman Baseline", 3, 100));
 		  
-		 
+		 //  won = true;
 		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 		   g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
+		 
 		   
-		   coma.setWon(1);
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
@@ -412,7 +417,7 @@ public class Frontal extends Lobe {
 		 
 		   g.setColor(Color.RED);
 		   g.setFont(new Font("Roman Baseline", 3, 100));
-		  
+		   
 		  
 		   g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 		   g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
@@ -424,6 +429,7 @@ public class Frontal extends Lobe {
 	   if(correct>threshold) {
 		   return;
 	   }
+	 
 	  
 	   t.start();
 	   repaint();
@@ -672,14 +678,18 @@ public class Frontal extends Lobe {
 			if (coma.getOver()) {
 				coma.changePanel("4");
 			}
-			coma.changePanel("8");
+			else {
+				coma.changePanel("8");
+			}
 		}
 			
 		else if (src == menu) {
 			if (coma.getOver()) {
 				coma.changePanel("4");
 			}
-			coma.changePanel("3");
+			else {
+				coma.changePanel("3");
+			}
 		}
 	}
 
