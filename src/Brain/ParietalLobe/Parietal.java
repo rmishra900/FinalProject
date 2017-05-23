@@ -74,7 +74,6 @@ public class Parietal extends Lobe implements KeyListener{
 		clock2 = new Timer(1000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				seconds--;
-//				timer.setText(format(seconds/60)+":"+format(seconds%60));
 				if(seconds == 0 || numCorrect >= threshold && seconds > 0) {
 					Timer x = (Timer) e.getSource();
 					x.stop();
@@ -82,8 +81,7 @@ public class Parietal extends Lobe implements KeyListener{
 			}
 		});
 		
-//		clock1.start();
-//		clock2.start();
+
 	}
 	
 	/**
@@ -119,6 +117,8 @@ public class Parietal extends Lobe implements KeyListener{
 		if (!c.getWon(3)) {
 			if (continueGame) {
 				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);				
+				g.drawImage(background, 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
+				
 				g.setColor(Color.WHITE);
 				g.setFont(new Font("Roman Baseline", 1, 24));
 				g.drawString("SCORE: " + numCorrect, DRAWING_WIDTH / 2 - 80, 40);

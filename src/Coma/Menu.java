@@ -12,9 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-//import Brain.FrontalLobe.FlyingArrows;
+
 
 /**
  * Represents the screen displayed for the user to select a game to play. 
@@ -22,6 +21,7 @@ import javax.swing.JTextField;
  * @version 5/15/2017
  */
 public class Menu extends JPanel implements ActionListener {
+	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Coma c;
@@ -32,8 +32,6 @@ public class Menu extends JPanel implements ActionListener {
 	private JButton home;
 	private Image background, occipitalImg, frontalImg, parietalImg, temporalImg;
 	private JLabel oLabel, tLabel, pLabel, fLabel;
-	
-	//FlyingArrows f = new FlyingArrows("Flying Arrows", c);
 		
 	/**
 	 * Constructs a new instance of this menu screen. 
@@ -147,8 +145,6 @@ public class Menu extends JPanel implements ActionListener {
 		tLabel.setBounds((int)(20*ratioX),(int)(510*ratioY),(int)(150*ratioX),(int)(30*ratioY));
 		home.setBounds((int)(325*ratioX),(int)(500*ratioY),(int)(100*ratioX),(int)(50*ratioY));
 		
-//		if(c.getWins() == 4)
-//			c.changePanel("4"); SHELBY SAID DON'T DO THIS HERE
 		if (c.getWon(1)) 
 			g.drawImage(frontalImg, 204, 100, 223, 204, this);
 		if (c.getWon(2))

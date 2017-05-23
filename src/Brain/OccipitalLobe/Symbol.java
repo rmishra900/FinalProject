@@ -1,11 +1,6 @@
 package Brain.OccipitalLobe;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.ImageObserver;
 
-import javax.swing.ImageIcon;
 
 /**
  * Represents a symbol that can appear on the screen.

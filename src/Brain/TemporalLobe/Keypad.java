@@ -1,33 +1,14 @@
 package Brain.TemporalLobe;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.geom.AffineTransform;
-import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
 import javax.swing.JPanel;
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
-
 
 
 /**
- * Represents the keypad for the user to click a passcode on. 
- * @author reetmishra
+ * Represents the keypad for the user to click a passcode on.
+ * @author Reet Mishra 
  * @version 5/18/17
  */
 public class Keypad extends JPanel implements ActionListener {
@@ -35,14 +16,13 @@ public class Keypad extends JPanel implements ActionListener {
 	  private Button[] buttons;  
 	  private Sound[] sounds;
 	  private final int x, y, width, height;
-	  private boolean isPressed;
 	  private String passcodeEntered;
 	  private Temporal temporal=null;
 	  
 
-	  /**
-	   * Creates a default instance of a keypad. 
-	   */
+	/**
+     * Creates a default instance of a keypad. 
+	 */
     public Keypad() {
     	width = 400;
     	height = 450;
@@ -68,9 +48,9 @@ public class Keypad extends JPanel implements ActionListener {
    	
     }
 
-           /**
-            * Initializes the 10 buttons for the keypad.              
-            */
+    /**
+     * Initializes the 10 buttons for the keypad.              
+     */
     private void initializeButtons() {
     	int a = y;
     	int b = x-width/2 + 70;
