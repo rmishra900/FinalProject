@@ -22,6 +22,7 @@ import javax.swing.JTextField;
  * @version 5/15/2017
  */
 public class Menu extends JPanel implements ActionListener {
+	
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private Coma c;
@@ -147,8 +148,6 @@ public class Menu extends JPanel implements ActionListener {
 		tLabel.setBounds((int)(20*ratioX),(int)(510*ratioY),(int)(150*ratioX),(int)(30*ratioY));
 		home.setBounds((int)(325*ratioX),(int)(500*ratioY),(int)(100*ratioX),(int)(50*ratioY));
 		
-//		if(c.getWins() == 4)
-//			c.changePanel("4"); SHELBY SAID DON'T DO THIS HERE
 		if (c.getWon(1)) 
 			g.drawImage(frontalImg, 204, 100, 223, 204, this);
 		if (c.getWon(2))

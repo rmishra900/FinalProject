@@ -33,6 +33,10 @@ public class GameOver extends JPanel implements KeyListener{
 	private JLabel gameOver;
 	private JLabel text;
 	
+	/**
+	 * Constructs a new instance of this game over screen. 
+	 * @param c the game that this game over screen is for.
+	 */
 	public GameOver(Coma c) {
 		super();
 		this.c = c;
@@ -81,6 +85,9 @@ public class GameOver extends JPanel implements KeyListener{
 		g2.setTransform(at);
 	}
 	  
+	/**
+	 * Adds the words "Game Over" to this JPanel. 
+	 */
 	public void endGame() {
 		//c.changePanel("3");
 		repaint();
