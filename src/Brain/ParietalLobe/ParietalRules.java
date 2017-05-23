@@ -25,7 +25,8 @@ public class ParietalRules extends Rules{
 	private Coma c;
 	private Image upArrow, downArrow, wall;
 	/**
-	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
+	 * Constructs a JPanel with rules of the Hole In The Wall and a Begin button to start the game
+	 * @param c the overall Coma game the rules of this mini game belongs to
 	 */
 	public ParietalRules(Coma c) {
 		super();
@@ -39,7 +40,7 @@ public class ParietalRules extends Rules{
 	
 	/**
 	 * Returns the text representing rules for the game
-	 * @return String that represents the rules for FlyingArrows
+	 * @return String that represents the rules for Hole In The Wall
 	 */
 	public String getText() {
 		String rules = "";

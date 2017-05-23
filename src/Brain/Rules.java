@@ -17,15 +17,14 @@ import javax.swing.JPanel;
 public abstract class Rules extends JPanel implements ActionListener {
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-	
-	//private Image greenArrow, blueArrow, redArrow, background;
+
 	private Image background;
 	private JButton begin, menu;
 	private JLabel rulesBackground, rules;
 
 	
 	/**
-	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
+	 * Constructs a JPanel with an area for the text of the rules to be put and a Begin button to start the game
 	 */
 	public Rules() {
 		setLayout(null);
@@ -89,18 +88,12 @@ public abstract class Rules extends JPanel implements ActionListener {
 		menu.setBounds((int)(menu.getX()*ratioX),(int)(menu.getY()*ratioY),(int)(100*ratioX),(int)(50*ratioY));
 		rulesBackground.setBounds((int)(100*ratioX),(int)(50*ratioY),(int)(600*ratioX),(int)(450*ratioY));
 		rules.setBounds((int)(105*ratioX),(int)(55*ratioY),(int)(600*ratioX),(int)(400*ratioY));
-		
-		//g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
-
 	}
 	
-	public boolean isMenuPressed() {
-		if(menu.getModel().isPressed())
-			return true;
-		else
-			return false;
-	}
-	
+	/**
+	 * Returns the JLabel that contains the text for the rules of the game
+	 * @return JLabel that contains text of rules of the game
+	 */
 	public JLabel getRules() {
 		return rules;
 	}
@@ -114,10 +107,18 @@ public abstract class Rules extends JPanel implements ActionListener {
 	@Override
 	public abstract void actionPerformed(ActionEvent e);
 	
+	/**
+	 * Returns button that starts the game
+	 * @return Begin Jbutton
+	 */
 	public JButton getBegin() {
 		return begin;
 	}
 	
+	/**
+	 * Returns button that goes to menu screen when clicked
+	 * @return Menu Jbutton
+	 */
 	public JButton getMenu() {
 		return menu;
 	}

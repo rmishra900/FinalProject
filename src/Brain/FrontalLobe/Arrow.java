@@ -9,8 +9,7 @@ import javax.swing.ImageIcon;
 
 /**
  * Represents an arrow displayed on the screen while playing "Flying Arrows"
- * @author Reet
- * @version 5/15/2017
+ * @version 5/22/2017
  */
 public class Arrow {
 	private int x, y;
@@ -88,23 +87,23 @@ public class Arrow {
 		pointingTo = getOrientation();
 	}
 	
+	/**
+	 * Returns the direction the arrow is pointing to
+	 * @return 37 if i's pointing left, 38 if it's pointing up, 39 if it's pointing right, and 40 if it's pointing down
+	 */
 	public int getPointingTo() { return pointingTo; }
 	
+	/**
+	 * Sets direction arrow is pointing to
+	 * @param p 37 if i's pointing left, 38 if it's pointing up, 39 if it's pointing right, and 40 if it's pointing down
+	 */
+	 
 	public void setPointingTo(int p) {
 		if(p>40 || p<37) {
 			System.out.println("value has to be either 37, 38, 39, or 40");
 			return;
 		}
 		pointingTo = p;
-	}
-	
-	public void rotate(Graphics g) {
-		if(pointingTo==40){
-			pointingTo=37;
-		}
-		else {
-			pointingTo++;
-		}
 	}
 	
 	/**
