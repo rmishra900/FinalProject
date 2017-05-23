@@ -1,27 +1,27 @@
 package Brain.FrontalLobe;
-import javax.swing.JPanel;
 
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+
 
 import Brain.Rules;
 import Coma.Coma;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.geom.AffineTransform;
-import java.awt.Color;
 
 public class FrontalRules extends Rules {
 	private Coma c;
 	private Image green, red, blue;
 	
+	/**
+	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
+	 * @param c the overall Coma game the rules of this mini game belongs to
+	 */
 	public FrontalRules( Coma c) {
 		super();
 		this.c = c;
@@ -30,7 +30,10 @@ public class FrontalRules extends Rules {
 		blue = (new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueUpArrow.png")).getImage();
 	}
 
-	@Override
+	/**
+	 * Returns the text representing rules for the game
+	 * @return String that represents the rules for Flying Arrows
+	 */
 	public String getText() {
 		String rules = "";
 		
@@ -73,9 +76,7 @@ public class FrontalRules extends Rules {
 					((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
 				((Frontal)c.getPanel(1)).reset();
 			}
-//			else if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
-//				((Frontal)c.getPanel(1)).reset();	
-//			}
+
 		c.changePanel("7");
 		}
 		else if (src == getMenu())

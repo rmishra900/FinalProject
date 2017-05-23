@@ -17,7 +17,8 @@ public class OccipitalRules extends Rules {
 	private Image cursor, screenshot1, screenshot2, symbols, next;
 	
 	/**
-	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
+	 * Constructs a JPanel with rules of Sightseeing and a Begin button to start the game
+	 * @param c the overall Coma game the rules of this mini game belongs to
 	 */
 	public OccipitalRules(Coma c) {
 		super();
@@ -31,7 +32,7 @@ public class OccipitalRules extends Rules {
 	
 	/**
 	 * Returns the text representing rules for the game
-	 * @return String that represents the rules for FlyingArrows
+	 * @return String that represents the rules for Sightseeing
 	 */
 	public String getText() {
 		String rules = "";
