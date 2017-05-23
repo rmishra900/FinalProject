@@ -12,8 +12,7 @@ import Brain.Rules;
 import Coma.Coma;
 
 /**
- * Describes rules for the game, “Sightseeing”.
- *
+ * Describes rules for the game, Sightseeing.
  */
 public class OccipitalRules extends Rules {
 	
