@@ -34,13 +34,11 @@ public class OccipitalRules extends Rules {
 	public String getText() {
 		String rules = "";
 		
-		rules = "<html>This game tests the Occipital Lobe of the brain which is <br>responsible for visual processing. "
-				+ "This game has to do with field of view, which is what an individual can see at any given moment."
-				+ "<br><br>To play, a city will be displayed with 1 airplane, multiple helicopters, and a symbol"
-				+ " in the sky. The city will then disappear.<br>Use your mouse to find the area where"
-				+ " the airplane was. If you are correct, you must then select which symbol you saw. If you are correct"
-				+ " again, you receive one point, and move on to another round.<br><br>The game ends when you get any"
-				+ " answer incorrect. To win, you must get 10 correct in a row.</html>";
+		rules = "<html>This game tests the occipital lobe for field of view, which is <br>what an individual can see"
+				+ " at any given moment.<br><br>To play:<br>A city will be displayed with 1 airplane, multiple "
+				+ "helicopters, and a symbol in the sky. The city will then disappear. Use your mouse to find the area where"
+				+ " the airplane was. Then, select the symbol you saw. <br><br>The game ends when you get any"
+				+ " answer incorrect. To win, you must get 200 points.</html>";
 		
 	
 		return rules;
@@ -59,9 +57,9 @@ public class OccipitalRules extends Rules {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(cursor, DRAWING_WIDTH / 2 - 20, DRAWING_HEIGHT - 215, 50, 50, this);
-		g.drawImage(screenshot, DRAWING_WIDTH / 2 - 20, DRAWING_HEIGHT - 155, 50, 50, this);
-		g.drawImage(symbols, DRAWING_WIDTH / 2 - 120, DRAWING_HEIGHT - 230, 50, 125,this);
+		g.drawImage(screenshot, DRAWING_WIDTH / 2 - 200, DRAWING_HEIGHT - 190, 100, 80, this);
+		g.drawImage(cursor, DRAWING_WIDTH / 2 - 110, DRAWING_HEIGHT - 175, 40, 60, this);
+		g.drawImage(symbols, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 220, 150, 115,this);
 		
 		g2.setTransform(at);
 	}
