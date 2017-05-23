@@ -31,7 +31,7 @@ import Brain.Lobe;
 import Coma.Coma;
 
 /**
- * Sets the scene for the “Locked” game
+ * Sets the scene for the Locked game
  * @author Anisha and Reet
  * @version 5/18/17
  */
