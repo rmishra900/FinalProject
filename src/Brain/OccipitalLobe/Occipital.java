@@ -80,7 +80,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 		
 		win = new JLabel();
 		win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
-		win.setFont(new Font("Roman Baseline",3, 100));
+		win.setFont(new Font("Roman Baseline",3, 90));
 		win.setSize(500, 100);
 		
 		score = new JLabel(); 
@@ -314,7 +314,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 	 	    	score.setForeground(Color.BLACK);
 	 	    	win.setForeground(Color.RED);
 	 	    	win.setLocation(DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
-	 	    	win.setSize(750,100);
+	 	    	win.setSize(400,100);
 	 	    	win.setText("YOU LOSE");
 	 	    	lost = true;
 	 	    	add(win);
