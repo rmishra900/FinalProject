@@ -39,7 +39,7 @@ public abstract class Rules extends JPanel implements ActionListener {
 		menu.setFont(new Font("Roman Baseline", Font.BOLD, 20));
 		menu.setSize(100, 50);
 		
-		background = new ImageIcon("frontal" + System.getProperty("file.separator") + "RulesBackground.jpg").getImage();
+		background = new ImageIcon("coma" + System.getProperty("file.separator") + "ruleBackground.jpg").getImage();
 		
 		rulesBackground = new JLabel();
 		

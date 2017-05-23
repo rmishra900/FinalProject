@@ -36,7 +36,7 @@ public class OccipitalRules extends Rules {
 		
 		rules = "<html>This game tests the occipital lobe for field of view, which is <br>what an individual can see"
 				+ " at any given moment.<br><br>To play:<br>A city will be displayed with 1 airplane, multiple "
-				+ "helicopters, and a symbol in the sky. The city will then disappear. Use your mouse to find the area where"
+				+ "helicopters, and a symbol in the sky. The city will then disappear. Use your mouse to click on where"
 				+ " the airplane was. Then, select the symbol you saw. <br><br>The game ends when you get any"
 				+ " answer incorrect. To win, you must get 200 points.</html>";
 		
@@ -57,8 +57,8 @@ public class OccipitalRules extends Rules {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(screenshot, DRAWING_WIDTH / 2 - 200, DRAWING_HEIGHT - 190, 100, 80, this);
-		g.drawImage(cursor, DRAWING_WIDTH / 2 - 110, DRAWING_HEIGHT - 175, 40, 60, this);
+		g.drawImage(screenshot, DRAWING_WIDTH / 2 - 180, DRAWING_HEIGHT - 190, 100, 80, this);
+		g.drawImage(cursor, DRAWING_WIDTH / 2 - 90, DRAWING_HEIGHT - 175, 40, 60, this);
 		g.drawImage(symbols, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 220, 150, 115,this);
 		
 		g2.setTransform(at);
