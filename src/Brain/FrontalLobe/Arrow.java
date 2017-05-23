@@ -376,16 +376,6 @@ public class Arrow {
 	 * @return colored image of arrow
 	 */
 	public Image getRandomImage(Color c) {
-	//	Color c;
-	//	int randCol = (int) (Math.random()*3);
-		
-	//	if(randCol == 0) 
-	//		c = new Color(255,0,0); //red
-	//	else if(randCol==1) 
-		//	c = new Color(0,255,0); //green
-		//else 
-			//c = new Color(0,0,255); //blue
-		
 		setcolor(c);
 		Image randomImage = getRandomOrientation(c);
 		

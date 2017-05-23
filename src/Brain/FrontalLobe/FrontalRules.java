@@ -68,26 +68,14 @@ public class FrontalRules extends Rules {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		if (src == getBegin()) {
-		//if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU WIN") || 
-//			for(Arrow a: ((Frontal)c.getPanel(1)).getArrows()) {
-//					a = null;
+		if (src == getBegin()) {			
+			if(	((Frontal)c.getPanel(1)).getWin().getText().equals("") || 
+					((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
+				((Frontal)c.getPanel(1)).reset();
+			}
+//			else if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
+//				((Frontal)c.getPanel(1)).reset();	
 //			}
-			
-			if(	((Frontal)c.getPanel(1)).getWin().getText().equals("")) {
-				((Frontal)c.getPanel(1)).reset();
-			//	System.out.println("here");
-			}
-				
-			
-			else if(((Frontal)c.getPanel(1)).getWin().getText().equals("YOU LOSE")) {
-				((Frontal)c.getPanel(1)).reset();
-			//	((Frontal)c.getPanel(1)).repaint();
-			//	System.out.println("you lost");
-			//	((Frontal)c.getPanel(1)).setWinText("");
-				System.out.println(((Frontal)c.getPanel(1)).getWin().getText());
-				
-			}
 		c.changePanel("7");
 		}
 		else if (src == getMenu())

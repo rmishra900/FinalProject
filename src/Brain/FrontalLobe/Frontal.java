@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -18,9 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.Timer;
+
 import Brain.Lobe;
-
-
 import Coma.Coma;
 
 import java.awt.event.ActionListener;
@@ -32,7 +30,6 @@ import java.awt.event.ActionListener;
  */
 public class Frontal extends Lobe {
 	
-	//private FlyingArrows f;
 	private Coma coma;
 	
 	private Arrow arrow;
@@ -114,8 +111,6 @@ public class Frontal extends Lobe {
 		});
 		
 		add(timer);
-		
-		
 	}
 	
 	/**
@@ -139,8 +134,6 @@ public class Frontal extends Lobe {
 		arrows = new ArrayList<Arrow>();
 		
 		Color c = getRandomColor();
-	//	System.out.println("initial color: "+c.toString());
-
 		Image random = arrow.getRandomImage(c);
 		
 		for(int i = 0; i < 100; i++) {
@@ -355,6 +348,9 @@ public class Frontal extends Lobe {
 		
 		menu.setBounds((int)(150*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
 		back.setBounds((int)(25*ratioX), (int)(20*ratioY), (int)(100*ratioX), (int)(50*ratioY));
+		
+		score.setBounds((int)(350*ratioX), (int)(20*ratioY), (int)(150*ratioX), (int)(30*ratioY));
+		timer.setBounds((int)(600*ratioX), (int)(20*ratioY), (int)(150*ratioX), (int)(30*ratioY));
 	
 		
 	   for(Arrow a: arrows) {
@@ -382,14 +378,6 @@ public class Frontal extends Lobe {
 	   
 	   
 	   if(winGame()) {
-		   //win.setText("YOU WIN!");
-		   
-		  
-		 //  coma.changeToOver();
-		   if(!coma.getWon(1)) {
-			   coma.setWon(1);
-		   }
-		 
 		   score.setForeground(Color.BLACK);
 		   timer.setForeground(Color.BLACK);
 		   g.setColor(Color.WHITE);
@@ -398,18 +386,16 @@ public class Frontal extends Lobe {
 		   g.setColor(Color.BLACK);
 		   g.setFont(new Font("Roman Baseline", 3, 100));
 		  
-		 //  won = true;
 		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 		   g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 		 
-		   
+		 
+		   if(!coma.getWon(1)) {
+			   coma.setWon(1);
+		   }
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
-		  // win.setLocation(DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
-		 //  win.setSize(550,100);
-		   
-		    
 		   score.setForeground(Color.BLACK);
 		   timer.setForeground(Color.BLACK);
 		   g.setColor(Color.WHITE);
@@ -421,8 +407,6 @@ public class Frontal extends Lobe {
 		  
 		   g.drawImage(getLoseImage(), 0, 0, DRAWING_WIDTH, DRAWING_HEIGHT, this);
 		   g.drawString("YOU LOSE", DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT / 2 - 50);
-		  // win.setText("YOU LOSE");
-		  
 		   return;
 	   }
 	   
@@ -547,46 +531,7 @@ public class Frontal extends Lobe {
 	public KeyHandler getKeyHandler() {
 		  return keyControl;
 	  }
-	
-	/**
-	 * Rotates the arrows to a new orientation
-	 * @param g Graphics used
-	 * @param arrows ArrayList of Arrow objects that need to be rotated
-	 * @param currentPT   integer representing current orientation of arrows
-	 * @param newPT integer representing new orientation of arrows
-	 * If it returns 37, then the orientation is left.
-	 * If it returns 38, then the orientation is up. 
-	 * If it returns 39, then the orientation is down.
-	 * If it returns 40, then the orientation is down.
-	 */
-	public void rotate(Graphics g, ArrayList<Arrow> arrows, int currentPT, int newPT) {
-		//38 = 0/360, 39 = 90, 40 = 180, 37 = 270
-		if(keyControl.isPressed(KeyEvent.VK_SPACE)) {
-			g.drawImage(img, 0, 0, getWidth() + (800-getWidth()), getHeight() + (600-getHeight()) , this);
-			
-			for(Arrow a: arrows) {
-				int degrees = 90 * Math.abs((newPT - currentPT));
-				
-				Graphics2D g2 = (Graphics2D) g;
-				AffineTransform at = g2.getTransform();
-				//for(Arrow a: arrows) {	
-					int w = a.getWidth(this)/8;
-					int h = a.getHeight(this)/8;
 
-					g2.translate(a.getX()+w/2, a.getY()+h/2);
-					
-					a.setX(a.getX()+w/2);
-					a.setY(a.getY()+h/2);
-					g2.rotate(Math.toRadians(degrees));
-					
-					g.drawImage(a.getImage(),-w/2,-h/2,w,h,this);
-				//	a.setX(a.getX()-w/2);
-				//	a.setY(a.getY()-h/2);
-					g2.setTransform(at);			
-					a.setPointingTo(newPT);
-			}		
-		}
-	}
 	
 	/**
 	 * Resets game panel to be counting down from 45 seconds.
@@ -618,32 +563,25 @@ public class Frontal extends Lobe {
 		public void keyPressed(KeyEvent e) {
 			keys.add(e.getKeyCode());
 			
-			//System.out.println(e.getKeyCode());
-			//   System.out.println(arrows.get(0).getColor().toString());
 			if(arrows.get(0).getColor()==Color.GREEN) {
-				//System.out.println("green");
 				if(direction != 37 && isPressed(KeyEvent.VK_LEFT)
 						|| direction!=38 && isPressed(KeyEvent.VK_UP)
 						|| direction!=39 && isPressed(KeyEvent.VK_RIGHT)
 						|| direction!=40 && isPressed(KeyEvent.VK_DOWN)) {
-					//System.out.println("incorrect");
 					someoneLostPoints();
 				}
 					
 			}
 			else if(arrows.get(0).getColor()==Color.BLUE) {
-			//	System.out.println("blue");
 				if(direction != 39 && isPressed(KeyEvent.VK_LEFT)
 						|| direction!=40 && isPressed(KeyEvent.VK_UP)
 						|| direction!=37 && isPressed(KeyEvent.VK_RIGHT)
 						|| direction!=38 && isPressed(KeyEvent.VK_DOWN)) {
-				//	System.out.println("lostPoints");
 					someoneLostPoints();
 				}
 			}
 			
 			else {
-			//	System.out.println("RED");
 				if((isPressed(KeyEvent.VK_LEFT) && pointingTo != 37) 
 						|| (isPressed(KeyEvent.VK_UP) && pointingTo != 38) 
 						|| (isPressed(KeyEvent.VK_RIGHT)&& pointingTo != 39)
@@ -651,10 +589,7 @@ public class Frontal extends Lobe {
 					someoneLostPoints();
 				}
 			}
-			
-
-				
-			
+	
 		}
 
 		@Override
@@ -667,7 +602,6 @@ public class Frontal extends Lobe {
 		
 		@Override
 		public void keyTyped(KeyEvent e) {
-		
 		}
 		
 	}
@@ -692,6 +626,4 @@ public class Frontal extends Lobe {
 			}
 		}
 	}
-
-	
 }
