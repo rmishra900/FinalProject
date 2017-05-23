@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 import Brain.Rules;
 import Coma.Coma;
 
+/**
+ * Describes rules for the game, “Sightseeing”.
+ * @author anisha
+ *
+ */
 public class OccipitalRules extends Rules {
 	
 	private Coma c;

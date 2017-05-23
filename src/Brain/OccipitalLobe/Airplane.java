@@ -7,7 +7,14 @@ package Brain.OccipitalLobe;
  */
 public class Airplane extends FlyingObject {
 	
+	/**
+	 * The width of the airplane. 
+	 */
 	public static final int PLANE_WIDTH = 70;
+	
+	/**
+	 * The height of the airplane. 
+	 */
 	public static final int PLANE_HEIGHT = 40;
 	
 	/**

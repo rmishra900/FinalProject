@@ -50,10 +50,24 @@ public class FlyingObject extends Rectangle2D.Double {
 		g.drawImage(image,(int)x,(int)y,(int)(width),(int)(height),io);
 	}
 	
+	/**
+	 * Draws this FlyingObject onto the screen. 
+	 * @param g Graphics used to draw the FlyingObject
+	 * @param img The image to be drawn. 
+	 * @param x the x-coordinate of the location of the FlyingObject
+	 * @param y the y-coordinate of the location of the FlyingObject
+	 * @param w the width of the FlyingObject
+	 * @param h the height of the FlyingObject
+	 * @param io ImageObserver used to draw the image of the FLyingObject
+	 */
 	public void draw(Graphics g, Image img, int x, int y, int w, int h, ImageObserver io) {
 		g.drawImage(image, x, y,w, h, io);
 	}
 	
+	/**
+	 * 
+	 * @return the Image of the FlyingObject
+	 */
 	public Image getImage() {
 		return image;
 	}

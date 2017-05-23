@@ -51,11 +51,9 @@ public class Keypad extends JPanel implements ActionListener {
     	setLayout(null);
 //    	
     	setOpaque(true);
-    	//setBackground(Color.LIGHT_GRAY);
     	
     	setBounds(x, y, width, height);
-   		
-		//isPressed = false;
+
 		passcodeEntered = "";
 
     	buttons = new Button[10];
@@ -111,7 +109,6 @@ public class Keypad extends JPanel implements ActionListener {
     }
     
     
-    
     /**
      * 
      * @return an array of sounds that correspond to the buttons
@@ -146,23 +143,7 @@ public class Keypad extends JPanel implements ActionListener {
     	return buttons[x];
     }
     
-    public boolean isPressed(Button b) {
-    	if(b.getJButton().getModel().isPressed())
-    		return true;
-    	else
-    		return false;
-    }
 
-    public Button[] getButtonsPressed(Button[] buttons) {
-    	ArrayList<Button> pressed = new ArrayList<Button>();
-    	for(Button b: buttons) {
-    		if(b.getJButton().getModel().isPressed()) {
-    			pressed.add(b);
-    		}
-    	}
-    	return (Button[]) pressed.toArray();
-    }
-    
     /**
      * Resets the passcode the user entered.
      */
@@ -178,6 +159,11 @@ public class Keypad extends JPanel implements ActionListener {
     	return passcodeEntered;
     }
     
+    /**
+     * Returns the passcode entered as a String. 
+     * @param x the passcode 
+     * @return a string containing the digits of x, the passcode
+     */
     public String getEntered(int x) {
     	String s = "";
     	for (int i = 0; i<passcodeEntered.length(); i++) {
@@ -189,11 +175,18 @@ public class Keypad extends JPanel implements ActionListener {
     	return s;
     }
    
-    
+    /**
+     * 
+     * @param p the String to set to what has been entered
+     */
     public void setEntered(String p) {
     	passcodeEntered = p;
     }
 
+    /**
+     * 
+     * @param temp the Temporal object this keypad gets assigned to
+     */
     public void setTemporal(Temporal temp) {
     	temporal = temp;
     }
@@ -209,8 +202,6 @@ public class Keypad extends JPanel implements ActionListener {
 		if (temporal != null) {
 			temporal.repaint();
 		}
-		
-		//System.out.println(passcodeEntered);
 	}
 
   
