@@ -406,7 +406,7 @@ public class Frontal extends Lobe {
 		   
 		    
 		   score.setForeground(Color.BLACK);
-		   timer.setForeground(Color.RED);
+		   timer.setForeground(Color.BLACK);
 		   g.setColor(Color.WHITE);
 		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		 
