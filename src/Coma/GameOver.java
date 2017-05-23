@@ -48,7 +48,7 @@ public class GameOver extends JPanel implements KeyListener{
 		add(gameOver);
 		
 		text = new JLabel();
-		text.setLocation(100, 400);
+		text.setLocation(100, 430);
 		text.setSize(800, 200);
 		text.setFont(new Font("Roman Baseline", 1, 25));
 		text.setForeground(Color.WHITE);

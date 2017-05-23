@@ -383,7 +383,7 @@ public class Frontal extends Lobe {
 	   if(winGame()) {
 		   //win.setText("YOU WIN!");
 		   
-		   coma.setWon(1);
+		  
 		 //  coma.changeToOver();
 		   score.setForeground(Color.BLACK);
 		   timer.setForeground(Color.BLACK);
@@ -397,6 +397,7 @@ public class Frontal extends Lobe {
 		   g.drawImage(winImage, 0, 0, getWidth(), getHeight(), this);
 		   g.drawString("YOU WIN!", DRAWING_WIDTH / 2 - 250, DRAWING_HEIGHT / 2 - 50);
 		   
+		   coma.setWon(1);
 		   return;
 	   }
 	   else if(seconds == 0 && correct<threshold) {
@@ -405,7 +406,7 @@ public class Frontal extends Lobe {
 		   
 		    
 		   score.setForeground(Color.BLACK);
-		   timer.setForeground(Color.BLACK);
+		   timer.setForeground(Color.RED);
 		   g.setColor(Color.WHITE);
 		   g.fillRect(0, 0, DRAWING_WIDTH, DRAWING_HEIGHT);
 		 
