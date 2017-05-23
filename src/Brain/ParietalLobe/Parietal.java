@@ -18,7 +18,6 @@ import Coma.Coma;
 
 /**
  * Represents the panel of the parietal lobe game with the drawn background and objects needed. 
- * @author Thanh Luong
  * @version 5/15/2017
  *
  */
@@ -37,6 +36,7 @@ public class Parietal extends Lobe implements KeyListener{
 	
 	/**
 	 * Constucts a new instance of this panel.
+	 * @param c the game that this Parietal screen is for.
 	 */
 	public Parietal(Coma c) {
 		super();
@@ -80,8 +80,6 @@ public class Parietal extends Lobe implements KeyListener{
 				}
 			}
 		});
-		
-
 	}
 	
 	/**

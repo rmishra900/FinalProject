@@ -20,7 +20,6 @@ import Coma.Coma;
 
 /**
  * The class that represents the drawn background with all its FlyingObjects. 
- * @author Anisha
  * @version 5/15/2017
  *
  */
@@ -45,6 +44,7 @@ public class Occipital extends Lobe implements MouseListener, ActionListener {
 
 	/**
 	 * Constructs a new instance of the background with all the FlyingObjects on it. 
+	 * @param c the game that this Occipital screen is for.
 	 */
 	public Occipital(Coma c) {
 		super();

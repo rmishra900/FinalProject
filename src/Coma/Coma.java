@@ -21,7 +21,6 @@ import Brain.TemporalLobe.TemporalRules;
 
 /**
  * Represents the window that the game begins on. 
- * @author Thanh Luong
  * @version 5/15/2017
  */
 public class Coma extends JFrame {

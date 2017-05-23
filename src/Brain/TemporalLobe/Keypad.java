@@ -1,14 +1,16 @@
 package Brain.TemporalLobe;
 
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
 
+
+
 /**
- * Represents the keypad for the user to click a passcode on.
- * @author Reet Mishra 
+ * Represents the keypad for the user to click a passcode on. 
  * @version 5/18/17
  */
 public class Keypad extends JPanel implements ActionListener {

@@ -12,9 +12,7 @@ import Brain.Rules;
 import Coma.Coma;
 
 /**
- * Describes rules for the Sight-seeing
- * @author anisha
- *
+ * Describes rules for the game, Sightseeing.
  */
 public class OccipitalRules extends Rules {
 	
@@ -84,7 +82,6 @@ public class OccipitalRules extends Rules {
 			if (!c.getWon(2)) {
 				Thread t = new Thread("my non EDT thread") {
 		            public void run() {
-		                //my work
 		               ((Occipital) c.getPanel(3)).act();
 		            }
 				};

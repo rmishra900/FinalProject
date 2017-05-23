@@ -129,7 +129,7 @@ public class Arrow {
 	
 	/**
 	 * Sets the x-coordinate of this arrow
-	 * @param integer to set x-coordinate to
+	 * @param xC integer to set x-coordinate to
 	 */
 	public void setX(int xC) { x = xC; }
 	
@@ -141,7 +141,7 @@ public class Arrow {
 	
 	/**
 	 * Sets the y-coordinate of this arrow
-	 * @param integer to set y-coordinate to
+	 * @param yC integer to set y-coordinate to
 	 */
 	public void setY(int yC) { y = yC; }
 	
@@ -229,7 +229,7 @@ public class Arrow {
 	
 	/**
 	 * Sets current image of arrow (blue, red or green)
-	 * @param the image of the arrow to set
+	 * @param img the image of the arrow to set
 	 */
 	public void setImage(Image img) { i = img; }
 	
@@ -373,6 +373,7 @@ public class Arrow {
 	
 	/**
 	 * Returns a random image of a colored arrow (red, green, or blue) with a random orientation.
+	 * @param c the color to set this image to                  
 	 * @return colored image of arrow
 	 */
 	public Image getRandomImage(Color c) {

@@ -15,7 +15,6 @@ import Coma.Coma;
 
 /**
  * This class represents the rules of the FlyingArrows game
- * @author Thanh Luong
  * @version 5/15/17
  *
  */

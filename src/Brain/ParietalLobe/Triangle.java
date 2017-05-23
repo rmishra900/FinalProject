@@ -6,7 +6,6 @@ import java.awt.Graphics;
 
 /**
  * Represents a 2D three-pointed equal-sided polygon, or equilateral triangle. 
- * @author Thanh Luong
  * @version 5/15/2017
  *
  */
@@ -20,6 +19,7 @@ public class Triangle extends Shape {
 	 * @param xCoord the x-coordinate of the center of the triangle
 	 * @param yCoord the y-coordinate of the center of the triangle
 	 * @param length the side length of the triangle
+	 * @param distance the distance between the coordinates of this shape
 	 * @param c the color of this circle
 	 */
 	public Triangle(double xCoord, double yCoord, double length, double distance, Color c) {
@@ -68,8 +68,8 @@ public class Triangle extends Shape {
 
 	/**
 	 * Moves this triangle with the wall by increasing or decreasing its y-coordinate, depending on the arrow key pressed.
-	 * @param a the integer that determines which arrow key is being pressed, a > 0 if the up arrow key is pressed and a < 0
-	 * 			if the down arrow key is pressed
+	 * @param a the integer that determines which arrow key is being pressed, a is greater than 0 if the up arrow key is 
+	 * pressed and a is less than 0 if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
 		vY += 0.5;

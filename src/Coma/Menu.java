@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 
 /**
  * Represents the screen displayed for the user to select a game to play. 
- * @author 
  * @version 5/15/2017
  */
 public class Menu extends JPanel implements ActionListener {

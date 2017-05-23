@@ -6,7 +6,6 @@ import java.awt.Graphics;
 
 /**
  * Represents a 2D circle. 
- * @author Thanh Luong
  * @version 5/15/2017
  *
  */
@@ -18,6 +17,7 @@ public class Circle extends Shape {
 	 * @param xCoord the x-coordinate of the top left corner of the imaginary rectangle that this circle is inscribed in
 	 * @param yCoord the y-coordinate of the top left corner of the imaginary rectangle that this circle is inscribed in
 	 * @param radius the radius of the circle
+	 * @param distance the distance between coordinates
 	 * @param c the color of this circle
 	 */
 	public Circle(double xCoord, double yCoord, double radius, double distance, Color c) {
@@ -44,7 +44,7 @@ public class Circle extends Shape {
 
 	/**
 	 * Moves this circle with the wall by increasing or decreasing its y-coordinate, depending on the arrow key pressed.
-	 * @param a the integer that determines which arrow key is being pressed, a > 0 if the up arrow key is pressed and a < 0
+	 * @param a the integer that determines which arrow key is being pressed, a is greater than 0 if the up arrow key is pressed and a is less than 0
 	 * 			if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {

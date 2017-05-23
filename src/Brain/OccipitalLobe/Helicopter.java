@@ -1,7 +1,6 @@
 package Brain.OccipitalLobe;
 /**
  * 
- * @author Anisha
  * @version 5/15/2017
  * A class that represents a helicopter in the sky. 
  */

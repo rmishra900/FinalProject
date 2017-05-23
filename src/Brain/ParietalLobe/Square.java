@@ -6,7 +6,6 @@ import java.awt.Graphics;
 
 /**
  * Represents a 2D square. 
- * @author Thanh Luong
  * @version 5/15/2017
  *
  */
@@ -18,6 +17,7 @@ public class Square extends Shape{
 	 * Constructs a new instance of this square. 
 	 * @param xCoord the x-coordinate of the top left corner of the square
 	 * @param yCoord the y-coordinate of the top left corner of the square
+	 * @param distance between coordinates
 	 * @param length the side length of the square
 	 * @param c the color of this circle
 	 */
@@ -47,8 +47,8 @@ public class Square extends Shape{
 
 	/**
 	 * Moves this circle with the wall by increasing or decreasing its y-coordinate, depending on the arrow key pressed.
-	 * @param a the integer that determines which arrow key is being pressed, a > 0 if the up arrow key is pressed and a < 0
-	 * 			if the down arrow key is pressed
+	 * @param a the integer that determines which arrow key is being pressed, a is greater than 0 if the up arrow key is 
+	 * pressed and a is less than 0 if the down arrow key is pressed
 	 */
 	public void moveWithWall(int a) {
 		

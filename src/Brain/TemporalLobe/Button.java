@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
- * 
- * @author Reet 
- * @version 5/18/17
  * Represents a button on the keypad. 
+ * @version 5/18/17
  */
 public class Button implements ActionListener{
 	private String text;
@@ -120,7 +118,7 @@ public class Button implements ActionListener{
 	
 	/**
 	 * Sets the height of this button
-	 * @return New value for the width of this button
+	 * @param height the new height for this button
 	 */
 	public void setHeight(int height) {
 		h = height;
