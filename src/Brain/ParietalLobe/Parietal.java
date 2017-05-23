@@ -239,6 +239,7 @@ public class Parietal extends Lobe implements KeyListener{
 	public void reset() {
 		seconds = 45;
 		numCorrect = 0;
+		w = new Wall(40, 200, 90, 270);
 	}
 
 	public void keyPressed(KeyEvent e) {
