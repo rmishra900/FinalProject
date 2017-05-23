@@ -14,7 +14,7 @@ import Coma.Coma;
 public class OccipitalRules extends Rules {
 	
 	private Coma c;
-	private Image cursor, screenshot, symbols;
+	private Image cursor, screenshot1, screenshot2, symbols, next;
 	
 	/**
 	 * Constructs a JPanel with rules of the FlyingArrows and a Begin button to start the game
@@ -23,8 +23,10 @@ public class OccipitalRules extends Rules {
 		super();
 		this.c = c;
 		cursor = (new ImageIcon("occipital" + System.getProperty("file.separator") + "cursorSight.png")).getImage();
-		screenshot = (new ImageIcon("occipital" + System.getProperty("file.separator") + "Sightseeing.png")).getImage();
+		screenshot1 = (new ImageIcon("occipital" + System.getProperty("file.separator") + "Sightseeing.png")).getImage();
+		screenshot2 = (new ImageIcon("occipital" + System.getProperty("file.separator") + "blankSight.png")).getImage();
 		symbols = (new ImageIcon("occipital" + System.getProperty("file.separator") + "SP.png")).getImage();
+		next = (new ImageIcon("occipital" + System.getProperty("file.separator") + "next.png")).getImage();
 	}
 	
 	/**
@@ -57,9 +59,13 @@ public class OccipitalRules extends Rules {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
-		g.drawImage(screenshot, DRAWING_WIDTH / 2 - 180, DRAWING_HEIGHT - 190, 100, 80, this);
-		g.drawImage(cursor, DRAWING_WIDTH / 2 - 90, DRAWING_HEIGHT - 175, 40, 60, this);
-		g.drawImage(symbols, DRAWING_WIDTH / 2, DRAWING_HEIGHT - 220, 150, 115,this);
+		g.drawImage(screenshot1, DRAWING_WIDTH / 2 - 270, DRAWING_HEIGHT - 200, 140, 90, this);
+		g.drawImage(screenshot2, DRAWING_WIDTH / 2 - 90, DRAWING_HEIGHT - 230, 200, 120, this);
+		g.drawImage(cursor, DRAWING_WIDTH / 2 - 75, DRAWING_HEIGHT - 180, 40, 60, this);
+		g.drawImage(symbols, DRAWING_WIDTH / 2 + 140, DRAWING_HEIGHT - 230, 150, 115,this);
+		g.drawImage(cursor, DRAWING_WIDTH / 2 + 160, DRAWING_HEIGHT - 200, 40, 60, this);
+		g.drawImage(next, DRAWING_WIDTH / 2 - 150, DRAWING_HEIGHT - 190, 70, 30, this);
+		g.drawImage(next, DRAWING_WIDTH / 2 + 80, DRAWING_HEIGHT - 190, 70, 30, this);
 		
 		g2.setTransform(at);
 	}

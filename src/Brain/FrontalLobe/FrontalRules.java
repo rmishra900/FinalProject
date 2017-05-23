@@ -20,14 +20,14 @@ import java.awt.Color;
 
 public class FrontalRules extends Rules {
 	private Coma c;
-	private Image cursor, screenshot, symbols;
+	private Image green, red, blue;
 	
 	public FrontalRules( Coma c) {
 		super();
 		this.c = c;
-		cursor = (new ImageIcon("occipital" + System.getProperty("file.separator") + "cursorSight.png")).getImage();
-		screenshot = (new ImageIcon("occipital" + System.getProperty("file.separator") + "Sightseeing.png")).getImage();
-		symbols = (new ImageIcon("occipital" + System.getProperty("file.separator") + "SP.png")).getImage();
+		green = (new ImageIcon("frontal" + System.getProperty("file.separator") + "GreenUpArrow.png")).getImage();
+		red = (new ImageIcon("frontal" + System.getProperty("file.separator") + "RedUpArrow.png")).getImage();
+		blue = (new ImageIcon("frontal" + System.getProperty("file.separator") + "BlueUpArrow.png")).getImage();
 	}
 
 	@Override
@@ -35,11 +35,11 @@ public class FrontalRules extends Rules {
 		String rules = "";
 		
 		rules = "<html>This game tests the Frontal Lobe of the brain which is responsible for cognitive thinking "
-				+ "including task switching, memory and impulse control.<br>To play: "
-				+ "<br><br>If arrows are red - press the arrow key that corresponds to the direction the arrows "
-				+ "are pointing to.<br><br>If arrows are blue - press the arrow on the keyboard that corresponds "
-				+ "to the opposite direction the arrows are moving.<br><br> If arrows are green - press the arrow on the keyboard that corresponds "
-				+ "to the same direction the arrows are moving. <br><br> To win, you must reach 200 points in 30 seconds.</html>";
+				+ "including task switching, memory and impulse control.<br>To play:<br>"
+				+ "<p style = margin-left:60px>For GREEN, press the arrow key that corresponds to the direction the arrows are moving in.<br><br>"
+				+ "For RED, press the arrow key that corresponds to the direction the arrows are pointing.<br><br>"	
+				+ "For BLUE, press the arrow key that corresponds to the opposite direction the arrows are moving in.</p><br>"	
+				+ "To win, you must reach <b><u>200 points in 30 seconds</b></u>.</html>";
 		
 	
 		return rules;
@@ -58,6 +58,9 @@ public class FrontalRules extends Rules {
 		AffineTransform at = g2.getTransform();
 		g2.scale(ratioX, ratioY);
 		
+		g.drawImage(green, DRAWING_WIDTH/3 - 140, DRAWING_HEIGHT/3 - 25, 35, 55, this);
+		g.drawImage(red, DRAWING_WIDTH/3 - 140, DRAWING_HEIGHT / 2 - 50, 35, 55, this);
+		g.drawImage(blue, DRAWING_WIDTH/3 - 140, DRAWING_HEIGHT / 2 + 35, 35, 55, this);
 		
 		g2.setTransform(at);
 	}
